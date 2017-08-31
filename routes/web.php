@@ -30,3 +30,9 @@ Route::group(['prefix' => 'api'], function () {
         Route::resource('weather', 'WeatherController');
     });
 
+
+/*Admin Route*/
+
+Route::get('/admin','admin\AdminController@home');
+
+Route::get('/user','user\UserController@home');
