@@ -179,6 +179,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        App\Providers\GoogleDriveServiceProvider::class,
 
     ],
 
