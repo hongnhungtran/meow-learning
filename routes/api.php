@@ -19,10 +19,10 @@ use Illuminate\Http\Request;
 */
 /*API*/
 $api = app('Dingo\Api\Routing\Router');
+
 $api->version('v1', function ($api) {
 
-    $api->get('test', function () {
-        return 'It is ok';
-    });
+	$api->post('login', 'LoginController@login');
+	$api->post('register', 'RegisterController@register');
 
-});
+}); 

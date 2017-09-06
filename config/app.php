@@ -180,7 +180,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         App\Providers\GoogleDriveServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
 
