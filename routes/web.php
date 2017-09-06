@@ -23,10 +23,11 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 /*Admin Route*/
-
 Route::get('/admin','admin\AdminController@home');
 
-Route::get('/user','user\UserController@home');
+/*User Route*/
+Route::get('/vocabulary-lession/list','user\VocabularyLessionController@index');
+Route::get('/vocabulary-lession/exercise','user\vocabularyLessionExerciseController@index');
 
 
 /*Google Drive*/

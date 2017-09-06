@@ -23,8 +23,11 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
 
 	$api->get('test', function () {
-        return 'It is ok';
-    });
+		return 'It is ok';
+	});
 
-     $api->get('book', 'App\Http\Controllers\User\UserController@index');
+	$api->get('user', 'App\Http\Controllers\User\UserController@index');
+	$api->get('book', 'App\Http\Controllers\BookController@index');
+	$api->get('book/{id}', 'App\Http\Controllers\BookController@show');
+
 }); 

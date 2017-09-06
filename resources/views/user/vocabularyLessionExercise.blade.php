@@ -234,7 +234,62 @@
 									</div>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="tab4success">Success 4</div>
+							<div class="tab-pane fade" id="tab4success">
+ <div id="tab1-content"> 
+                <div class="global-activity-guide">
+                    <div class="icon"></div>
+                    <div class="text">Bấm chọn hình thu nhỏ để xem cỡ chuẩn. Bấm vào ảnh lớn để lật thẻ xem chi tiết của từ.</div>
+                </div>
+                <div class="thumb-outer">
+                    <div class="navigator">
+                        <div class="prev-group global-float-left"><span class="arrow-prev">&lt;</span>Trước</div>
+                        <div class="splitNextPrev"></div>
+                        <div class="next-group global-float-left">Sau<span class="arrow-next global-float-right">&gt;</span></div>
+                    </div>
+                </div>
+
+                <div id="flashcard-area">
+                    <div class="global-float-left flashcard-outer">
+                        <div class="img-caption"></div>
+                        <div class="word-meaning" title="Nhấp chuột để lật thẻ">
+                            <div class="title-flip-outer">
+                                <span class="title-flip"></span>
+                            </div>
+                            <div class="word-phonetic"></div>
+                            <div class="vietnamese-meaning"></div>
+                            <div class="english-meaning">
+                                <div class="subject">Nghĩa Tiếng Anh</div>
+                                <div class="english-content"></div>
+                            </div>
+                            <div class="example">
+                                <span class="subject">Ví dụ</span>: 
+                                <span class="example-content"></span>
+                            </div>
+                        </div>
+                        <div class="button-list global-float-right">
+                            <div class="record" title="Ghi âm"></div>
+                            <div class="play" title="Nghe lại thu âm"></div>
+                            <div class="stop" title="Dừng thu âm"></div>
+                            <div class="split"></div>
+                            <div class="speaker" title="Nghe từ"></div>
+                            <div class="global-float-left flip-card" title="Lật thẻ để xem thêm thông tin"></div>
+                            <div class="split"></div>
+                            <div class="btn-next" title="Tranh sau"></div>
+                            <div class="btn-prev" title="Tranh trước"></div>
+                            <div class="global-clear-both"></div>
+                        </div>
+                    </div>
+                    <div class="hotkeys">
+                        <span class="subject">alt+i</span>  :  <span class="content">Lật</span>  |   
+                        <span class="subject">enter</span>  :  <span class="content">Nghe</span>  |   
+                        <span class="subject">alt+r</span>  :  <span class="content">Ghi âm</span>  |   
+                        <span class="subject">alt+s</span>  :  <span class="content">Kết thúc</span>  |   
+                        <span class="subject">alt+p</span>  :  <span class="content">Bắt đầu</span>
+                    </div>
+                </div>
+                <div class="global-clear-both"></div>
+            </div> 
+							</div>
 							<div class="tab-pane fade" id="tab5success">Success 5</div>
 						</div>
 					</div>
