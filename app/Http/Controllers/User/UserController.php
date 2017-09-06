@@ -4,11 +4,12 @@ namespace App\Http\Controllers\user;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class UserController extends Controller
 {
-    public function home()
-    {
-        return  view('user.home');
-    }
+	public function index()
+	{
+		return User::all();
+	}
 }

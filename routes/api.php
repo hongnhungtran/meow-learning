@@ -22,7 +22,9 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
 
-	$api->post('login', 'LoginController@login');
-	$api->post('register', 'RegisterController@register');
+	$api->get('test', function () {
+        return 'It is ok';
+    });
 
+     $api->get('book', 'App\Http\Controllers\User\UserController@index');
 }); 

@@ -16,15 +16,7 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::resource("tasks","TaskController");
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => 'auth'], function () {
-	Route::resource("tasks","TaskController");
-});
 
 Route::group(['prefix' => 'api'], function () {
 	Route::resource('weather', 'WeatherController');
@@ -36,10 +28,8 @@ Route::get('/admin','admin\AdminController@home');
 
 Route::get('/user','user\UserController@home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+/*Google Drive*/
 Route::get('put', function() {
     Storage::cloud()->put('test.txt', 'Hello World');
     return 'File was saved to Google Drive';
