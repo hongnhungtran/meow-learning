@@ -23,7 +23,11 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 /*Admin Route*/
-Route::get('/admin','admin\AdminController@home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('add', ['as' => 'getExerciseAdd', 'uses' => 'admin\AdminController@getExerciseAdd']);
+    Route::post('add', ['as' => 'postExerciseAdd', 'uses' => 'admin\AdminController@postExerciseAdd']);
+});
 
 /*User Route*/
 Route::get('/vocabulary-lession/list','user\VocabularyLessionController@index');

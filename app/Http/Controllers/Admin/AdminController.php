@@ -7,8 +7,13 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function home()
+    public function getExerciseAdd () 
     {
-        return  view('admin.home');
+    	return  view('admin.home');
+    }
+
+    public function postExerciseAdd ()
+    {
+
     }
 }
