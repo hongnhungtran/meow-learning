@@ -7,5 +7,5 @@ use App\Http\Controllers\Controller;
 
 class VocabularyController extends Controller
 {
-    //
+    return  view('admin.vocabulary.lessonAdd');
 }

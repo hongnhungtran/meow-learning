@@ -22,11 +22,18 @@ Route::group(['prefix' => 'api'], function () {
 	Route::resource('weather', 'WeatherController');
 });
 
-/*Admin Route*/
+/*
+Admin Route
+ */
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('add', ['as' => 'getExerciseAdd', 'uses' => 'admin\AdminController@getExerciseAdd']);
-    Route::post('add', ['as' => 'postExerciseAdd', 'uses' => 'admin\AdminController@postExerciseAdd']);
+Route::group(['prefix' => 'admin/vocabulary'], function () {
+    Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+Route::group(['prefix' => 'admin/vocabulary'], function () {
+    Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
 /*User Route*/
