@@ -1,19 +1,16 @@
-{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('admin.shared.master')
 
-@extends('adminlte::page')
-
-
-@section('title', 'Home')
+@section('title', 'Add New Lesson')
 
 @section('content_header')
      <h1>
-        Text Editors
-        <small>Advanced form element</small>
+        Add New
+        <small>Lesson</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Editors</li>
+        <li><a href="#">Lesson</a></li>
+        <li class="active">Add</li>
       </ol>
 @stop
 
@@ -64,12 +61,4 @@
         <!-- /.col-->
       </div>
       <!-- ./row -->
-@stop
-
-@section('css')
-    <!-- <link rel="stylesheet" href="/css/admin_custom.css"> -->
-@stop
-
-@section('js')
-    <!-- <script> console.log('Hi!'); </script> -->
 @stop
