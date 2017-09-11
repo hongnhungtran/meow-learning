@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\VocabularyTopic;
+use App\Http\Requests\VocabularyTopicFormRequest;
 
 class VocabularyTopicController extends Controller
 {
@@ -14,7 +16,7 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +26,7 @@ class VocabularyTopicController extends Controller
      */
     public function create()
     {
-        //
+        return  view('admin.vocabulary.topicAdd');
     }
 
     /**
@@ -33,9 +35,16 @@ class VocabularyTopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VocabularyTopicFormRequest $request)
     {
-        //
+        $vocabulary_topic = new Ticket(array(
+        'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
+        'vocabulary_topic_content' => $request->get('vocabulary_topic_content'),
+    ));
+
+    $vocabulary_topic->save();
+
+    return redirect('/topicList')->with('status', 'Your vocabulary topic has been created!');
     }
 
     /**
