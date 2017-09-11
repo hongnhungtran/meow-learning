@@ -11,7 +11,9 @@
 |
 */
 
-/*Test Route*/
+/*
+Start Route
+ */
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -26,22 +28,97 @@ Route::group(['prefix' => 'api'], function () {
 Admin Route
  */
 
+/*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary'], function () {
     Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
     Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
-Route::group(['prefix' => 'admin/vocabulary'], function () {
+/*Listening*/
+Route::group(['prefix' => 'admin/listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Speaking*/
+Route::group(['prefix' => 'admin/listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Reading*/
+Route::group(['prefix' => 'admin/listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Writing*/
+Route::group(['prefix' => 'admin/listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Exam*/
+Route::group(['prefix' => 'admin/listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Document*/
+Route::group(['prefix' => 'admin/document'], function () {
+    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'Admin\DocumentController@addNewDocument']);
+    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'Admin\DocumentController@getDocumentList']);
+});
+
+/*
+User Route
+ */
+
+/*Vocabulary*/
+Route::group(['prefix' => 'vocabulary'], function () {
     Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
     Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
-/*User Route*/
-Route::get('/vocabulary-lession/list','user\VocabularyLessionController@index');
-Route::get('/vocabulary-lession/exercise','user\vocabularyLessionExerciseController@index');
+/*Listening*/
+Route::group(['prefix' => 'listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
 
+/*Speaking*/
+Route::group(['prefix' => 'speaking'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
 
-/*Google Drive*/
+/*Reading*/
+Route::group(['prefix' => 'reading'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Writing*/
+Route::group(['prefix' => 'writing'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Exam*/
+Route::group(['prefix' => 'listening'], function () {
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+});
+
+/*Document*/
+Route::group(['prefix' => 'document'], function () {
+    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'Admin\DocumentController@addNewDocument']);
+    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'Admin\DocumentController@getDocumentList']);
+});
+
+/*
+Google Drive
+ */
 Route::get('put', function() {
     Storage::cloud()->put('test.txt', 'Hello World');
     return 'File was saved to Google Drive';
