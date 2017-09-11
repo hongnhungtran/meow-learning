@@ -16,7 +16,10 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
+        $vocabulary_topic = VocabularyTopic::paginate(10);
+        $vocabulary_topic->withPath('url');
         
+        return view('admin.vocabulary.topicList', compact('vocabulary_topic'));
     }
 
     /**
@@ -90,5 +93,18 @@ class VocabularyTopicController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function vocabulary_topic_api() {
+         $vocabulary_topic = VocabularyTopic::paginate(10);
+
+        if (!$vocabulary_topic) {
+            throw new HttpException(400, "Invalid data");
+        }
+
+        return response()->json(
+            $vocabulary_topic,
+            200
+        );
     }
 }

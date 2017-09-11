@@ -30,4 +30,7 @@ $api->version('v1', function ($api) {
 	$api->get('book', 'App\Http\Controllers\BookController@index');
 	$api->get('book/{id}', 'App\Http\Controllers\BookController@show');
 
+	$api->get('admin/vocabulary/topic', 'App\Http\Controllers\Admin\VocabularyTopicController@vocabulary_topic_api');
+	$api->get('admin/vocabulary/topic/{id}', 'App\Http\Controllers\Admin\VocabularyTopicController@show');
+
 }); 
