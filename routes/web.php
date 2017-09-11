@@ -30,8 +30,8 @@ Admin Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary'], function () {
-    Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessonAdd', ['as' => 'create', 'uses' => 'Admin\VocabularyLessonController@create']);
+    Route::get('lessonList', ['as' => 'index', 'uses' => 'Admin\VocabularyLessonController@index']);
 });
 
 /*Listening*/
@@ -41,19 +41,19 @@ Route::group(['prefix' => 'admin/listening'], function () {
 });
 
 /*Speaking*/
-Route::group(['prefix' => 'admin/listening'], function () {
+Route::group(['prefix' => 'admin/speaking'], function () {
     Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
     Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
 /*Reading*/
-Route::group(['prefix' => 'admin/listening'], function () {
+Route::group(['prefix' => 'admin/reading'], function () {
     Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
     Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
 /*Writing*/
-Route::group(['prefix' => 'admin/listening'], function () {
+Route::group(['prefix' => 'admin/writing'], function () {
     Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
     Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });

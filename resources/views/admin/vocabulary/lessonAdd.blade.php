@@ -39,17 +39,17 @@
                     <textarea id="editor1" name="editor1" rows="10" cols="80">
                     
                     </textarea>
-                    <script type="text/javascript" src="../vendor/ckeditor/ckeditor.js"></script>
-                    <script type="text/javascript" src="../vendor/ckfinder/ckfinder.js"></script>
-    				<script type="text/javascript">
+                    <script type="text/javascript" src="../../vendor/ckeditor/ckeditor.js"></script>
+                    <script type="text/javascript" src="../../vendor/ckfinder/ckfinder.js"></script>
+    				        <script type="text/javascript">
                     	var editor = CKEDITOR.replace('editor1', {
                     		language:'en',
                     		filebrowserBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html',
-					        filebrowserImageBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Images',
-					        filebrowserFlashBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Flash',
-					        filebrowserUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-					        filebrowserImageUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-					        filebrowserFlashUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+      					        filebrowserImageBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Images',
+      					        filebrowserFlashBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Flash',
+      					        filebrowserUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+      					        filebrowserImageUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+      					        filebrowserFlashUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
                     	});
                     	CKFinder.setupCKEditor( editor, '../' );
                     </script>
