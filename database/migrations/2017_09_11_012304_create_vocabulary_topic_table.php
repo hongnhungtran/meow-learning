@@ -18,7 +18,6 @@ class CreateVocabularyTopicTable extends Migration
             $table->string('vocabulary_topic_title', 255);
             $table->text('vocabulary_topic_content');
             $table->tinyInteger('status')->default(1);
-            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }
