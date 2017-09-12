@@ -46,6 +46,7 @@
           <td>{!! $vocabulary_topic->vocabulary_topic_status !!}</td>
         </tr>
         @endforeach
+
       </tbody>
 
     </table>
@@ -58,6 +59,7 @@
 
 </div>
 <!-- /.col -->
+{{ $vocabulary_topic->render() }}
 </div>
 <!-- /.row -->
 @stop
