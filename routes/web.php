@@ -32,11 +32,11 @@ Admin Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary', 'middleware' => 'web'], function () {
-    Route::get('lessonAdd', 'Admin\VocabularyLessonController@create');
-    Route::post('lessonAdd', 'Admin\VocabularyTopicController@store');
+    Route::get('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
+    Route::post('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
 
-    Route::get('lessonList', 'Admin\VocabularyLessonController@index');
-    Route::get('topicList', 'Admin\VocabularyTopicController@index');
+    Route::get('lessonList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
+    Route::get('topicList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
  
     Route::get('topicAdd', 'Admin\VocabularyTopicController@create');
     Route::post('topicAdd', 'Admin\VocabularyTopicController@store');

@@ -16,8 +16,7 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        $vocabulary_topic = VocabularyTopic::paginate(10);
-        $vocabulary_topic->withPath('url');
+        $vocabulary_topic = VocabularyTopic::paginate(2);        
         
         return view('admin.vocabulary.topicList', compact('vocabulary_topic'));
     }
@@ -40,14 +39,14 @@ class VocabularyTopicController extends Controller
      */
     public function store(Request $request)
     {
-        $vocabulary_topic = new Ticket([
+        $vocabulary_topic = new VocabularyTopic([
         'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
         'vocabulary_topic_content' => $request->get('vocabulary_topic_content'),
     ]);
 
     $vocabulary_topic->save();
 
-    /*return redirect('/topicList');*/
+    return redirect()->route('topicList');
     }
 
     /**
