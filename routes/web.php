@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'api'], function () {
 	Route::resource('weather', 'WeatherController');
@@ -31,12 +32,14 @@ Admin Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary', 'middleware' => 'web'], function () {
-    Route::get('lessonAdd', ['as' => 'create', 'uses' => 'Admin\VocabularyLessonController@create']);
-    Route::get('lessonList', ['as' => 'index', 'uses' => 'Admin\VocabularyLessonController@index']);
-    Route::get('topicList', ['as' => 'index', 'uses' => 'Admin\VocabularyTopicController@index']);
+    Route::get('lessonAdd', 'Admin\VocabularyLessonController@create');
+    Route::post('lessonAdd', 'Admin\VocabularyTopicController@store');
 
-    Route::get('topicAdd', ['as' => 'create', 'uses' => 'Admin\VocabularyTopicController@create']);
-    Route::post('topicAdd', ['as' => 'store', 'uses' => 'Admin\VocabularyTopicController@store']);
+    Route::get('lessonList', 'Admin\VocabularyLessonController@index');
+    Route::get('topicList', 'Admin\VocabularyTopicController@index');
+ 
+    Route::get('topicAdd', 'Admin\VocabularyTopicController@create');
+    Route::post('topicAdd', 'Admin\VocabularyTopicController@store');
 });
 
 /*Listening*/
@@ -232,11 +235,3 @@ Route::get('newest', function() {
 
     return Storage::cloud()->get($file['path']);
 });
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -38,7 +38,7 @@ class VocabularyTopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VocabularyTopicFormRequest $request)
+    public function store(Request $request)
     {
         $vocabulary_topic = new Ticket([
         'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
@@ -47,7 +47,7 @@ class VocabularyTopicController extends Controller
 
     $vocabulary_topic->save();
 
-    return redirect('/topicList')->with('status', 'Your vocabulary topic has been created!');
+    /*return redirect('/topicList');*/
     }
 
     /**
