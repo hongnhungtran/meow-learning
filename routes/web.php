@@ -24,11 +24,11 @@ Route::group(['prefix' => 'api'], function () {
 	Route::resource('weather', 'WeatherController');
 });
 
+Route::resource('crud', 'CRUDController');
 /*
 Admin Route
  */
- Route::get('test', 'TicketController@create');
- Route::post('test', 'TicketController@store');
+
 /*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary', 'middleware' => 'web'], function () {
     Route::get('lessonAdd', ['as' => 'create', 'uses' => 'Admin\VocabularyLessonController@create']);
@@ -71,8 +71,8 @@ Route::group(['prefix' => 'admin/listening'], function () {
 
 /*Document*/
 Route::group(['prefix' => 'admin/document'], function () {
-    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'Admin\DocumentController@addNewDocument']);
-    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'Admin\DocumentController@getDocumentList']);
+    Route::get('add', ['as' => 'add', 'uses' => 'Admin\DocumentController@addNewDocument']);
+    Route::get('list', ['as' => 'list', 'uses' => 'Admin\DocumentController@getDocumentList']);
 });
 
 /*
@@ -81,8 +81,8 @@ User Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'vocabulary'], function () {
-    Route::get('lession/add', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lession/list', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('level', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getLevelList']);
+    Route::get('topic', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getTopicList']);
 });
 
 /*Listening*/
@@ -148,27 +148,27 @@ Route::get('list-folder-contents', function() {
 
     // Find the folder you are looking for...
     $dir = $contents->where('type', '=', 'dir')
-        ->where('filename', '=', $folder)
+    ->where('filename', '=', $folder)
         ->first(); // There could be duplicate directory names!
 
-    if ( ! $dir) {
-        return 'No such folder!';
-    }
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
 
     // Get the files inside the folder...
-    $files = collect(Storage::cloud()->listContents($dir['path'], false))
+        $files = collect(Storage::cloud()->listContents($dir['path'], false))
         ->where('type', '=', 'file');
 
-    return $files->mapWithKeys(function($file) {
-        $filename = $file['filename'].'.'.$file['extension'];
-        $path = $file['path'];
+        return $files->mapWithKeys(function($file) {
+            $filename = $file['filename'].'.'.$file['extension'];
+            $path = $file['path'];
 
         // Use the path to download each file via a generated link..
         // Storage::cloud()->get($file['path']);
 
-        return [$filename => $path];
+            return [$filename => $path];
+        });
     });
-});
 
 Route::get('get', function() {
     $filename = 'test.txt';
@@ -178,19 +178,19 @@ Route::get('get', function() {
     $contents = collect(Storage::cloud()->listContents($dir, $recursive));
 
     $file = $contents
-        ->where('type', '=', 'file')
-        ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
-        ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+    ->where('type', '=', 'file')
+    ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+    ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
         ->first(); // there can be duplicate file names!
 
     //return $file; // array with file info
 
-    $rawData = Storage::cloud()->get($file['path']);
+        $rawData = Storage::cloud()->get($file['path']);
 
-    return response($rawData, 200)
+        return response($rawData, 200)
         ->header('ContentType', $file['mimetype'])
         ->header('Content-Disposition', "attachment; filename='$filename'");
-});
+    });
 
 Route::get('create-dir', function() {
     Storage::cloud()->makeDirectory('Test Dir');
@@ -203,17 +203,17 @@ Route::get('put-in-dir', function() {
     $contents = collect(Storage::cloud()->listContents($dir, $recursive));
 
     $dir = $contents->where('type', '=', 'dir')
-        ->where('filename', '=', 'Test Dir')
+    ->where('filename', '=', 'Test Dir')
         ->first(); // There could be duplicate directory names!
 
-    if ( ! $dir) {
-        return 'Directory does not exist!';
-    }
+        if ( ! $dir) {
+            return 'Directory does not exist!';
+        }
 
-    Storage::cloud()->put($dir['path'].'/test.txt', 'Hello World');
+        Storage::cloud()->put($dir['path'].'/test.txt', 'Hello World');
 
-    return 'File was created in the sub directory in Google Drive';
-});
+        return 'File was created in the sub directory in Google Drive';
+    });
 
 Route::get('newest', function() {
     $filename = 'test.txt';
@@ -224,11 +224,11 @@ Route::get('newest', function() {
     $recursive = false; // Get subdirectories also?
 
     $file = collect(Storage::cloud()->listContents($dir, $recursive))
-        ->where('type', '=', 'file')
-        ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
-        ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
-        ->sortBy('timestamp')
-        ->last();
+    ->where('type', '=', 'file')
+    ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+    ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+    ->sortBy('timestamp')
+    ->last();
 
     return Storage::cloud()->get($file['path']);
 });

@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
-body {
-	background-image: url("../image/common/cat-background-1.jpg") !important;
+/* body {
+	background-image: url("../img/common/cat-background-1.jpg") !important;
 	background-color: #ffffff;
 	min-width: 1000px;
 	min-height: 600px;
 }
-
+ */
 /* header */
 .top-color {
 	width: 100%

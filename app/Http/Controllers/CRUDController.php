@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\VocabularyTopic;
-use App\Http\Requests\VocabularyTopicFormRequest;
+use App\Crud;
 
-class VocabularyTopicController extends Controller
+class CRUDController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,9 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        $vocabulary_topic = VocabularyTopic::paginate(10);
-        $vocabulary_topic->withPath('url');
-        
-        return view('admin.vocabulary.topicList', compact('vocabulary_topic'));
+        $cruds = Crud::all()->toArray();
+
+        return view('crud.index', compact('cruds'));
     }
 
     /**
@@ -29,7 +26,7 @@ class VocabularyTopicController extends Controller
      */
     public function create()
     {
-        return  view('admin.vocabulary.topicAdd');
+        return view('crud.create');
     }
 
     /**
@@ -38,16 +35,16 @@ class VocabularyTopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VocabularyTopicFormRequest $request)
+    public function store(Request $request)
     {
-        $vocabulary_topic = new Ticket([
-        'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
-        'vocabulary_topic_content' => $request->get('vocabulary_topic_content'),
-    ]);
+        $crud = new Crud([
+          'title' => $request->get('title'),
+          'post' => $request->get('post')
+        ]);
 
-    $vocabulary_topic->save();
+        $crud->save();
 
-    return redirect('/topicList')->with('status', 'Your vocabulary topic has been created!');
+        return redirect('/crud');
     }
 
     /**
@@ -69,7 +66,10 @@ class VocabularyTopicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $crud = Crud::find($id);
+
+        return view('crud.edit', compact('crud','id'));
+
     }
 
     /**
@@ -81,7 +81,12 @@ class VocabularyTopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $crud = Crud::find($id);
+        $crud->title = $request->get('title');
+        $crud->post = $request->get('post');
+        $crud->save();
+
+        return redirect('/crud');
     }
 
     /**
@@ -92,19 +97,9 @@ class VocabularyTopicController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+      $crud = Crud::find($id);
+      $crud->delete();
 
-    public function vocabulary_topic_api() {
-         $vocabulary_topic = VocabularyTopic::paginate(10);
-
-        if (!$vocabulary_topic) {
-            throw new HttpException(400, "Invalid data");
-        }
-
-        return response()->json(
-            $vocabulary_topic,
-            200
-        );
+      return redirect('/crud');
     }
 }
