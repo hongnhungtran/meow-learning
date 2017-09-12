@@ -1,18 +1,11 @@
-<html>
-<head>
-    <title> @yield('title') </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+{{-- resources/views/admin/dashboard.blade.php --}}
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+@extends('adminlte::page')
 
-@include('shared.navbar')
+@section('css')
+    <!-- <link rel="stylesheet" href="../../public/css/admin_custom.css"> -->
+@stop
 
-@yield('content')
-
-</body>
-</html>
-
+@section('js')
+    <!-- <script> console.log('Hi!'); </script> -->
+@stop
