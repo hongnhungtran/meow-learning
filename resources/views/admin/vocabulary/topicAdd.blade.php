@@ -47,22 +47,12 @@
 						<textarea class="form-control" rows="3" placeholder="Enter ..." name="vocabulary_topic_content"></textarea>
 					</div>
 
-					<!-- select -->
-					<div class="form-group">
-						<label>Select Level</label>
-						<select class="form-control">
-							<option>Beginner</option>
-							<option>Elementary</option>
-							<option>Intermediate</option>
-							<option>Advanced</option>
-						</select>
-					</div>
+					
 				</div>
-				<!-- /.box-body -->
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
+
 			</form>
+
+			
 		</div>
 		<!-- /.box -->
 	</div>
