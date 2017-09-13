@@ -59,7 +59,7 @@
 
 </div>
 <!-- /.col -->
-{{ $vocabulary_topic->render() }}
+
 </div>
 <!-- /.row -->
 @stop

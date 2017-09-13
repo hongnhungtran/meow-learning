@@ -31,15 +31,15 @@ Admin Route
  */
 
 /*Vocabulary*/
-Route::group(['prefix' => 'admin/vocabulary', 'middleware' => 'web'], function () {
-    Route::get('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
-    Route::post('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
+Route::group(['prefix' => 'admin/vocabulary'], function () {
+    Route::get('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
+    Route::post('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
 
-    Route::get('lessonList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
-    Route::get('topicList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyTopicController@index']);
+    Route::get('lessonList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
+    Route::get('topicList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
  
-    Route::get('topicAdd', 'Admin\VocabularyTopicController@create');
-    Route::post('topicAdd', 'Admin\VocabularyTopicController@store');
+    Route::get('topicAdd', 'Admin\VocabularyController@create');
+    Route::post('topicAdd', 'Admin\VocabularyController@store');
 });
 
 /*Listening*/
@@ -90,38 +90,38 @@ Route::group(['prefix' => 'vocabulary'], function () {
 
 /*Listening*/
 Route::group(['prefix' => 'listening'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('level', ['as' => 'listeningLevelList', 'uses' => 'User\ListeningController@getLevelList']);
+    Route::get('lesson', ['as' => 'listeningLessonList', 'uses' => 'User\ListeningController@getLessonList']);
 });
 
 /*Speaking*/
 Route::group(['prefix' => 'speaking'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('levelList', ['as' => 'speakingLevelList', 'uses' => 'User\SpeakingController@levelList']);
+    Route::get('lessionList', ['as' => 'speakingLessonList', 'uses' => 'User\SpeakingController@lessionList']);
 });
 
 /*Reading*/
 Route::group(['prefix' => 'reading'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
 });
 
 /*Writing*/
 Route::group(['prefix' => 'writing'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
 });
 
 /*Exam*/
 Route::group(['prefix' => 'listening'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
+    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
+    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
 });
 
 /*Document*/
 Route::group(['prefix' => 'document'], function () {
-    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'Admin\DocumentController@addNewDocument']);
-    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'Admin\DocumentController@getDocumentList']);
+    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'User\DocumentController@addNewDocument']);
+    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'User\DocumentController@getDocumentList']);
 });
 
 /*

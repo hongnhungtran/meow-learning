@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VocabularyLessonController extends Controller
+class ListeningController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class VocabularyLessonController extends Controller
      */
     public function index()
     {
-        return  view('admin.vocabulary.lessonList');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class VocabularyLessonController extends Controller
      */
     public function create()
     {
-        return  view('admin.vocabulary.lessonAdd');
+        //
     }
 
     /**

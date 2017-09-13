@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ListeningController extends Controller
+class WritingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ListeningController extends Controller
      */
     public function index()
     {
-        return  view('user.listening.levelList');
+        //
     }
 
     /**
@@ -81,10 +81,5 @@ class ListeningController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getLevelList()
-    {
-        return  view('user.listening.levelList');
     }
 }

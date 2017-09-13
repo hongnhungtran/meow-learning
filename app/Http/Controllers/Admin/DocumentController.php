@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\VocabularyTopic;
-use App\Http\Requests\VocabularyTopicFormRequest;
 
-class VocabularyTopicController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        $vocabulary_topic = VocabularyTopic::paginate(2);        
-        
-        return view('admin.vocabulary.topicList', compact('vocabulary_topic'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class VocabularyTopicController extends Controller
      */
     public function create()
     {
-        return  view('admin.vocabulary.topicAdd');
+        //
     }
 
     /**
@@ -39,14 +35,7 @@ class VocabularyTopicController extends Controller
      */
     public function store(Request $request)
     {
-        $vocabulary_topic = new VocabularyTopic([
-        'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
-        'vocabulary_topic_content' => $request->get('vocabulary_topic_content'),
-    ]);
-
-    $vocabulary_topic->save();
-
-    return redirect()->route('topicList');
+        //
     }
 
     /**
@@ -92,18 +81,5 @@ class VocabularyTopicController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function vocabulary_topic_api() {
-         $vocabulary_topic = VocabularyTopic::paginate(10);
-
-        if (!$vocabulary_topic) {
-            throw new HttpException(400, "Invalid data");
-        }
-
-        return response()->json(
-            $vocabulary_topic,
-            200
-        );
     }
 }
