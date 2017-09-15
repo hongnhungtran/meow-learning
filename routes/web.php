@@ -49,62 +49,18 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
     
     //Course
-    require(__DIR__ . "/admin/vocabulary.php");
-    require(__DIR__ . "/admin/listening.php");
-    require(__DIR__ . "/admin/speaking.php");
-    require(__DIR__ . "/admin/reading.php");
-    require(__DIR__ . "/admin/writing.php");
-    require(__DIR__ . "/admin/exam.php");
-    require(__DIR__ . "/admin/document.php");  
+    require(__DIR__ . "/user/vocabulary.php");
+    require(__DIR__ . "/user/listening.php");
+    require(__DIR__ . "/user/speaking.php");
+    require(__DIR__ . "/user/reading.php");
+    require(__DIR__ . "/user/writing.php");
+    require(__DIR__ . "/user/exam.php");
+    require(__DIR__ . "/user/document.php");  
 });
 
-/*Home*/
 
-
-/*Vocabulary*/
-Route::group(['prefix' => 'vocabulary'], function () {
-    
-    Route::get('topic', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getTopicList']);
-});
-
-/*Listening*/
-Route::group(['prefix' => 'listening'], function () {
-    Route::get('level', ['as' => 'listeningLevelList', 'uses' => 'User\ListeningController@getLevelList']);
-    Route::get('lesson', ['as' => 'listeningLessonList', 'uses' => 'User\ListeningController@getLessonList']);
-});
-
-/*Speaking*/
-Route::group(['prefix' => 'speaking'], function () {
-    Route::get('levelList', ['as' => 'speakingLevelList', 'uses' => 'User\SpeakingController@levelList']);
-    Route::get('lessionList', ['as' => 'speakingLessonList', 'uses' => 'User\SpeakingController@lessionList']);
-});
-
-/*Reading*/
-Route::group(['prefix' => 'reading'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-});
-
-/*Writing*/
-Route::group(['prefix' => 'writing'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-});
-
-/*Exam*/
-Route::group(['prefix' => 'listening'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@lessonAddNew']);
-});
-
-/*Document*/
-Route::group(['prefix' => 'document'], function () {
-    Route::get('add', ['as' => 'addNewDocument', 'uses' => 'User\DocumentController@addNewDocument']);
-    Route::get('list', ['as' => 'getDocumentList', 'uses' => 'User\DocumentController@getDocumentList']);
-});
-
-/*
-Google Drive
+/**
+ * Google Drive
  */
 Route::get('put', function () {
     Storage::cloud()->put('test.txt', 'Hello World');

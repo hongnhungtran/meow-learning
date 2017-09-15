@@ -10,12 +10,18 @@ use App\Level;
 
 class VocabularyController extends Controller
 {
-    private $vocabulary_topic_id = 1;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+
+        $this->vocabulary_course_id = 1;
+
+    }
+
     public function index()
     {
     }
@@ -132,7 +138,7 @@ class VocabularyController extends Controller
      */
     public function vocabulary_topic_index()
     {
-        $vocabulary_topics = Topic::where('course_id', 1)->paginate(10);
+        $vocabulary_topics = Topic::where('course_id', $this->vocabulary_course_id)->paginate(10);
         
         return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -216,7 +222,7 @@ class VocabularyController extends Controller
             ->with('success', 'Topic deleted successfully');
     }
 
-    
+
     public function vocabulary_lesson_index()
     {
         $vocabulary_lessons = Lesson::where('course_id', 1)->paginate(10);
