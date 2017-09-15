@@ -10,10 +10,13 @@
 </ol>
 @stop @section('content')
 <div class="row">
-    <div <div class="col-md-12">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <!-- Horizontal Form -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Add New Lesson</h3>
+                <h3 class="box-title">Add New Topic</h3>
                 <!-- tools box -->
                 <div class="pull-right box-tools">
                     <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -25,35 +28,36 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post">
+            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_topic_update', $id)}}">
                 {{csrf_field()}} @foreach ($errors->all() as $error)
                 <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Lesson Title</label>
+                        <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title">
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title"  value="{!! $vocabulary_topic->topic_title !!}">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Lesson Content</label>
+                        <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content">
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content" value="{!! $vocabulary_topic->topic_content !!}">
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Topic</label>
+                        <label for="" class="col-sm-3 control-label">Level</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="level">
-								@if ($topics->count())
-									@foreach($topics as $topic)
-									<option value="{{ $topic->topic_id }}">{{ $topic->topic_name }}</option> 
-									@endforeach   
+								@if ($levels->count())
+								@foreach($levels as $level)
+								<option value="{{ $level->level_id }}">{{ $level->level_name }}</option> 
+								@endforeach   
 								@endif
 							</select>
                         </div>

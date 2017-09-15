@@ -14,15 +14,12 @@
 /*
 Start Route
  */
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
 
 Auth::routes();
- Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'api'], function () {
-	Route::resource('weather', 'WeatherController');
+    Route::resource('weather', 'WeatherController');
 });
 
 Route::resource('crud', 'CRUDController');
@@ -32,14 +29,21 @@ Admin Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'admin/vocabulary'], function () {
-    Route::get('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
-    Route::post('lessonAdd', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
+    // Index
+    Route::get('/', ['as' => 'management', 'uses' => 'Admin\VocabularyController@vocabulary_management']);
 
-    Route::get('lessonList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
-    Route::get('topicList', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@index']);
- 
-    Route::get('topicAdd', 'Admin\VocabularyController@create');
-    Route::post('topicAdd', 'Admin\VocabularyController@store');
+     //Topic
+     Route::get('topic', ['as' => 'vocabulary_topic_list', 'uses' => 'Admin\VocabularyController@vocabulary_topic_index']);
+     Route::get('topic/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_create']);
+     Route::post('topic/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_create']);
+     Route::get('topic/edit/{id}', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_edit']);
+     Route::post('topic/edit/{id}', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_update']);
+
+
+    //Lesson
+    Route::get('lesson', ['as' => 'get_lesson_list', 'uses' => 'Admin\VocabularyController@get_lesson_list']);
+    Route::get('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
+    Route::post('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
 });
 
 /*Listening*/
@@ -84,7 +88,8 @@ User Route
 
 /*Vocabulary*/
 Route::group(['prefix' => 'vocabulary'], function () {
-    Route::get('level', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getLevelList']);
+    
+    // Route::get('level', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getLevelList']);
     Route::get('topic', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getTopicList']);
 });
 
@@ -127,12 +132,12 @@ Route::group(['prefix' => 'document'], function () {
 /*
 Google Drive
  */
-Route::get('put', function() {
+Route::get('put', function () {
     Storage::cloud()->put('test.txt', 'Hello World');
     return 'File was saved to Google Drive';
 });
 
-Route::get('list', function() {
+Route::get('list', function () {
     $dir = '/';
     $recursive = false; // Get subdirectories also?
     $contents = collect(Storage::cloud()->listContents($dir, $recursive));
@@ -141,7 +146,7 @@ Route::get('list', function() {
     return $contents->where('type', '=', 'file'); // files
 });
 
-Route::get('list-folder-contents', function() {
+Route::get('list-folder-contents', function () {
     // The human readable folder name to get the contents of...
     // For simplicity, this folder is assumed to exist in the root directory.
     $folder = 'Test Dir';
@@ -154,15 +159,15 @@ Route::get('list-folder-contents', function() {
     ->where('filename', '=', $folder)
         ->first(); // There could be duplicate directory names!
 
-        if ( ! $dir) {
-            return 'No such folder!';
-        }
+    if (! $dir) {
+        return 'No such folder!';
+    }
 
     // Get the files inside the folder...
         $files = collect(Storage::cloud()->listContents($dir['path'], false))
         ->where('type', '=', 'file');
 
-        return $files->mapWithKeys(function($file) {
+        return $files->mapWithKeys(function ($file) {
             $filename = $file['filename'].'.'.$file['extension'];
             $path = $file['path'];
 
@@ -171,9 +176,9 @@ Route::get('list-folder-contents', function() {
 
             return [$filename => $path];
         });
-    });
+});
 
-Route::get('get', function() {
+Route::get('get', function () {
     $filename = 'test.txt';
 
     $dir = '/';
@@ -193,14 +198,14 @@ Route::get('get', function() {
         return response($rawData, 200)
         ->header('ContentType', $file['mimetype'])
         ->header('Content-Disposition', "attachment; filename='$filename'");
-    });
+});
 
-Route::get('create-dir', function() {
+Route::get('create-dir', function () {
     Storage::cloud()->makeDirectory('Test Dir');
     return 'Directory was created in Google Drive';
 });
 
-Route::get('put-in-dir', function() {
+Route::get('put-in-dir', function () {
     $dir = '/';
     $recursive = false; // Get subdirectories also?
     $contents = collect(Storage::cloud()->listContents($dir, $recursive));
@@ -209,16 +214,16 @@ Route::get('put-in-dir', function() {
     ->where('filename', '=', 'Test Dir')
         ->first(); // There could be duplicate directory names!
 
-        if ( ! $dir) {
-            return 'Directory does not exist!';
-        }
+    if (! $dir) {
+        return 'Directory does not exist!';
+    }
 
         Storage::cloud()->put($dir['path'].'/test.txt', 'Hello World');
 
         return 'File was created in the sub directory in Google Drive';
-    });
+});
 
-Route::get('newest', function() {
+Route::get('newest', function () {
     $filename = 'test.txt';
 
     Storage::cloud()->put($filename, \Carbon\Carbon::now()->toDateTimeString());

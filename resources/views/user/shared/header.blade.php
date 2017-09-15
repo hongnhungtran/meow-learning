@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-2">
-			<img src="../public/img/common/logo.png">
+			<img src="public/img/common/logo.png">
 		</div>
 		<div class="col-md-10 head-outer">
 			<div class="head-bar">
