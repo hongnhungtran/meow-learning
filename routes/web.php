@@ -11,11 +11,9 @@
 |
 */
 
-/*
-Start Route
+/**
+ * Test route
  */
-Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
-
 Auth::routes();
 
 Route::group(['prefix' => 'api'], function () {
@@ -23,73 +21,49 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 Route::resource('crud', 'CRUDController');
-/*
-Admin Route
+
+/**
+ * Admin Route
  */
 
-/*Vocabulary*/
-Route::group(['prefix' => 'admin/vocabulary'], function () {
-    // Index
-    Route::get('/', ['as' => 'management', 'uses' => 'Admin\VocabularyController@vocabulary_management']);
-
-     //Topic
-     Route::get('topic', ['as' => 'vocabulary_topic_list', 'uses' => 'Admin\VocabularyController@vocabulary_topic_index']);
-     Route::get('topic/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_create']);
-     Route::post('topic/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_create']);
-     Route::get('topic/edit/{id}', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_edit']);
-     Route::post('topic/edit/{id}', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@vocabulary_topic_update']);
-
-
-    //Lesson
-    Route::get('lesson', ['as' => 'get_lesson_list', 'uses' => 'Admin\VocabularyController@get_lesson_list']);
-    Route::get('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
-    Route::post('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
+Route::group(['prefix' => 'admin'], function () {
+    //Home
+    Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
+    
+    //Course
+    require(__DIR__ . "/admin/vocabulary.php");
+    require(__DIR__ . "/admin/listening.php");
+    require(__DIR__ . "/admin/speaking.php");
+    require(__DIR__ . "/admin/reading.php");
+    require(__DIR__ . "/admin/writing.php");
+    require(__DIR__ . "/admin/exam.php");
+    require(__DIR__ . "/admin/document.php");  
 });
 
-/*Listening*/
-Route::group(['prefix' => 'admin/listening'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-});
-
-/*Speaking*/
-Route::group(['prefix' => 'admin/speaking'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-});
-
-/*Reading*/
-Route::group(['prefix' => 'admin/reading'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-});
-
-/*Writing*/
-Route::group(['prefix' => 'admin/writing'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-});
-
-/*Exam*/
-Route::group(['prefix' => 'admin/listening'], function () {
-    Route::get('lessionAdd', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-    Route::get('lessionList', ['as' => 'getExerciseAdd', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
-});
-
-/*Document*/
-Route::group(['prefix' => 'admin/document'], function () {
-    Route::get('add', ['as' => 'add', 'uses' => 'Admin\DocumentController@addNewDocument']);
-    Route::get('list', ['as' => 'list', 'uses' => 'Admin\DocumentController@getDocumentList']);
-});
-
-/*
-User Route
+/**
+ * User Route
  */
+
+Route::group(['prefix' => '/'], function () {
+    //Home
+    Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
+    
+    //Course
+    require(__DIR__ . "/admin/vocabulary.php");
+    require(__DIR__ . "/admin/listening.php");
+    require(__DIR__ . "/admin/speaking.php");
+    require(__DIR__ . "/admin/reading.php");
+    require(__DIR__ . "/admin/writing.php");
+    require(__DIR__ . "/admin/exam.php");
+    require(__DIR__ . "/admin/document.php");  
+});
+
+/*Home*/
+
 
 /*Vocabulary*/
 Route::group(['prefix' => 'vocabulary'], function () {
     
-    // Route::get('level', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getLevelList']);
     Route::get('topic', ['as' => 'getExerciseAdd', 'uses' => 'User\VocabularyController@getTopicList']);
 });
 

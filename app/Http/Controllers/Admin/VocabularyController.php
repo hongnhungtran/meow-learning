@@ -10,6 +10,7 @@ use App\Level;
 
 class VocabularyController extends Controller
 {
+    private $vocabulary_topic_id = 1;
     /**
      * Display a listing of the resource.
      *
@@ -68,16 +69,8 @@ class VocabularyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-         $vocabulary_topic = new VocabularyTopic([
-            'vocabulary_topic_title' => $request->get('vocabulary_topic_title'),
-            'vocabulary_topic_content' => $request->get('vocabulary_topic_content'),
-         ]);
-
-        $vocabulary_topic->save();
-
-        return redirect()->route('topicList');
     }
 
     /**
@@ -133,57 +126,70 @@ class VocabularyController extends Controller
         );
     }
 
-
-
-
+    /**
+     *  Get Vocabulary Topic List
+     * @return [type] [description]
+     */
     public function vocabulary_topic_index()
     {
         $vocabulary_topics = Topic::where('course_id', 1)->paginate(10);
         
-        return view('admin.vocabulary.topicList', compact('vocabulary_topics')) ->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
+    /**
+     *  Get vocabulary topic create view
+     * @return [type] [description]
+     */
     public function vocabulary_topic_create()
     {
-
         $levels = Level::all();
         
         return view('admin.vocabulary.topicAdd', compact('levels'));
     }
 
-    public function vocabulary_topic_store()
+    /**
+     *  
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function vocabulary_topic_store(Request $request)
     {
         request()->validate([
             'topic_title' => 'required',
             'topic_content' => 'required',
         ]);
+
         Topic::create($request->all());
-        return redirect()->route('admin.vocabulary.topicList')
-                        ->with('success', 'Topic created successfully');
 
-
-        // $vocabulary_topic = new Topic([
-        //     'topic_title' => $request->get('topic_title'),
-        //     'topic_content' => $request->get('topic_content')
-        //   ]);
-  
-        //   $vocabulary_topic->save();
-  
-        //   return redirect('/admin/vocabulary/topic');
+        return redirect()->route('vocabulary.topic.list')
+            ->with('success', 'Topic created successfully');
     }
 
     public function vocabulary_topic_show()
     {
     }
 
+    /**
+     * [vocabulary_topic_edit description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function vocabulary_topic_edit($id)
     {
         $levels = Level::all();
         $vocabulary_topic = Topic::find($id);
 
-        return view('admin.vocabulary.topicEdit', compact('vocabulary_topic'));
+        return view('admin.vocabulary.topicEdit', compact('vocabulary_topic', 'levels'));
     }
 
+    /**
+     * [vocabulary_topic_update description]
+     * @param  Request $request [description]
+     * @param  [type]  $id      [description]
+     * @return [type]           [description]
+     */
     public function vocabulary_topic_update(Request $request, $id)
     {
 
@@ -191,21 +197,32 @@ class VocabularyController extends Controller
             'topic_title' => 'required',
             'topic_content' => 'required',
         ]);
+
         Topic::find($id)->update($request->all());
-        return redirect()->route('admin.vocabulary.topicList')
-                        ->with('success', 'Topic updated successfully');
+
+        return redirect()->route('vocabulary.topic.list')
+            ->with('success', 'Topic updated successfully');
     }
 
+    /**
+     * [vocabulary_topic_destroy description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function vocabulary_topic_destroy($id)
     {
         Topic::find($id)->delete();
-        return redirect()->route('admin.vocabulary.topicList')
-                        ->with('success', 'Topic deleted successfully');
+        return redirect()->route('vocabulary.topic.list')
+            ->with('success', 'Topic deleted successfully');
     }
 
-
+    
     public function vocabulary_lesson_index()
     {
+        $vocabulary_lessons = Lesson::where('course_id', 1)->paginate(10);
+        
+        return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function vocabulary_lesson_create()

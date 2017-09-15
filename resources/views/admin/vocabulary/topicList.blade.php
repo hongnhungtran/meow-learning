@@ -21,8 +21,14 @@
             <!-- /.box-header -->
             <div class="box-body">
                 @if ($vocabulary_topics->isEmpty())
-                <p> There is no vocabulary topic.</p>
+                    <p> There is no vocabulary topic.</p>
                 @else
+                
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>

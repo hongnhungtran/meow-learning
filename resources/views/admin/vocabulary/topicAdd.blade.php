@@ -1,4 +1,8 @@
-@extends('admin.shared.master') @section('title', 'Add New Lesson') @section('content_header')
+@extends('admin.shared.master') 
+
+@section('title', 'Add New Lesson') 
+
+@section('content_header')
 <h1>
     Vocabulary Course
     <small>Add New</small>
@@ -8,7 +12,9 @@
     <li><a href="{{ url('admin/vocabulary') }}">Lesson</a></li>
     <li class="active">Add</li>
 </ol>
-@stop @section('content')
+@stop
+
+ @section('content')
 <div class="row">
     <!-- left column -->
     <div class="col-md-12">
@@ -28,36 +34,45 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post">
-                {{csrf_field()}} @foreach ($errors->all() as $error)
-                <p class="alert alert-danger">{{ $error }}</p>
-                @endforeach
-
+            <form class="form-horizontal" method="post"  action="{{route('vocabulary.topic.store')}}">
+                {{csrf_field()}} 
                 <div class="box-body">
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title">
+
+                                @if ($errors->has('topic_title'))
+                                    @foreach($errors->get('topic_title') as $error)
+                                        <p class="text-red">{!! $error !!}</p>
+                                    @endforeach
+                                @endif
+
+
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content">
+
+                                @if ($errors->has('topic_content'))
+                                    @foreach($errors->get('topic_content') as $error)
+                                         <p class="text-red">{!! $error !!}</p>
+                                    @endforeach
+                                @endif
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Level</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="level">
 								@if ($levels->count())
-								@foreach($levels as $level)
-								<option value="{{ $level->level_id }}">{{ $level->level_name }}</option> 
-								@endforeach   
+                                    @foreach($levels as $level)
+                                    <option value="{{ $level->level_id }}">{{ $level->level_name }}</option> 
+                                    @endforeach   
 								@endif
 							</select>
                         </div>
@@ -70,7 +85,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-default">Cancel</button>
@@ -82,5 +96,4 @@
     </div>
     <!-- /.box -->
 </div>
-
 @stop
