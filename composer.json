@@ -19,7 +19,8 @@
         "league/oauth2-server": "^6.0",
         "nao-pon/flysystem-google-drive": "~1.1",
         "nesbot/carbon": "^1.22",
-        "tymon/jwt-auth": "1.0.*@dev"
+        "tymon/jwt-auth": "1.0.*@dev",
+         "laravelcollective/html": "5.5.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -63,5 +64,15 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/BafS/api"
+    },
+    {
+        "type": "vcs",
+        "url": "https://github.com/BafS/blueprint"
     }
+    ]
 }

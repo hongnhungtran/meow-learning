@@ -14,7 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        return view('user.documentList');
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        return view('user.documentDetail');
+        //
     }
 
     /**
