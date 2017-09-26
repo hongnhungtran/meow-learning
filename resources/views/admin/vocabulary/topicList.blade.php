@@ -1,9 +1,11 @@
 @extends('admin.shared.master') 
+
 @section('title', 'Topic List') 
+
 @section('content_header')
 <h1>
-    List
-    <small>Lesson</small>
+    Vocabulary Topic
+    <small>List</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -15,7 +17,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Hover Data Table</h3>
+                <h3 class="box-title">Data Table</h3>
                 <div class="box-tools">
                     {!! $vocabulary_topics->links() !!}
                 </div>

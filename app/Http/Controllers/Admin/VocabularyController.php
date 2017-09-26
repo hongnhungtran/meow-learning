@@ -114,10 +114,6 @@ class VocabularyController extends Controller
         );
     }
 
-    /**
-     * [vocabulary_lesson_api description]
-     * @return [type] [description]
-     */
     public function vocabulary_lesson_api()
     {
          $vocabulary_lesson = VocabularyLesson::paginate(10);
@@ -132,10 +128,6 @@ class VocabularyController extends Controller
         );
     }
 
-    /**
-     *  Get Vocabulary Topic List
-     * @return [type] [description]
-     */
     public function vocabulary_topic_index()
     {
         $vocabulary_topics = Topic::where('course_id', $this->vocabulary_course_id)->paginate(10);
@@ -144,10 +136,6 @@ class VocabularyController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    /**
-     *  Get vocabulary topic create view
-     * @return [type] [description]
-     */
     public function vocabulary_topic_create()
     {
         $levels = Level::all();
@@ -155,11 +143,6 @@ class VocabularyController extends Controller
         return view('admin.vocabulary.topicAdd', compact('levels'));
     }
 
-    /**
-     *  
-     * @param  Request $request [description]
-     * @return [type]           [description]
-     */
     public function vocabulary_topic_store(Request $request)
     {
         request()->validate([
@@ -177,25 +160,14 @@ class VocabularyController extends Controller
     {
     }
 
-    /**
-     * [vocabulary_topic_edit description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
-     */
     public function vocabulary_topic_edit($id)
     {
         $levels = Level::all();
         $vocabulary_topic = Topic::find($id);
 
-        return view('admin.vocabulary.topicEdit', compact('vocabulary_topic', 'levels'));
+        return view('admin.vocabulary.topicEdit', compact('vocabulary_topic', 'levels', 'id'));
     }
 
-    /**
-     * [vocabulary_topic_update description]
-     * @param  Request $request [description]
-     * @param  [type]  $id      [description]
-     * @return [type]           [description]
-     */
     public function vocabulary_topic_update(Request $request, $id)
     {
 
@@ -210,11 +182,6 @@ class VocabularyController extends Controller
             ->with('success', 'Topic updated successfully');
     }
 
-    /**
-     * [vocabulary_topic_destroy description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
-     */
     public function vocabulary_topic_destroy($id)
     {
         Topic::find($id)->delete();
@@ -225,14 +192,15 @@ class VocabularyController extends Controller
 
     public function vocabulary_lesson_index()
     {
-        $vocabulary_lessons = Lesson::where('course_id', 1)->paginate(10);
+        $vocabulary_lessons = Lesson::where('course_id', $this->vocabulary_course_id)->paginate(10);
         
-        return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
+        return view('admin.vocabulary.lessonList', compact('vocabulary_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function vocabulary_lesson_create()
     {
+
     }
 
     public function vocabulary_lesson_store()
