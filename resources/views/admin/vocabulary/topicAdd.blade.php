@@ -34,7 +34,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post"  action="{{route('vocabulary.topic.store')}}">
+            <form class="form-horizontal" method="post"  action="{{route('vocabulary-topic-store')}}">
                 {{csrf_field()}} 
                 <div class="box-body">
                     <div class="form-group">

@@ -250,4 +250,9 @@ class VocabularyController extends Controller
     public function vocabulary_lesson_update()
     {
     }
+
+     public function vocabulary_lesson_destroy($id)
+    {
+       
+    }
 }
