@@ -22,74 +22,6 @@ class VocabularyController extends Controller
 
     }
 
-    public function index()
-    {
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function vocabulary_topic_api()
     {
          $vocabulary_topic = Topic::where('course_id', $this->vocabulary_course_id)->paginate(10);
@@ -104,6 +36,19 @@ class VocabularyController extends Controller
         );
     }
 
+    public function vocabulary_topic_current_api($id)
+    {
+        if (!$id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $book = Topic::find($id);
+
+        return response()->json([
+            $book,
+        ], 200);
+    }
+
     public function vocabulary_lesson_api()
     {
          $vocabulary_lesson = Lesson::paginate(10);
@@ -116,6 +61,19 @@ class VocabularyController extends Controller
             $vocabulary_lesson,
             200
         );
+    }
+
+    public function vocabulary_lesson_current_api($id)
+    {
+        if (!$id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $book = Topic::find($id);
+
+        return response()->json([
+            $book,
+        ], 200);
     }
 
     public function vocabulary_topic_index()
