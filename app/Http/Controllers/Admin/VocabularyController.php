@@ -90,19 +90,9 @@ class VocabularyController extends Controller
         //
     }
 
-    public function vocabulary_management()
-    {
-        return view('admin.vocabulary.management');
-    }
-    
-    /**
-     * [vocabulary_topic_api description]
-     * @return [type] [description]
-     */
-    
     public function vocabulary_topic_api()
     {
-         $vocabulary_topic = VocabularyTopic::paginate(10);
+         $vocabulary_topic = Topic::where('course_id', $this->vocabulary_course_id)->paginate(10);
 
         if (!$vocabulary_topic) {
             throw new HttpException(400, "Invalid data");
@@ -116,7 +106,7 @@ class VocabularyController extends Controller
 
     public function vocabulary_lesson_api()
     {
-         $vocabulary_lesson = VocabularyLesson::paginate(10);
+         $vocabulary_lesson = Lesson::paginate(10);
 
         if (!$vocabulary_lesson) {
             throw new HttpException(400, "Invalid data");
