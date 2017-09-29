@@ -12,7 +12,15 @@ class Topic extends Model
 
     protected $fillable = [
     	'topic_id',
+    	'course_id',
+    	'level_id',
 	    'topic_title',
+        'image_link',
 	    'topic_content'
     ];
+
+	public function level()
+    {
+        return $this->belongsTo('App\Level');
+    }
 }

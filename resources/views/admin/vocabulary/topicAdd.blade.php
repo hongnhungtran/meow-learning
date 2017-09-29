@@ -1,6 +1,6 @@
 @extends('admin.shared.master') 
 
-@section('title', 'Add New Lesson') 
+@section('title', 'Add New Topic') 
 
 @section('content_header')
 <h1>
@@ -78,9 +78,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Image</label>
+                        <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            <input type="file" id="">
+                             <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link">
+
+                                @if ($errors->has('image_link'))
+                                    @foreach($errors->get('image_link') as $error)
+                                         <p class="text-red">{!! $error !!}</p>
+                                    @endforeach
+                                @endif
                         </div>
                     </div>
                 </div>

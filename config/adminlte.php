@@ -165,7 +165,7 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Vocabulary',
-                    'url'         => 'admin/vocabulary',
+                    'url'         => 'admin/vocabulary/topic',
                     'icon'        => 'star-o',
                 ],
                 [

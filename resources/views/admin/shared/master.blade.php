@@ -8,4 +8,12 @@
 
 @section('js')
     <!-- <script> console.log('Hi!'); </script> -->
+    <script>
+$("#alert").slideDown(500, function(){
+    setTimeout(function(){
+$("#alert").slideUp(500);  
+},5000);
+});
+	</script>
+
 @stop

@@ -78,7 +78,9 @@ class VocabularyController extends Controller
 
     public function vocabulary_topic_index()
     {
-        $vocabulary_topics = Topic::where('course_id', $this->vocabulary_course_id)->paginate(10);
+        $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->vocabulary_course_id)
+            ->paginate(10);
         
         return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -93,33 +95,41 @@ class VocabularyController extends Controller
 
     public function vocabulary_topic_store(Request $request)
     {
-        $vocabulary_topic = $this->validate(request(), [
+        request()->validate([
             'topic_title' => 'required|unique:topic',
-            'topic_content' => 'required|unique:topic'
+            'topic_content' => 'required|unique:topic',
+            'image_link' => 'required|unique:topic'
         ]);
 
-        $vocabulary_topic = $request->get('level');
-/*$crud = new Crud([
-          'title' => $request->get('title'),
-          'post' => $request->get('post')
+        $vocabulary_topic = new Topic([
+            'course_id' => $this->vocabulary_course_id,
+            'level_id' => (int)$request->get('level'),
+            'topic_title' => $request->get('topic_title'),
+            'topic_content' => $request->get('topic_content'),
+            'image_link' => $request->get('image_link'),
+          
         ]);
 
-        $crud->save();*/
-var_dump($vocabulary_topic);
-exit;
-        Topic::create($vocabulary_topic);
+        $vocabulary_topic->save();
 
         return redirect()->route('vocabulary-topic-list')
             ->with('status', 'Topic created successfully');
     }
 
-    public function vocabulary_topic_show()
+    public function vocabulary_topic_show($id)
     {
+        $vocabulary_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+            ->where('topic_id', $id)
+            ->paginate(10);    
+        
+        return view('admin.vocabulary.lessonList', compact('vocabulary_lessons'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function vocabulary_topic_edit($id)
     {
         $levels = Level::all();
+
         $vocabulary_topic = Topic::find($id);
 
         return view('admin.vocabulary.topicEdit', compact('vocabulary_topic', 'levels', 'id'));
@@ -131,12 +141,18 @@ exit;
         request()->validate([
             'topic_title' => 'required',
             'topic_content' => 'required',
+            'image_link' => 'required',
         ]);
 
-        Topic::find($id)->update($request->all());
+        $vocabulary_topic = Topic::find($id);
+        $vocabulary_topic->level_id = (int)$request->get('level');
+        $vocabulary_topic->topic_title = $request->get('topic_title');
+        $vocabulary_topic->topic_content = $request->get('topic_content');
+        $vocabulary_topic->image_link = $request->get('image_link');
+        $vocabulary_topic->save();
 
         return redirect()->route('vocabulary-topic-list')
-            ->with('success', 'Topic updated successfully');
+            ->with('status', 'Topic updated successfully');
     }
 
     public function vocabulary_topic_destroy($id)
@@ -146,10 +162,11 @@ exit;
             ->with('success', 'Topic deleted successfully');
     }
 
-
     public function vocabulary_lesson_index()
     {
-        $vocabulary_lessons = Lesson::where('course_id', $this->vocabulary_course_id)->paginate(10);
+        $vocabulary_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->vocabulary_course_id)
+            ->paginate(10);
         
         return view('admin.vocabulary.lessonList', compact('vocabulary_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -157,26 +174,74 @@ exit;
 
     public function vocabulary_lesson_create()
     {
-
+        $levels = Level::all();
+        $topics = Topic::where('course_id', $this->vocabulary_course_id)
+            ->get();
+        
+        return view('admin.vocabulary.lessonAdd', compact('levels', 'topics'));
     }
 
-    public function vocabulary_lesson_store()
+    public function vocabulary_lesson_store(Request $request)
     {
+        request()->validate([
+            'lesson_title' => 'required|unique:lesson',
+            'lesson_content' => 'required|unique:lesson',
+            'image_link' => 'required|unique:lesson'
+        ]);
+
+        $vocabulary_lesson = new Lesson([
+            'course_id' => $this->vocabulary_course_id,
+            'level_id' => (int)$request->get('level'),
+            'topic_id' => (int)$request->get('topic'),
+            'lesson_title' => $request->get('lesson_title'),
+            'lesson_content' => $request->get('lesson_content'),
+            'image_link' => $request->get('image_link'),
+        ]);
+
+        $vocabulary_lesson->save();
+
+        return redirect()->route('vocabulary-lesson-list')
+            ->with('status', 'Lesson created successfully');
     }
 
     public function vocabulary_lesson_show()
     {
+        
     }
 
-    public function vocabulary_lesson_edit()
+    public function vocabulary_lesson_edit($id)
     {
+        $levels = Level::all();
+
+        $topics = Topic::where('course_id', $this->vocabulary_course_id)
+            ->get();
+
+        $vocabulary_lesson = Lesson::find($id);
+
+        return view('admin.vocabulary.lessonEdit', compact('vocabulary_lesson', 'levels', 'id', 'topics'));
     }
 
-    public function vocabulary_lesson_update()
+    public function vocabulary_lesson_update(Request $request, $id)
     {
+        request()->validate([
+            'lesson_title' => 'required',
+            'lesson_content' => 'required',
+            'image_link' => 'required',
+        ]);
+
+        $vocabulary_lesson = Lesson::find($id);
+        $vocabulary_lesson->level_id = (int)$request->get('level');
+        $vocabulary_lesson->topic_id = (int)$request->get('topic');
+        $vocabulary_lesson->lesson_title = $request->get('lesson_title');
+        $vocabulary_lesson->lesson_content = $request->get('lesson_content');
+        $vocabulary_lesson->image_link = $request->get('image_link');
+        $vocabulary_lesson->save();
+
+        return redirect()->route('vocabulary-lesson-list')
+            ->with('status', 'Lesson updated successfully');
     }
 
-     public function vocabulary_lesson_destroy($id)
+    public function vocabulary_lesson_destroy($id)
     {
        
     }

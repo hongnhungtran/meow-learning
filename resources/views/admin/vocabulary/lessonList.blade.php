@@ -9,14 +9,28 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Topic</a></li>
+    <li><a href="#">Lesson</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
 
 @section('content')
 <div class="row">
-    <!-- right column -->
+    @if ($vocabulary_lessons->isEmpty())
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Data Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <p> There is no vocabulary lesson.</p>
+            </div>
+        </div>
+    </div>  
+
+    @else
+    <!-- search form -->
     <div class="col-md-12">
         <!-- Horizontal Form -->
         <div class="box box-info">
@@ -47,6 +61,7 @@
         <!-- /.box -->
     </div>
 
+    <!-- register form -->
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
@@ -57,21 +72,20 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                @if ($vocabulary_lessons->isEmpty())
-                <p> There is no vocabulary lesson.</p>
-                @else
+                
 
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success">
+                @if ($message = Session::get('status'))
+                <div class="alert alert-success" id="alert">
                     <p>{{ $message }}</p>
                 </div>
                 @endif
+
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Lesson ID</th>
-                            <th>Topic ID</th>
                             <th>Level</th>
+                            <th>Image</th>
                             <th>Title</th>
                             <th>Content</th>
                             <th>Status</th>
@@ -82,24 +96,28 @@
                         @foreach($vocabulary_lessons as $vocabulary_lesson)
                         <tr>
                             <td>{!! $vocabulary_lesson->lesson_id !!} </td>
-                            <td>{!! $vocabulary_lesson->topic_id !!} </td>
-                            <td>{!! $vocabulary_lesson->level_id !!} </td>
+                            <td>{!! $vocabulary_lesson->level_name !!} </td>
+                            <th><img src="{!! $vocabulary_lesson->image_link !!}" height="42" width="42"></th>
                             <td>{!! $vocabulary_lesson->lesson_title !!}</td>
                             <td>{!! $vocabulary_lesson->lesson_content !!}</td>
-                            <td>{!! $vocabulary_lesson->topic_status !!}</td>
-                            <td><a href="{!! action('Admin\VocabularyController@vocabulary_topic_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a></td>
+                            <td>{!! $vocabulary_lesson->level_status !!}</td>
+                            <td>
+                                <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="" class="btn btn-primary">Detail</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
 
                 </table>
-                @endif
+                
             </div>
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
     </div>
 <!-- /.col -->
+    @endif
 </div>
 <!-- /.row -->
 @stop

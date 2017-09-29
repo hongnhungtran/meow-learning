@@ -4,7 +4,7 @@
 
 @section('content_header')
 <h1>
-    Vocabulary Topic
+    Vocabulary Lesson
     <small>Edit</small>
 </h1>
 <ol class="breadcrumb">
@@ -22,7 +22,7 @@
         <!-- Horizontal Form -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Add New Topic</h3>
+                <h3 class="box-title">Add New Lesson</h3>
                 <!-- tools box -->
                 <div class="pull-right box-tools">
                     <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -34,23 +34,36 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_topic_update', $id)}}">
+            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_lesson_update', $id)}}">
                 {{csrf_field()}} 
-
+                
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Topic Title</label>
-
+                        <label for="" class="col-sm-3 control-label">Topic</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title"  value="{!! $vocabulary_topic->topic_title !!}">
+                            <select class="form-control" name="topic">
+                                @if ($topics->count())
+                                    @foreach($topics as $topic)
+                                    <option value="{{ $topic->topic_id }}" {{ $topic->topic_id == $vocabulary_lesson->topic_id ? 'selected="selected"' : '' }}>{{ $topic->topic_title }}</option> 
+                                    @endforeach   
+                                @endif
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Topic Content</label>
+                        <label for="" class="col-sm-3 control-label">Lesson Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value="{!! $vocabulary_topic->topic_content !!}">
+                            <input type="text" class="form-control" id="" placeholder="Lesson Title" name="lesson_title"  value="{!! $vocabulary_lesson->lesson_title !!}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Lesson Content</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Lesson Content" name="lesson_content" value="{!! $vocabulary_lesson->lesson_content !!}">
                         </div>
                     </div>
 
@@ -60,7 +73,7 @@
                             <select class="form-control" name="level">
 								@if ($levels->count())
 								@foreach($levels as $level)
-								    <option value="{{ $level->level_id }}" {{ $level->level_id == $vocabulary_topic->level_id ? 'selected="selected"' : '' }}>{{ $level->level_name }}</option> 
+								    <option value="{{ $level->level_id }}" {{ $level->level_id == $vocabulary_lesson->level_id ? 'selected="selected"' : '' }}>{{ $level->level_name }}</option> 
 								@endforeach   
 								@endif
 							</select>
@@ -68,9 +81,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Image Link</label>
+                        <label for="" class="col-sm-3 control-label">Image</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{!! $vocabulary_topic->image_link !!}">
+                             <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{!! $vocabulary_lesson->image_link !!}">
 
                                 @if ($errors->has('image_link'))
                                     @foreach($errors->get('image_link') as $error)

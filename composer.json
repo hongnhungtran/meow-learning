@@ -20,7 +20,7 @@
         "nao-pon/flysystem-google-drive": "~1.1",
         "nesbot/carbon": "^1.22",
         "tymon/jwt-auth": "1.0.*@dev",
-         "laravelcollective/html": "5.5.*"
+        "laravelcollective/html": "5.5.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

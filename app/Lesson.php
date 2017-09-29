@@ -10,5 +10,18 @@ class Lesson extends Model
 
     protected $primaryKey = 'lesson_id';
 
-    protected $fillable = ['lesson_title','lesson_content'];
+    protected $fillable = [
+    	'lesson_id',
+    	'course_id',
+    	'topic_id',
+    	'level_id',
+	    'lesson_title',
+        'image_link',
+	    'lesson_content'
+	];
+
+	public function level()
+    {
+        return $this->belongsTo('App\Level');
+    }
 }
