@@ -41,7 +41,7 @@
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title">
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title">
 
                                 @if ($errors->has('topic_title'))
                                     @foreach($errors->get('topic_title') as $error)
@@ -49,14 +49,13 @@
                                     @endforeach
                                 @endif
 
-
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content">
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content">
 
                                 @if ($errors->has('topic_content'))
                                     @foreach($errors->get('topic_content') as $error)

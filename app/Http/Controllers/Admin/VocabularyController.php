@@ -93,15 +93,24 @@ class VocabularyController extends Controller
 
     public function vocabulary_topic_store(Request $request)
     {
-        request()->validate([
-            'topic_title' => 'required',
-            'topic_content' => 'required',
+        $vocabulary_topic = $this->validate(request(), [
+            'topic_title' => 'required|unique:topic',
+            'topic_content' => 'required|unique:topic'
         ]);
 
-        Topic::create($request->all());
+        $vocabulary_topic = $request->get('level');
+/*$crud = new Crud([
+          'title' => $request->get('title'),
+          'post' => $request->get('post')
+        ]);
 
-        return redirect()->route('vocabulary.topic.list')
-            ->with('success', 'Topic created successfully');
+        $crud->save();*/
+var_dump($vocabulary_topic);
+exit;
+        Topic::create($vocabulary_topic);
+
+        return redirect()->route('vocabulary-topic-list')
+            ->with('status', 'Topic created successfully');
     }
 
     public function vocabulary_topic_show()
@@ -126,14 +135,14 @@ class VocabularyController extends Controller
 
         Topic::find($id)->update($request->all());
 
-        return redirect()->route('vocabulary.topic.list')
+        return redirect()->route('vocabulary-topic-list')
             ->with('success', 'Topic updated successfully');
     }
 
     public function vocabulary_topic_destroy($id)
     {
         Topic::find($id)->delete();
-        return redirect()->route('vocabulary.topic.list')
+        return redirect()->route('vocabulary-topic-list')
             ->with('success', 'Topic deleted successfully');
     }
 
@@ -171,4 +180,5 @@ class VocabularyController extends Controller
     {
        
     }
+
 }

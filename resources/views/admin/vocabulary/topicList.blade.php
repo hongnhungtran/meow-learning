@@ -28,11 +28,16 @@
                     <p> There is no vocabulary topic.</p>
                 @else
                 
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+               <!--  @if ($message = Session::get('success'))
+                   <div class="alert alert-success">
                         <p>{{ $message }}</p>
-                    </div>
-                @endif
+                   </div>
+                @endif -->
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
