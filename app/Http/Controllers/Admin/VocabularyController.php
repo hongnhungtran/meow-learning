@@ -113,7 +113,7 @@ class VocabularyController extends Controller
         $vocabulary_topic->save();
 
         return redirect()->route('vocabulary-topic-list')
-            ->with('status', 'Topic created successfully');
+            ->with('status', 'Vocabulary topic created successfully');
     }
 
     public function vocabulary_topic_show($id)
@@ -152,7 +152,7 @@ class VocabularyController extends Controller
         $vocabulary_topic->save();
 
         return redirect()->route('vocabulary-topic-list')
-            ->with('status', 'Topic updated successfully');
+            ->with('status', 'Vocabulary topic updated successfully');
     }
 
     public function vocabulary_topic_destroy($id)
@@ -201,7 +201,7 @@ class VocabularyController extends Controller
         $vocabulary_lesson->save();
 
         return redirect()->route('vocabulary-lesson-list')
-            ->with('status', 'Lesson created successfully');
+            ->with('status', 'Vocabulary lesson created successfully');
     }
 
     public function vocabulary_lesson_show()
@@ -238,7 +238,7 @@ class VocabularyController extends Controller
         $vocabulary_lesson->save();
 
         return redirect()->route('vocabulary-lesson-list')
-            ->with('status', 'Lesson updated successfully');
+            ->with('status', 'Vocabulary lesson updated successfully');
     }
 
     public function vocabulary_lesson_destroy($id)

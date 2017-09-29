@@ -102,8 +102,7 @@
                             <td>{!! $vocabulary_lesson->lesson_content !!}</td>
                             <td>{!! $vocabulary_lesson->level_status !!}</td>
                             <td>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-primary">Detail</a>
+                                <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
                             </td>
                         </tr>
                         @endforeach

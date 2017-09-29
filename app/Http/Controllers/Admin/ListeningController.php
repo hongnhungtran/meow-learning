@@ -21,7 +21,9 @@ class ListeningController extends Controller
      */
     public function index()
     {
-        $listening_lessons = Topic::where('course_id', $this->listening_course_id)->paginate(10);
+        $listening_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->listening_course_id)
+            ->paginate(10);
         
         return view('admin.listening.lessonList', compact('listening_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -34,7 +36,9 @@ class ListeningController extends Controller
      */
     public function create()
     {
-        //
+        $levels = Level::all();
+        
+        return view('admin.vocabulary.lessonAdd', compact('levels'));
     }
 
     /**
@@ -45,7 +49,24 @@ class ListeningController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'lesson_title' => 'required|unique:lesson',
+            'lesson_content' => 'required|unique:lesson',
+            'image_link' => 'required|unique:lesson'
+        ]);
+
+        $listening_lesson = new Lesson([
+            'course_id' => $this->vocabulary_course_id,
+            'level_id' => (int)$request->get('level'),
+            'lesson_title' => $request->get('lesson_title'),
+            'lesson_content' => $request->get('lesson_content'),
+            'image_link' => $request->get('image_link'),
+        ]);
+
+        $listening_lesson->save();
+
+        return redirect()->route('listening-lesson-list')
+            ->with('status', 'Listening lesson created successfully');
     }
 
     /**
@@ -68,9 +89,9 @@ class ListeningController extends Controller
     public function edit($id)
     {
         $levels = Level::all();
-        $listening_lesson = Topic::find($id);
+        $listening_lesson = Lesson::find($id);
 
-        return view('admin.listening.lessonEdit', compact('listening_lesson', 'levels'));
+        return view('admin.listening.lessonEdit', compact('listening_lesson', 'levels', 'id'));
     }
 
     /**
@@ -82,7 +103,21 @@ class ListeningController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'lesson_title' => 'required',
+            'lesson_content' => 'required',
+            'image_link' => 'required',
+        ]);
+
+        $listening_lesson = Lesson::find($id);
+        $listening_lesson->level_id = (int)$request->get('level');
+        $listening_lesson->lesson_title = $request->get('lesson_title');
+        $listening_lesson->lesson_content = $request->get('lesson_content');
+        $listening_lesson->image_link = $request->get('image_link');
+        $listening_lesson->save();
+
+        return redirect()->route('listening-lesson-list')
+            ->with('status', 'Vocabulary lesson updated successfully');
     }
 
     /**

@@ -16,6 +16,52 @@
 
 @section('content')
 <div class="row">
+    @if ($listening_lessons->isEmpty())
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Data Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <p> There is no listening lesson.</p>
+            </div>
+        </div>
+    </div>  
+
+    @else
+    <!-- search form -->
+    <div class="col-md-12">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+            <!-- form start -->
+            <form class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label for="" class="col-sm-4 control-label">Listening title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="" placeholder="Listening title">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="" class="col-sm-4 control-label">Listening content</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="" placeholder="Listening content">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right">Search</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    
+    <!-- register form -->
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
@@ -26,19 +72,18 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                @if ($listening_lessons->isEmpty())
-                    <p> There is no Listening lesson.</p>
-                @else
-                
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
+                @if (session('status'))
+                    <div class="alert alert-success" id="alert">
+                        {{ session('status') }}
                     </div>
                 @endif
+
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Listening ID</th>
+                            <th>Level</th>
+                            <th>Image</th>
                             <th>Title</th>
                             <th>Content</th>
                             <th>Status</th>
@@ -48,23 +93,33 @@
                     <tbody>
                         @foreach($listening_lessons as $listening_lesson)
                         <tr>
-                            <td>{!! $listening_lesson->topic_id !!} </td>
-                            <td>{!! $listening_lesson->topic_title !!}</td>
-                            <td>{!! $listening_lesson->topic_content !!}</td>
-                            <td>{!! $listening_lesson->topic_status !!}</td>
-                            <td><a href="{!! action('Admin\ListeningController@edit', $listening_lesson->lesson_id) !!}" class="btn btn-success">Edit</a></td>
+                            <td>{!! $listening_lesson->lesson_id !!}</td>
+                            <td>{!! $listening_lesson->level_name !!}</td>
+                            <th><img src="{!! $listening_lesson->image_link !!}" height="42" width="42"></th>
+                            <td><div>{!! $listening_lesson->lesson_title !!}</div></td>
+                            <td>{!! $listening_lesson->lesson_content !!}</td>
+                            <td>{!! $listening_lesson->lesson_status !!}</td>
+                            <td>
+                                <a href="{!! action('Admin\ListeningController@edit', $listening_lesson->lesson_id) !!}" class="btn btn-block btn-success">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
 
                 </table>
-                @endif
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <!-- footer -->
+            </div>
+          </div>
         </div>
         <!-- /.box -->
     </div>
     <!-- /.col -->
+    @endif
 </div>
 <!-- /.row -->
 @stop
+
+

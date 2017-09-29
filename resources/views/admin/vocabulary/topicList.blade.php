@@ -101,10 +101,7 @@
                             <td>{!! $vocabulary_topic->topic_status !!}</td>
                             <td>
                                 <a href="{!! action('Admin\VocabularyController@vocabulary_topic_edit', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
-                                </br>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_show', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-primary">Detail</a>
-                                </br>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_create', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-info">Add Lesson</a>
+                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_show', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-primary">Detail</a>   
                             </td>
                         </tr>
                         @endforeach
