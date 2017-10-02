@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Topic;
 use App\Lesson;
 use App\Level;
+use App\Vocabulary;
 
 class VocabularyController extends Controller
 {
@@ -204,7 +205,7 @@ class VocabularyController extends Controller
             ->with('status', 'Vocabulary lesson created successfully');
     }
 
-    public function vocabulary_lesson_show()
+    public function vocabulary_lesson_show($id)
     {
         
     }
@@ -244,6 +245,72 @@ class VocabularyController extends Controller
     public function vocabulary_lesson_destroy($id)
     {
        
+    }
+
+    public function vocabulary_exercise_index($id)
+    {
+        $vocabularies = Vocabulary::join('lesson', 'lesson.lesson_id', '=', 'vocabulary.lesson_id')
+            ->where('vocabulary.lesson_id', $id)
+            ->get();  
+        
+        return view('admin.vocabulary.vocabularyList', compact('vocabularies'));
+    }
+
+    public function vocabulary_exercise_create($id)
+    {        
+        $vocabulary_lesson = Lesson::find($id);
+        return view('admin.vocabulary.vocabularyAdd', compact('vocabulary_lesson', 'id'));
+    }
+
+    public function vocabulary_exercise_store($id, Request $request)
+    {
+        /*$validates = request()->validate([
+            'vocabulary' => 'required|unique:vocabulary',
+            'image_link' => 'required|unique:vocabulary',
+            'audio_link' => 'required|unique:vocabulary'
+        ]);*/
+
+        $vocabulary = new Vocabulary([
+            'lesson_id' => (int)$id,
+            'vocabulary' => $request->get('vocabulary'),
+            'image_link' => $request->get('image_link'),
+            'audio_link' => $request->get('audio_link') 
+        ]);
+var_dump($vocabulary);exit;
+
+
+        for($i = 0; $i < 10; $i++){
+            $values = new Vocabulary;
+            $values->lesson_id = (int)$id;
+            $values->vocabulary = $vocabulary['vocabulary'][$i];
+            $values->image_link = $vocabulary['image_link'][$i];
+            $values->audio_link = $vocabulary['audio_link'][$i];
+
+            $values->save;
+        }
+
+        return redirect()->route('vocabulary-lesson-list')
+            ->with('status', 'Vocabulary lesson created successfully');
+    }
+
+    public function vocabulary_exercise_show()
+    {
+
+    }
+
+    public function vocabulary_exercise_edit()
+    {
+        
+    }
+
+    public function vocabulary_exercise_update()
+    {
+        
+    }
+
+    public function vocabulary_exercise_destroy()
+    {
+        
     }
 
 }

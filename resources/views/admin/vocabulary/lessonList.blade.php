@@ -97,12 +97,13 @@
                         <tr>
                             <td>{!! $vocabulary_lesson->lesson_id !!} </td>
                             <td>{!! $vocabulary_lesson->level_name !!} </td>
-                            <th><img src="{!! $vocabulary_lesson->image_link !!}" height="42" width="42"></th>
+                            <td><img src="{!! $vocabulary_lesson->image_link !!}" height="42" width="42"></td>
                             <td>{!! $vocabulary_lesson->lesson_title !!}</td>
                             <td>{!! $vocabulary_lesson->lesson_content !!}</td>
                             <td>{!! $vocabulary_lesson->level_status !!}</td>
                             <td>
                                 <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
+                                <a href="{!! action('Admin\VocabularyController@vocabulary_exercise_index', $vocabulary_lesson->lesson_id) !!}" class="btn btn-block btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

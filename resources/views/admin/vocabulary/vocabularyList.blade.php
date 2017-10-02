@@ -1,22 +1,24 @@
 @extends('admin.shared.master') 
 
-@section('title', 'Topic List') 
+@section('title', 'Vocabulary List') 
 
 @section('content_header')
 <h1>
-    Vocabulary Topic
+    Vocabulary
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="#">Topic</a></li>
+    <li><a href="#">Lesson</a></li>
+    <li><a href="#">Vocabulary</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
 
 @section('content')
 <div class="row">
-    @if ($vocabulary_topics->isEmpty())
+    @if ($vocabularies->isEmpty())
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
@@ -24,7 +26,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <p> There is no vocabulary lesson.</p>
+                <p> There is no vocabulary.</p>
+                <a href="{{route('vocabulary-exercise-create',$vocabulary_lesson->lesson_id) }}" class="btn btn-success margin">Add Vocabulary</a>
             </div>
         </div>
     </div>  
@@ -38,16 +41,16 @@
             <form class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Topic title</label>
+                        <label for="" class="col-sm-4 control-label">Vocabulary ID</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Topic title">
+                            <input type="text" class="form-control" id="" placeholder="Email">
                         </div>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Topic content</label>
+                        <label for="" class="col-sm-4 control-label">Vocabulary</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Topic content">
+                            <input type="text" class="form-control" id="" placeholder="Password">
                         </div>
                     </div>
                 </div>
@@ -60,67 +63,60 @@
         </div>
         <!-- /.box -->
     </div>
-    
+
     <!-- register form -->
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
-                <div class="box-tools">
-                    {!! $vocabulary_topics->links() !!}
-                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                @if (session('status'))
-                    <div class="alert alert-success" id="alert">
-                        {{ session('status') }}
-                    </div>
+                
+                @if ($message = Session::get('status'))
+                <div class="alert alert-success" id="alert">
+                    <p>{{ $message }}</p>
+                </div>
                 @endif
 
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Topic ID</th>
-                            <th>Level</th>
+                            <th>Vocabulary ID</th>
+                            <th>Lesson ID</th>
+                            <th>Vocabulary</th>
                             <th>Image</th>
-                            <th>Title</th>
-                            <th>Content</th>
+                            <th>Audio</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($vocabulary_topics as $vocabulary_topic)
+                        @foreach($vocabularies as $vocabulary)
                         <tr>
-                            <td>{!! $vocabulary_topic->topic_id !!}</td>
-                            <td>{!! $vocabulary_topic->level_name !!}</td>
-                            <td><img src="{!! $vocabulary_topic->image_link !!}" height="42" width="42"></td>
-                            <td><div>{!! $vocabulary_topic->topic_title !!}</div></td>
-                            <td>{!! $vocabulary_topic->topic_content !!}</td>
-                            <td>{!! $vocabulary_topic->topic_status !!}</td>
+                            <td>{!! $vocabulary->vocabulary_id !!} </td>
+                            <td>{!! $vocabulary->lesson_id !!} </td>
+                            <td>{!! $vocabulary->vocabulary !!}</td>
+                            <td><img src="{!! $vocabulary->image_link !!}" height="42" width="42"></td>
                             <td>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_edit', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_show', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-primary">Detail</a>    
+                                <audio controls>
+                                    <source src="{!! $vocabulary->audio_link !!}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </td>
+                            <td>{!! $vocabulary->status !!}</td>
                         </tr>
                         @endforeach
                     </tbody>
 
                 </table>
+                
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-                <!-- footer -->
-            </div>
-          </div>
         </div>
         <!-- /.box -->
     </div>
-    <!-- /.col -->
+<!-- /.col -->
     @endif
 </div>
 <!-- /.row -->
 @stop
-
-
