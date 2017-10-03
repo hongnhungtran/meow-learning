@@ -12,7 +12,6 @@
                     <option>Category</option>
                 </select>
 
-
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">

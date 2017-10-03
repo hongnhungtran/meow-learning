@@ -28,7 +28,7 @@ class VocabularyController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    public function get_level_list() 
+    public function get_lesson_list() 
     {
         $topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
             ->where('course_id', $this->vocabulary_course_id)
@@ -37,5 +37,7 @@ class VocabularyController extends Controller
         return view('user.vocabulary.lessonList', compact('vocabulary_topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
+
+
 
 }
