@@ -41,7 +41,7 @@
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title">
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title" value={{ old('topic_title') }}>
 
                                 @if ($errors->has('topic_title'))
                                     @foreach($errors->get('topic_title') as $error)
@@ -55,7 +55,7 @@
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content">
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value={{ old('topic_content') }}>
 
                                 @if ($errors->has('topic_content'))
                                     @foreach($errors->get('topic_content') as $error)
@@ -80,13 +80,15 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                             <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value={{ old('image_link') }}>
 
                                 @if ($errors->has('image_link'))
                                     @foreach($errors->get('image_link') as $error)
                                          <p class="text-red">{!! $error !!}</p>
                                     @endforeach
                                 @endif
+                            <h5>Or select image</h5>
+                            <input type="file" name="files[]" id="" multiple>
                         </div>
                     </div>
                 </div>

@@ -26,8 +26,8 @@ Route::group(['prefix' => 'vocabulary'], function () {
 
 		//exercise
 		Route::get('/{id}', ['as' => 'vocabulary-exercise-index', 'uses' => 'Admin\VocabularyController@vocabulary_exercise_index']);
-		Route::get('/{id}/vocabulary/create', ['as' => 'vocabulary-exercise-create', 'uses' => 'Admin\VocabularyController@vocabulary_exercise_create']);
-		Route::post('/{id}/vocabulary/create', ['as' => 'vocabulary-exercise-store', 'uses' => 'Admin\VocabularyController@vocabulary_exercise_store']);
+		Route::get('/{id}/exercise/create', ['as' => 'vocabulary-exercise-create', 'uses' => 'Admin\VocabularyController@vocabulary_exercise_create']);
+		Route::post('/{id}/exercise/create', ['as' => 'vocabulary-exercise-store', 'uses' => 'Admin\VocabularyController@vocabulary_exercise_store']);
 	});
 
     //Excercise

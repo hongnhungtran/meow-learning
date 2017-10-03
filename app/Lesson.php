@@ -16,7 +16,7 @@ class Lesson extends Model
     	'topic_id',
     	'level_id',
 	    'lesson_title',
-        'image_link',
+        'lesson_image_link',
 	    'lesson_content'
 	];
 

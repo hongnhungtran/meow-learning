@@ -11,10 +11,10 @@ class Vocabulary extends Model
     protected $primaryKey = 'vocabulary_id';
 
     protected $fillable = [
-    	'vocabulary',
     	'lesson_id',
-    	'image_link',
-    	'audio_link'
+    	'vocabulary',
+    	'vocabulary_image_link',
+    	'vocabulary_audio_link'
     ];
 
 }

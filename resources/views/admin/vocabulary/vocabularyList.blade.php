@@ -96,10 +96,10 @@
                             <td>{!! $vocabulary->vocabulary_id !!} </td>
                             <td>{!! $vocabulary->lesson_id !!} </td>
                             <td>{!! $vocabulary->vocabulary !!}</td>
-                            <td><img src="{!! $vocabulary->image_link !!}" height="42" width="42"></td>
+                            <td><img src="{!! $vocabulary->vocabulary_image_link !!}" height="42" width="42"></td>
                             <td>
                                 <audio controls>
-                                    <source src="{!! $vocabulary->audio_link !!}" type="audio/mpeg">
+                                    <source src="{!! $vocabulary->vocabulary_audio_link !!}" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>

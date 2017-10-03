@@ -56,31 +56,31 @@
                                 <h5>{{ $i++ }}</h5>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary">
+                                <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary[]" value={{ old('vocabulary[]') }}>
 
-                                @if ($errors->has('vocabulary')) 
-                                    @foreach($errors->get('vocabulary') as $error)
+                                @if ($errors->has('vocabulary[]')) 
+                                    @foreach($errors->get('vocabulary[]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
                             </td>
                             <td>
-                                 <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link">
-                                <h5>Or paste audio link</h5>
+                                <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link[]" value={{ old('image_link[]') }}>
+                                <h5>Or select image</h5>
                                 <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('image_link')) 
-                                    @foreach($errors->get('image_link') as $error)
+                                @if ($errors->has('image_link[]')) 
+                                    @foreach($errors->get('image_link[]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="" placeholder="Audio Link" name="audio_link">
-                                <h5>Or paste audio link</h5>
+                                <input type="text" class="form-control" id="" placeholder="Audio Link" name="audio_link[]" value={{ old('audio_link[]') }}>
+                                <h5>Or select audio</h5>
                                 
                                 <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('audio_link')) 
-                                    @foreach($errors->get('audio_link') as $error)
+                                @if ($errors->has('audio_link[]')) 
+                                    @foreach($errors->get('audio_link[]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif

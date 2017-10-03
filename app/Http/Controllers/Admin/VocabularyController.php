@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Topic;
 use App\Lesson;
 use App\Level;
@@ -251,8 +252,8 @@ class VocabularyController extends Controller
     {
         $vocabularies = Vocabulary::join('lesson', 'lesson.lesson_id', '=', 'vocabulary.lesson_id')
             ->where('vocabulary.lesson_id', $id)
-            ->get();  
-        
+            ->get();
+
         return view('admin.vocabulary.vocabularyList', compact('vocabularies'));
     }
 
@@ -265,9 +266,9 @@ class VocabularyController extends Controller
     public function vocabulary_exercise_store($id, Request $request)
     {
         /*$validates = request()->validate([
-            'vocabulary' => 'required|unique:vocabulary',
-            'image_link' => 'required|unique:vocabulary',
-            'audio_link' => 'required|unique:vocabulary'
+            'vocabulary[]' => 'required|unique:vocabulary',
+            'image_link[]' => 'required|unique:vocabulary',
+            'audio_link[]' => 'required|unique:vocabulary'
         ]);*/
 
         $vocabulary = new Vocabulary([
@@ -276,20 +277,18 @@ class VocabularyController extends Controller
             'image_link' => $request->get('image_link'),
             'audio_link' => $request->get('audio_link') 
         ]);
-var_dump($vocabulary);exit;
-
 
         for($i = 0; $i < 10; $i++){
             $values = new Vocabulary;
-            $values->lesson_id = (int)$id;
+            $values->lesson_id = $vocabulary['lesson_id'];
             $values->vocabulary = $vocabulary['vocabulary'][$i];
             $values->image_link = $vocabulary['image_link'][$i];
             $values->audio_link = $vocabulary['audio_link'][$i];
 
-            $values->save;
+            $values->save();
         }
 
-        return redirect()->route('vocabulary-lesson-list')
+        return redirect()->route('vocabulary-exercise-index', compact('id'))
             ->with('status', 'Vocabulary lesson created successfully');
     }
 

@@ -95,7 +95,7 @@
                         <tr>
                             <td>{!! $vocabulary_topic->topic_id !!}</td>
                             <td>{!! $vocabulary_topic->level_name !!}</td>
-                            <td><img src="{!! $vocabulary_topic->image_link !!}" height="42" width="42"></td>
+                            <td><img src="{!! $vocabulary_topic->topic_image_link !!}" height="42" width="42"></td>
                             <td><div>{!! $vocabulary_topic->topic_title !!}</div></td>
                             <td>{!! $vocabulary_topic->topic_content !!}</td>
                             <td>{!! $vocabulary_topic->topic_status !!}</td>

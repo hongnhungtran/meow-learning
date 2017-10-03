@@ -15,7 +15,7 @@ class Topic extends Model
     	'course_id',
     	'level_id',
 	    'topic_title',
-        'image_link',
+        'topic_image_link',
 	    'topic_content'
     ];
 

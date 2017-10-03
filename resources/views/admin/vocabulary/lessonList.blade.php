@@ -97,7 +97,7 @@
                         <tr>
                             <td>{!! $vocabulary_lesson->lesson_id !!} </td>
                             <td>{!! $vocabulary_lesson->level_name !!} </td>
-                            <td><img src="{!! $vocabulary_lesson->image_link !!}" height="42" width="42"></td>
+                            <td><img src="{!! $vocabulary_lesson->lesson_image_link !!}" height="42" width="42"></td>
                             <td>{!! $vocabulary_lesson->lesson_title !!}</td>
                             <td>{!! $vocabulary_lesson->lesson_content !!}</td>
                             <td>{!! $vocabulary_lesson->level_status !!}</td>
