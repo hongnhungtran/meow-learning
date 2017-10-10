@@ -12,4 +12,9 @@ class UserController extends Controller
 	{
 		return User::all();
 	}
+
+	public function home()
+	{
+		return view('user.shared.home');
+	}
 }

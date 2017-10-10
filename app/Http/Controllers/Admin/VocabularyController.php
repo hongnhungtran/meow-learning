@@ -100,7 +100,7 @@ class VocabularyController extends Controller
         request()->validate([
             'topic_title' => 'required|unique:topic',
             'topic_content' => 'required|unique:topic',
-            'image_link' => 'required|unique:topic'
+            'topic_image_link' => 'required|unique:topic'
         ]);
 
         $vocabulary_topic = new Topic([
@@ -108,7 +108,7 @@ class VocabularyController extends Controller
             'level_id' => (int)$request->get('level'),
             'topic_title' => $request->get('topic_title'),
             'topic_content' => $request->get('topic_content'),
-            'image_link' => $request->get('image_link'),
+            'topic_image_link' => $request->get('topic_image_link'),
           
         ]);
 
@@ -143,14 +143,14 @@ class VocabularyController extends Controller
         request()->validate([
             'topic_title' => 'required',
             'topic_content' => 'required',
-            'image_link' => 'required',
+            'topic_image_link' => 'required',
         ]);
 
         $vocabulary_topic = Topic::find($id);
         $vocabulary_topic->level_id = (int)$request->get('level');
         $vocabulary_topic->topic_title = $request->get('topic_title');
         $vocabulary_topic->topic_content = $request->get('topic_content');
-        $vocabulary_topic->image_link = $request->get('image_link');
+        $vocabulary_topic->topic_image_link = $request->get('topic_image_link');
         $vocabulary_topic->save();
 
         return redirect()->route('vocabulary-topic-list')
@@ -188,7 +188,7 @@ class VocabularyController extends Controller
         request()->validate([
             'lesson_title' => 'required|unique:lesson',
             'lesson_content' => 'required|unique:lesson',
-            'image_link' => 'required|unique:lesson'
+            'lesson_image_link' => 'required|unique:lesson'
         ]);
 
         $vocabulary_lesson = new Lesson([
@@ -197,7 +197,7 @@ class VocabularyController extends Controller
             'topic_id' => (int)$request->get('topic'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
-            'image_link' => $request->get('image_link'),
+            'lesson_image_link' => $request->get('lesson_image_link'),
         ]);
 
         $vocabulary_lesson->save();
@@ -228,7 +228,7 @@ class VocabularyController extends Controller
         request()->validate([
             'lesson_title' => 'required',
             'lesson_content' => 'required',
-            'image_link' => 'required',
+            'lesson_image_link' => 'required',
         ]);
 
         $vocabulary_lesson = Lesson::find($id);
@@ -236,7 +236,7 @@ class VocabularyController extends Controller
         $vocabulary_lesson->topic_id = (int)$request->get('topic');
         $vocabulary_lesson->lesson_title = $request->get('lesson_title');
         $vocabulary_lesson->lesson_content = $request->get('lesson_content');
-        $vocabulary_lesson->image_link = $request->get('image_link');
+        $vocabulary_lesson->lesson_image_link = $request->get('lesson_image_link');
         $vocabulary_lesson->save();
 
         return redirect()->route('vocabulary-lesson-list')
@@ -274,16 +274,16 @@ class VocabularyController extends Controller
         $vocabulary = new Vocabulary([
             'lesson_id' => (int)$id,
             'vocabulary' => $request->get('vocabulary'),
-            'image_link' => $request->get('image_link'),
-            'audio_link' => $request->get('audio_link') 
+            'vocabulary_image_link' => $request->get('vocabulary_image_link'),
+            'vocabulary_audio_link' => $request->get('vocabulary_audio_link') 
         ]);
 
         for($i = 0; $i < 10; $i++){
             $values = new Vocabulary;
             $values->lesson_id = $vocabulary['lesson_id'];
             $values->vocabulary = $vocabulary['vocabulary'][$i];
-            $values->image_link = $vocabulary['image_link'][$i];
-            $values->audio_link = $vocabulary['audio_link'][$i];
+            $values->vocabulary_image_link = $vocabulary['vocabulary_image_link'][$i];
+            $values->vocabulary_audio_link = $vocabulary['vocabulary_audio_link'][$i];
 
             $values->save();
         }
