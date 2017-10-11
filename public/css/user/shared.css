@@ -345,10 +345,6 @@ body {
     text-decoration: none !important;
 }
 
-* {
-    box-sizing: initial !important;
-}
-
 #front-bluebar-user-space-box {
     padding-top: 12px;
 }
@@ -449,8 +445,7 @@ body {
 #search-box {
     display: table;
     width: 100%;
-    background: #F0F0F0;
-    margin: 0px -20px;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 30px 20px;
 }
 
@@ -496,7 +491,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 14px;
     background: #1DAFEC;
     padding: 9px 12px 0px;
     border-bottom-right-radius: 4px;
@@ -509,9 +504,8 @@ body {
 }
 
 #main-content-box {
-    background: #F6F6F6;
+    background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
-    margin: 0px -20px;
     padding: 20px;
     display: table;
 }
@@ -519,7 +513,7 @@ body {
 .navbar-left-wrapper {
     padding: 20px;
     display: table-cell;
-    background: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0px 0px 6px #D0D0D0;
     width: 306px;
     box-sizing: border-box !important;
@@ -574,8 +568,7 @@ body {
 #download-pagination-box {
     width: 100%;
     display: table;
-    background: #F6F6F6;
-    margin: 0px -20px;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 10px 20px 40px;
 }
 
@@ -599,11 +592,6 @@ body {
 
 #front-bluebar-user-space {
     padding-top: 11px;
-}
-
-#front-content {
-    padding: 0px !important;
-    width: 1000px !important;
 }
 
 #front-menu {
