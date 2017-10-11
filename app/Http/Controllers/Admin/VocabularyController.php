@@ -77,7 +77,7 @@ class VocabularyController extends Controller
             $book,
         ], 200);
     }
-
+c
     public function vocabulary_topic_index()
     {
         $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
