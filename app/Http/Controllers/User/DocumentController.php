@@ -14,7 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.document.list');
     }
 
     /**
@@ -46,7 +46,7 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.document.detail');
     }
 
     /**

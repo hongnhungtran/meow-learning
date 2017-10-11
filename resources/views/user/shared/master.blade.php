@@ -19,7 +19,8 @@
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.7);
+            padding-right: 0px;!important;
+            padding-left: 0px;!important;
         }
 
     </style>
@@ -32,10 +33,9 @@
     <script src="{{ asset('public/js/user/vocabularyLessionList.js') }}"></script>
 </head>
 <body>
-
 @include('user.shared.header')
 
-<div class="container">
+<div class="container" style="background-color: rgba(255, 255, 255, 0.7);">
 @include('user.shared.menu')
 @yield('content')
 </div>
