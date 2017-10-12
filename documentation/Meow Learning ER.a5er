@@ -62,7 +62,7 @@ PName=exercise_1_QA
 LName=exercise_1_QA
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=3350
 Top=2000
 Field="question_id","question_id","@INT",,0,"","",$FFFFFFFF,""
@@ -75,14 +75,14 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171010175537
-Position="Main",3350,2000
+Position="MAIN",3350,2000
 
 [Entity]
 PName=exercise_1_thread
 LName=exercise_1_thread
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=3000
 Top=2050
 Field="exercise_id","exercise_id","@INT",,0,"","",$FFFFFFFF,""
@@ -94,14 +94,14 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171010175244
-Position="Main",3000,2050
+Position="MAIN",3000,2050
 
 [Entity]
 PName=exercise_type
 LName=exercise_type
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=2600
 Top=2000
 Field="exercise_type_id","exercise_type_id","@INT",,0,"","",$FFFFFFFF,""
@@ -112,7 +112,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171010174151
-Position="Main",2600,2000
+Position="MAIN",2600,2000
 
 [Relation]
 Entity1=document
@@ -139,7 +139,7 @@ PName=document_image
 LName=document_image
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=1200
 Top=1100
 Field="document_image_id","document_image_id","@INT",,0,"","",$FFFFFFFF,""
@@ -151,7 +151,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171010172415
-Position="Main",1200,1100
+Position="MAIN",1200,1100
 
 [Relation]
 Entity1=level

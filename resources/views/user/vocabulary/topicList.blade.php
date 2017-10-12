@@ -1,40 +1,45 @@
 @extends('user.shared.master') 
-@section('content') 
-<div class="row">
-    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h3>Vocabulary Topic</h3>
-    </article>
-    
-    @foreach($topics as $topic)
-        <div class="col-md-12">
-            <div class="col-xs-12 col-sm-1 col-md-1 text-center">
-                <h5>トピック</h5>
-                <h1>$i++</h1>
-            </div> 
-            <div class="col-xs-12 col-sm-2 col-md-2 text-center">
-                <a href="#">
-                    <img src="{{ $topic->topic_image_link }}" class="img-responsive img-box img-thumbnail" style="width: 140px; height: 100px;"> 
-                </a>
-            </div> 
-            <div class="col-xs-12 col-sm-7 col-md-7">
-                <h4><a href="#">{!! $topic->topic_title !!}</a></h4>
-                <p>{!! $topic->topic_content !!}</p>
-            </div> 
-            <div class="col-xs-12 col-sm-1 col-md-1 text-center">
-                <a href="#">
-                    <h4>勉強</h4>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-1 col-md-1 text-center">
-                <a href="#">
-                    <h4>詳細</h4>
-                </a>
-            </div> 
 
-        </div>
-        <hr />
-    @endforeach
+@section('content')
+<div class="row">
+	<div id="course-info">
+		<h3>
+			<a id="all-courses" href="/course/index/taken-courses">Khóa học</a>
+			<span class="arrow-gt">›</span>
+			Từ vựng cơ bản level 1
+		</h3>
+		<p>
+			Tạo bởi
+			<a href="#">Dolphin Inc.</a>
+		</p>
+		<a title="Gửi cho chúng tôi nhận xét của bạn về khóa học này" id="write-your-reviews" class="frontend-green-button" href="#">Viết đánh giá
+			của bạn</a>
+	</div>
+
+	<h3 id="all-lectures">Các bài học trong khóa</h3>
+	<div id="course-lectures">
+	@foreach($topics as $topic)
+		<div class="lecture" title="Bấm vào đây để xem cấu trúc khóa học" data-url="#">
+			
+			<div class="lecture-item lecture-order">
+				<div class="course-lesson-number-label">トピック</div>
+				<div class="course-lesson-number">{!! $i++ !!}</div>
+			</div>
+			<img src="{{ $topic->topic_image_link }}" alt="lecture image" class="lecture-img lecture-item" />
+			<div class="lecture-content lecture-item">
+				<h4 class="lecture-title">{!! $topic->topic_title !!}</h4>
+				<p>{!! $topic->topic_content !!}</p>
+			</div>
+			<div class="start-lecture lecture-item">
+				<a title="Bấm vào đây để bắt đầu học bài" class="#">勉強</a>
+			</div>
+			<div class="go-to-lecture lecture-item">
+				<a title="Bấm vào đây để xem cấu trúc khóa học" class="frontend-green-button" href="＃">詳細</a>
+			</div>
+			
+		</div>
+		@endforeach
+	</div>
 </div>
-<hr>
 
 @endsection

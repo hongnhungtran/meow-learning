@@ -13,7 +13,7 @@
 
     <style type="text/css">
         body {
-            background-image: url("public/img/common/cat-background-1.jpg") !important;
+            background-image: url("{{ asset('public/img/common/cat-background-1.jpg') }}") !important;
             background-color: #ffffff;
             min-width: 1000px;
             min-height: 600px;
