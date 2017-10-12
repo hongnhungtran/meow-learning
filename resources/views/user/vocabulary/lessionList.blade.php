@@ -1,6 +1,5 @@
 @extends('user.shared.master') 
 @section('content') 
-@include('user.shared.searchBar')
 <div class="container">
 	<div class="row">
 

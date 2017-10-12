@@ -4,9 +4,9 @@
 <div class="row">
 	<div id="course-info">
 		<h3>
-			<a id="all-courses" href="/course/index/taken-courses">Khóa học</a>
+			<a id="all-courses" href="/course/index/taken-courses">コース</a>
 			<span class="arrow-gt">›</span>
-			Từ vựng cơ bản level 1
+			{!! $level->level_name !!}
 		</h3>
 		<p>
 			Tạo bởi
@@ -20,7 +20,6 @@
 	<div id="course-lectures">
 	@foreach($topics as $topic)
 		<div class="lecture" title="Bấm vào đây để xem cấu trúc khóa học" data-url="#">
-			
 			<div class="lecture-item lecture-order">
 				<div class="course-lesson-number-label">トピック</div>
 				<div class="course-lesson-number">{!! $i++ !!}</div>
@@ -31,12 +30,11 @@
 				<p>{!! $topic->topic_content !!}</p>
 			</div>
 			<div class="start-lecture lecture-item">
-				<a title="Bấm vào đây để bắt đầu học bài" class="#">勉強</a>
+				<a title="Bấm vào đây để bắt đầu học bài" class="frontend-blue-button">勉強</a>
 			</div>
 			<div class="go-to-lecture lecture-item">
 				<a title="Bấm vào đây để xem cấu trúc khóa học" class="frontend-green-button" href="＃">詳細</a>
 			</div>
-			
 		</div>
 		@endforeach
 	</div>

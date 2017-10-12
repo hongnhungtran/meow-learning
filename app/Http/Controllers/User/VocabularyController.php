@@ -31,7 +31,10 @@ class VocabularyController extends Controller
             ->paginate(10);
         
         $i=0;
-        return view('user.vocabulary.topicList', compact('topics', 'i'))
+
+        $level = Level::find($id);
+
+        return view('user.vocabulary.topicList', compact('topics', 'i', 'level'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
