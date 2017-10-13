@@ -4,25 +4,20 @@
 <div class="row">
 	<div id="course-info">
 		<h3>
-			<a id="all-courses" href="/course/index/taken-courses">コース</a>
+			<a id="all-courses" href="/course">コース</a>
 			<span class="arrow-gt">›</span>
 			{!! $level->level_name !!}
 		</h3>
-		<p>
-			Tạo bởi
-			<a href="#">Dolphin Inc.</a>
-		</p>
-		<a title="Gửi cho chúng tôi nhận xét của bạn về khóa học này" id="write-your-reviews" class="frontend-green-button" href="#">Viết đánh giá
-			của bạn</a>
+		<a title="このコースについて口コミする" id="write-your-reviews" class="frontend-green-button" href="#">口コミする</a>
 	</div>
 
-	<h3 id="all-lectures">Các bài học trong khóa</h3>
+	<h3 id="all-lectures">コースのトピック</h3>
 	<div id="course-lectures">
 	@foreach($topics as $topic)
-		<div class="lecture" title="Bấm vào đây để xem cấu trúc khóa học" data-url="#">
+		<div class="lecture" title="クリックして勉強しましょう！！！" data-url="#">
 			<div class="lecture-item lecture-order">
 				<div class="course-lesson-number-label">トピック</div>
-				<div class="course-lesson-number">{!! $i++ !!}</div>
+				<div class="course-lesson-number">{!! $num++ !!}</div>
 			</div>
 			<img src="{{ $topic->topic_image_link }}" alt="lecture image" class="lecture-img lecture-item" />
 			<div class="lecture-content lecture-item">
@@ -30,10 +25,10 @@
 				<p>{!! $topic->topic_content !!}</p>
 			</div>
 			<div class="start-lecture lecture-item">
-				<a title="Bấm vào đây để bắt đầu học bài" class="frontend-blue-button">勉強</a>
+				<a title="クリックして勉強しましょう！！！" class="frontend-blue-button"　href="{!! action('User\VocabularyController@get_lesson_list', $topic->topic_id) !!}"> 勉強</a>
 			</div>
 			<div class="go-to-lecture lecture-item">
-				<a title="Bấm vào đây để xem cấu trúc khóa học" class="frontend-green-button" href="＃">詳細</a>
+				<a title="トピックについての情報" class="frontend-green-button" href="＃">詳細</a>
 			</div>
 		</div>
 		@endforeach

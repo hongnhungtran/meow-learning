@@ -7,11 +7,9 @@ Route::group(['prefix' => 'vocabulary'], function () {
          //Topic list
 	Route::get('/level/{id}/', ['as' => 'vocabulary-topic-list', 'uses' => 'User\VocabularyController@get_topic_list']);
 
-
+	Route::get('/topic/{id}', ['as' => 'vocabulary-lesson-list', 'uses' => 'User\VocabularyController@get_lesson_list']);
         //Lesson list
-	Route::group(['prefix' => 'lesson'], function () {
-		Route::get('/', ['as' => 'vocabulary-lesson-list', 'uses' => 'User\VocabularyController@get_lesson_list']);
-	});
+	//Route::get('/level/{id}/topic/{id}/lesson/{id}', ['as' => 'vocabulary-lesson-list', 'uses' => 'User\VocabularyController@get_lesson_list']);
 
         //Excercise
 });

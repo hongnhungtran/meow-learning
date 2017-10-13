@@ -10,20 +10,22 @@
 					<a href="#"> コース </a>
 					<ul>
 						<li class="submenu">
-							<a href="#"> 会話コース </a>
+							<a href="/vocabulary">単語コース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 語彙コース </a>
+							<a href="/listening">リスニングコース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 聴解コース </a>
+							<a href="/speaking">スピーキングコース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 文法コース </a>
+							<a href="/reading">レディングコース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 文法コース </a>
-
+							<a href="/writing">ライティングコース</a>
+						</li>
+						<li class="submenu">
+							<a href="/grammar">文法コース</a>
 						</li>
 					</ul>
 				</li>
@@ -32,55 +34,52 @@
 					<a href="#"> レッスン </a>
 					<ul>
 						<li class="submenu">
-							<a href="#">語彙</a>
+							<a href="#">単語</a>
 						</li>
 						<li class="submenu">
-							<a href="#">聴解</a>
+							<a href="#">リスニング</a>
 						</li>
 						<li class="submenu">
-							<a href="#">文法</a>
+							<a href="#">スピーキング</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 会話＆発音</a>
+							<a href="#">レディング</a>
 						</li>
 						<li class="submenu">
-							<a href="#">読解</a>
-						</li>
-						<li class="submenu">
-							<a href="#">作文</a>
+							<a href="#">ライティング</a>
 						</li>
 					</ul>
 				</li>
 
 				<li>
-					<a href="#"> 試験学習 </a>
+					<a href="#">試験学習</a>
 					<ul>
 						<li class="submenu">
-							<a href="#"> TOEIC </a>
+							<a href="#">TOEICコース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> TOEFL </a>
+							<a href="#">TOEFLコース</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> IELTS </a>
+							<a href="#">IELTSコース</a>
 						</li>
 					</ul>
 				</li>
 
 				<li>
-					<a href="#"> その他 </a>
+					<a href="#">その他</a>
 					<ul>
 						<li class="submenu">
-							<a href="#"> 物語＆詩</a>
+							<a href="#">物語＆詩</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> ドラマで学習</a>
+							<a href="#">ドラマで学習</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> 歌で学習</a>
+							<a href="#">歌で学習</a>
 						</li>
 						<li class="submenu">
-							<a href="#"> ゲーム</a>
+							<a href="#">ゲーム</a>
 						</li>
 					</ul>
 				</li>

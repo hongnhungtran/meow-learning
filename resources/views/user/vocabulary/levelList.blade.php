@@ -5,15 +5,19 @@
 			<div id="front-content">
 				<div id="category-detai-page">
 					<div class="category-detail-header">
-						<a href="/khoa-hoc" class="course-homepage">Khóa học</a>
+						<a href="/course" class="course-homepage">コース</a>
 						<span class="arrow">></span>
-						<span class="category-detail-title">Từ vựng tiếng Anh</span>
-						<p class="category-detail-description">Các khóa học từng vựng tiếng Anh hay nhất Việt Nam, giúp bạn học xong nhớ mãi</p>
+						<span class="category-detail-title">英語の単語</span>
+						<p class="category-detail-description">面白い英語の単語のレッスンがたくさんあります。</p>
 					</div>
 
 					<div class="course-in-category">
+					@if ($levels->isEmpty())
+					    <h3 class="box-title">レッスンがありません。</h3>
+ 
+					@else
 						@foreach($levels as $level)
-						<a href="{!! action('User\VocabularyController@get_topic_list', $level->level_id) !!}" class="course-item-detail">
+						<a href="{!! action('User\VocabularyController@get_topic_list', $lesson->lesson_id) !!}" class="course-item-detail">
 							<div class="course-item-detail-img-box">
 								<img src="{{ $level->level_image_link }}" class="course-item-detail-img" />
 							</div>
@@ -22,18 +26,14 @@
 						</a>
 						@endforeach
 						<div class="clear-both"></div>
+					@endif
 					</div>
 
 					<div id="all-categories">
-						<div class="all-categories-title">Các chuyên mục khác</div>
-						<a href="#" class="category-tag-item"> Tiếng Anh giao tiếp </a>
-						<a href="#" class="category-tag-item"> Tiếng Anh phổ thông </a>
-						<a href="#" class="category-tag-item"> Từ vựng tiếng Anh </a>
-						<a href="#" class="category-tag-item"> Luyện nghe tiếng Anh </a>
-						<a href="#" class="category-tag-item"> Ngữ pháp tiếng Anh </a>
-						<a href="#" class="category-tag-item"> Luyện đọc tiếng Anh </a>
-						<a href="#" class="category-tag-item"> Luyện thi TOEIC </a>
-						<a href="#" class="category-tag-item"> Tiếng Anh thương mại </a>
+						<div class="all-categories-title">タグ</div>
+						@foreach($courses as $course)
+							<a href="#" class="category-tag-item">{{ $course->course_name }}</a>
+						@endforeach
 					</div>
 				</div>
 			</div>
