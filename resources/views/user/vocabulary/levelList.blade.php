@@ -5,9 +5,11 @@
 			<div id="front-content">
 				<div id="category-detai-page">
 					<div class="category-detail-header">
-						<a href="/course" class="course-homepage">コース</a>
-						<span class="arrow">></span>
-						<span class="category-detail-title">英語の単語</span>
+					<h3>
+						<a id="all-courses" href="#">コース</a>
+						<span class="arrow-gt">›</span>
+						<a id="all-courses" href="#">{!! $course->course_name !!}</a>
+					</h3>
 						<p class="category-detail-description">面白い英語の単語のレッスンがたくさんあります。</p>
 					</div>
 
@@ -17,7 +19,7 @@
  
 					@else
 						@foreach($levels as $level)
-						<a href="{!! action('User\VocabularyController@get_topic_list', $lesson->lesson_id) !!}" class="course-item-detail">
+						<a href="{!! action('User\VocabularyController@get_topic_list', $level->level_id) !!}" class="course-item-detail">
 							<div class="course-item-detail-img-box">
 								<img src="{{ $level->level_image_link }}" class="course-item-detail-img" />
 							</div>

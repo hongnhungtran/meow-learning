@@ -1,323 +1,257 @@
 @extends('user.shared.master')
 
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel with-nav-tabs panel-success">
-					<div class="panel-heading">
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a href="#tab1success" data-toggle="tab">Exercise 1</a>
-							</li>
-							<li>
-								<a href="#tab2success" data-toggle="tab">Exercise 2</a>
-							</li>
-							<li>
-								<a href="#tab3success" data-toggle="tab">Exercise 3</a>
-							</li>
-							<li>
-								<a href="#tab4success" data-toggle="tab">Exercise 4</a>
-							</li>
-							<li>
-								<a href="#tab5success" data-toggle="tab">Exercise 5</a>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-body">
-						<div class="tab-content">
-							<div class="tab-pane fade in active" id="tab1success">
-								<ul>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="cucumber" src="image/vocabulary/s11.jpg">
-											</div>
-											<div class="back">cucumber</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="mushroom" src="image/vocabulary/s8.jpg">
-											</div>
-											<div class="back">mushroom</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="radish" src="image/vocabulary/s10.jpg">
-											</div>
-											<div class="back">radish</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb selected-thumb" title="runner bean" src="image/vocabulary/s9.jpg">
-											</div>
-											<div class="back">runner bean</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="cauliflower" src="image/vocabulary/s7.jpg">
-											</div>
-											<div class="back">cauliflower</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="aubergine" src="image/vocabulary/s4.jpg">
-											</div>
-											<div class="back">aubergine</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="receipt " src="image/vocabulary/s6.jpg">
-											</div>
-											<div class="back">receipt</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="cabbage" src="image/vocabulary/s3(1).jpg">
-											</div>
-											<div class="back">cabbage</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="garlic " src="image/vocabulary/s1(1).jpg">
-											</div>
-											<div class="back">garlic</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="celery" src="image/vocabulary/s5.jpg">
-											</div>
-											<div class="back">celery</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="onion" src="image/vocabulary/s2(1).jpg">
-											</div>
-											<div class="back">onion</div>
-										</div>
-									</li>
-									<li>
-										<div class="card">
-											<div class="front">
-												<img class="thumb" title="lettuce" src="image/vocabulary/s12.jpg">
-											</div>
-											<div class="back">lettuce</div>
-										</div>
-									</li>
-								</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel with-nav-tabs panel-success">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>
+						<li><a href="#tab2success" data-toggle="tab">Success 2</a></li>
+						<li><a href="#tab3success" data-toggle="tab">Success 3</a></li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#tab4success" data-toggle="tab">Success 4</a></li>
+								<li><a href="#tab5success" data-toggle="tab">Success 5</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="tab1success">
+							<div class="global-activity-guide">
+								<div class="icon"></div>
+								<div class="text">Bấm chọn hình thu nhỏ để xem cỡ chuẩn. Bấm vào ảnh lớn để lật thẻ xem chi tiết của từ.</div>
 							</div>
-
-							<div class="tab-pane fade" id="tab2success">
-								<div class="drag-word col-md-2">
-									<div draggable="true">mushroom</div>
-									<div draggable="true">celery</div>
-									<div draggable="true">runner bean</div>
-									<div draggable="true">lettuce</div>
-									<div draggable="true">receipt</div>
-									<div draggable="true">radish</div>
-									<div draggable="true">garlic</div>
-									<div draggable="true">cabbage</div>
-									<div draggable="true">cauliflower</div>
-									<div draggable="true">aubergine</div>
-									<div draggable="true">cucumber</div>
-									<div draggable="true">onion</div>
+							<div class="thumb-outer">
+								<div class="thumb-block-0">
+									<img class="thumb selected-thumb" title="runner bean" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg">
+									<img class="thumb" title="cauliflower" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s7.jpg">
+									<img class="thumb" title="aubergine" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s4.jpg">
+									<img class="thumb" title="garlic " src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s1(1).jpg">
+									<img class="thumb" title="onion" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s2(1).jpg">
+									<img class="thumb" title="radish" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s10.jpg">
+									<img class="thumb" title="mushroom" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s8.jpg">
+									<img class="thumb" title="cucumber" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s11.jpg">
+									<img class="thumb" title="cabbage" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s3(1).jpg">
+									<img class="thumb" title="receipt " src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s6.jpg">
+									<img class="thumb" title="lettuce" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s12.jpg">
+									<img class="thumb" title="celery" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s5.jpg">
 								</div>
-								<div class="drop-area sortable col-md-10">
-									<div class="match-image col-md-3">
-										<img class="thumb selected-thumb" title="runner bean" src="image/vocabulary/s9.jpg">
+							</div>
+							<div id="flashcard-area">
+								<div class="global-float-left flashcard-outer">
+									<img class="img-main img-main-active" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg"
+									title="Bấm để lật thẻ" style="display: inline;">
+
+									<div class="img-caption">runner bean</div>
+									<div class="word-meaning" title="Nhấp chuột để lật thẻ">
+										<div class="title-flip-outer">
+											<span class="title-flip"></span>
+										</div>
+										<div class="word-phonetic"></div>
+										<div class="vietnamese-meaning"></div>
+										<div class="english-meaning">
+											<div class="subject">Nghĩa Tiếng Anh</div>
+											<div class="english-content"></div>
+										</div>
+										<div class="example">
+											<span class="subject">Ví dụ</span>
+											:
+											<span class="example-content"></span>
+										</div>
 									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="cauliflower" src="image/vocabulary/s7.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="aubergine" src="image/vocabulary/s4.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="cabbage" src="image/vocabulary/s3(1).jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="garlic " src="image/vocabulary/s1(1).jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="celery" src="image/vocabulary/s5.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="onion" src="image/vocabulary/s2(1).jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="lettuce" src="image/vocabulary/s12.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="cucumber" src="image/vocabulary/s11.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="mushroom" src="image/vocabulary/s8.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="radish" src="image/vocabulary/s10.jpg">
-									</div>
-									<div class="match-image col-md-3">
-										<img class="thumb" title="receipt " src="image/vocabulary/s6.jpg">
+									<div class="button-list global-float-right">
+										<div class="record" title="Ghi âm"></div>
+										<div class="play" title="Nghe lại thu âm"></div>
+										<div class="stop" title="Dừng thu âm"></div>
+										<div class="split"></div>
+										<div class="speaker" title="Nghe từ"></div>
+										<div class="global-float-left flip-card" title="Lật thẻ để xem thêm thông tin"></div>
+										<div class="split"></div>
+										<div class="btn-next" title="Tranh sau" style="opacity: 1; cursor: pointer;"></div>
+										<div class="btn-prev" title="Tranh trước" style="cursor: default; opacity: 0.2;"></div>
+										<div class="global-clear-both"></div>
 									</div>
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="tab3success">
-								<div class="drop-area sortable col-md-10">
-									<div class="listen-image col-md-3">
-										<img class="thumb selected-thumb" title="runner bean" src="image/vocabulary/s9.jpg">
-										<h4 class="image-label">runner bean</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="cauliflower" src="image/vocabulary/s7.jpg">
-										<h4 class="image-label">cauliflower</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="aubergine" src="image/vocabulary/s4.jpg">
-										<h4 class="image-label">aubergine</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="cabbage" src="image/vocabulary/s3(1).jpg">
-										<h4 class="image-label">cabbage</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="garlic " src="image/vocabulary/s1(1).jpg">
-										<h4 class="image-label">garlic</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="celery" src="image/vocabulary/s5.jpg">
-										<h4 class="image-label">celery</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="onion" src="image/vocabulary/s2(1).jpg">
-										<h4 class="image-label">onion</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="lettuce" src="image/vocabulary/s12.jpg">
-										<h4 class="image-label">lettuce</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="cucumber" src="image/vocabulary/s11.jpg">
-										<h4 class="image-label">cucumber</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="mushroom" src="image/vocabulary/s8.jpg">
-										<h4 class="image-label">mushroom</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="radish" src="image/vocabulary/s10.jpg">
-										<h4 class="image-label">radish</h4>
-									</div>
-									<div class="listen-image col-md-3">
-										<img class="thumb" title="receipt " src="image/vocabulary/s6.jpg">
-										<h4 class="image-label">receipt</h4>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="tab4success">
- <div id="tab1-content"> 
-                <div class="global-activity-guide">
-                    <div class="icon"></div>
-                    <div class="text">Bấm chọn hình thu nhỏ để xem cỡ chuẩn. Bấm vào ảnh lớn để lật thẻ xem chi tiết của từ.</div>
-                </div>
-                <div class="thumb-outer">
-                    <div class="navigator">
-                        <div class="prev-group global-float-left"><span class="arrow-prev">&lt;</span>Trước</div>
-                        <div class="splitNextPrev"></div>
-                        <div class="next-group global-float-left">Sau<span class="arrow-next global-float-right">&gt;</span></div>
-                    </div>
-                </div>
-
-                <div id="flashcard-area">
-                    <div class="global-float-left flashcard-outer">
-                        <div class="img-caption"></div>
-                        <div class="word-meaning" title="Nhấp chuột để lật thẻ">
-                            <div class="title-flip-outer">
-                                <span class="title-flip"></span>
-                            </div>
-                            <div class="word-phonetic"></div>
-                            <div class="vietnamese-meaning"></div>
-                            <div class="english-meaning">
-                                <div class="subject">Nghĩa Tiếng Anh</div>
-                                <div class="english-content"></div>
-                            </div>
-                            <div class="example">
-                                <span class="subject">Ví dụ</span>: 
-                                <span class="example-content"></span>
-                            </div>
-                        </div>
-                        <div class="button-list global-float-right">
-                            <div class="record" title="Ghi âm"></div>
-                            <div class="play" title="Nghe lại thu âm"></div>
-                            <div class="stop" title="Dừng thu âm"></div>
-                            <div class="split"></div>
-                            <div class="speaker" title="Nghe từ"></div>
-                            <div class="global-float-left flip-card" title="Lật thẻ để xem thêm thông tin"></div>
-                            <div class="split"></div>
-                            <div class="btn-next" title="Tranh sau"></div>
-                            <div class="btn-prev" title="Tranh trước"></div>
-                            <div class="global-clear-both"></div>
-                        </div>
-                    </div>
-                    <div class="hotkeys">
-                        <span class="subject">alt+i</span>  :  <span class="content">Lật</span>  |   
-                        <span class="subject">enter</span>  :  <span class="content">Nghe</span>  |   
-                        <span class="subject">alt+r</span>  :  <span class="content">Ghi âm</span>  |   
-                        <span class="subject">alt+s</span>  :  <span class="content">Kết thúc</span>  |   
-                        <span class="subject">alt+p</span>  :  <span class="content">Bắt đầu</span>
-                    </div>
-                </div>
-                <div class="global-clear-both"></div>
-            </div> 
-							</div>
-							<div class="tab-pane fade" id="tab5success">Success 5</div>
 						</div>
+						<div class="tab-pane fade" id="tab2success">
+							<div class="global-activity-guide">
+								<div class="icon"></div>
+								<div class="text">Kéo thả từ vào tranh tương ứng.</div>
+							</div>
+							<div id="word-container" class="global-float-left ui-droppable">
+								<div id="tab2-word-block-0">
+									<div class="word ui-draggable">onion</div>
+									<div class="word ui-draggable">cucumber</div>
+									<div class="word ui-draggable">garlic</div>
+									<div class="word ui-draggable">radish</div>
+									<div class="word ui-draggable">runner bean</div>
+									<div class="word ui-draggable">cauliflower</div>
+									<div class="word ui-draggable">aubergine</div>
+									<div class="word ui-draggable">mushroom</div>
+								</div>
+								<div id="tab2-word-block-1" style="display: none;">
+									<div class="word ui-draggable">lettuce</div>
+									<div class="word ui-draggable">celery</div>
+									<div class="word ui-draggable">receipt</div>
+									<div class="word ui-draggable">cabbage</div>
+								</div>
+							</div>
+							<div id="picture-container" class=" global-float-left">
+								<div id="tab2-picture-block-0" class="tab2-picture-block">
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s1(1).jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s10.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s11.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s8.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s2(1).jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s7.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s4.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="navigator">
+										<div class="result global-float-left">
+											Chính xác:
+											<span class="number-correct"></span>
+											/
+											<span class="total-items-each-block"></span>
+										</div>
+										<div class="btn-redo global-float-right"></div>
+										<div class="btn-answer global-float-right"></div>
+										<div class="btn-check global-float-right"></div>
+										<div class="next-group global-float-right" style="cursor: pointer;">
+											Sau
+											<span class="arrow-next global-float-right">&gt;</span>
+										</div>
+										<div class="global-float-right splitNextPrev"></div>
+										<div class="prev-group global-float-right" style="opacity: 0.2; cursor: default;">
+											<span class="arrow-prev">&lt;</span>
+											Trước
+										</div>
+									</div>
+								</div>
+								<div id="tab2-picture-block-1" class="tab2-picture-block" style="display: none;">
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s3(1).jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s6.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s12.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="picture-outer global-float-left ui-droppable">
+										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s5.jpg" style="height: 135px;">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									<div class="navigator">
+										<div class="result global-float-left">
+											Chính xác:
+											<span class="number-correct"></span>
+											/
+											<span class="total-items-each-block"></span>
+										</div>
+										<div class="btn-redo global-float-right"></div>
+										<div class="btn-answer global-float-right"></div>
+										<div class="btn-check global-float-right"></div>
+										<div class="next-group global-float-right">
+											Sau
+											<span class="arrow-next global-float-right">&gt;</span>
+										</div>
+										<div class="global-float-right splitNextPrev"></div>
+										<div class="prev-group global-float-right">
+											<span class="arrow-prev">&lt;</span>
+											Trước
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="tab3success">Success 3</div>
+						<div class="tab-pane fade" id="tab4success">Success 4</div>
+						<div class="tab-pane fade" id="tab5success">Success 5</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 <script>
-		$(document).ready(
-				function() {
-					$(".sortable").sortable();
-					$(".sortable").disableSelection();
+	$(document).ready(
+		function() {
+			$(".sortable").sortable();
+			$(".sortable").disableSelection();
 
-					$(".sortable").sortable(
-							{
-								update : function(ev, ui) {
-									localStorage.updateArray = $(".sortable")
-											.sortable("toArray").join(",");
-								}
-							});
+			$(".sortable").sortable(
+			{
+				update : function(ev, ui) {
+					localStorage.updateArray = $(".sortable")
+					.sortable("toArray").join(",");
+				}
+			});
 
-					if (localStorage.updateArray !== undefined) {
-						var updateValue = localStorage.updateArray.split(",")
-								.reverse();
-						$.each(updateValue, function(index, value) {
-							$('#' + value).prependTo(".sortable");
-						});
-					}
+			if (localStorage.updateArray !== undefined) {
+				var updateValue = localStorage.updateArray.split(",")
+				.reverse();
+				$.each(updateValue, function(index, value) {
+					$('#' + value).prependTo(".sortable");
 				});
+			}
+		});
 	</script>

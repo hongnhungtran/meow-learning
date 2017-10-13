@@ -15,7 +15,7 @@ class VocabularyController extends Controller
     public function __construct()
     {
         $this->vocabulary_course_id = 1;
-
+        
     }
 
     public function get_level_list() 
@@ -23,7 +23,8 @@ class VocabularyController extends Controller
         $levels = Level::all();
         $courses = Course::all();
 
-        return view('user.vocabulary.levelList', compact('levels', 'courses'));
+        $course = Course::find($this->vocabulary_course_id);
+        return view('user.vocabulary.levelList', compact('levels', 'courses', 'course'));
     }
 
     public function get_topic_list($id) 
@@ -33,9 +34,10 @@ class VocabularyController extends Controller
             ->where('topic.level_id', $id)
             ->paginate(10);
         $level = Level::find($id);
+        $course = Course::find($this->vocabulary_course_id);
         $num=1;
 
-        return view('user.vocabulary.topicList', compact('topics', 'num', 'level'))
+        return view('user.vocabulary.topicList', compact('topics', 'num', 'level', 'course'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -44,10 +46,18 @@ class VocabularyController extends Controller
         $lessons = Lesson::join('topic', 'lesson.topic_id', '=', 'topic.topic_id')
             ->where('topic.topic_id', $id)
             ->paginate(10);
-        var_dump($lessons) ;
-exit;
-        return view('user.vocabulary.lessonList', compact('lessons'))
+
+        $topic = Topic::find($id);
+        $course = Course::find($this->vocabulary_course_id);
+        $num=1;
+        return view('user.vocabulary.lessonList', compact('lessons', 'topic', 'num', 'course'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function get_exercise($id) 
+    {
+        $lesson = Lesson::find($id);
+        return view('user.vocabulary.exercise', compact('lesson'));
     }
 
 }
