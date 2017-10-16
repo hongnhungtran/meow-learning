@@ -266,10 +266,17 @@ class VocabularyController extends Controller
     public function vocabulary_exercise_store($id, Request $request)
     {
         $validates = request()->validate([
-            'vocabulary.*' => 'required|unique:vocabulary',
-            'image_link.*' => 'required|unique:vocabulary',
-            'audio_link.*' => 'required|unique:vocabulary'
+            'vocabulary' => 'required|unique:vocabulary',
+            'image_link' => 'required|unique:vocabulary',
+            'audio_link' => 'required|unique:vocabulary'
         ]);
+
+        $validator = Validator::make($request->all(), [
+    'person.*.email' => 'email|unique:users',
+    'person.*.first_name' => 'required_with:person.*.last_name',
+]);
+
+
 
         $vocabulary = new Vocabulary([
             'lesson_id' => (int)$id,
