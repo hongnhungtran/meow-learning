@@ -7,16 +7,16 @@
 			<div class="panel with-nav-tabs panel-success">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>
-						<li><a href="#tab2success" data-toggle="tab">Success 2</a></li>
-						<li><a href="#tab3success" data-toggle="tab">Success 3</a></li>
-						<li class="dropdown">
+						<li class="active"><a href="#tab1success" data-toggle="tab">Excercise 1</a></li>
+						<li><a href="#tab2success" data-toggle="tab">Excercise 2</a></li>
+						<li><a href="#tab3success" data-toggle="tab">Excercise 3</a></li>
+						<!-- <li class="dropdown">
 							<a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#tab4success" data-toggle="tab">Success 4</a></li>
 								<li><a href="#tab5success" data-toggle="tab">Success 5</a></li>
 							</ul>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div class="panel-body">
@@ -24,7 +24,7 @@
 						<div class="tab-pane fade in active" id="tab1success">
 							<div class="global-activity-guide">
 								<div class="icon"></div>
-								<div class="text">Bấm chọn hình thu nhỏ để xem cỡ chuẩn. Bấm vào ảnh lớn để lật thẻ xem chi tiết của từ.</div>
+								<div class="text">クリックして画像をフリップしましょう。</div>
 							</div>
 							<div class="thumb-outer">
 								<div class="thumb-block-0">
@@ -83,7 +83,7 @@
 						<div class="tab-pane fade" id="tab2success">
 							<div class="global-activity-guide">
 								<div class="icon"></div>
-								<div class="text">Kéo thả từ vào tranh tương ứng.</div>
+								<div class="text">単語にマッチングする画像をドラッグしてください。</div>
 							</div>
 							<div id="word-container" class="global-float-left ui-droppable">
 								<div id="tab2-word-block-0">
@@ -222,9 +222,40 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane fade" id="tab3success">Success 3</div>
-						<div class="tab-pane fade" id="tab4success">Success 4</div>
-						<div class="tab-pane fade" id="tab5success">Success 5</div>
+						<div class="tab-pane fade" id="tab3success">
+							<div class="global-activity-guide">
+								<div class="icon"></div>
+								<div class="text">単語を入力してください。</div>
+							</div>
+							<div id="tab3-result-container" class="global-float-left">
+								<div class="result-title-bar global-orange-bar">Kết quả</div>
+								<div class="result-content-outer">
+									<div class="remain">
+										<div class="text">Còn lại</div>
+										<div class="number global-float-right"></div>
+									</div>
+									<div class="correct">
+										<div class="text">Chính xác</div>
+										<div class="number global-float-right"></div>
+									</div>
+									<div class="incorrect">
+										<div class="text">Không chính xác</div>
+										<div class="number global-float-right"></div>
+									</div>
+								</div>
+							</div>
+							<div id="tab3-main-board" class=" global-float-left">
+								<div class="img-wrapper"></div>
+								<div class="user-input">
+									<input class="textbox global-float-left" title="Ấn enter để kiểm tra đáp án" />
+									<div class="listen-again global-float-left" title="Nghe lại (Ctrl + Enter)"></div>
+									<a class="show-answer" onclick="void(0)" title="Xem đáp án"></a>
+								</div>
+							</div>
+							<div class="global-clear-both"></div>
+						</div>
+						<!-- <div class="tab-pane fade" id="tab4success">Success 4</div>
+						<div class="tab-pane fade" id="tab5success">Success 5</div> -->
 					</div>
 				</div>
 			</div>

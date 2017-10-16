@@ -17,6 +17,7 @@ class Lesson extends Model
     	'level_id',
 	    'lesson_title',
         'lesson_image_link',
+        'lesson_flag',
 	    'lesson_content'
 	];
 

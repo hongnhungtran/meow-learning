@@ -151,6 +151,11 @@ return [
                     'text'        => 'EILTS',
                     'url'         => 'admin/eilts',
                     'icon'        => 'star-o',
+                ],
+                [
+                    'text'        => 'Common',
+                    'url'         => 'admin/common-test',
+                    'icon'        => 'star-o',
                 ]
             ]
         ],

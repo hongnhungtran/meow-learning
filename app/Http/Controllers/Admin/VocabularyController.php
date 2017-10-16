@@ -77,7 +77,7 @@ class VocabularyController extends Controller
             $book,
         ], 200);
     }
-c
+
     public function vocabulary_topic_index()
     {
         $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
@@ -265,11 +265,11 @@ c
 
     public function vocabulary_exercise_store($id, Request $request)
     {
-        /*$validates = request()->validate([
-            'vocabulary[]' => 'required|unique:vocabulary',
-            'image_link[]' => 'required|unique:vocabulary',
-            'audio_link[]' => 'required|unique:vocabulary'
-        ]);*/
+        $validates = request()->validate([
+            'vocabulary.*' => 'required|unique:vocabulary',
+            'image_link.*' => 'required|unique:vocabulary',
+            'audio_link.*' => 'required|unique:vocabulary'
+        ]);
 
         $vocabulary = new Vocabulary([
             'lesson_id' => (int)$id,
