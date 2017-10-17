@@ -50,16 +50,16 @@
                             <th>Image</th>
                             <th>Audio</th>
                         </tr>
-                        @foreach(range(1,10) as $i)
+                        @for($i=0; $i<10; $i++)
                         <tr>
                             <td>
-                                <h5>{{ $i++ }}</h5>
+                                <h5>{{ ($i++)+1 }}</h5>
                             </td>
                             <td>
                                 <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary[]" value={{ old('vocabulary[]') }}>
 
-                                @if ($errors->has('vocabulary[]')) 
-                                    @foreach($errors->get('vocabulary[]') as $error)
+                                @if ($errors->has('vocabulary[{{$i}}]')) 
+                                    @foreach($errors->get('vocabulary[{{$i}}]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
@@ -86,7 +86,7 @@
                                 @endif
                             </td>
                         </tr>
-                        @endforeach
+                        @endfor
                     </table>
                 </div>
                 <!-- /.box-body -->

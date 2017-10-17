@@ -29,7 +29,7 @@ class CommonTestController extends Controller
             ->paginate(10);
         $levels = Level::all();
 
-        return view('admin.common-test.commonTestList', compact('common_tests', 'levels'))
+        return view('admin.common-test.list', compact('common_tests', 'levels'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -42,7 +42,7 @@ class CommonTestController extends Controller
     {
         $levels = Level::all();
         
-        return view('admin.common-test.commonTestAdd', compact('levels'));
+        return view('admin.common-test.add', compact('levels'));
     }
 
     /**
@@ -72,11 +72,11 @@ class CommonTestController extends Controller
 
         $vocabulary_lesson->save();
 
-        return redirect()->route('vocabulary-lesson-list')
+        return redirect()->route('common-test')
             ->with('status', 'Vocabulary lesson created successfully');
 
 
-        $answer_a = $request->input('answer_a');
+        /*$answer_a = $request->input('answer_a');
           for($i=0;$i<count($answer_a);$i++){
             $answer_a = new CommonTestAnswer([
               'common_test_answer' => $answers[$i],
@@ -84,7 +84,7 @@ class CommonTestController extends Controller
               'correct' => ($request->input('Answer_chk')[0]) == ($i+1) ? 1:0
             ]);
               $answer->save();
-          }
+          }*/
     }
 
     /**
@@ -95,7 +95,24 @@ class CommonTestController extends Controller
      */
     public function show($id)
     {
-        //
+        $common_test_question = new CommonTestQuestion;
+        $questions = $common_test_question->get_questions();
+
+        foreach($questions as $question) {
+            $questions_id[] = $question->common_test_question_id;
+            $questions_content[] = $question->common_test_question;
+        }
+
+    
+        $common_test_answer = new CommonTestAnswer;
+        $answers = $common_test_answer->get_answers();
+
+        $test_content = array_combine($questions_id, $answers);
+
+        $lesson = Lesson::find($id);
+        $num = 1;
+
+        return view('admin.common-test.show', compact('answers', 'lesson', 'num', 'questions'));
     }
 
     /**

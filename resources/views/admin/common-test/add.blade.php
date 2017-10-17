@@ -94,83 +94,84 @@
 
 				<!-- Test content -->
 				<div class="box-body" id="test_content">
-					<div id="question_area"></div>
-					<!-- Question Area -->
-					<div class="form-group">
-						<!-- Question label -->
-						<div class="col-md-12">
-							<button class="btn bg-olive pull-right margin" id="question_answer_add_button">Add</button>
-							<button class="btn btn-danger pull-right margin">Delete</button>
-						</div>
-						
-						<label class="col-md-12" for="" id="question_label"><h4>Questions<span>0</span></h4></label>
-						<!-- Question input -->
-						<div class="col-md-12">
-							<input type="text" class="form-control" id="common_test_question[]" placeholder="Question 1" name="common_test_question[]" value={{old('common_test_question') }}>
-						
-							@if ($errors->has('common_test_question')) 
-							@foreach($errors->get('common_test_question') as $error)
-							<p class="text-red">{!! $error !!}</p>
-							@endforeach 
-							@endif
-						</div>
-					</div>
-					<!-- Answer Area -->
-					<div class="form-group">
-						<div class="col-md-6 form-group">
-							<div class="col-sm-1">
-								<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+					<div id="question_area">
+						<!-- Question Area -->
+						<div class="form-group">
+							<!-- Question label -->
+							<div class="col-md-12">
+								<button class="btn bg-olive pull-right margin" id="question_answer_add_button">Add</button>
+								<button class="btn btn-danger pull-right margin">Delete</button>
 							</div>
-							<label for="" class="col-sm-1 control-label">A.</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="answer_a[]" placeholder="Question 1 - A" name="answer_a[]">
-								@if ($errors->has('answer_a')) 
-								@foreach($errors->get('answer_a') as $error)
+							
+							<label class="col-md-12" for="" id="question_label"><h4>Questions<span>0</span></h4></label>
+							<!-- Question input -->
+							<div class="col-md-12">
+								<input type="text" class="form-control" id="common_test_question[]" placeholder="Question 1" name="common_test_question[]" value={{old('common_test_question') }}>
+								
+								@if ($errors->has('common_test_question')) 
+								@foreach($errors->get('common_test_question') as $error)
 								<p class="text-red">{!! $error !!}</p>
 								@endforeach 
 								@endif
 							</div>
 						</div>
-						<div class="col-md-6 form-group">
-							<div class="col-sm-1">
-								<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+						<!-- Answer Area -->
+						<div class="form-group">
+							<div class="col-md-6 form-group">
+								<div class="col-sm-1">
+									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+								</div>
+								<label for="" class="col-sm-1 control-label">A.</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="answer_a[]" placeholder="Question 1 - A" name="answer_a[]">
+									@if ($errors->has('answer_a')) 
+									@foreach($errors->get('answer_a') as $error)
+									<p class="text-red">{!! $error !!}</p>
+									@endforeach 
+									@endif
+								</div>
 							</div>
-							<label for="" class="col-sm-1 control-label">B.</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="answer_b[]" placeholder="Question 1 - B" name="answer_b[]">
-								@if ($errors->has('answer_b')) 
-								@foreach($errors->get('answer_b') as $error)
-								<p class="text-red">{!! $error !!}</p>
-								@endforeach 
-								@endif
+							<div class="col-md-6 form-group">
+								<div class="col-sm-1">
+									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+								</div>
+								<label for="" class="col-sm-1 control-label">B.</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="answer_b[]" placeholder="Question 1 - B" name="answer_b[]">
+									@if ($errors->has('answer_b')) 
+									@foreach($errors->get('answer_b') as $error)
+									<p class="text-red">{!! $error !!}</p>
+									@endforeach 
+									@endif
+								</div>
 							</div>
-						</div>
-						<div class="col-md-6 form-group">
-							<div class="col-sm-1">
-								<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+							<div class="col-md-6 form-group">
+								<div class="col-sm-1">
+									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+								</div>
+								<label for="" class="col-sm-1 control-label">C.</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="answer_c[]" placeholder="Question 1 - C" name="answer_c[]">
+									@if ($errors->has('answer_c')) 
+									@foreach($errors->get('answer_c') as $error)
+									<p class="text-red">{!! $error !!}</p>
+									@endforeach 
+									@endif
+								</div>
 							</div>
-							<label for="" class="col-sm-1 control-label">C.</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="answer_c[]" placeholder="Question 1 - C" name="answer_c[]">
-								@if ($errors->has('answer_c')) 
-								@foreach($errors->get('answer_c') as $error)
-								<p class="text-red">{!! $error !!}</p>
-								@endforeach 
-								@endif
-							</div>
-						</div>
-						<div class="col-md-6 form-group">
-							<div class="col-sm-1">
-								<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
-							</div>
-							<label for="" class="col-sm-1 control-label">D.</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="answer_d[]" placeholder="Question 1 - D" name="answer_d[]">
-								@if ($errors->has('answer_d')) 
-								@foreach($errors->get('answer_d') as $error)
-								<p class="text-red">{!! $error !!}</p>
-								@endforeach 
-								@endif
+							<div class="col-md-6 form-group">
+								<div class="col-sm-1">
+									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
+								</div>
+								<label for="" class="col-sm-1 control-label">D.</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="answer_d[]" placeholder="Question 1 - D" name="answer_d[]">
+									@if ($errors->has('answer_d')) 
+									@foreach($errors->get('answer_d') as $error)
+									<p class="text-red">{!! $error !!}</p>
+									@endforeach 
+									@endif
+								</div>
 							</div>
 						</div>
 					</div>

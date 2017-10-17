@@ -15,4 +15,17 @@ class CommonTestQuestion extends Model
     	'lesson_id',
     	'common_test_question'
     ];
+
+    public function common_test_answer()
+    {
+        return $this->hasMany('App\CommonTestAnswer', 'common_test_question_id');
+    }
+
+    public function get_questions()
+    {
+    	$questions = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
+            ->get();
+
+        return $questions;
+    }
 }

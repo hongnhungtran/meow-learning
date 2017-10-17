@@ -13,7 +13,32 @@ class CommonTestAnswer extends Model
     protected $fillable = [
     	'common_test_answer_id',
     	'common_test_question_id',
+    	'common_test_answer_num',
     	'common_test_answer',
 	    'common_test_answer_flag'
     ];
+
+    public function common_test_question()
+    {
+        return $this->belongsTo('App\CommonTestQuestion');
+    }
+
+    public function get_answers() {
+    	$common_test_question = new CommonTestQuestion;
+        $questions = $common_test_question->get_questions();
+	
+		$result = [];
+
+		foreach ($questions as $question) {
+            $answers = CommonTestAnswer::join('common_test_question', 'common_test_answer.common_test_question_id', '=', 'common_test_question.common_test_question_id')
+            ->where('common_test_question.common_test_question_id', $question->common_test_question_id)
+            ->get();
+
+            $result[] = $answers;
+        }
+
+        return $result;
+
+        
+    }
 }

@@ -185,12 +185,13 @@ class VocabularyController extends Controller
 
     public function vocabulary_lesson_store(Request $request)
     {
-        request()->validate([
-            'lesson_title' => 'required|unique:lesson',
-            'lesson_content' => 'required|unique:lesson',
-            'lesson_image_link' => 'required|unique:lesson'
-        ]);
-
+        $a = request()->validate(
+            ['lesson_title.*' => 'required|unique:lesson'],
+            ['lesson_content.*' => 'required|unique:lesson'],
+            ['lesson_image_link.*' => 'required|unique:lesson']
+        );
+var_dump($a) ;
+exit;
         $vocabulary_lesson = new Lesson([
             'course_id' => $this->vocabulary_course_id,
             'level_id' => (int)$request->get('level'),
@@ -267,16 +268,18 @@ class VocabularyController extends Controller
     {
         $validates = request()->validate([
             'vocabulary' => 'required|unique:vocabulary',
-            'image_link' => 'required|unique:vocabulary',
-            'audio_link' => 'required|unique:vocabulary'
+            'vocabulary_image_link' => 'required|unique:vocabulary',
+            'vocabulay_audio_link' => 'required|unique:vocabulary'
         ]);
 
-        $validator = Validator::make($request->all(), [
-    'person.*.email' => 'email|unique:users',
-    'person.*.first_name' => 'required_with:person.*.last_name',
-]);
+       $validator = Validator::make($request->all(), [
+            'vocabulary.*' => 'required|unique:vocabulary',
+            'vocabulary_image_link.*' => 'required|unique:vocabulary'
+        ]);
 
 
+        var_dump($validates) ;
+        exit;
 
         $vocabulary = new Vocabulary([
             'lesson_id' => (int)$id,
