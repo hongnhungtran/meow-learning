@@ -28,4 +28,23 @@ class CommonTestQuestion extends Model
 
         return $questions;
     }
+
+    /**
+     * [get question content from question id]
+     * @return [type] [description]
+     */
+    public function get_question_content($question_id)
+    {
+        $question_content = "";
+
+        $question_contents = CommonTestQuestion::select('common_test_question')
+            ->where('common_test_question_id', $question_id)
+            ->get();
+
+        foreach ($question_contents as $question) {
+            $question_content = $question->common_test_question;
+        }
+
+        return $question_content;
+    }
 }

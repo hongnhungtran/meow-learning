@@ -13,9 +13,7 @@ class CommonTestController extends Controller
 {
     public function __construct()
     {
-
         $this->course_id = 10;
-
     }
     /**
      * Display a listing of the resource.
@@ -25,12 +23,13 @@ class CommonTestController extends Controller
     public function index()
     {
         $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->course_id)
-            ->paginate(10);
+        ->where('course_id', $this->course_id)
+        ->paginate(10);
+
         $levels = Level::all();
 
         return view('admin.common-test.list', compact('common_tests', 'levels'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+        ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -53,13 +52,17 @@ class CommonTestController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'common_test_question[]' => 'required',
+        /*$request = request()->validate([
+            'common_test_question' => 'required',
             'answer_a' => 'required',
             'answer_b' => 'required',
             'answer_c' => 'required',
             'answer_d' => 'required'
-        ]);
+            ]);
+*/
+                $request->get('level');
+
+        dd($request = request('common_test_question'));exit;
 
         $vocabulary_lesson = new Lesson([
             'course_id' => $this->vocabulary_course_id,
@@ -68,12 +71,12 @@ class CommonTestController extends Controller
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
             'lesson_image_link' => $request->get('lesson_image_link'),
-        ]);
+            ]);
 
         $vocabulary_lesson->save();
 
         return redirect()->route('common-test')
-            ->with('status', 'Vocabulary lesson created successfully');
+        ->with('status', 'Vocabulary lesson created successfully');
 
 
         /*$answer_a = $request->input('answer_a');
@@ -85,7 +88,7 @@ class CommonTestController extends Controller
             ]);
               $answer->save();
           }*/
-    }
+      }
 
     /**
      * Display the specified resource.
@@ -95,24 +98,30 @@ class CommonTestController extends Controller
      */
     public function show($id)
     {
+        //question object 
         $common_test_question = new CommonTestQuestion;
         $questions = $common_test_question->get_questions();
 
+        //question id array
         foreach($questions as $question) {
             $questions_id[] = $question->common_test_question_id;
             $questions_content[] = $question->common_test_question;
         }
 
-    
+        //answer array
         $common_test_answer = new CommonTestAnswer;
         $answers = $common_test_answer->get_answers();
 
+        //test all content
         $test_content = array_combine($questions_id, $answers);
 
+        //lesson
         $lesson = Lesson::find($id);
+
+        //question number
         $num = 1;
 
-        return view('admin.common-test.show', compact('answers', 'lesson', 'num', 'questions'));
+        return view('admin.common-test.show', compact('lesson', 'num', 'test_content', 'common_test_question'));
     }
 
     /**

@@ -31,6 +31,7 @@ class CommonTestAnswer extends Model
 
 		foreach ($questions as $question) {
             $answers = CommonTestAnswer::join('common_test_question', 'common_test_answer.common_test_question_id', '=', 'common_test_question.common_test_question_id')
+            ->join('answer_num', 'answer_num.answer_num_id', '=', 'common_test_answer.common_test_answer_num')
             ->where('common_test_question.common_test_question_id', $question->common_test_question_id)
             ->get();
 
@@ -38,7 +39,5 @@ class CommonTestAnswer extends Model
         }
 
         return $result;
-
-        
     }
 }

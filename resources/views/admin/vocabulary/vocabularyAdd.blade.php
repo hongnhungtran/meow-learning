@@ -50,43 +50,42 @@
                             <th>Image</th>
                             <th>Audio</th>
                         </tr>
-                        @for($i=0; $i<10; $i++)
+                        @foreach(range(0,9) as $i)
                         <tr>
                             <td>
-                                <h5>{{ ($i++)+1 }}</h5>
+                                <h5>{{ $num++ }}</h5>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary[]" value={{ old('vocabulary[]') }}>
-
-                                @if ($errors->has('vocabulary[{{$i}}]')) 
-                                    @foreach($errors->get('vocabulary[{{$i}}]') as $error)
+                                <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary[]" value="{{ old('vocabulary.'.$i) }}">
+                                 
+                                @if ($errors->has('{{ "vocabulary.".$i }}')) 
+                                    @foreach($errors->get('{{ "vocabulary.".$i }}') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link[]" value={{ old('image_link[]') }}>
+                                <input type="text" class="form-control" id="" placeholder="Image Link" name="vocabulary_image_link[]" value="{{ old('vocabulary_image_link.'.$i) }}">
                                 <h5>Or select image</h5>
                                 <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('image_link[]')) 
-                                    @foreach($errors->get('image_link[]') as $error)
+                                @if ($errors->has('vocabulary_image_link[]')) 
+                                    @foreach($errors->get('vocabulary_image_link[]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="" placeholder="Audio Link" name="audio_link[]" value={{ old('audio_link[]') }}>
+                                <input type="text" class="form-control" id="" placeholder="Audio Link" name="vocabulary_audio_link[]" value="{{ old('vocabulary_audio_link.'.$i) }}">
                                 <h5>Or select audio</h5>
-                                
                                 <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('audio_link[]')) 
-                                    @foreach($errors->get('audio_link[]') as $error)
+                                @if ($errors->has('vocabulary_audio_link[]')) 
+                                    @foreach($errors->get('vocabulary_audio_link[]') as $error)
                                         <p class="text-red">{!! $error !!}</p>
                                     @endforeach 
                                 @endif
                             </td>
                         </tr>
-                        @endfor
+                        @endforeach
                     </table>
                 </div>
                 <!-- /.box-body -->

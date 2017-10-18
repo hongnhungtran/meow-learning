@@ -38,6 +38,26 @@ ShowTag=1
 ShowCommonAttributes=0
 
 [Relation]
+Entity1=lesson
+Entity2=common_test_question
+RelationType1=1
+RelationType2=3
+Fields1=lesson_id,vocabulary_topic_id,course_id,level_id
+Fields2=
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,6745,3255,7285,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=674
+Bar2=326
+Bar3=728
+TermPos1=R
+TermPos2=R
+
+[Relation]
 Entity1=common_test_question
 Entity2=common_test_answer
 RelationType1=1
@@ -46,14 +66,14 @@ Fields1=common_test_question_id
 Fields2=common_test_question_id
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,816,3691,1613,R,R
+Position="MAIN",0,816,3691,1761,R,R
 Dependence=0
 Caption=
 PName=
 LineMode=0
 Bar1=82
 Bar2=369
-Bar3=161
+Bar3=176
 TermPos1=R
 TermPos2=R
 
@@ -62,9 +82,9 @@ PName=common_test_answer
 LName=common_test_answer
 Comment=
 TableOption=
-Page=Main
-Left=700
-Top=2650
+Page=MAIN
+Left=2500
+Top=2400
 Field="common_test_answer_id","common_test_answer_id","@INT",,0,"","",$FFFFFFFF,""
 Field="common_test_question_id","common_test_question_id","TEXT",,,"","",$FFFFFFFF,""
 Field="common_test_answer_flag","common_test_answer_flag","TINYINT",,,"","",$FFFFFFFF,""
@@ -74,16 +94,16 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171016114449
-Position="Main",700,2650
+Position="MAIN",2500,2400
 
 [Entity]
 PName=common_test_question
 LName=common_test_question
 Comment=
 TableOption=
-Page=Main
-Left=150
-Top=2550
+Page=MAIN
+Left=2200
+Top=1850
 Field="common_test_question_id","common_test_question_id","",,0,"","",$FFFFFFFF,""
 Field="lesson_id","lesson_id","",,,"","",$FFFFFFFF,""
 Field="common_test_question","common_test_question","",,,"","",$FFFFFFFF,""
@@ -92,8 +112,8 @@ Field="updated_at","updated_at","",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20171016114150
-Position="Main",150,2550
+ModifiedDateTime=20171017141550
+Position="MAIN",2200,1850
 
 [Relation]
 Entity1=exercise_1_thread
@@ -160,7 +180,7 @@ LName=exercise_type
 Comment=
 TableOption=
 Page=MAIN
-Left=2600
+Left=2650
 Top=2000
 Field="exercise_type_id","exercise_type_id","@INT",,0,"","",$FFFFFFFF,""
 Field="exercise_type","exercise_type","@VARCHAR",,,"","",$FFFFFFFF,""
@@ -170,7 +190,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20171010174151
-Position="MAIN",2600,2000
+Position="MAIN",2650,2000
 
 [Relation]
 Entity1=document
@@ -213,7 +233,7 @@ Position="MAIN",1200,1100
 
 [Relation]
 Entity1=level
-Entity2=lession
+Entity2=lesson
 RelationType1=1
 RelationType2=3
 Fields1=level_id
@@ -233,7 +253,7 @@ TermPos2=R
 
 [Relation]
 Entity1=course
-Entity2=lession
+Entity2=lesson
 RelationType1=1
 RelationType2=3
 Fields1=course_id
@@ -253,7 +273,7 @@ TermPos2=R
 
 [Relation]
 Entity1=topic
-Entity2=lession
+Entity2=lesson
 RelationType1=1
 RelationType2=3
 Fields1=vocabulary_topic_id,course_id,level_id
@@ -665,25 +685,25 @@ ModifiedDateTime=20170912121926
 Position="MAIN",50,300
 
 [Entity]
-PName=lession
-LName=lession
+PName=lesson
+LName=lesson
 Comment=
 TableOption=
 Page=MAIN
 Left=1800
 Top=1900
-Field="lession_id","lession_id","@INT",,0,"","",$FFFFFFFF,""
+Field="lesson_id","lesson_id","@INT",,0,"","",$FFFFFFFF,""
 Field="topic_id","vocabulary_topic_id","@INT",,1,"","",$FFFFFFFF,""
 Field="course_id","course_id","@INT",,2,"","",$FFFFFFFF,""
 Field="level_id","level_id","",,3,"","",$FFFFFFFF,""
-Field="lession_title","lession_title","@VARCHAR",,,"","",$FFFFFFFF,""
-Field="lession_content","lession_content","TEXT",,,"","",$FFFFFFFF,""
+Field="lesson_title","lesson_title","@VARCHAR",,,"","",$FFFFFFFF,""
+Field="lesson_content","lesson_content","TEXT",,,"","",$FFFFFFFF,""
 Field="created_at","created_at","@DATETIME",,,"","",$FFFFFFFF,""
 Field="updated_at","updated_at","@DATETIME",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20170926182001
+ModifiedDateTime=20171017141730
 Position="MAIN",1800,1900
 
 [Entity]

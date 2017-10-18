@@ -37,25 +37,21 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 				<h2>{{ $lesson->lesson_title }}</h2>
-				<!-- Question Area -->
-				@foreach ($questions as $question)
-				<div class="col-md-12">
-					<h5>{{ $num++ }}. {{ $question->common_test_question }}</h5>
-				</div>
+				
+				@foreach ($test_content as $key => $value)
+					<div class="col-md-12">
+						<h5><b>{{ $num++ }}. {{ $common_test_question->get_question_content($key) }}</b></h5>
+					</div>
+            			@foreach ($value as $key => $answer) 
+
+								<div class="col-md-6">
+									<h5>{{ $answer->answer_num_name }}. {{ $answer->common_test_answer }}</h5>
+								</div>
+	
+						@endforeach				
 				@endforeach
 
-				<!-- Answer Area -->
-				@for ($i=0; $i<count($answers); $i++)
-					@foreach ($answers[$i] as $answer )
-					<div class="col-md-12">
-						<div class="col-md-6">
-							<h5>A. {{ $answer->common_test_answer }}</h5>
-						</div>
-					</div>					
-					@endforeach
-				@endfor
 
-				
 		</div>
 		<!-- /.box-body -->
 		<div class="box-footer">
