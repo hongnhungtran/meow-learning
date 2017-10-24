@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "algolia/algoliasearch-client-php": "^1.22",
         "barryvdh/laravel-cors": "^0.9.3",
         "barryvdh/laravel-debugbar": "^3.0",
         "curl/curl": "^1.8",
@@ -15,12 +16,13 @@
         "guzzlehttp/guzzle": "^6.3",
         "jeroennoten/laravel-adminlte": "^1.20",
         "laravel/framework": "5.5.*",
+        "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
+        "laravelcollective/html": "5.5.*",
         "league/oauth2-server": "^6.0",
         "nao-pon/flysystem-google-drive": "~1.1",
         "nesbot/carbon": "^1.22",
-        "tymon/jwt-auth": "1.0.*@dev",
-        "laravelcollective/html": "5.5.*"
+        "tymon/jwt-auth": "1.0.*@dev"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

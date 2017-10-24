@@ -73,7 +73,6 @@
             <!-- /.box-header -->
             <div class="box-body">
                 
-
                 @if ($message = Session::get('status'))
                 <div class="alert alert-success" id="alert">
                     <p>{{ $message }}</p>
@@ -83,13 +82,13 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Lesson ID</th>
-                            <th>Level</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="col-xs-1">Lesson ID</th>
+                            <th class="col-xs-1">Level</th>
+                            <th class="col-xs-1">Image</th>
+                            <th class="col-xs-2">Title</th>
+                            <th class="col-xs-4">Content</th>
+                            <th class="col-xs-1">Status</th>
+                            <th class="col-xs-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,10 +99,10 @@
                             <td><img src="{!! $vocabulary_lesson->lesson_image_link !!}" height="42" width="42"></td>
                             <td>{!! $vocabulary_lesson->lesson_title !!}</td>
                             <td>{!! $vocabulary_lesson->lesson_content !!}</td>
-                            <td>{!! $vocabulary_lesson->level_status !!}</td>
+                            <td><span class="label label-{{ ($vocabulary_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($vocabulary_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_lesson_edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_exercise_index', $vocabulary_lesson->lesson_id) !!}" class="btn btn-block btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\VocabularyLessonController@edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\VocabularyLessonController@show', $vocabulary_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

@@ -83,12 +83,12 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Document ID</th>
-                            <th>Category</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="col-xs-1">Document ID</th>
+                            <th class="col-xs-2">Category</th>
+                            <th class="col-xs-2">Title</th>
+                            <th class="col-xs-4">Content</th>
+                            <th class="col-xs-1">Status</th>
+                            <th class="col-xs-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,10 +98,10 @@
                             <td>{!! $document->document_category_title !!} </td>
                             <td>{!! $document->document_title !!}</td>
                             <td>{!! $document->document_content !!}</td>
-                            <td>{!! $document->document_status !!}</td>
+                            <td><span class="label label-{{ ($document->document_flag) ? 'success' : 'danger' }}"> {{ ($document->document_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\DocumentController@edit', $document->document_id) !!}" class="btn btn-block btn-success">Edit</a>
-                                <a href="{!! action('Admin\DocumentController@show', $document->document_id) !!}" class="btn btn-block btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\DocumentController@edit', $document->document_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\DocumentController@show', $document->document_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach
@@ -116,6 +116,5 @@
     </div>
 <!-- /.col -->
     @endif
-</div>
-<!-- /.row -->
+</div>  
 @stop

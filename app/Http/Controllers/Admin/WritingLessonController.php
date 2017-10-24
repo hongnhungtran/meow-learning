@@ -4,21 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Topic;
+use App\Lesson;
+use App\Level;
+use App\Vocabulary;
 
-class VocabularyExerciseController extends Controller
+class WritingLessonController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-         $vocabularies = Vocabulary::join('lesson', 'lesson.lesson_id', '=', 'vocabulary.lesson_id')
-            ->where('vocabulary.lesson_id', $id)
-            ->get();
+        $lesson = new Lesson;
+        
+        $writing_lessons = $lesson->get_writing_lesson()->paginate(10);
 
-        return view('admin.vocabulary.vocabularyList', compact('vocabularies'));
+        return view('admin.writing.lessonList', compact('writing_lessons'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

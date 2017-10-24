@@ -34,7 +34,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post"  action="{{route('vocabulary-topic-store')}}">
+            <form class="form-horizontal" method="post"  action="{{route('topic.store')}}">
                 {{csrf_field()}} 
                 <div class="box-body">
                     <div class="form-group">
@@ -80,10 +80,10 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value={{ old('image_link') }}>
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="topic_image_link" value={{ old('topic_image_link') }}>
 
-                                @if ($errors->has('image_link'))
-                                    @foreach($errors->get('image_link') as $error)
+                                @if ($errors->has('topic_image_link'))
+                                    @foreach($errors->get('topic_image_link') as $error)
                                          <p class="text-red">{!! $error !!}</p>
                                     @endforeach
                                 @endif

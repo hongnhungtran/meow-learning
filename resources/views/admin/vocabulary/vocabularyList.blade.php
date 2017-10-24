@@ -8,7 +8,7 @@
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="#">Topic</a></li>
     <li><a href="#">Lesson</a></li>
     <li><a href="#">Vocabulary</a></li>
@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <p> There is no vocabulary.</p>
-                <a href="{{route('vocabulary-exercise-create',$vocabulary_lesson->lesson_id) }}" class="btn btn-success margin">Add Vocabulary</a>
+                <a href="{{route('exercise.create',$vocabulary_lesson->lesson_id) }}" class="btn btn-success margin">Add Vocabulary</a>
             </div>
         </div>
     </div>  

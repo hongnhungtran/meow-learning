@@ -293,7 +293,6 @@ public function vocabulary_exercise_create($id)
             $values->save();
         }
 
-
         return redirect()->route('vocabulary-exercise-index', compact('id'))
         ->with('status', 'Vocabulary lesson created successfully');
     }

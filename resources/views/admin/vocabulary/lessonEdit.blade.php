@@ -34,7 +34,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_lesson_update', $id)}}">
+            <form class="form-horizontal" method="put" action="{{action('Admin\VocabularyLessonController@update', $vocabulary_lesson->lesson_id)}}">
                 {{csrf_field()}} 
                 
                 <div class="box-body">
@@ -83,10 +83,10 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Image</label>
                         <div class="col-sm-9">
-                             <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{!! $vocabulary_lesson->image_link !!}">
+                             <input type="text" class="form-control" id="" placeholder="Image Link" name="lesson_image_link" value="{!! $vocabulary_lesson->lesson_image_link !!}">
 
-                                @if ($errors->has('image_link'))
-                                    @foreach($errors->get('image_link') as $error)
+                                @if ($errors->has('lesson_image_link'))
+                                    @foreach($errors->get('lesson_image_link') as $error)
                                          <p class="text-red">{!! $error !!}</p>
                                     @endforeach
                                 @endif

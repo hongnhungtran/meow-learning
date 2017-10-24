@@ -81,13 +81,13 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Topic ID</th>
-                            <th>Level</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="col-xs-1">Topic ID</th>
+                            <th class="col-xs-1">Level</th>
+                            <th class="col-xs-1">Image</th>
+                            <th class="col-xs-2">Title</th>
+                            <th class="col-xs-4">Content</th>
+                            <th class="col-xs-1">Status</th>
+                            <th class="col-xs-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,10 +98,10 @@
                             <td><img src="{!! $vocabulary_topic->topic_image_link !!}" height="42" width="42"></td>
                             <td><div>{!! $vocabulary_topic->topic_title !!}</div></td>
                             <td>{!! $vocabulary_topic->topic_content !!}</td>
-                            <td>{!! $vocabulary_topic->topic_status !!}</td>
+                            <td> <span class="label label-{{ ($vocabulary_topic->topic_flag) ? 'success' : 'danger' }}"> {{ ($vocabulary_topic->topic_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_edit', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-success">Edit</a>
-                                <a href="{!! action('Admin\VocabularyController@vocabulary_topic_show', $vocabulary_topic->topic_id) !!}" class="btn btn-block btn-primary">Detail</a>    
+                                <a href="{!! action('Admin\VocabularyTopicController@edit', $vocabulary_topic->topic_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\VocabularyTopicController@show', $vocabulary_topic->topic_id) !!}" class="btn btn-primary">Detail</a>    
                             </td>
                         </tr>
                         @endforeach

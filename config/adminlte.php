@@ -170,7 +170,7 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Vocabulary',
-                    'url'         => 'admin/vocabulary/topic',
+                    'url'         => 'admin/vocabulary',
                     'icon'        => 'star-o',
                 ],
                 [

@@ -36,7 +36,7 @@ Route::get('/_debugbar/assets/javascript', [
 
 Route::group(['prefix' => 'admin'], function () {
     //Home
-    Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
+    Route::get('/', ['as' => 'admin-home', 'uses' => 'Admin\ManagementController@home']);
     
     //Course
     require(__DIR__ . "/admin/vocabulary.php");

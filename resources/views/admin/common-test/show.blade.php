@@ -36,7 +36,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<h2>{{ $lesson->lesson_title }}</h2>
+				<h2 class="text-center">{{ $lesson->lesson_title }}</h2>
 				
 				@foreach ($test_content as $key => $value)
 					<div class="col-md-12">

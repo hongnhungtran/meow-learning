@@ -34,7 +34,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_topic_update', $id)}}">
+            <form class="form-horizontal" method="patch" action="{{ action('Admin\VocabularyTopicController@update', $vocabulary_topic->vocabulary_id) }}">
                 {{csrf_field()}} 
 
                 <div class="box-body">
@@ -70,10 +70,10 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{!! $vocabulary_topic->image_link !!}">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="topic_image_link" value="{!! $vocabulary_topic->topic_image_link !!}">
 
-                                @if ($errors->has('image_link'))
-                                    @foreach($errors->get('image_link') as $error)
+                                @if ($errors->has('topic_image_link'))
+                                    @foreach($errors->get('topic_image_link') as $error)
                                          <p class="text-red">{!! $error !!}</p>
                                     @endforeach
                                 @endif
@@ -84,7 +84,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Add</button>
+                    <button type="submit" class="btn btn-info pull-right">Update</button>
                 </div>
                 <!-- /.box-footer -->
             </form>

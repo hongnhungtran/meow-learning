@@ -184,6 +184,7 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 
