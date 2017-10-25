@@ -20,11 +20,23 @@ class VocabularyTopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
+        /*$vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
             ->where('course_id', $this->vocabulary_course_id)
             ->paginate(10);
+*/
+        if($request->has('topic_title')) {
+            $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->vocabulary_course_id)
+            ->where('topic_title', 'LIKE', "%$request->topic_title%")
+            ->orwhere('topic_title', 'LIKE', "%$request->topic_title%")
+            ->paginate(10);
+        } else {
+            $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->vocabulary_course_id)
+            ->paginate(10);
+        }
 
         return view('admin.vocabulary.topicList', compact('vocabulary_topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -122,7 +134,7 @@ class VocabularyTopicController extends Controller
             'topic_image_link' => $request->get('topic_image_link')
         ]);
 
-        return redirect()->route('topic.index')
+        return redirect()->route('vocabulary.topic.index')
             ->with('status', 'Vocabulary topic updated successfully');
         
     }

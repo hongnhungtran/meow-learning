@@ -8,8 +8,8 @@
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Lesson</a></li>
+    <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{ url('/admin/common-test') }}">Lesson</a></li>
     <li class="active">List</li>
 </ol>
 @stop 

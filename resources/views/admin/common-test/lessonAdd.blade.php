@@ -8,8 +8,8 @@
 	<small>Add New</small>
 </h1>
 <ol class="breadcrumb">
-	<li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-	<li><a href="{{ url('admin/vocabulary') }}">Lesson</a></li>
+	<li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+	<li><a href="{{ url('admin/common-test') }}">Lesson</a></li>
 	<li class="active">Add</li>
 </ol>
 @stop 

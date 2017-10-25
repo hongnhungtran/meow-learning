@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VocabularyExerciseController extends Controller
+class CommonTestQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class VocabularyExerciseController extends Controller
      */
     public function index()
     {
-       
+        //
     }
 
     /**

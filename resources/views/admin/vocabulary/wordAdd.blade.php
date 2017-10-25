@@ -43,51 +43,50 @@
             <form class="form-horizontal" method="post" action="{{route('exercise.store', $vocabulary_lesson->lesson_id) }}">
                 {{csrf_field()}}
                 <div class="box-body">
-                    <table class="table">
-                        <tr>
-                            <th>No</th>
-                            <th>Vocabulary</th>
-                            <th>Image</th>
-                            <th>Audio</th>
-                        </tr>
-                        @for($i=0;)
-                        <tr>
-                            <td>
-                                <h5>{{ $num++ }}</h5>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary[]" value="{{ old('vocabulary.'.$i) }}">
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Vocabulary</label>
 
-                                @if ($errors->has("{{ 'vocabulary.'.$i }}")) 
-                                    @foreach($errors->get("{{ 'vocabulary.'.$i }}") as $error)
-                                        <p class="text-red">{!! $error !!}</p>
-                                    @endforeach 
-                                @endif
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Lesson Title" name="vocabulary" value={{ old('vocabulary') }}>
 
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" id="" placeholder="Image Link" name="vocabulary_image_link[]" value="">
-                                <h5>Or select image</h5>
-                                <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('vocabulary_image_link[]')) 
-                                    @foreach($errors->get('vocabulary_image_link[]') as $error)
-                                        <p class="text-red">{!! $error !!}</p>
-                                    @endforeach 
-                                @endif
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" id="" placeholder="Audio Link" name="vocabulary_audio_link[]" value="">
-                                <h5>Or select audio</h5>
-                                <input type="file" name="files[]" id="" multiple>
-                                @if ($errors->has('vocabulary_audio_link[]')) 
-                                    @foreach($errors->get('vocabulary_audio_link[]') as $error)
-                                        <p class="text-red">{!! $error !!}</p>
-                                    @endforeach 
-                                @endif
-                            </td>
-                        </tr>
-                        @endfor
-                    </table>
+                            @if ($errors->has('vocabulary')) 
+                                @foreach($errors->get('vocabulary') as $error)
+                                    <p class="text-red">{!! $error !!}</p>
+                                @endforeach 
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Image</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="vocabulary_image_link" value={{ old('vocabulary_image_link') }}>
+
+                            @if ($errors->has('vocabulary_image_link')) 
+                                @foreach($errors->get('vocabulary_image_link') as $error)
+                                    <p class="text-red">{!! $error !!}</p>
+                                @endforeach 
+                            @endif
+                            <h5>Or select image</h5>
+                            <input type="file" name="image" id="imgInput" multiple>
+                            <img id="imgPreview" src="#" alt="image" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Audio</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="vocabulary_audio_link" value={{ old('vocabulary_audio_link') }}>
+
+                            @if ($errors->has('vocabulary_audio_link')) 
+                                @foreach($errors->get('vocabulary_audio_link') as $error)
+                                    <p class="text-red">{!! $error !!}</p>
+                                @endforeach 
+                            @endif
+                            <h5>Or select image</h5>
+                            <input type="file" name="audio" id="" multiple>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
@@ -95,6 +94,7 @@
                     <button type="submit" class="btn btn-info pull-right">Add</button>
                 </div>
                 <!-- /.box-footer -->
+
             </form>
         </div>
     </div>

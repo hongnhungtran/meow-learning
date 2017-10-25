@@ -9,7 +9,7 @@ use App\Level;
 use App\CommonTestQuestion;
 use App\CommonTestAnswer;
 
-class CommonTestController extends Controller
+class CommonTestLessonController extends Controller
 {
     public function __construct()
     {
@@ -28,7 +28,7 @@ class CommonTestController extends Controller
 
         $levels = Level::all();
 
-        return view('admin.common-test.list', compact('common_tests', 'levels'))
+        return view('admin.common-test.lessonList', compact('common_tests', 'levels'))
         ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -41,7 +41,7 @@ class CommonTestController extends Controller
     {
         $levels = Level::all();
         
-        return view('admin.common-test.add', compact('levels'));
+        return view('admin.common-test.lessonAdd', compact('levels'));
     }
 
     /**
@@ -121,7 +121,7 @@ class CommonTestController extends Controller
         //question number
         $num = 1;
 
-        return view('admin.common-test.show', compact('lesson', 'num', 'test_content', 'common_test_question'));
+        return view('admin.common-test.testShow', compact('lesson', 'num', 'test_content', 'common_test_question'));
     }
 
     /**

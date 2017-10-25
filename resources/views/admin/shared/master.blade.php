@@ -99,4 +99,23 @@ $("#test_content").on( "click", "#question_answer_add_button", function() {
 
 	</script>
 
+
+<script>
+	function readURL(input) {
+    	if (input.files && input.files[0]) {
+        	var reader = new FileReader();
+
+	        reader.onload = function (e) {
+	            $('#imgPreview').attr('src', e.target.result);
+	        }
+
+        	reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgInput").change(function(){
+	    readURL(this);
+	});
+
+</script>
 @stop
