@@ -4,9 +4,9 @@
     <small>Lesson</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Vocabulary</a></li>
-    <li class="active">Mângement</li>
+    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="/admin/vocabulary">Vocabulary</a></li>
+    <li class="active">Management</li>
 </ol>
 @stop @section('content')
 <!-- Small boxes (Stat box) -->
@@ -95,7 +95,5 @@
 
 </div>
 <!-- /.row -->
-
-<!-- =========================================================== -->
 
 @stop
