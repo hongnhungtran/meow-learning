@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Topic;
+use App\Lesson;
+use App\Level;
 
 class ReadingController extends Controller
 {
+    public function __construct()
+    {
+        $this->reading_course_id = 4;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,10 @@ class ReadingController extends Controller
      */
     public function index()
     {
-        //
+        $reading_lessons = Topic::where('course_id', $this->reading_course_id)->paginate(10);
+        
+        return view('admin.reading.lessonList', compact('reading_lessons'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

@@ -20,7 +20,15 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('weather', 'WeatherController');
 });
 
-Route::resource('crud', 'CRUDController');
+Route::get('/_debugbar/assets/stylesheets', [
+    'as' => 'debugbar-css',
+    'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@css'
+]);
+
+Route::get('/_debugbar/assets/javascript', [
+    'as' => 'debugbar-js',
+    'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
+]);
 
 /**
  * Admin Route
@@ -28,7 +36,7 @@ Route::resource('crud', 'CRUDController');
 
 Route::group(['prefix' => 'admin'], function () {
     //Home
-    Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
+    Route::get('/', ['as' => 'admin-home', 'uses' => 'Admin\ManagementController@home']);
     
     //Course
     require(__DIR__ . "/admin/vocabulary.php");
@@ -46,7 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => '/'], function () {
     //Home
-    Route::get('/', ['as' => 'getLevelList', 'uses' => 'User\VocabularyController@getLevelList']);
+    Route::get('/', ['as' => 'user-home', 'uses' => 'User\UserController@home']);
     
     //Course
     require(__DIR__ . "/user/vocabulary.php");
@@ -62,11 +70,14 @@ Route::group(['prefix' => '/'], function () {
 /**
  * Google Drive
  */
+
+//upload to ggdrive
 Route::get('put', function () {
     Storage::cloud()->put('test.txt', 'Hello World');
     return 'File was saved to Google Drive';
 });
 
+//list up data in ggdrive, JSON
 Route::get('list', function () {
     $dir = '/';
     $recursive = false; // Get subdirectories also?
@@ -76,6 +87,7 @@ Route::get('list', function () {
     return $contents->where('type', '=', 'file'); // files
 });
 
+//list up forlder
 Route::get('list-folder-contents', function () {
     // The human readable folder name to get the contents of...
     // For simplicity, this folder is assumed to exist in the root directory.
@@ -107,6 +119,7 @@ Route::get('list-folder-contents', function () {
             return [$filename => $path];
         });
 });
+
 
 Route::get('get', function () {
     $filename = 'test.txt';

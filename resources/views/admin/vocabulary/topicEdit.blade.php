@@ -1,14 +1,20 @@
-@extends('admin.shared.master') @section('title', 'Add New Lesson') @section('content_header')
+@extends('admin.shared.master') 
+
+@section('title', 'Add New Lesson') 
+
+@section('content_header')
 <h1>
-    Vocabulary Course
-    <small>Add New</small>
+    Vocabulary Topic
+    <small>Edit</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="{{ url('admin/vocabulary') }}">Lesson</a></li>
     <li class="active">Add</li>
 </ol>
-@stop @section('content')
+@stop 
+
+@section('content')
 <div class="row">
     <!-- left column -->
     <div class="col-md-12">
@@ -28,17 +34,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{action('Admin\VocabularyController@vocabulary_topic_update', $id)}}">
-                {{csrf_field()}} @foreach ($errors->all() as $error)
-                <p class="alert alert-danger">{{ $error }}</p>
-                @endforeach
+            <form class="form-horizontal" method="post" action="{{ action('Admin\VocabularyTopicController@vocabulary_topic_update', $id) }}">
+                {{csrf_field()}} 
 
                 <div class="box-body">
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title"  value="{!! $vocabulary_topic->topic_title !!}">
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title"  value="{!! $vocabulary_topic->topic_title !!}">
                         </div>
                     </div>
 
@@ -46,7 +50,7 @@
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content" value="{!! $vocabulary_topic->topic_content !!}">
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value="{!! $vocabulary_topic->topic_content !!}">
                         </div>
                     </div>
 
@@ -56,7 +60,7 @@
                             <select class="form-control" name="level">
 								@if ($levels->count())
 								@foreach($levels as $level)
-								<option value="{{ $level->level_id }}">{{ $level->level_name }}</option> 
+								    <option value="{{ $level->level_id }}" {{ $level->level_id == $vocabulary_topic->level_id ? 'selected="selected"' : '' }}>{{ $level->level_name }}</option> 
 								@endforeach   
 								@endif
 							</select>
@@ -64,9 +68,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Image</label>
+                        <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            <input type="file" id="">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="topic_image_link" value="{!! $vocabulary_topic->topic_image_link !!}">
+
+                                @if ($errors->has('topic_image_link'))
+                                    @foreach($errors->get('topic_image_link') as $error)
+                                         <p class="text-red">{!! $error !!}</p>
+                                    @endforeach
+                                @endif
                         </div>
                     </div>
                 </div>
@@ -74,7 +84,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Add</button>
+                    <button type="submit" class="btn btn-info pull-right">Update</button>
                 </div>
                 <!-- /.box-footer -->
             </form>

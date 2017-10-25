@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row">
     <div class="col-sm-12 pull-center well">
         <form class="form-inline" action="#" method="POST">
             <center>
@@ -11,7 +11,6 @@
                     <option>Category</option>
                     <option>Category</option>
                 </select>
-
 
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">

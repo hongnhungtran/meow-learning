@@ -1,20 +1,15 @@
-<?<?php 
+<?php 
 
 Route::group(['prefix' => 'vocabulary'], function () {
-        // Index
-	Route::get('/', ['as' => 'management', 'uses' => 'Admin\VocabularyController@vocabulary_management']);
+        // Level list
+	Route::get('/', ['as' => 'vocabulary-level', 'uses' => 'User\VocabularyController@get_level_list']);
 
-         //Topic
-	Route::get('topic', ['as' => 'vocabulary.topic.list', 'uses' => 'Admin\VocabularyController@vocabulary_topic_index']);
-	Route::get('topic/create', ['as' => 'vocabulary.topic.create', 'uses' => 'Admin\VocabularyController@vocabulary_topic_create']);
-	Route::post('topic/create', ['as' => 'vocabulary.topic.store', 'uses' => 'Admin\VocabularyController@vocabulary_topic_store']);
-	Route::get('topic/edit/{id}', ['as' => 'vocabulary.topic.edit', 'uses' => 'Admin\VocabularyController@vocabulary_topic_edit']);
-	Route::post('topic/edit/{id}', ['as' => 'vocabulary.topic.update', 'uses' => 'Admin\VocabularyController@vocabulary_topic_update']);
+         //Topic list
+	Route::get('/level/{id}/', ['as' => 'vocabulary-topic-list', 'uses' => 'User\VocabularyController@get_topic_list']);
 
-        //Lesson
-	Route::get('lesson', ['as' => 'get_lesson_list', 'uses' => 'Admin\VocabularyController@get_lesson_list']);
-	Route::get('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
-	Route::post('lesson/create', ['as' => 'topicList', 'uses' => 'Admin\VocabularyController@create_lesson']);
+	Route::get('/topic/{id}', ['as' => 'vocabulary-lesson-list', 'uses' => 'User\VocabularyController@get_lesson_list']);
+        //Lesson list
+	Route::get('/lesson/{id}', ['as' => 'vocabulary-exercise', 'uses' => 'User\VocabularyController@get_exercise']);
 
         //Excercise
 });
