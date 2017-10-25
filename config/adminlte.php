@@ -111,63 +111,91 @@ return [
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'url'  => '',
             'icon' => 'user',
         ],
         [
             'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'url'  => '',
             'icon' => 'lock',
         ],
         'USER MANAGEMENT',
         [
             'text'        => 'All User',
-            'url'         => 'admin/ratings',
+            'url'         => '',
             'icon'        => 'star-o',
             'label_color' => 'success',
         ],
         [
             'text'        => 'User Ratings',
-            'url'         => 'admin/ratings',
+            'url'         => '',
             'icon'        => 'star-o',
             'label_color' => 'success',
         ],
         'LEARNING MANAGEMENT',
         [
-            'text' => 'Vocabulary',
-            'url'  => 'admin/blog',
-            'icon' => 'heart',
-        ],
-        [
-            'text'        => 'Writing',
-            'url'         => 'admin/course',
-            'icon'        => 'heart',
-        ],
-        [
-            'text' => 'Speaking',
-            'url'  => 'admin/blog',
-            'icon' => 'heart',
-        ],
-        [
-            'text'        => 'Listening',
-            'url'         => 'admin/ratings',
-            'icon'        => 'heart',
-        ],
-                [
-            'text'        => 'Reading',
-            'url'         => 'admin/course',
-            'icon'        => 'heart',
-        ],
-        [
             'text' => 'Exam',
-            'url'  => 'admin/blog',
             'icon' => 'heart',
+            'submenu' => [
+                [
+                    'text'        => 'TOEIC',
+                    'url'         => 'admin/toeic',
+                    'icon'        => 'star-o',
+                ],
+                [
+                    'text' => 'TOEFL',
+                    'url'  => 'admin/toefl',
+                    'icon' => 'star-o',
+                ],
+                [
+                    'text'        => 'EILTS',
+                    'url'         => 'admin/eilts',
+                    'icon'        => 'star-o',
+                ],
+                [
+                    'text'        => 'Common',
+                    'url'         => 'admin/common-test',
+                    'icon'        => 'star-o',
+                ]
+            ]
         ],
         [
             'text'        => 'Document',
-            'url'         => 'admin/ratings',
+            'url'         => 'admin/document',
             'icon'        => 'heart',
+        ],
+        [
+            'text' => 'Course',
+            'icon' => 'heart',
+            'submenu' => [
+                [
+                    'text'        => 'Vocabulary',
+                    'url'         => 'admin/vocabulary',
+                    'icon'        => 'star-o',
+                ],
+                [
+                    'text'        => 'Writing',
+                    'url'         => 'admin/writing',
+                    'icon'        => 'star-o',
+                ],
+                [
+                    'text' => 'Speaking',
+                    'url'  => 'admin/speaking',
+                    'icon' => 'star-o',
+                ],
+                [
+                    'text'        => 'Listening',
+                    'url'         => 'admin/listening',
+                    'icon'        => 'star-o',
+                ],
+                [
+                    'text'        => 'Reading',
+                    'url'         => 'admin/reading',
+                    'icon'        => 'star-o',
+                ],
+            ]
         ]
+            
     ],
 
     /*

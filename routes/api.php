@@ -21,16 +21,42 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-
+	/**
+	 * Test
+	 */
 	$api->get('test', function () {
 		return 'It is ok';
 	});
 
 	$api->get('user', 'App\Http\Controllers\User\UserController@index');
 	$api->get('book', 'App\Http\Controllers\BookController@index');
-	$api->get('book/{id}', 'App\Http\Controllers\BookController@show');
+	$api->get('book/book_id={id}', 'App\Http\Controllers\BookController@show');
 
-	$api->get('admin/vocabulary/topic', 'App\Http\Controllers\Admin\VocabularyTopicController@vocabulary_topic_api');
-	$api->get('admin/vocabulary/topic/{id}', 'App\Http\Controllers\Admin\VocabularyTopicController@show');
+	/**
+	 * Vocabulary
+	 */
+	$api->get('vocabulary/topic', 'App\Http\Controllers\Admin\VocabularyController@vocabulary_topic_api');
+	$api->get('vocabulary/topic/topic_id={id}', 'App\Http\Controllers\Admin\VocabularyController@vocabulary_topic_current_api');
 
+	$api->get('vocabulary/lesson', 'App\Http\Controllers\Admin\VocabularyController@vocabulary_lesson_api');
+
+	/**
+	 * Listening
+	 */
+	
+	/**
+	 * Speaking
+	 */
+
+	/**
+	 * Reading
+	 */
+	
+	/**
+	 * Writing
+	 */
+	
+	/**
+	 * TOEFL
+	 */
 }); 

@@ -4,6 +4,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="{{ asset('public/css/user/shared.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/vocabulary.css') }}" rel="stylesheet">
 
@@ -12,10 +13,15 @@
 
     <style type="text/css">
         body {
-            background-image: url("public/img/common/cat-background-1.jpg") !important;
+            background-image: url("{{ asset('public/img/common/cat-background-1.jpg') }}") !important;
             background-color: #ffffff;
             min-width: 1000px;
             min-height: 600px;
+        }
+
+        .container {
+            padding-right: 0px;!important;
+            padding-left: 0px;!important;
         }
 
     </style>
@@ -28,10 +34,12 @@
     <script src="{{ asset('public/js/user/vocabularyLessionList.js') }}"></script>
 </head>
 <body>
-
 @include('user.shared.header')
 
+<div class="container" style="background-color: rgba(255, 255, 255, 0.7);">
+@include('user.shared.menu')
 @yield('content')
+</div>
 
 @include('user.shared.footer')
 

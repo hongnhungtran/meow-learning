@@ -4,87 +4,60 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Topic;
+use App\Lesson;
+use App\Level;
+use App\Vocabulary;
+use App\Course;
 
 class VocabularyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->vocabulary_course_id = 1;
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get_level_list() 
+    { 
+        $levels = Level::all();
+        $courses = Course::all();
+
+        $course = Course::find($this->vocabulary_course_id);
+        return view('user.vocabulary.levelList', compact('levels', 'courses', 'course'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function get_topic_list($id) 
     {
-        //
+        $topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->vocabulary_course_id)
+            ->where('topic.level_id', $id)
+            ->paginate(10);
+        $level = Level::find($id);
+        $course = Course::find($this->vocabulary_course_id);
+        $num=1;
+
+        return view('user.vocabulary.topicList', compact('topics', 'num', 'level', 'course'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function get_lesson_list($id) 
     {
-        //
+        $lessons = Lesson::join('topic', 'lesson.topic_id', '=', 'topic.topic_id')
+            ->where('topic.topic_id', $id)
+            ->paginate(10);
+
+        $topic = Topic::find($id);
+        $course = Course::find($this->vocabulary_course_id);
+        $num=1;
+        return view('user.vocabulary.lessonList', compact('lessons', 'topic', 'num', 'course'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function get_exercise($id) 
     {
-        //
+        $lesson = Lesson::find($id);
+        return view('user.vocabulary.exercise', compact('lesson'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function getLevelList() 
-    {
-        return  view('user.vocabulary.levelList');
-    }
 }

@@ -1,5 +1,4 @@
 <?php 
-Route::group(['prefix' => 'writing'], function () {
-	Route::get('/', ['as' => '', 'uses' => 'Admin\WritingController@lessonAddNew']);
-	Route::get('', ['as' => '', 'uses' => 'Admin\WritingController@lessonAddNew']);
-});
+
+Route::get('/writing', ['as' => 'writing-management', 'uses' => 'Admin\ManagementController@writing_management']);
+Route::resource('/writing/lesson', 'Admin\WritingLessonController');

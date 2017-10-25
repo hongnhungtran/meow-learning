@@ -1,6 +1,6 @@
 @extends('admin.shared.master') 
 
-@section('title', 'Add New Lesson') 
+@section('title', 'Add New Topic') 
 
 @section('content_header')
 <h1>
@@ -34,14 +34,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post"  action="{{route('vocabulary.topic.store')}}">
+            <form class="form-horizontal" method="post"  action="{{route('topic.store')}}">
                 {{csrf_field()}} 
                 <div class="box-body">
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="vocabulary_topic_title">
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title" value={{ old('topic_title') }}>
 
                                 @if ($errors->has('topic_title'))
                                     @foreach($errors->get('topic_title') as $error)
@@ -49,14 +49,13 @@
                                     @endforeach
                                 @endif
 
-
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="vocabulary_topic_content">
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value={{ old('topic_content') }}>
 
                                 @if ($errors->has('topic_content'))
                                     @foreach($errors->get('topic_content') as $error)
@@ -79,9 +78,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Image</label>
+                        <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            <input type="file" id="">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="topic_image_link" value={{ old('topic_image_link') }}>
+
+                                @if ($errors->has('topic_image_link'))
+                                    @foreach($errors->get('topic_image_link') as $error)
+                                         <p class="text-red">{!! $error !!}</p>
+                                    @endforeach
+                                @endif
+                            <h5>Or select image</h5>
+                            <input type="file" name="files[]" id="" multiple>
                         </div>
                     </div>
                 </div>
