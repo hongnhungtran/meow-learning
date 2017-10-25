@@ -34,7 +34,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="patch" action="{{ action('Admin\VocabularyTopicController@update', $vocabulary_topic->vocabulary_id) }}">
+            <form class="form-horizontal" method="post" action="{{ action('Admin\VocabularyTopicController@vocabulary_topic_update', $id) }}">
                 {{csrf_field()}} 
 
                 <div class="box-body">

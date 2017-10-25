@@ -30,7 +30,7 @@
     text-align: center;
     font: 300 2.25em $lato;
     text-transform: uppercase;
-    
+
     strong {
       font-weight: 400;
       color: #ea4c4c;
@@ -42,7 +42,7 @@
     text-align: center;  
     font: 300 0.7em $lato; 
     text-transform: uppercase;  
-    
+
     strong {    
       font-weight: 400;   
     }
@@ -84,7 +84,7 @@
       &:last-child {
         margin-right: 0;
       }
-      
+
       >span {
         position: absolute;
         left: 0;
@@ -119,7 +119,7 @@
 
       .bottom {  
         z-index: 1;
-        
+
         &:before {
           content: "";
           position: absolute;
@@ -177,10 +177,10 @@
 
 </style>
 <script type="text/javascript">
-  
+
   // Create Countdown
   var Countdown = {
-    
+
   // Backbone-like structure
   $el: $('.countdown'),
   
@@ -190,7 +190,7 @@
   
   // Initialize the countdown  
   init: function() {
-    
+
     // DOM
     this.$ = {
       hours  : this.$el.find('.bloc-time.hours .figure'),
@@ -213,7 +213,7 @@
   },
   
   count: function() {
-    
+
     var that    = this,
     $hour_1 = this.$.hours.eq(0),
     $hour_2 = this.$.hours.eq(1),
@@ -259,7 +259,7 @@
   },
   
   animateFigure: function($el, value) {
-    
+
    var that         = this,
    $top         = $el.find('.top'),
    $bottom      = $el.find('.bottom'),
@@ -287,7 +287,7 @@
       }
     });
 
-    TweenMax.to($back_top, 0.8, { 
+    TweenMax.to($back_top, 0.8, {
       rotationX           : 0,
       transformPerspective: 300,
       ease                : Quart.easeOut, 
@@ -296,7 +296,7 @@
   },
   
   checkHour: function(value, $el_1, $el_2) {
-    
+
     var val_1       = value.toString().charAt(0),
     val_2       = value.toString().charAt(1),
     fig_1_value = $el_1.find('.top').html(),

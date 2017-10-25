@@ -8,8 +8,8 @@
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Topic</a></li>
+    <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{ url('/admin/vocabulary/topic') }}">Topic</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
@@ -20,11 +20,11 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Table</h3>
+                <h3 class="box-title">Vocabulary Topic Data Table</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <p> There is no vocabulary lesson.</p>
+                <p> There is no vocabulary topic.</p>
             </div>
         </div>
     </div>  
@@ -35,12 +35,12 @@
         <!-- Horizontal Form -->
         <div class="box box-info">
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="GET" action="{{ route('vocabulary.topic.index') }}">
                 <div class="box-body">
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Topic title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Topic title">
+                            <input type="text" class="form-control" id="" placeholder="Enter Topic Title For Search" name="topic_title" value="{{ old('topic_title') }}">
                         </div>
                     </div>
 
@@ -66,9 +66,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
-                <div class="box-tools">
-                    {!! $vocabulary_topics->links() !!}
-                </div>
+                <a href="{!! action('Admin\VocabularyTopicController@create') !!}"><button type="button" class="btn bg-orange pull-right">Create Topic</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -111,7 +109,10 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <!-- footer -->
+                <div class="dataTables_info col-sm-5" >Showing 1 to 10 of 57 entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $vocabulary_topics->links() !!}
+                </div>
             </div>
           </div>
         </div>
