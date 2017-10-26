@@ -10,6 +10,7 @@ use App\Level;
 use App\Vocabulary;
 use Storage;
 use File;
+use Session;
 
 class VocabularyTopicController extends Controller
 {
@@ -81,7 +82,7 @@ class VocabularyTopicController extends Controller
         //get file information
         $file = $request->file('upload_image');
 
-        if($request->hasFile('upload_image')){
+        if($request->hasFile('upload_image') && empty($request->get('topic_image_link'))){
             //Upload image file
             //foreach ($files as $file) {
             $filename = $file->getClientOriginalName();
@@ -111,7 +112,7 @@ class VocabularyTopicController extends Controller
             ]);
             $vocabulary_topic->save();
             //}
-        } else {
+        } elseif ($request->hasFile('upload_image') === false && !empty($request->get('topic_image_link'))) {
             $vocabulary_topic = new Topic([
                 'course_id' => $this->vocabulary_course_id,
                 'level_id' => (int)$request->get('level'),
@@ -120,6 +121,8 @@ class VocabularyTopicController extends Controller
                 'topic_image_link' => $request->get('topic_image_link')
             ]);
             $vocabulary_topic->save();
+        } elseif($request->hasFile('upload_image') && !empty($request->get('topic_image_link'))){
+            Session::flash('status', 'Only upload by input link or select image');
         }
 
         return redirect()->route('vocabulary.topic.index')

@@ -81,6 +81,11 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Image</label>
                         <div class="col-sm-9">
+                            @if (session('status'))
+                                <div class="alert alert-success" id="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
                             <input type="text" class="form-control" id="" placeholder="Image Link" name="topic_image_link" value={{ old('topic_image_link') }}>
 
                                 @if ($errors->has('topic_image_link'))
