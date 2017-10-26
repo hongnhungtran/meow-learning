@@ -36,7 +36,7 @@ Route::get('/_debugbar/assets/javascript', [
 
 Route::group(['prefix' => 'admin'], function () {
     //Home
-    Route::get('/', ['as' => 'admin-home', 'uses' => 'Admin\ManagementController@home']);
+    Route::get('/', ['as' => 'admin.home', 'uses' => 'Admin\ManagementController@home']);
     
     //Course
     require(__DIR__ . "/admin/vocabulary.php");
@@ -120,7 +120,7 @@ Route::get('list-folder-contents', function () {
         });
 });
 
-
+//download file
 Route::get('get', function () {
     $filename = 'test.txt';
 
@@ -143,11 +143,13 @@ Route::get('get', function () {
         ->header('Content-Disposition', "attachment; filename='$filename'");
 });
 
+//Create new folder
 Route::get('create-dir', function () {
     Storage::cloud()->makeDirectory('Test Dir');
     return 'Directory was created in Google Drive';
 });
 
+//Upload file to folder
 Route::get('put-in-dir', function () {
     $dir = '/';
     $recursive = false; // Get subdirectories also?
@@ -166,6 +168,7 @@ Route::get('put-in-dir', function () {
         return 'File was created in the sub directory in Google Drive';
 });
 
+//get newest file
 Route::get('newest', function () {
     $filename = 'test.txt';
 

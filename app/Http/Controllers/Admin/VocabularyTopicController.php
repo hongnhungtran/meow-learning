@@ -8,6 +8,8 @@ use App\Topic;
 use App\Lesson;
 use App\Level;
 use App\Vocabulary;
+use Storage;
+use File;
 
 class VocabularyTopicController extends Controller
 {
@@ -50,7 +52,7 @@ class VocabularyTopicController extends Controller
     public function create()
     {
         $levels = Level::all();
-
+        
         return view('admin.vocabulary.topicAdd', compact('levels'));
     }
 
@@ -62,22 +64,65 @@ class VocabularyTopicController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'topic_title' => 'required|unique:topic',
-            'topic_content' => 'required|unique:topic',
-            'topic_image_link' => 'required|unique:topic'
-        ]);
+        //If has image file -> validate
+        if($request->hasFile('upload_image')) {
+            request()->validate([
+                'topic_title' => 'required|unique:topic',
+                'topic_content' => 'required|unique:topic'
+            ]);
+        } else {
+            request()->validate([
+                'topic_title' => 'required|unique:topic',
+                'topic_content' => 'required|unique:topic',
+                'topic_image_link' => 'required|unique:topic'
+            ]);
+        }
 
-        $vocabulary_topic = new Topic([
-            'course_id' => $this->vocabulary_course_id,
-            'level_id' => (int)$request->get('level'),
-            'topic_title' => $request->get('topic_title'),
-            'topic_content' => $request->get('topic_content'),
-            'topic_image_link' => $request->get('topic_image_link'),
-        ]);
-        $vocabulary_topic->save();
+        //get file information
+        $file = $request->file('upload_image');
 
-        return redirect()->route('topic.index')
+        if($request->hasFile('upload_image')){
+            //Upload image file
+            //foreach ($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $disk = Storage::disk('google'); 
+            $result = $disk->put($filename, File::get($file));
+
+            $dir = '/';
+            $recursive = false; // Get subdirectories also?
+            $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+
+            $image = $contents
+                ->where('type', '=', 'file')
+                ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+                ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+                ->first(); // there can be duplicate file names!
+
+            //Create image link
+            $topic_image_link = "https://drive.google.com/uc?export=view&id=".$image['path'];
+            
+            //Insert to DB
+            $vocabulary_topic = new Topic([
+                'course_id' => $this->vocabulary_course_id,
+                'level_id' => (int)$request->get('level'),
+                'topic_title' => $request->get('topic_title'),
+                'topic_content' => $request->get('topic_content'),
+                'topic_image_link' => $topic_image_link 
+            ]);
+            $vocabulary_topic->save();
+            //}
+        } else {
+            $vocabulary_topic = new Topic([
+                'course_id' => $this->vocabulary_course_id,
+                'level_id' => (int)$request->get('level'),
+                'topic_title' => $request->get('topic_title'),
+                'topic_content' => $request->get('topic_content'),
+                'topic_image_link' => $request->get('topic_image_link')
+            ]);
+            $vocabulary_topic->save();
+        }
+
+        return redirect()->route('vocabulary.topic.index')
             ->with('status', 'Vocabulary topic created successfully');
     }
 
@@ -154,7 +199,7 @@ class VocabularyTopicController extends Controller
             $topic->save();
         }
 
-        return redirect()->route('topic.index')
+        return redirect()->route('vocabulary.topic.index')
             ->with('success', 'Topic deleted successfully');
     }
 }
