@@ -69,35 +69,6 @@ INSERT INTO `books` VALUES (1,'book_title','19.99','author_name','editor_name','
 UNLOCK TABLES;
 
 --
--- Table structure for table `common_test_answer`
---
-
-DROP TABLE IF EXISTS `common_test_answer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `common_test_answer` (
-  `common_test_answer_id` int(11) NOT NULL,
-  `common_test_question_id` int(11) DEFAULT NULL,
-  `common_test_answer_num` int(11) DEFAULT NULL,
-  `common_test_answer` text COLLATE utf8mb4_unicode_ci,
-  `common_test_answer_flag` text COLLATE utf8mb4_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`common_test_answer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `common_test_answer`
---
-
-LOCK TABLES `common_test_answer` WRITE;
-/*!40000 ALTER TABLE `common_test_answer` DISABLE KEYS */;
-INSERT INTO `common_test_answer` VALUES (1,1,1,'AAAAAAAAA','1',NULL,NULL),(2,1,2,'BBBBBBBBBBBBBBBBBB','0','2017-10-18 00:00:00',NULL),(3,1,3,'CCC','0',NULL,NULL),(4,1,4,'DD','0',NULL,NULL),(5,2,1,'AAAA','1',NULL,NULL),(6,2,2,'bb','0',NULL,NULL),(7,2,3,'ttrybjy','0',NULL,NULL),(8,2,4,'ytnyj','0',NULL,NULL);
-/*!40000 ALTER TABLE `common_test_answer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `common_test_question`
 --
 
@@ -108,6 +79,10 @@ CREATE TABLE `common_test_question` (
   `common_test_question_id` int(11) NOT NULL,
   `lesson_id` int(11) DEFAULT NULL,
   `common_test_question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `option_1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `option_2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `option_3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `option_4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`common_test_question_id`)
@@ -120,7 +95,7 @@ CREATE TABLE `common_test_question` (
 
 LOCK TABLES `common_test_question` WRITE;
 /*!40000 ALTER TABLE `common_test_question` DISABLE KEYS */;
-INSERT INTO `common_test_question` VALUES (1,1,'abfdbfd',NULL,NULL),(2,1,'dbdgvb ',NULL,NULL),(3,1,'desnbernebeedn ',NULL,NULL);
+INSERT INTO `common_test_question` VALUES (1,1,'abfdbfd',NULL,NULL,NULL,NULL,NULL,NULL),(2,1,'dbdgvb ',NULL,NULL,NULL,NULL,NULL,NULL),(3,1,'desnbernebeedn ',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `common_test_question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-30 15:59:47
+-- Dump completed on 2017-10-30 16:05:48
