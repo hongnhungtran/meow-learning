@@ -37,32 +37,52 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 				<h2 class="text-center">{{ $lesson->lesson_title }}</h2>
-				
-				@foreach ($test_content as $key => $value)
-					<div class="col-md-12">
-						<h5><b>{{ $num++ }}. {{ $common_test_question->get_question_content($key) }}</b></h5>
-					</div>
-            			@foreach ($value as $key => $answer) 
+				@if ($questions->isEmpty())
+				    <div class="col-xs-12">
+				        <div class="box">
+				            <div class="box-body">
+				                <p> There is no question.</p>
+				            </div>
+				        </div>
+				    </div>  
+				@else
+					@foreach ($questions as $question)
+					<div class="col-xs-12">
+				        <div class="box">
+				            <div class="box-body">
 
-								<div class="col-md-6">
-									<h5>{{ $answer->answer_num_name }}. {{ $answer->common_test_answer }}</h5>
+								<div class="col-md-12">
+									<h5><b>{{ $num++ }}. {{ $question->common_test_question }}</b></h5>
 								</div>
-	
-						@endforeach				
-				@endforeach
-
-
+								<div class="col-md-12">
+									<div class="col-md-6">
+										<h5>A. {{ $question->option_1 }}</h5>
+									</div>
+									<div class="col-md-6">
+										<h5>B. {{ $question->option_2 }}</h5>
+									</div>
+									<div class="col-md-6">
+										<h5>C. {{ $question->option_3 }}</h5>
+									</div>
+									<div class="col-md-6">
+										<h5>D. {{ $question->option_4 }}</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endforeach
+				@endif
+			</div>
+			<div class="box-footer">
+				<button type="submit" class="btn btn-default">Close</button>
+				<a href="{{ route('common-test.question.index') }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
+				<button type="submit" class="btn btn-success pull-right">CSV Download</button>
+			</div>
+			<!-- /.box-footer -->
 		</div>
 		<!-- /.box-body -->
-		<div class="box-footer">
-			<button type="submit" class="btn btn-default">Close</button>
-			<button type="submit" class="btn btn-info pull-right">Edit</button>
-			<button type="submit" class="btn btn-success pull-right">CSV Download</button>
-		</div>
-		<!-- /.box-footer -->
-	</form>
-</div>
-</div>
+	</div>
 <!-- /.box -->
 </div>
 <!-- ./row -->

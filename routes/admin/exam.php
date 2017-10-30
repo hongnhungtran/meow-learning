@@ -4,5 +4,18 @@ Route::group(['prefix' => 'exam'], function () {
 	Route::get('lessionList', ['as' => '', 'uses' => 'Admin\VocabularyController@lessonAddNew']);
 });
 
-Route::resource('common-test', 'Admin\CommonTestLessonController');
-Route::resource('common-test', 'Admin\CommonTestQuestionController');
+	//Lesson
+	Route::get('common-test', ['as' => 'common-test.lesson.index', 'uses' => 'Admin\CommonTestLessonController@index']);
+ 	Route::get('common-test/create', ['as' => 'common-test.lesson.create', 'uses' => 'Admin\CommonTestLessonController@create']);
+	Route::post('common-test/create', ['as' => 'common-test.lesson.store', 'uses' => 'Admin\CommonTestLessonController@store']);
+	Route::get('common-test/{id}/edit', ['as' => 'common-test.lesson.edit', 'uses' => 'Admin\CommonTestLessonController@edit']);
+	Route::post('common-test/{id}/edit', ['as' => 'common-test.lesson.update', 'uses' => 'Admin\CommonTestLessonController@update']);
+	Route::get('common-test/{id}', ['as' => 'common-test.lesson.show', 'uses' => 'Admin\CommonTestLessonController@show']);
+
+	//Question
+	Route::get('common-test/question', ['as' => 'common-test.question.index', 'uses' => 'Admin\CommonTestQuestionController@index']);
+ 	Route::get('common-test/question/create', ['as' => 'common-test.question.create', 'uses' => 'Admin\CommonTestQuestionController@create']);
+	Route::post('common-test/question/create', ['as' => 'common-test.question.store', 'uses' => 'Admin\CommonTestQuestionController@store']);
+	Route::get('common-test/question/{id}/edit', ['as' => 'common-test.question.edit', 'uses' => 'Admin\CommonTestQuestionController@edit']);
+	Route::post('common-test/question/{id}/edit', ['as' => 'common-test.question.update', 'uses' => 'Admin\CommonTestQuestionController@update']);
+	Route::get('common-test/question/{id}', ['as' => 'common-test.question.show', 'uses' => 'Admin\CommonTestQuestionController@show']);

@@ -126,7 +126,7 @@ class VocabularyLessonController extends Controller
             'lesson_image_link' => $request->get('lesson_image_link')
         ]);
 
-        return redirect()->route('lesson.index')
+        return redirect()->route('vocabulary.lesson.index')
             ->with('status', 'Vocabulary lesson updated successfully');
     }
 

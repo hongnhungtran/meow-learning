@@ -128,8 +128,8 @@
                             <td>{!! $common_test->lesson_content !!}</td>
                             <td>{!! $common_test->lesson_flag !!}</td>
                             <td>
-                                <a href="{!! action('Admin\CommonTestController@edit', $common_test->lesson_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="{!! action('Admin\CommonTestController@show', $common_test->lesson_id) !!}" class="btn btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\CommonTestLessonController@edit', $common_test->lesson_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\CommonTestLessonController@show', $common_test->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

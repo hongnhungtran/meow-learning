@@ -13,7 +13,12 @@ class CommonTestQuestion extends Model
     protected $fillable = [
     	'common_test_question_id',
     	'lesson_id',
-    	'common_test_question'
+    	'common_test_question',
+        'option_1',
+        'option_2',
+        'option_3',
+        'option_4'
+
     ];
 
     public function common_test_answer()
