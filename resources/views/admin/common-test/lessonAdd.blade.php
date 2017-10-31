@@ -36,23 +36,17 @@
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			<form class="form-horizontal" method="post" action="{{ route('common-test.store') }}">
+			<form class="form-horizontal" method="post" action="{{ route('common-test.lesson.store') }}">
 				{{csrf_field()}}
-
-				<div class="box-body">
-					<blockquote>
-						<p class="text-green">Fill the test information</p>
-					</blockquote>
-				</div>
 
 				<div class="box-body">
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Test Title</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Test Title" name="test_title" value={{old('test_title') }}>
+							<input type="text" class="form-control" id="" placeholder="Test Title" name="lesson_title" value={{old('lesson_title') }}>
 
-							@if ($errors->has('test_title')) 
-							@foreach($errors->get('test_title') as $error)
+							@if ($errors->has('lesson_title')) 
+							@foreach($errors->get('lesson_title') as $error)
 							<p class="text-red">{!! $error !!}</p>
 							@endforeach 
 							@endif
@@ -62,10 +56,10 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Test Content</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Test Content" name="test_content" value={{old('test_content') }}>
+							<input type="text" class="form-control" id="" placeholder="Test Content" name="lesson_content" value={{old('lesson_content') }}>
 
-							@if ($errors->has('test_content')) 
-							@foreach($errors->get('test_content') as $error)
+							@if ($errors->has('lesson_content')) 
+							@foreach($errors->get('lesson_content') as $error)
 							<p class="text-red">{!! $error !!}</p>
 							@endforeach 
 							@endif
@@ -84,104 +78,27 @@
 							</select>
 						</div>
 					</div>
-				</div>
 
-				<div class="box-body">
-					<blockquote>
-						<p class="text-green">Fill question and answer</p>
-					</blockquote>
-				</div>
+					<div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Image Link</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Image Link" name="lesson_image_link" value={{ old('lesson_image_link') }}>
 
-				<!-- Test content -->
-				<div class="box-body" id="test_content">
-					<div id="question_area">
-						<!-- Question Area -->
-						<div class="form-group">
-							<!-- Question label -->
-							<div class="col-md-12">
-								<button class="btn bg-olive pull-right margin" id="question_answer_add_button">Add</button>
-								<button class="btn btn-danger pull-right margin">Delete</button>
-							</div>
-							
-							<label class="col-md-12" for="" id="question_label"><h4>Questions<span>0</span></h4></label>
-							<!-- Question input -->
-							<div class="col-md-12">
-								<input type="text" class="form-control" id="common_test_question[]" placeholder="Question 1" name="common_test_question[]" value={{old('common_test_question') }}>
-								
-								@if ($errors->has('common_test_question')) 
-								@foreach($errors->get('common_test_question') as $error)
-								<p class="text-red">{!! $error !!}</p>
-								@endforeach 
-								@endif
-							</div>
-						</div>
-						<!-- Answer Area -->
-						<div class="form-group">
-							<div class="col-md-6 form-group">
-								<div class="col-sm-1">
-									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
-								</div>
-								<label for="" class="col-sm-1 control-label">A.</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="answer_a[]" placeholder="Question 1 - A" name="answer_a[]">
-									@if ($errors->has('answer_a')) 
-									@foreach($errors->get('answer_a') as $error)
-									<p class="text-red">{!! $error !!}</p>
-									@endforeach 
-									@endif
-								</div>
-							</div>
-							<div class="col-md-6 form-group">
-								<div class="col-sm-1">
-									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
-								</div>
-								<label for="" class="col-sm-1 control-label">B.</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="answer_b[]" placeholder="Question 1 - B" name="answer_b[]">
-									@if ($errors->has('answer_b')) 
-									@foreach($errors->get('answer_b') as $error)
-									<p class="text-red">{!! $error !!}</p>
-									@endforeach 
-									@endif
-								</div>
-							</div>
-							<div class="col-md-6 form-group">
-								<div class="col-sm-1">
-									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
-								</div>
-								<label for="" class="col-sm-1 control-label">C.</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="answer_c[]" placeholder="Question 1 - C" name="answer_c[]">
-									@if ($errors->has('answer_c')) 
-									@foreach($errors->get('answer_c') as $error)
-									<p class="text-red">{!! $error !!}</p>
-									@endforeach 
-									@endif
-								</div>
-							</div>
-							<div class="col-md-6 form-group">
-								<div class="col-sm-1">
-									<input type="radio" name="option_a" id="" value="option_a" style="margin-top: 11px;">
-								</div>
-								<label for="" class="col-sm-1 control-label">D.</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="answer_d[]" placeholder="Question 1 - D" name="answer_d[]">
-									@if ($errors->has('answer_d')) 
-									@foreach($errors->get('answer_d') as $error)
-									<p class="text-red">{!! $error !!}</p>
-									@endforeach 
-									@endif
-								</div>
-							</div>
-						</div>
-					</div>
+                            @if ($errors->has('lesson_image_link')) 
+                                @foreach($errors->get('lesson_image_link') as $error)
+                                    <p class="text-red">{!! $error !!}</p>
+                                @endforeach 
+                            @endif
+                            <h5>Or select image</h5>
+                            <input type="file" name="files[]" id="" multiple>
+                        </div>
+                    </div>
 				</div>
-			</div>
 
 			<!-- /.box-body -->
 			<div class="box-footer">
 				<button type="submit" class="btn btn-default">Cancel</button>
-				<button type="submit" class="btn btn-info pull-right">Add Common Test</button>
+				<button type="submit" class="btn btn-info pull-right">Create</button>
 			</div>
 			<!-- /.box-footer -->
 		</form>

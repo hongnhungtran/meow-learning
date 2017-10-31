@@ -17,129 +17,69 @@
 
 @section('content')
 <div class="row">
-    @if ($common_tests->isEmpty())
+    @if ($questions->isEmpty())
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Table</h3>
+                <h3 class="box-title">Common Test {{ $lesson_title }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <p> There is no Common Test.</p>
+                <p> There is no Question.</p>
             </div>
         </div>
     </div>  
 
     @else
-    <!-- search form -->
-    <div class="col-md-12">
-        <!-- Horizontal Form -->
-        <div class="box box-info">
-            <!-- form start -->
-            <form class="form-horizontal" action="" method="GET">
-                <div class="box-body">
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test ID</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test ID" name="test_id">
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test title</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test title" name="test_title">
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test content</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test content" name="test_content">
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Category</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" name="level">
-                                @if ($levels->count()) 
-                                @foreach($levels as $level)
-                                <option value="{{ $level->level_id }}">{{ $level->level_name }}</option>
-                                @endforeach 
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test status</label>
-                        <div class="col-sm-4">
-                            <input type="checkbox">Enable
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="checkbox">Disable 
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-right">Search</button>
-                </div>
-                <!-- /.box-footer -->
-            </form>
-        </div>
-        <!-- /.box -->
-    </div>
-
-    <!-- register form -->
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Table</h3>
-                <div class="box-tools">
-                    {!! $common_tests->links() !!}
-                </div>
+                <h3 class="box-title">Common Test {{ $lesson_title }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                
-                @if ($message = Session::get('status'))
-                <div class="alert alert-success" id="alert">
-                    <p>{{ $message }}</p>
-                </div>
+                <h2 class="text-center">{{ $lesson_title }}</h2>
+                @if ($questions->isEmpty())
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <p> There is no question.</p>
+                            </div>
+                        </div>
+                    </div>  
+                @else
+                    @foreach ($questions as $question)
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h5><b>{{ $num++ }}. {{ $question->common_test_question }}</b></h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <h5>A. {{ $question->option_1 }}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>B. {{ $question->option_2 }}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>C. {{ $question->option_3 }}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>D. {{ $question->option_4 }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
+                            </div>
+                        </div>
+                    </div>
+                     @endforeach
                 @endif
-
-                <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Test ID</th>
-                            <th>Level</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($common_tests as $common_test)
-                        <tr>
-                            <td>{!! $common_test->lesson_id !!} </td>
-                            <td>{!! $common_test->level_name !!} </td>
-                            <td>{!! $common_test->lesson_title !!}</td>
-                            <td>{!! $common_test->lesson_content !!}</td>
-                            <td>{!! $common_test->lesson_flag !!}</td>
-                            <td>
-                                <a href="{!! action('Admin\CommonTestController@edit', $common_test->lesson_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="{!! action('Admin\CommonTestController@show', $common_test->lesson_id) !!}" class="btn btn-primary">Detail</a> 
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-
-                </table>
-                
             </div>
-            <!-- /.box-body -->
+            <!-- /.box-footer -->
         </div>
         <!-- /.box -->
     </div>

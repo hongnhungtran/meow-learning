@@ -68,7 +68,7 @@ class CommonTestLessonController extends Controller
 
         $common_test->save();
 
-        return redirect()->route('common-test')
+        return redirect()->route('common-test.lesson.index')
             ->with('status', 'Test lesson created successfully');
       }
 
@@ -86,11 +86,13 @@ class CommonTestLessonController extends Controller
 
         //lesson
         $lesson = Lesson::find($id);
+        $lesson_title = $lesson->lesson_title;
+        $lesson_id = $lesson->lesson_id;
 
         //question number
         $num = 1;
 
-        return view('admin.common-test.testShow', compact('lesson', 'num', 'questions'));
+        return view('admin.common-test.testShow', compact('lesson_title', 'lesson_id','num', 'questions'));
     }
 
     /**
@@ -103,12 +105,9 @@ class CommonTestLessonController extends Controller
     {
         $levels = Level::all();
 
-        $topics = Topic::where('course_id', $this->common_test_course_id)
-        ->get();
-
         $common_test = Lesson::find($id);
 
-        return view('admin.common-test.lessonEdit', compact('common_test', 'levels', 'id', 'topics'));
+        return view('admin.common-test.lessonEdit', compact('common_test', 'levels', 'id'));
     }
 
     /**
@@ -128,14 +127,13 @@ class CommonTestLessonController extends Controller
 
         Lesson::find($id)->update([
             'level_id' => (int)$request->get('level'),
-            'topic_id' => (int)$request->get('topic'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
             'lesson_image_link' => $request->get('lesson_image_link')
         ]);
 
         return redirect()->route('common-test.lesson.index')
-            ->with('status', 'Vocabulary lesson updated successfully');
+            ->with('status', 'Lesson updated successfully');
     }
 
     /**

@@ -95,9 +95,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
-                <div class="box-tools">
-                    {!! $common_tests->links() !!}
-                </div>
+                <a href="{!! action('Admin\CommonTestLessonController@create') !!}"><button type="button" class="btn bg-orange pull-right">Create Common Test</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -139,6 +137,12 @@
                 
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="dataTables_info col-sm-5" >Showing 1 to 10 of 57 entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $common_tests->links() !!}
+                </div>
+            </div>
         </div>
         <!-- /.box -->
     </div>

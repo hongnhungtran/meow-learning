@@ -23,11 +23,15 @@ class CommonTestQuestionController extends Controller
      */
     public function index($id)
     {
-        $questions = Lesson::where('lesson_id', $id)
+        $questions = CommonTestQuestion::where('lesson_id', $id)
             ->get();
 
-        return view('admin.common-test.questionList', compact('questions'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+        $lesson = Lesson::find($id);
+        $lesson_title = $lesson->lesson_title;
+        $lesson_id = $lesson->lesson_id;
+
+        $num = 1;
+        return view('admin.common-test.questionList', compact('questions', 'lesson_title', 'lesson_id', 'num'));
     }
 
     /**
@@ -90,7 +94,9 @@ class CommonTestQuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = CommonTestQuestion::find($id);
+
+        return view('admin.common-test.questionEdit', compact('question', 'id'));
     }
 
     /**
@@ -102,7 +108,24 @@ class CommonTestQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'common_test_question' => 'required',
+            'option_1' => 'required',
+            'option_2' => 'required',
+            'option_3' => 'required',
+            'option_4' => 'required'
+        ]);
+
+        CommonTestQuestion::find($id)->update([
+            'common_test_question' => (int)$request->get('common_test_question'),
+            'option_1' => $request->get('option_1'),
+            'option_2' => $request->get('option_2'),
+            'option_3' => $request->get('option_3'),
+            'option_4' => $request->get('option_4')
+        ]);
+
+        return redirect()->route('common-test.question.index')
+            ->with('status', 'Lesson updated successfully');
     }
 
     /**
