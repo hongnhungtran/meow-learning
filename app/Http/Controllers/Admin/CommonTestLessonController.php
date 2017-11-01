@@ -64,6 +64,7 @@ class CommonTestLessonController extends Controller
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
             'lesson_image_link' => $request->get('lesson_image_link'),
+            'lesson_flag' => 1
         ]);
 
         $common_test->save();

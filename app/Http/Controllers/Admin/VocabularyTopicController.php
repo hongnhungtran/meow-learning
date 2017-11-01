@@ -108,7 +108,8 @@ class VocabularyTopicController extends Controller
                 'level_id' => (int)$request->get('level'),
                 'topic_title' => $request->get('topic_title'),
                 'topic_content' => $request->get('topic_content'),
-                'topic_image_link' => $topic_image_link 
+                'topic_image_link' => $topic_image_link ,
+                'topic_flag' => 1
             ]);
             $vocabulary_topic->save();
             //}
@@ -118,7 +119,8 @@ class VocabularyTopicController extends Controller
                 'level_id' => (int)$request->get('level'),
                 'topic_title' => $request->get('topic_title'),
                 'topic_content' => $request->get('topic_content'),
-                'topic_image_link' => $request->get('topic_image_link')
+                'topic_image_link' => $request->get('topic_image_link'),
+                'topic_flag' => 1
             ]);
             $vocabulary_topic->save();
         } elseif($request->hasFile('upload_image') && !empty($request->get('topic_image_link'))){

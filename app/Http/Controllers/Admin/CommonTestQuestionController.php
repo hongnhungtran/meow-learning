@@ -124,7 +124,7 @@ class CommonTestQuestionController extends Controller
             'option_4' => $request->get('option_4')
         ]);
 
-        return redirect()->route('common-test.question.index')
+        return redirect()->view('admin.common-test.questionList')
             ->with('status', 'Lesson updated successfully');
     }
 
