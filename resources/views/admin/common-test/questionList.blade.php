@@ -17,20 +17,6 @@
 
 @section('content')
 <div class="row">
-    @if ($questions->isEmpty())
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Common Test {{ $lesson_title }}</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <p> There is no Question.</p>
-            </div>
-        </div>
-    </div>  
-
-    @else
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
@@ -72,7 +58,9 @@
                             </div>
 
                             <div class="box-footer">
-                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
+                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-danger pull-right">Delete</button></a>
+                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-info pull-right" style="margin-right: 15px;">Edit</button></a>
+                                <a href="{{ action('Admin\CommonTestQuestionController@create', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">Create New Question</button></a>
                             </div>
                         </div>
                     </div>
@@ -84,7 +72,6 @@
         <!-- /.box -->
     </div>
 <!-- /.col -->
-    @endif
 </div>
 <!-- /.row -->
 @stop

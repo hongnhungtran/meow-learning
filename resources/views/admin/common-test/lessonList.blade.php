@@ -109,12 +109,12 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Test ID</th>
-                            <th>Level</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="col-xs-1">Test ID</th>
+                            <th class="col-xs-1">Level</th>
+                            <th class="col-xs-3">Title</th>
+                            <th class="col-xs-4">Content</th>
+                            <th class="col-xs-1">Status</th>
+                            <th class="col-xs-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -138,7 +138,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <div class="dataTables_info col-sm-5" >Showing 1 to 10 of 57 entries</div>
+                <div class="dataTables_info col-sm-5" >Showing {{($common_tests->currentpage()-1)*$common_tests->perpage()+1}} to {{(($common_tests->currentpage()-1)*$common_tests->perpage())+$common_tests->count()}} of {{$common_tests->total()}} entries</div>
                 <div class="box-tools col-sm-7">
                     {!! $common_tests->links() !!}
                 </div>

@@ -13,9 +13,9 @@ Route::group(['prefix' => 'exam'], function () {
 	Route::get('common-test/{id}', ['as' => 'common-test.lesson.show', 'uses' => 'Admin\CommonTestLessonController@show']);
 
 	//Question
-	Route::get('common-test/{id}/question', ['as' => 'common-test.question.index', 'uses' => 'Admin\CommonTestQuestionController@index']);
- 	Route::get('common-test/{id}/question/create', ['as' => 'common-test.question.create', 'uses' => 'Admin\CommonTestQuestionController@create']);
-	Route::post('common-test/{id}/question/create', ['as' => 'common-test.question.store', 'uses' => 'Admin\CommonTestQuestionController@store']);
-	Route::get('common-test/question/{id}/edit', ['as' => 'common-test.question.edit', 'uses' => 'Admin\CommonTestQuestionController@edit']);
-	Route::post('common-test/question/{id}/edit', ['as' => 'common-test.question.update', 'uses' => 'Admin\CommonTestQuestionController@update']);
-	Route::get('common-test/question/{id}', ['as' => 'common-test.question.show', 'uses' => 'Admin\CommonTestQuestionController@show']);
+	Route::get('common-test/{lesson_id}/question', ['as' => 'common-test.question.index', 'uses' => 'Admin\CommonTestQuestionController@index']);
+ 	Route::get('common-test/{lesson_id}/question/create', ['as' => 'common-test.question.create', 'uses' => 'Admin\CommonTestQuestionController@create']);
+	Route::post('common-test/{lesson_id}/question/create', ['as' => 'common-test.question.store', 'uses' => 'Admin\CommonTestQuestionController@store']);
+	Route::get('common-test/{lesson_id}/question/{question_id}/edit', ['as' => 'common-test.question.edit', 'uses' => 'Admin\CommonTestQuestionController@edit']);
+	Route::post('common-test/{lesson_id}/question/{question_id}/edit', ['as' => 'common-test.question.update', 'uses' => 'Admin\CommonTestQuestionController@update']);
+	Route::get('common-test/{lesson_id}/question/{question_id}', ['as' => 'common-test.question.show', 'uses' => 'Admin\CommonTestQuestionController@show']);

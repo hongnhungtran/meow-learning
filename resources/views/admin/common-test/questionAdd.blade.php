@@ -37,7 +37,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-                <form class="form-horizontal" method="post" action="{{ route('common-test.question.store') }}">
+                <form class="form-horizontal" method="post" action="{{ action('Admin\CommonTestQuestionController@store', $lesson_id) }}">
                 {{csrf_field()}}
                  <div class="box-body">
 

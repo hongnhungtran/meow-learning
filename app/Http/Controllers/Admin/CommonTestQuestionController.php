@@ -41,7 +41,7 @@ class CommonTestQuestionController extends Controller
      */
     public function create()
     {
-        return view('admin.common-test.questionAdd', compact('levels', 'topics'));
+        return view('admin.common-test.questionAdd', compact('lesson_id'));
     }
 
     /**
@@ -50,7 +50,7 @@ class CommonTestQuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         request()->validate([
             'common_test_question' => 'required',
@@ -61,7 +61,7 @@ class CommonTestQuestionController extends Controller
         ]);
 
         $common_test = new CommonTestQuestion([
-            'course_id' => $this->common_test_course_id,
+            'lesson_id' => $id,
             'common_test_question' => $request->get('common_test_question'),
             'option_1' => $request->get('option_1'),
             'option_2' => $request->get('option_2'),
@@ -124,7 +124,7 @@ class CommonTestQuestionController extends Controller
             'option_4' => $request->get('option_4')
         ]);
 
-        return redirect()->view('admin.common-test.questionList')
+        return redirect()->route('common-test.question.index', compact('id'))
             ->with('status', 'Lesson updated successfully');
     }
 

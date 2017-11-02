@@ -8,7 +8,7 @@
     <small>Panel</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ route('admin-home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 </ol>
 @stop 
 

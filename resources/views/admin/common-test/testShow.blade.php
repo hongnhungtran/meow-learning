@@ -72,7 +72,7 @@
 			<div class="box-footer">
 				<button type="submit" class="btn btn-default">Close</button>
 				<a href="{{ action('Admin\CommonTestQuestionController@index', $lesson_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
-				<button type="submit" class="btn btn-success pull-right">CSV Download</button>
+				<button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">CSV Download</button>
 			</div>
 			<!-- /.box-footer -->
 		</div>
