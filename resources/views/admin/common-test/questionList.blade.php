@@ -58,8 +58,8 @@
                             </div>
 
                             <div class="box-footer">
-                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-danger pull-right">Delete</button></a>
-                                <a href="{{ action('Admin\CommonTestQuestionController@edit', $question->common_test_question_id) }}"><button type="submit" class="btn btn-info pull-right" style="margin-right: 15px;">Edit</button></a>
+                                <a href="#"><button type="submit" class="btn btn-danger pull-right">Delete</button></a>
+                                <a href="{{ action('Admin\CommonTestQuestionController@edit', [$lesson_id, $question->common_test_question_id]) }}"><button type="submit" class="btn btn-info pull-right" style="margin-right: 15px;">Edit</button></a>
                                 <a href="{{ action('Admin\CommonTestQuestionController@create', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">Create New Question</button></a>
                             </div>
                         </div>

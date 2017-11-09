@@ -33,6 +33,12 @@ $api->version('v1', function ($api) {
 	$api->get('book/book_id={id}', 'App\Http\Controllers\BookController@show');
 
 	/**
+	 * common test
+	 */
+	
+	$api->get('v1/common-test/lesson', 'App\Http\Controllers\API\CommonTestAPIController@getLessonList');
+
+	/**
 	 * Vocabulary
 	 */
 	$api->get('vocabulary/topic', 'App\Http\Controllers\Admin\VocabularyController@vocabulary_topic_api');

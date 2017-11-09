@@ -15,9 +15,13 @@ class CommonTestQuestion extends Model
     	'lesson_id',
     	'common_test_question',
         'option_1',
+        'option_1_flag',
         'option_2',
+        'option_2_flag',
         'option_3',
-        'option_4'
+        'option_3_flag',
+        'option_4',
+        'option_4_flag'
 
     ];
 

@@ -36,7 +36,6 @@
             <!-- form start -->
             <form class="form-horizontal" method="post" action="{{action('Admin\CommonTestLessonController@update', $common_test->lesson_id)}}">
                 {{csrf_field()}} 
-                
                 <div class="box-body">
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Lesson Title</label>
@@ -57,9 +56,9 @@
                         <div class="col-sm-9">
                             <select class="form-control" name="level">
 								@if ($levels->count())
-								@foreach($levels as $level)
-								    <option value="{{ $level->level_id }}" {{ $level->level_id == $common_test->level_id ? 'selected="selected"' : '' }}>{{ $level->level_name }}</option> 
-								@endforeach   
+    								@foreach($levels as $level)
+    								    <option value="{{ $level->level_id }}" {{ $level->level_id == $common_test->level_id ? 'selected="selected"' : '' }} > {{ $level->level_name }} </option> 
+    								@endforeach   
 								@endif
 							</select>
                         </div>

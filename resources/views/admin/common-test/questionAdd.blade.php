@@ -43,10 +43,10 @@
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="" placeholder="Question" name="question" value={{ old('question') }}>
+                            <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value={{ old('common_test_question') }}>
 
-                            @if ($errors->has('question')) 
-                            @foreach($errors->get('question') as $error)
+                            @if ($errors->has('common_test_question')) 
+                            @foreach($errors->get('common_test_question') as $error)
                             <p class="text-red">{!! $error !!}</p>
                             @endforeach 
                             @endif
@@ -55,8 +55,15 @@
                     
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="col-sm-1 control-label">A.</label>
-                            <div class="col-sm-11">
+                            <div class="col-md-1">
+                                <select class="form-control" name="answer">
+                                <option value="0">X</option>
+                                <option value="1">O</option>
+                            </select>
+                            </div>
+                            
+                            <label for="" class="col-md-1 control-label">A.</label>
+                            <div class="col-md-10">
                                 <input type="text" class="form-control" id="" placeholder="Answer A" name="option_1" value={{ old('option_1') }}>
 
                                 @if ($errors->has('option_1')) 

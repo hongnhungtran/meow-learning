@@ -11,15 +11,19 @@ use App\CommonTestAnswer;
 
 class CommonTestLessonController extends Controller
 {
+    /**
+     * Common Test Category ID　定義
+     */
     public function __construct()
     {
         $this->common_test_course_id = 10;
     }
     /**
-     * Display a listing of the resource.
+     * Common Test Lesson List　表示
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
@@ -33,7 +37,7 @@ class CommonTestLessonController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Common Test Lesson 作成フォーム表示
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,7 +49,7 @@ class CommonTestLessonController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Common Test Lesson 作成、DBに書き込む
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +78,7 @@ class CommonTestLessonController extends Controller
       }
 
     /**
-     * Display the specified resource.
+     * Common Test　テスト形式表示、Word ダウンロードできる
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -97,7 +101,7 @@ class CommonTestLessonController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Common Test Lesson 情報編集フォーム表示
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -112,7 +116,7 @@ class CommonTestLessonController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Common Test Lesson 更新、DBに書き込む
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -126,7 +130,7 @@ class CommonTestLessonController extends Controller
             'lesson_image_link' => 'required',
         ]);
 
-        Lesson::find($id)->update([
+        $lesson = Lesson::find($id)->update([
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
@@ -138,7 +142,7 @@ class CommonTestLessonController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Common Test Lesson 非表示
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

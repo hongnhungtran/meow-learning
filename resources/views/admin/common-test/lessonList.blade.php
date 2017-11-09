@@ -111,7 +111,8 @@
                         <tr>
                             <th class="col-xs-1">Test ID</th>
                             <th class="col-xs-1">Level</th>
-                            <th class="col-xs-3">Title</th>
+                            <th class="col-xs-1">Image</th>
+                            <th class="col-xs-2">Title</th>
                             <th class="col-xs-4">Content</th>
                             <th class="col-xs-1">Status</th>
                             <th class="col-xs-2">Action</th>
@@ -122,6 +123,7 @@
                         <tr>
                             <td>{!! $common_test->lesson_id !!} </td>
                             <td>{!! $common_test->level_name !!} </td>
+                            <td><img src="{!! $common_test->lesson_image_link !!}" height="42" width="42"></td>
                             <td>{!! $common_test->lesson_title !!}</td>
                             <td>{!! $common_test->lesson_content !!}</td>
                             <td>{!! $common_test->lesson_flag !!}</td>
@@ -132,9 +134,7 @@
                         </tr>
                         @endforeach
                     </tbody>
-
                 </table>
-                
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
