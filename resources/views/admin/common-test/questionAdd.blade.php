@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value={{ old('common_test_question') }}>
+                            <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value="{{ old('common_test_question') }}">
 
                             @if ($errors->has('common_test_question')) 
                             @foreach($errors->get('common_test_question') as $error)
@@ -55,16 +55,12 @@
                     
                     <div class="col-md-6">
                         <div class="form-group">
-                            <div class="col-md-1">
-                                <select class="form-control" name="answer">
-                                <option value="0">X</option>
-                                <option value="1">O</option>
-                            </select>
-                            </div>
-                            
                             <label for="" class="col-md-1 control-label">A.</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="" placeholder="Answer A" name="option_1" value={{ old('option_1') }}>
+                            <div class="input-group col-md-11">
+                                <span class="input-group-addon">
+                                    <input type="radio" name="answer" value="option_1_flag">
+                                </span>
+                                <input type="text" class="form-control" id="" placeholder="Answer A" name="option_1" value="{{ old('option_1') }}">
 
                                 @if ($errors->has('option_1')) 
                                 @foreach($errors->get('option_1') as $error)
@@ -78,8 +74,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">B.</label>
-                            <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer B" name="option_2" value={{ old('option_2') }}>
+                            <div class="input-group col-md-11">
+                                <span class="input-group-addon">
+                                    <input type="radio" name="answer" value="option_2_flag">
+                                </span>
+                                <input type="text" class="form-control" id="" placeholder="Answer B" name="option_2" value="{{ old('option_2') }}">
 
                                 @if ($errors->has('option_2')) 
                                 @foreach($errors->get('option_2') as $error)
@@ -93,8 +92,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">C.</label>
-                            <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer C" name="option_3" value={{ old('option_3') }}>
+                            <div class="input-group col-md-11">
+                                <span class="input-group-addon">
+                                    <input type="radio" name="answer" value="option_3_flag">
+                                </span>
+                                <input type="text" class="form-control" id="" placeholder="Answer C" name="option_3" value="{{ old('option_3') }}">
 
                                 @if ($errors->has('option_3')) 
                                 @foreach($errors->get('option_3') as $error)
@@ -108,8 +110,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">D.</label>
-                            <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer D" name="option_4" value={{ old('option_4') }}>
+                            <div class="input-group col-md-11">
+                                <span class="input-group-addon">
+                                    <input type="radio" name="answer" value="option_4_flag">
+                                </span>
+                                <input type="text" class="form-control" id="" placeholder="Answer D" name="option_4" value="{{ old('option_4') }}">
 
                                 @if ($errors->has('option_4')) 
                                 @foreach($errors->get('option_4') as $error)
@@ -133,57 +138,60 @@
     <!-- /.box -->
 
     <!-- Excercise 1 -->
-    <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <h3 class="box-title">
-                    Add Excercise
-                    <small>Add single word for seleted lession</small>
-                </h3>
-                <!-- tools box -->
-                <div class="pull-right box-tools">
-                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-                <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
-                <form>
-                    <textarea id="editor1" name="editor1" rows="10" cols="80">
-
-                    </textarea>
-                    <script type="text/javascript" src="../../vendor/ckeditor/ckeditor.js"></script>
-                    <script type="text/javascript" src="../../vendor/ckfinder/ckfinder.js"></script>
-                    <script type="text/javascript">
-                        var editor = CKEDITOR
-                        .replace(
-                            'editor1',
-                            {
-                                language : 'en',
-                                filebrowserBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html',
-                                filebrowserImageBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Images',
-                                filebrowserFlashBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Flash',
-                                filebrowserUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                                filebrowserImageUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                                filebrowserFlashUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-                            });
-                        CKFinder.setupCKEditor(editor, '../');
-                    </script>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-info pull-right">Add</button>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Add Excercise
+                        <small>Add single word for seleted lession</small>
+                    </h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
                     </div>
-                    <!-- /.box-footer -->
-                </form>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <form>
+                        <textarea id="editor1" name="editor1" rows="10" cols="80">
+
+                        </textarea>
+                        <script type="text/javascript" src="../../vendor/ckeditor/ckeditor.js"></script>
+                        <script type="text/javascript" src="../../vendor/ckfinder/ckfinder.js"></script>
+                        <script type="text/javascript">
+                            var editor = CKEDITOR
+                            .replace(
+                                'editor1',
+                                {
+                                    language : 'en',
+                                    filebrowserBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html',
+                                    filebrowserImageBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Images',
+                                    filebrowserFlashBrowseUrl : '../../public/vendor/ckfinder/ckfinder.html?type=Flash',
+                                    filebrowserUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                    filebrowserImageUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                    filebrowserFlashUploadUrl : '../../public/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                                });
+                            CKFinder.setupCKEditor(editor, '../');
+                        </script>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-info pull-right">Add</button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </form>
+                </div>
             </div>
+            <!-- /.box -->
         </div>
-        <!-- /.box -->
     </div>
+
 </div>
 @stop
 

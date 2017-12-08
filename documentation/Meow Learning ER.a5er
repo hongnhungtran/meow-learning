@@ -69,15 +69,19 @@ Field="common_test_question_id","common_test_question_id","",,0,"","",$FFFFFFFF,
 Field="lesson_id","lesson_id","",,,"","",$FFFFFFFF,""
 Field="common_test_question","common_test_question","",,,"","",$FFFFFFFF,""
 Field="common_test_option_1","common_test_option_1","",,,"","",$FFFFFFFF,""
+Field="option_1_flag","option_1_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_2","common_test_option_2","",,,"","",$FFFFFFFF,""
+Field="option_2_flag","option_2_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_3","common_test_option_3","",,,"","",$FFFFFFFF,""
+Field="option_3_flag","option_3_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_4","common_test_option_4","",,,"","",$FFFFFFFF,""
+Field="option_4_flag","option_4_flag","",,,"","",$FFFFFFFF,""
 Field="created_at","created_at","",,,"","",$FFFFFFFF,""
 Field="updated_at","updated_at","",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20171102130040
+ModifiedDateTime=20171109182608
 Position="MAIN",2200,1450
 
 [Relation]

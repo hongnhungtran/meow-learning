@@ -35,25 +35,26 @@
         <!-- Horizontal Form -->
         <div class="box box-info">
             <!-- form start -->
-            <form class="form-horizontal" action="" method="GET">
+            <form class="form-horizontal" action="{{ action('Admin\CommonTestLessonController@searchLesson') }}" method="POST">
+                {{csrf_field()}}
                 <div class="box-body">
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Test ID</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test ID" name="test_id">
+                            <input type="text" class="form-control" id="lesson_id" placeholder="Test ID" name="lesson_id" value="{{ old('lesson_id') }}">
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Test title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test title" name="test_title">
+                            <input type="text" class="form-control" id="lesson_title" placeholder="Test title" name="lesson_title" value="{{ old('lesson_title') }}">
                         </div>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Test content</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Test content" name="test_content">
+                            <input type="text" class="form-control" id="lesson_content" placeholder="Test content" name="lesson_content" value="{{ old('lesson_content') }}">
                         </div>
                     </div>
 
@@ -150,4 +151,20 @@
     @endif
 </div>
 <!-- /.row -->
+@stop
+
+
+@section('js')
+<script type="text/javascript">
+    $(function()
+    {
+        $( "#id" ).autocomplete({
+            source: "admin/common-test/search",
+            minLength: 3,
+            select: function(event, ui) {
+                $('#q').val(ui.item.value);
+            }
+        });
+    });
+</script>
 @stop

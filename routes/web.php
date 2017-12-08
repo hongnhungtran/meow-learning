@@ -30,13 +30,23 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
+
 /**
  * Admin Route
  */
 
 Route::group(['prefix' => 'admin'], function () {
+    //Register
+    Route::get('/user/register', [
+        'as' => 'user.register', 
+        'uses' => 'Auth\RegisterController'
+    ]);
+
     //Home
-    Route::get('/', ['as' => 'admin.home', 'uses' => 'Admin\ManagementController@home']);
+    Route::get('/', [
+        'as' => 'admin.home', 
+        'uses' => 'Admin\ManagementController@home'
+    ]);
     
     //Course
     require(__DIR__ . "/admin/vocabulary.php");
@@ -54,7 +64,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => '/'], function () {
     //Home
-    Route::get('/', ['as' => 'user-home', 'uses' => 'User\UserController@home']);
+    Route::get('/', [
+        'as' => 'user-home', 
+        'uses' => 'User\UserController@home'
+    ]);
     
     //Course
     require(__DIR__ . "/user/vocabulary.php");

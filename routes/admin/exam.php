@@ -10,6 +10,16 @@ Route::group(['prefix' => 'exam'], function () {
 		'uses' => 'Admin\CommonTestLessonController@index'
 	]);
 
+/*	Route::get('common-test/search', [
+		'as' => 'common-test.lesson.search', 
+		'uses' => 'Admin\CommonTestLessonController@searchLesson'
+	]);*/
+
+	Route::post('common-test/search', [
+		'as' => 'common-test.lesson.search', 
+		'uses' => 'Admin\CommonTestLessonController@searchLesson'
+	]);
+
  	Route::get('common-test/create', [
  		'as' => 'common-test.lesson.create', 
  		'uses' => 'Admin\CommonTestLessonController@create'

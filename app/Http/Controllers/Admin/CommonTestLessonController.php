@@ -27,13 +27,34 @@ class CommonTestLessonController extends Controller
     public function index()
     {
         $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
-        ->where('course_id', $this->common_test_course_id)
-        ->paginate(10);
+            ->where('course_id', $this->common_test_course_id)
+            ->paginate(10);
 
         $levels = Level::all();
 
         return view('admin.common-test.lessonList', compact('common_tests', 'levels'))
-        ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function searchLesson(Request $request)
+    {
+        $lesson_id = $request->get('lesson_id');
+        $lesson_title = $request->get('lesson_title');
+        $lesson_content = $request->get('lesson_content');
+
+        if (isset($lesson_id) || isset($lesson_id) || isset($lesson_id)) {
+            $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+                ->where('course_id', $this->common_test_course_id)
+                ->Where('lesson_id', 'LIKE', '%'.$lesson_id.'%')
+                ->Where('lesson_title', 'LIKE', '%'.$lesson_title.'%')
+                ->Where('lesson_content', 'LIKE', '%'.$lesson_content.'%')
+                ->paginate(10);
+        }
+        
+        $levels = Level::all();
+
+        return view('admin.common-test.lessonList', compact('common_tests', 'levels'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

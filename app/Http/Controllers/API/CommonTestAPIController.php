@@ -34,4 +34,47 @@ class CommonTestAPIController extends Controller
             200
         );
     }
+
+    public function showCurrentLesson($lesson_id)
+    {
+        if (!$lesson_id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+            ->find($lesson_id);
+
+        return response()->json([
+            $common_tests,
+        ], 200);
+    }
+
+    public function getQuestion($lesson_id)
+    {
+        if (!$lesson_id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $questions = CommonTestQuestion::where('lesson_id', $lesson_id)
+            ->get();
+
+        return response()->json([
+            $questions,
+        ], 200);
+    }
+
+    public function showCurrentQuestion($lesson_id, $question_id)
+    {
+        if (!$lesson_id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $question = CommonTestQuestion::where('lesson_id', $lesson_id)
+            ->where('common_test_question_id', $question_id)
+            ->get();
+
+        return response()->json([
+            $question,
+        ], 200);
+    }
 }

@@ -33,11 +33,18 @@ $api->version('v1', function ($api) {
 	$api->get('book/book_id={id}', 'App\Http\Controllers\BookController@show');
 
 	/**
-	 * common test
+	 * common test lesson
 	 */
 	
 	$api->get('v1/common-test/lesson', 'App\Http\Controllers\API\CommonTestAPIController@getLessonList');
+	$api->get('v1/common-test/lesson/lesson_id={lesson_id}', 'App\Http\Controllers\API\CommonTestAPIController@showCurrentLesson');
 
+	/**
+	 * common test lesson's question
+	 */
+	$api->get('v1/common-test/lesson/question/lesson_id={lesson_id}', 'App\Http\Controllers\API\CommonTestAPIController@getQuestion');
+	$api->get('v1/common-test/lesson/question/lesson_id={lesson_id}/question_id={question_id}', 'App\Http\Controllers\API\CommonTestAPIController@showCurrentQuestion');
+	
 	/**
 	 * Vocabulary
 	 */
