@@ -32,6 +32,11 @@ $api->version('v1', function ($api) {
 	$api->get('book', 'App\Http\Controllers\BookController@index');
 	$api->get('book/book_id={id}', 'App\Http\Controllers\BookController@show');
 
+
+	$api->get('grammar', 'App\Http\Controllers\GrammarController@index');
+	$api->get('grammar/{id}', 'App\Http\Controllers\GrammarController@show');
+
+
 	/**
 	 * Vocabulary
 	 */
