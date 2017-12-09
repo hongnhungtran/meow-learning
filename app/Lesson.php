@@ -21,21 +21,21 @@ class Lesson extends Model
 	    'lesson_content'
 	];
 
-    public function __construct()
+    /*public function __construct()
     {
         $this->writing_course_id = 5;
-    }
+    }*/
     
 	public function level()
     {
         return $this->belongsTo('App\Level');
     }
 
-    public function get_writing_lesson()
+   /* public function get_writing_lesson()
     {
         $writing_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
             ->where('course_id', $this->writing_course_id);
 
         return $writing_lessons;
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 Route::group(['prefix' => 'vocabulary'], function () {
     //Vocabulary management
-	Route::get('/', ['as' => 'vocabulary-management', 'uses' => 'Admin\ManagementController@vocabulary_management']);
+	Route::get('/', ['as' => 'vocabulary.management', 'uses' => 'Admin\ManagementController@vocabulary_management']);
 
 	//Topic
     Route::get('topic', ['as' => 'vocabulary.topic.index', 'uses' => 'Admin\VocabularyTopicController@index']);

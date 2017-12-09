@@ -22,7 +22,7 @@
 		<!-- Horizontal Form -->
 		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">Common Test {{ $lesson->lesson_title }}</h3>
+				<h3 class="box-title">Common Test {{ $lesson_title }}</h3>
 				<!-- tools box -->
 				<div class="pull-right box-tools">
 					<button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -36,33 +36,48 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<h2 class="text-center">{{ $lesson->lesson_title }}</h2>
-				
-				@foreach ($test_content as $key => $value)
-					<div class="col-md-12">
-						<h5><b>{{ $num++ }}. {{ $common_test_question->get_question_content($key) }}</b></h5>
+				<h2 class="text-center">{{ $lesson_title }}</h2>
+				@if ($questions->isEmpty())
+				    <div class="col-xs-12">
+				        <div class="box">
+				            <div class="box-body">
+				                <p> There is no question.</p>
+				            </div>
+				        </div>
+				    </div>  
+				@else
+					@foreach ($questions as $question)
+					<div class="col-xs-12">
+						<div class="col-md-12">
+							<h5><b>{{ $num++ }}. {{ $question->common_test_question }}</b></h5>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<h5>A. {{ $question->option_1 }}</h5>
+							</div>
+							<div class="col-md-6">
+								<h5>B. {{ $question->option_2 }}</h5>
+							</div>
+							<div class="col-md-6">
+								<h5>C. {{ $question->option_3 }}</h5>
+							</div>
+							<div class="col-md-6">
+								<h5>D. {{ $question->option_4 }}</h5>
+							</div>
+						</div>
 					</div>
-            			@foreach ($value as $key => $answer) 
-
-								<div class="col-md-6">
-									<h5>{{ $answer->answer_num_name }}. {{ $answer->common_test_answer }}</h5>
-								</div>
-	
-						@endforeach				
-				@endforeach
-
-
+					@endforeach
+				@endif
+			</div>
+			<div class="box-footer">
+				<button type="submit" class="btn btn-default">Close</button>
+				<a href="{{ action('Admin\CommonTestQuestionController@index', $lesson_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
+				<button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">CSV Download</button>
+			</div>
+			<!-- /.box-footer -->
 		</div>
 		<!-- /.box-body -->
-		<div class="box-footer">
-			<button type="submit" class="btn btn-default">Close</button>
-			<button type="submit" class="btn btn-info pull-right">Edit</button>
-			<button type="submit" class="btn btn-success pull-right">CSV Download</button>
-		</div>
-		<!-- /.box-footer -->
-	</form>
-</div>
-</div>
+	</div>
 <!-- /.box -->
 </div>
 <!-- ./row -->

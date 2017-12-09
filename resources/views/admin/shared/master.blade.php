@@ -101,21 +101,30 @@ $("#test_content").on( "click", "#question_answer_add_button", function() {
 
 
 <script>
-	function readURL(input) {
-    	if (input.files && input.files[0]) {
-        	var reader = new FileReader();
+	$(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
 
-	        reader.onload = function (e) {
-	            $('#imgPreview').attr('src', e.target.result);
-	        }
+        if (input.files) {
+            var filesAmount = input.files.length;
 
-        	reader.readAsDataURL(input.files[0]);
-		}
-	}
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
 
-	$("#imgInput").change(function(){
-	    readURL(this);
-	});
+                reader.onload = function(event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#gallery-photo-add').on('change', function() {
+        imagesPreview(this, 'div.gallery');
+    });
+});
 
 </script>
 @stop
