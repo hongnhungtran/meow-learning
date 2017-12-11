@@ -7,8 +7,6 @@ use Laravel\Scout\Searchable;
 
 class Topic extends Model
 {
-    use Searchable;
-
     protected $table = 'topic';
 
     protected $primaryKey = 'topic_id';
@@ -21,22 +19,6 @@ class Topic extends Model
         'topic_image_link',
 	    'topic_content'
     ];
-
-    public function searchableAs()
-    {
-        return 'topic_title';
-    }
-
-    public function toSearchableArray()
-    {
-        $search = collect($this->toArray())->only([
-            'topic_id',
-            'topic_title',
-            'topic_content'
-        ])->toArray();
-
-
-    }
 
 	public function level()
     {
