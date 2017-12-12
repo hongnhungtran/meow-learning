@@ -81,26 +81,27 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Listening ID</th>
-                            <th>Level</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="col-xs-1">Lesson ID</th>
+                            <th class="col-xs-1">Level</th>
+                            <th class="col-xs-1">Image</th>
+                            <th class="col-xs-2">Title</th>
+                            <th class="col-xs-4">Content</th>
+                            <th class="col-xs-1">Status</th>
+                            <th class="col-xs-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($listening_lessons as $listening_lesson)
                         <tr>
-                            <td>{!! $listening_lesson->lesson_id !!}</td>
-                            <td>{!! $listening_lesson->level_name !!}</td>
-                            <th><img src="{!! $listening_lesson->image_link !!}" height="42" width="42"></th>
-                            <td><div>{!! $listening_lesson->lesson_title !!}</div></td>
+                            <td>{!! $listening_lesson->lesson_id !!} </td>
+                            <td>{!! $listening_lesson->level_name !!} </td>
+                            <td><img src="{!! $listening_lesson->lesson_image_link !!}" height="42" width="42"></td>
+                            <td>{!! $listening_lesson->lesson_title !!}</td>
                             <td>{!! $listening_lesson->lesson_content !!}</td>
-                            <td>{!! $listening_lesson->lesson_status !!}</td>
+                            <td><span class="label label-{{ ($listening_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($listening_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\ListeningController@edit', $listening_lesson->lesson_id) !!}" class="btn btn-block btn-success">Edit</a>
+                                <a href="{!! action('Admin\ListeningLessonController@edit', $listening_lesson->lesson_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\ListeningExerciseController@show', $listening_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

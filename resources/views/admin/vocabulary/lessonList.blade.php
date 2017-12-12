@@ -1,6 +1,6 @@
 @extends('admin.shared.master') 
 
-@section('title', 'Lesson List') 
+@section('title', 'Vocabulary Lesson List') 
 
 @section('content_header')
 <h1>

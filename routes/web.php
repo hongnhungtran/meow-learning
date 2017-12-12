@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
     //Register
     Route::get('/user/register', [
         'as' => 'user.register', 
-        'uses' => 'Auth\RegisterController'
+        'uses' => 'Auth\RegisterController@create'
     ]);
 
     //Home

@@ -9,12 +9,8 @@ use App\Lesson;
 use App\Level;
 use App\Vocabulary;
 
-class WritingLessonController extends Controller
+class ReadingLessonController extends Controller
 {
-/*    public function __construct()
-    {
-        $this->writing_course_id = 5;
-    }*/
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +20,9 @@ class WritingLessonController extends Controller
     {
         $lesson = new Lesson;
         
-        $writing_lessons = $lesson->get_writing_lesson()->paginate(10);
+        $reading_lessons = $lesson->get_reading_lesson()->paginate(10);
 
-        return view('admin.writing.lessonList', compact('writing_lessons'))
+        return view('admin.reading.lessonList', compact('reading_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -39,7 +35,7 @@ class WritingLessonController extends Controller
     {
         $levels = Level::all();
 
-        return view('admin.writing.lessonAdd', compact('levels'));
+        return view('admin.reading.lessonAdd', compact('levels'));
     }
 
     /**
@@ -56,7 +52,7 @@ class WritingLessonController extends Controller
             'lesson_image_link' => 'required|unique:lesson'
         ]);
 
-        $writing_lesson = new Lesson([
+        $reading_lesson = new Lesson([
             'course_id' => $this->vocabulary_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
@@ -65,10 +61,10 @@ class WritingLessonController extends Controller
             'lesson_flag' => 1
         ]);
 
-        $writing_lesson->save();
+        $reading_lesson->save();
 
         return redirect()->back()
-            ->with('status', 'Writing lesson created successfully');
+            ->with('status', 'Reading lesson created successfully');
     }
 
     /**
@@ -79,7 +75,7 @@ class WritingLessonController extends Controller
      */
     public function show($id)
     {
-        return view('admin.writing.exerciseShow');
+        return view('admin.reading.exerciseShow');
     }
 
     /**
@@ -92,9 +88,9 @@ class WritingLessonController extends Controller
     {
         $levels = Level::all();
 
-        $writing_lesson = Lesson::find($id);
+        $reading_lesson = Lesson::find($id);
 
-        return view('admin.writing.lessonEdit', compact('writing_lesson', 'levels', 'id'));
+        return view('admin.reading.lessonEdit', compact('reading_lesson', 'levels', 'id'));
     }
 
     /**
@@ -120,8 +116,8 @@ class WritingLessonController extends Controller
             'lesson_image_link' => $request->get('lesson_image_link')
         ]);
 
-        return redirect()->route('writing-lesson-list')
-            ->with('status', 'Writing lesson updated successfully');
+        return redirect()->route('reading-lesson-list')
+            ->with('status', 'Reading lesson updated successfully');
     }
 
     /**
@@ -132,7 +128,7 @@ class WritingLessonController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 
     public function hide($id)
@@ -144,7 +140,7 @@ class WritingLessonController extends Controller
             $lesson->save();
         }
 
-        return redirect()->route('writing-lesson-list')
+        return redirect()->route('reading-lesson-list')
             ->with('success', 'Lesson hide successfully');
     }
 }
