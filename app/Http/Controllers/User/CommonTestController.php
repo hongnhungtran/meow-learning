@@ -16,7 +16,6 @@ class CommonTestController extends Controller
     public function __construct()
     {
         $this->common_test_course_id = 10;
-        
     }
 
     public function get_level_list() 

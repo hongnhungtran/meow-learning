@@ -26,8 +26,9 @@ class CommonTestLessonController extends Controller
     
     public function index()
     {
-        $lesson = new Lesson;
-        $common_tests = $lesson->get_common_test_lesson()->paginate(10);
+        $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
+            ->where('course_id', $this->common_test_course_id)
+            ->paginate(10);
 
         $levels = Level::all();
 
