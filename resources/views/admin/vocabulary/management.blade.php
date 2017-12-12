@@ -8,9 +8,9 @@
     <small>Management</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="/admin/vocabulary">Vocabulary</a></li>
-    <li class="active">Management</li>
+    <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li>Course</li>
+    <li class="active">Vocabulary</li>
 </ol>
 @stop 
 

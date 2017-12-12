@@ -4,9 +4,9 @@
     <small>Management</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-    <li><a href="#">Lesson</a></li>
-    <li class="active">List</li>
+    <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li>Course</li>
+    <li class="active">Speaking</li>
 </ol>
 @stop @section('content')
 <!-- Small boxes (Stat box) -->

@@ -9,13 +9,13 @@ use App\Lesson;
 use App\Level;
 use App\Vocabulary;
 
-class ListeningLessonController extends Controller
+class ToeicLessonController extends Controller
 {
     public function __construct()
     {
-        $this->listening_course_id = 2;
+        $this->toeic_course_id = 7;
     }
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -23,10 +23,9 @@ class ListeningLessonController extends Controller
     public function index()
     {
         $lesson = new Lesson;
-        
-        $listening_lessons = $lesson->get_listening_lesson()->paginate(10);
+        $toeic_lessons = $lesson->get_toeic_lesson()->paginate(10);
 
-        return view('admin.listening.lessonList', compact('listening_lessons'))
+        return view('admin.toeic.lessonList', compact('toeic_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -39,7 +38,7 @@ class ListeningLessonController extends Controller
     {
         $levels = Level::all();
 
-        return view('admin.listening.lessonAdd', compact('levels'));
+        return view('admin.toeic.lessonAdd', compact('levels'));
     }
 
     /**
@@ -56,8 +55,8 @@ class ListeningLessonController extends Controller
             'lesson_image_link' => 'required|unique:lesson'
         ]);
 
-        $listening_lesson = new Lesson([
-            'course_id' => $this->listening_course_id,
+        $toeic_lesson = new Lesson([
+            'course_id' => $this->toeic_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
@@ -65,10 +64,10 @@ class ListeningLessonController extends Controller
             'lesson_flag' => 1
         ]);
 
-        $listening_lesson->save();
+        $toeic_lesson->save();
 
-        return redirect()->route('listening-lesson-list')
-            ->with('status', 'Listening lesson created successfully');
+        return redirect()->route('toeic-lesson-list')
+            ->with('status', 'TOEIC lesson created successfully');
     }
 
     /**
@@ -79,7 +78,7 @@ class ListeningLessonController extends Controller
      */
     public function show($id)
     {
-        return view('admin.listening.exerciseShow');
+        return view('admin.toeic.exerciseShow');
     }
 
     /**
@@ -91,10 +90,9 @@ class ListeningLessonController extends Controller
     public function edit($id)
     {
         $levels = Level::all();
+        $toeic_lesson = Lesson::find($id);
 
-        $listening_lesson = Lesson::find($id);
-
-        return view('admin.listening.lessonEdit', compact('listening_lesson', 'levels', 'id'));
+        return view('admin.toeic.lessonEdit', compact('toeic_lesson', 'levels', 'id'));
     }
 
     /**
@@ -120,8 +118,8 @@ class ListeningLessonController extends Controller
             'lesson_image_link' => $request->get('lesson_image_link')
         ]);
 
-        return redirect()->route('listening-lesson-list')
-            ->with('status', 'Listening lesson updated successfully');
+        return redirect()->route('toeic-lesson-list')
+            ->with('status', 'TOEIC lesson updated successfully');
     }
 
     /**
@@ -144,7 +142,7 @@ class ListeningLessonController extends Controller
             $lesson->save();
         }
 
-        return redirect()->route('listening-lesson-list')
+        return redirect()->route('toeic-lesson-list')
             ->with('success', 'Lesson hide successfully');
     }
 }

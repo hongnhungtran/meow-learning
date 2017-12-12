@@ -54,6 +54,78 @@ class VocabularyLessonController extends Controller
      */
     public function store(Request $request)
     {
+        //If has image file -> validate
+        if($request->hasFile('upload_image')) {
+            request()->validate([
+            'lesson_title' => 'required|unique:lesson',
+            'lesson_content' => 'required|unique:lesson',
+        ]);
+        } else {
+            request()->validate([
+                'lesson_title' => 'required|unique:lesson',
+                'lesson_content' => 'required|unique:lesson',
+                'lesson_image_link' => 'required|unique:lesson'
+            ]);
+        }
+
+        //get file information
+        $file = $request->file('upload_image');
+
+        if($request->hasFile('upload_image') && empty($request->get('lesson_image_link'))){
+            //Upload image file
+            //foreach ($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $disk = Storage::disk('google'); 
+            $result = $disk->put($filename, File::get($file));
+
+            $dir = '/';
+            $recursive = false; // Get subdirectories also?
+            $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+
+            $image = $contents
+                ->where('type', '=', 'file')
+                ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+                ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+                ->first(); // there can be duplicate file names!
+
+            //Create image link
+            $lesson_image_link = "https://drive.google.com/uc?export=view&id=".$image['path'];
+            
+            //Insert to DB
+            $vocabulary_lesson = new Lesson([
+                'course_id' => $this->vocabulary_course_id,
+                'level_id' => (int)$request->get('level'),
+                'lesson_title' => $request->get('lesson_title'),
+                'lesson_content' => $request->get('lesson_content'),
+                'lesson_image_link' => $lesson_image_link ,
+                'lesson_flag' => 1
+            ]);
+
+            $vocabulary_lesson->save();
+            //}
+        } elseif ($request->hasFile('upload_image') === false && !empty($request->get('lesson_image_link'))) {
+            $vocabulary_lesson = new Lesson([
+                'course_id' => $this->vocabulary_course_id,
+                'level_id' => (int)$request->get('level'),
+                'lesson_title' => $request->get('lesson_title'),
+                'lesson_content' => $request->get('lesson_content'),
+                'lesson_image_link' => $request->get('lesson_image_link'),
+                'lesson_flag' => 1
+            ]);
+            
+            $vocabulary_lesson->save();
+        } elseif($request->hasFile('upload_image') && !empty($request->get('lesson_image_link'))){
+            Session::flash('status', 'Only upload by input link or select image');
+        }
+
+        return redirect()->route('vocabulary.lesson.index')
+            ->with('status', 'Vocabulary lesson created successfully');
+
+
+
+/*
+
+
         request()->validate([
             'lesson_title' => 'required|unique:lesson',
             'lesson_content' => 'required|unique:lesson',
@@ -72,8 +144,8 @@ class VocabularyLessonController extends Controller
 
         $vocabulary_lesson->save();
 
-        return redirect()->back()
-            ->with('status', 'Vocabulary lesson created successfully');
+        return redirect()->route('vocabulary.lesson.index')
+            ->with('status', 'Vocabulary lesson created successfully');*/
     }
 
     /**

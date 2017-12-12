@@ -1,7 +1,5 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Reading List') 
-
 @section('content_header')
 <h1>
     Reading Lesson
@@ -13,7 +11,6 @@
     <li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -63,11 +60,17 @@
                         </tr>
                         @endforeach
                     </tbody>
-
                 </table>
                 @endif
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="dataTables_info col-sm-5" >Showing {{($reading_lessons->currentpage()-1)*$reading_lessons->perpage()+1}} to {{(($reading_lessons->currentpage()-1)*$reading_lessons->perpage())+$reading_lessons->count()}} of {{$reading_lessons->total()}} entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $reading_lessons->links() !!}
+                </div>
+            </div>
+            <!-- /.box-footer -->
         </div>
         <!-- /.box -->
     </div>

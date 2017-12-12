@@ -1,20 +1,19 @@
 @extends('admin.shared.master') 
-@section('title', 'Vocabulary Lesson List') 
+@section('title', 'TOEIC Exam List') 
 @section('content_header')
 <h1>
-    Vocabulary Lesson
+    TOEIC Lesson
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="{{ route('vocabulary.topic.index') }}">Vocabulary Topic</a></li>
-    <li><a href="#">Vocabulary Lesson</a></li>
+    <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">TOEIC Lesson</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
 @section('content')
 <div class="row">
-    @if ($vocabulary_lessons->isEmpty())
+    @if ($toeic_lessons->isEmpty())
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
@@ -22,7 +21,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <p> There is no vocabulary lesson.</p>
+                <p> There is no TOEIC Exam.</p>
             </div>
         </div>
     </div>  
@@ -37,13 +36,13 @@
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Lesson title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Email">
+                            <input type="text" class="form-control" id="" placeholder="Lesson title">
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Lesson content</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Password">
+                            <input type="text" class="form-control" id="" placeholder="Lesson content">
                         </div>
                     </div>
                 </div>
@@ -62,6 +61,9 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
+                <div class="box-tools">
+                    {!! $toeic_lessons->links() !!}
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -83,17 +85,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($vocabulary_lessons as $vocabulary_lesson)
+                        @foreach($toeic_lessons as $toeic_lesson)
                         <tr>
-                            <td>{!! $vocabulary_lesson->lesson_id !!} </td>
-                            <td>{!! $vocabulary_lesson->level_name !!} </td>
-                            <td><img src="{!! $vocabulary_lesson->lesson_image_link !!}" height="42" width="42"></td>
-                            <td>{!! $vocabulary_lesson->lesson_title !!}</td>
-                            <td>{!! $vocabulary_lesson->lesson_content !!}</td>
-                            <td><span class="label label-{{ ($vocabulary_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($vocabulary_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
+                            <td>{!! $toeic_lesson->lesson_id !!} </td>
+                            <td>{!! $toeic_lesson->level_name !!} </td>
+                            <td><img src="{!! $toeic_lesson->lesson_image_link !!}" height="42" width="42"></td>
+                            <td>{!! $toeic_lesson->lesson_title !!}</td>
+                            <td>{!! $toeic_lesson->lesson_content !!}</td>
+                            <td><span class="label label-{{ ($toeic_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($toeic_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\VocabularyLessonController@edit', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="{!! action('Admin\VocabularyLessonController@show', $vocabulary_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\ToeicLessonController@edit', $toeic_lesson->lesson_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\ToeicExerciseController@show', $toefl_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach
@@ -102,12 +104,11 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <div class="dataTables_info col-sm-5" >Showing {{($vocabulary_lessons->currentpage()-1)*$vocabulary_lessons->perpage()+1}} to {{(($vocabulary_lessons->currentpage()-1)*$vocabulary_lessons->perpage())+$vocabulary_lessons->count()}} of {{$vocabulary_lessons->total()}} entries</div>
+                <div class="dataTables_info col-sm-5" >Showing {{($toeic_lessons->currentpage()-1)*$toeic_lessons->perpage()+1}} to {{(($toeic_lessons->currentpage()-1)*$toeic_lessons->perpage())+$toeic_lessons->count()}} of {{$toeic_lessons->total()}} entries</div>
                 <div class="box-tools col-sm-7">
-                    {!! $vocabulary_lessons->links() !!}
+                    {!! $toeic_lessons->links() !!}
                 </div>
             </div>
-            <!-- /.box-footer -->
         </div>
         <!-- /.box -->
     </div>

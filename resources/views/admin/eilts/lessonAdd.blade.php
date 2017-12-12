@@ -2,13 +2,12 @@
 @section('title', 'Add New Lesson') 
 @section('content_header')
 <h1>
-    Vocabulary Lesson
+    EILTS Lesson
     <small>Add New</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-    <li><a href="{{ url('admin/vocabulary') }}">Vocabulary Topic</a></li>
-    <li><a href="{{ url('admin/vocabulary/lesson') }}">Vocabulary Lesson</a></li>
+    <li><a href="{{ url('admin/eilts/lesson') }}">EILTS Lesson</a></li>
     <li class="active">Add</li>
 </ol>
 @stop @section('content')
@@ -32,22 +31,9 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{route('vocabulary.lesson.store')}}">
+            <form class="form-horizontal" method="post" action="{{route('eilts-lesson-store')}}">
                 {{csrf_field()}}
                 <div class="box-body">
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Topic</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="topic">
-                                @if ($topics->count()) 
-                                    @foreach($topics as $topic)
-                                        <option value="{{ $topic->topic_id }}">{{ $topic->topic_title }}</option>
-                                    @endforeach 
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Lesson Title</label>
                         <div class="col-sm-9">
@@ -59,7 +45,6 @@
                             @endif
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Lesson Content</label>
                         <div class="col-sm-9">
@@ -71,7 +56,6 @@
                             @endif
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Level</label>
                         <div class="col-sm-9">
@@ -84,28 +68,20 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Image</label>
+                        <label for="" class="col-sm-3 control-label">Image Link</label>
                         <div class="col-sm-9">
-                            @if (session('status'))
-                                <div class="alert alert-success" id="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
                             <input type="text" class="form-control" id="" placeholder="Image Link" name="lesson_image_link" value={{ old('lesson_image_link') }}>
 
-                                @if ($errors->has('lesson_image_link'))
-                                    @foreach($errors->get('lesson_image_link') as $error)
-                                         <p class="text-red">{!! $error !!}</p>
-                                    @endforeach
-                                @endif
+                            @if ($errors->has('lesson_image_link')) 
+                                @foreach($errors->get('lesson_image_link') as $error)
+                                    <p class="text-red">{!! $error !!}</p>
+                                @endforeach 
+                            @endif
                             <h5>Or select image</h5>
-                            <input type="file" name="upload_image" id="gallery-photo-add"><br><br>
-                            <div class="gallery">
+                            <input type="file" name="files[]" id="" multiple>
                         </div>
                     </div>
-                </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">

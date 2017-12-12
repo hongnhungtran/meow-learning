@@ -1,7 +1,5 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Speaking List') 
-
 @section('content_header')
 <h1>
     Speaking Lesson
@@ -13,7 +11,6 @@
     <li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -29,13 +26,11 @@
                 @if ($speaking_lessons->isEmpty())
                     <p> There is no Speaking lesson.</p>
                 @else
-                
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
                     </div>
                 @endif
-
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -69,6 +64,13 @@
                 @endif
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="dataTables_info col-sm-5" >Showing {{($speaking_lesson->currentpage()-1)*$speaking_lesson->perpage()+1}} to {{(($speaking_lesson->currentpage()-1)*$speaking_lesson->perpage())+$speaking_lesson->count()}} of {{$speaking_lesson->total()}} entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $readingspeaking_lesson_speaking_lessonlessons->links() !!}
+                </div>
+            </div>
+            <!-- /.box-footer -->
         </div>
         <!-- /.box -->
     </div>

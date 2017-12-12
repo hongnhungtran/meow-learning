@@ -55,7 +55,11 @@ Route::group(['prefix' => 'admin'], function () {
     require(__DIR__ . "/admin/reading.php");
     require(__DIR__ . "/admin/writing.php");
     require(__DIR__ . "/admin/exam.php");
-    require(__DIR__ . "/admin/document.php");  
+    require(__DIR__ . "/admin/document.php"); 
+    require(__DIR__ . "/admin/common-test.php");  
+    require(__DIR__ . "/admin/toefl.php"); 
+    require(__DIR__ . "/admin/toeic.php"); 
+    require(__DIR__ . "/admin/eilts.php");
 });
 
 /**
@@ -75,8 +79,11 @@ Route::group(['prefix' => '/'], function () {
     require(__DIR__ . "/user/speaking.php");
     require(__DIR__ . "/user/reading.php");
     require(__DIR__ . "/user/writing.php");
-    require(__DIR__ . "/user/exam.php");
-    require(__DIR__ . "/user/document.php");  
+    require(__DIR__ . "/user/document.php"); 
+    require(__DIR__ . "/user/common-test.php"); 
+    require(__DIR__ . "/user/toefl.php"); 
+    require(__DIR__ . "/user/toeic.php"); 
+    require(__DIR__ . "/user/eilts.php");
 });
 
 

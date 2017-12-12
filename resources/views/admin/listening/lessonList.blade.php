@@ -1,7 +1,5 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Listening List') 
-
 @section('content_header')
 <h1>
     Listening Lesson
@@ -13,7 +11,6 @@
     <li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
     @if ($listening_lessons->isEmpty())
@@ -28,7 +25,6 @@
             </div>
         </div>
     </div>  
-
     @else
     <!-- search form -->
     <div class="col-md-12">
@@ -43,7 +39,6 @@
                             <input type="text" class="form-control" id="" placeholder="Listening title">
                         </div>
                     </div>
-
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Listening content</label>
                         <div class="col-sm-8">
@@ -111,7 +106,10 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <!-- footer -->
+                <div class="dataTables_info col-sm-5" >Showing {{($listening_lessons->currentpage()-1)*$listening_lessons->perpage()+1}} to {{(($listening_lessons->currentpage()-1)*$listening_lessons->perpage())+$listening_lessons->count()}} of {{$listening_lessons->total()}} entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $listening_lessons->links() !!}
+                </div>
             </div>
           </div>
         </div>

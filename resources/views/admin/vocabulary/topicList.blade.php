@@ -1,19 +1,16 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Topic List') 
-
 @section('content_header')
 <h1>
     Vocabulary Topic
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="{{ url('/admin/vocabulary/topic') }}">Topic</a></li>
+    <li><a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{ route('vocabulary.topic.index') }}">Vocabulary Topic</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
     @if ($vocabulary_topics->isEmpty())
@@ -28,7 +25,6 @@
             </div>
         </div>
     </div>  
-
     @else
     <!-- search form -->
     <div class="col-md-12">
@@ -43,7 +39,6 @@
                             <input type="text" class="form-control" id="" placeholder="Enter Topic Title For Search" name="topic_title" value="{{ old('topic_title') }}">
                         </div>
                     </div>
-
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Topic content</label>
                         <div class="col-sm-8">
@@ -109,14 +104,15 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <div class="dataTables_info col-sm-5" >Showing 1 to 10 of 57 entries</div>
+                <div class="dataTables_info col-sm-5" >Showing {{($vocabulary_topics->currentpage()-1)*$vocabulary_topics->perpage()+1}} to {{(($vocabulary_topics->currentpage()-1)*$vocabulary_topics->perpage())+$vocabulary_topics->count()}} of {{$vocabulary_topics->total()}} entries</div>
                 <div class="box-tools col-sm-7">
                     {!! $vocabulary_topics->links() !!}
                 </div>
             </div>
+            <!-- /.box-footer -->
           </div>
+          <!-- /.box -->
         </div>
-        <!-- /.box -->
     </div>
     <!-- /.col -->
     @endif

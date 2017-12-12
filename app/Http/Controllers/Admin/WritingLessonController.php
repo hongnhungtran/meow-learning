@@ -11,10 +11,10 @@ use App\Vocabulary;
 
 class WritingLessonController extends Controller
 {
-/*    public function __construct()
+    public function __construct()
     {
         $this->writing_course_id = 5;
-    }*/
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +23,6 @@ class WritingLessonController extends Controller
     public function index()
     {
         $lesson = new Lesson;
-        
         $writing_lessons = $lesson->get_writing_lesson()->paginate(10);
 
         return view('admin.writing.lessonList', compact('writing_lessons'))
@@ -57,7 +56,7 @@ class WritingLessonController extends Controller
         ]);
 
         $writing_lesson = new Lesson([
-            'course_id' => $this->vocabulary_course_id,
+            'course_id' => $this->writing_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
@@ -91,7 +90,6 @@ class WritingLessonController extends Controller
     public function edit($id)
     {
         $levels = Level::all();
-
         $writing_lesson = Lesson::find($id);
 
         return view('admin.writing.lessonEdit', compact('writing_lesson', 'levels', 'id'));

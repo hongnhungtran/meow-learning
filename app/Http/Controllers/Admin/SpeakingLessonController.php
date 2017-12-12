@@ -11,6 +11,10 @@ use App\Vocabulary;
 
 class SpeakingLessonController extends Controller
 {
+    public function __construct()
+    {
+        $this->speaking_course_id = 3;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +57,7 @@ class SpeakingLessonController extends Controller
         ]);
 
         $speaking_lesson = new Lesson([
-            'course_id' => $this->vocabulary_course_id,
+            'course_id' => $this->speaking_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
@@ -63,7 +67,7 @@ class SpeakingLessonController extends Controller
 
         $speaking_lesson->save();
 
-        return redirect()->back()
+        return redirect()->route('speaking-lesson-list')
             ->with('status', 'Speaking lesson created successfully');
     }
 

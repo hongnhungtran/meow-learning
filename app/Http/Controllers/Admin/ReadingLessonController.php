@@ -11,6 +11,10 @@ use App\Vocabulary;
 
 class ReadingLessonController extends Controller
 {
+    public function __construct()
+    {
+        $this->reading_course_id = 4;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +57,7 @@ class ReadingLessonController extends Controller
         ]);
 
         $reading_lesson = new Lesson([
-            'course_id' => $this->vocabulary_course_id,
+            'course_id' => $this->reading_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
@@ -63,7 +67,7 @@ class ReadingLessonController extends Controller
 
         $reading_lesson->save();
 
-        return redirect()->back()
+        return redirect()->route('reading-lesson-list')
             ->with('status', 'Reading lesson created successfully');
     }
 

@@ -18,6 +18,9 @@ class ManagementController extends Controller
         $this->speaking_course_id = 3;
         $this->reading_course_id = 4;
         $this->writing_course_id = 5;
+        $this->toefl_course_id = 6;
+        $this->toeic_course_id = 7;
+        $this->eilts_course_id = 8;
     }
 
     public function home()
@@ -68,4 +71,27 @@ class ManagementController extends Controller
         return view('admin.speaking.management', compact('lesson_count'));
     }
 
+    public function eilts_management()
+    {
+        $lesson_count = Lesson::where('course_id', $this->eilts_course_id)
+            ->count();
+
+        return view('admin.eilts.management', compact('lesson_count'));
+    }
+
+    public function toefl_management()
+    {
+        $lesson_count = Lesson::where('course_id', $this->toefl_course_id)
+            ->count();
+
+        return view('admin.toefl.management', compact('lesson_count'));
+    }
+
+    public function toeic_management()
+    {
+        $lesson_count = Lesson::where('course_id', $this->toeic_course_id)
+            ->count();
+
+        return view('admin.toeic.management', compact('lesson_count'));
+    }
 }

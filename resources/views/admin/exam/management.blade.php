@@ -1,4 +1,6 @@
-@extends('admin.shared.master') @section('title', 'Lesson List') @section('content_header')
+@extends('admin.shared.master') 
+@section('title', 'Lesson List') 
+@section('content_header')
 <h1>
     List
     <small>Lesson</small>
@@ -8,7 +10,8 @@
     <li><a href="#">Lesson</a></li>
     <li class="active">List</li>
 </ol>
-@stop @section('content')
+@stop 
+@section('content')
   <!-- Small boxes (Stat box) -->
   <div class="row">
         <div class="col-lg-3 col-xs-6">

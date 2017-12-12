@@ -7,12 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Topic;
 use App\Lesson;
 use App\Level;
+use App\Vocabulary;
 
-class ListeningController extends Controller
+class EiltsLessonController extends Controller
 {
     public function __construct()
     {
-        $this->listening_course_id = 2;
+        $this->eilts_course_id = 8;
     }
     /**
      * Display a listing of the resource.
@@ -21,11 +22,10 @@ class ListeningController extends Controller
      */
     public function index()
     {
-        $listening_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->listening_course_id)
-            ->paginate(10);
-        
-        return view('admin.listening.lessonList', compact('listening_lessons'))
+        $lesson = new Lesson;
+        $eilts_lessons = $lesson->get_eilts_lesson()->paginate(10);
+
+        return view('admin.eilts.lessonList', compact('eilts_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -37,8 +37,8 @@ class ListeningController extends Controller
     public function create()
     {
         $levels = Level::all();
-        
-        return view('admin.vocabulary.lessonAdd', compact('levels'));
+
+        return view('admin.eilts.lessonAdd', compact('levels'));
     }
 
     /**
@@ -52,21 +52,22 @@ class ListeningController extends Controller
         request()->validate([
             'lesson_title' => 'required|unique:lesson',
             'lesson_content' => 'required|unique:lesson',
-            'image_link' => 'required|unique:lesson'
+            'lesson_image_link' => 'required|unique:lesson'
         ]);
 
-        $listening_lesson = new Lesson([
-            'course_id' => $this->vocabulary_course_id,
+        $eilts_lesson = new Lesson([
+            'course_id' => $this->eilts_course_id,
             'level_id' => (int)$request->get('level'),
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
-            'image_link' => $request->get('image_link'),
+            'lesson_image_link' => $request->get('lesson_image_link'),
+            'lesson_flag' => 1
         ]);
 
-        $listening_lesson->save();
+        $eilts_lesson->save();
 
-        return redirect()->route('listening-lesson-list')
-            ->with('status', 'Listening lesson created successfully');
+        return redirect()->route('eilts-lesson-list')
+            ->with('status', 'EILTS lesson created successfully');
     }
 
     /**
@@ -77,7 +78,7 @@ class ListeningController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.eilts.exerciseShow');
     }
 
     /**
@@ -89,9 +90,9 @@ class ListeningController extends Controller
     public function edit($id)
     {
         $levels = Level::all();
-        $listening_lesson = Lesson::find($id);
+        $eilts_lesson = Lesson::find($id);
 
-        return view('admin.listening.lessonEdit', compact('listening_lesson', 'levels', 'id'));
+        return view('admin.eilts.lessonEdit', compact('eilts_lesson', 'levels', 'id'));
     }
 
     /**
@@ -106,18 +107,19 @@ class ListeningController extends Controller
         request()->validate([
             'lesson_title' => 'required',
             'lesson_content' => 'required',
-            'image_link' => 'required',
+            'lesson_image_link' => 'required',
         ]);
 
-        $listening_lesson = Lesson::find($id);
-        $listening_lesson->level_id = (int)$request->get('level');
-        $listening_lesson->lesson_title = $request->get('lesson_title');
-        $listening_lesson->lesson_content = $request->get('lesson_content');
-        $listening_lesson->image_link = $request->get('image_link');
-        $listening_lesson->save();
+        Lesson::find($id)->update([
+            'level_id' => (int)$request->get('level'),
+            'topic_id' => (int)$request->get('topic'),
+            'lesson_title' => $request->get('lesson_title'),
+            'lesson_content' => $request->get('lesson_content'),
+            'lesson_image_link' => $request->get('lesson_image_link')
+        ]);
 
-        return redirect()->route('listening-lesson-list')
-            ->with('status', 'Vocabulary lesson updated successfully');
+        return redirect()->route('eilts-lesson-list')
+            ->with('status', 'EILTS lesson updated successfully');
     }
 
     /**
@@ -129,5 +131,18 @@ class ListeningController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hide($id)
+    {
+        $lesson = Lesson::find($id);
+
+        if($lesson->lesson_flag = 1) {
+            $lesson->lesson_flag = 0;
+            $lesson->save();
+        }
+
+        return redirect()->route('eilts-lesson-list')
+            ->with('success', 'Lesson hide successfully');
     }
 }

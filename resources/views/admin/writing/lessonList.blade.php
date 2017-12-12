@@ -1,19 +1,16 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Writing Lesson List') 
-
 @section('content_header')
 <h1>
     Writing Lesson
     <small>List</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="#">Writing Lesson</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
     @if ($writing_lessons->isEmpty())
@@ -28,7 +25,6 @@
             </div>
         </div>
     </div>  
-
     @else
     <!-- search form -->
     <div class="col-md-12">
@@ -43,7 +39,6 @@
                             <input type="text" class="form-control" id="" placeholder="Lesson title">
                         </div>
                     </div>
-
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Lesson content</label>
                         <div class="col-sm-8">
@@ -72,13 +67,11 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                
                 @if ($message = Session::get('status'))
                 <div class="alert alert-success" id="alert">
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -107,11 +100,15 @@
                         </tr>
                         @endforeach
                     </tbody>
-
                 </table>
-                
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="dataTables_info col-sm-5" >Showing {{($writing_lessons->currentpage()-1)*$writing_lessons->perpage()+1}} to {{(($writing_lessons->currentpage()-1)*$writing_lessons->perpage())+$writing_lessons->count()}} of {{$writing_lessons->total()}} entries</div>
+                <div class="box-tools col-sm-7">
+                    {!! $writing_lessons->links() !!}
+                </div>
+            </div>
         </div>
         <!-- /.box -->
     </div>
