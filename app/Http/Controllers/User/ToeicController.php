@@ -11,33 +11,33 @@ use App\Vocabulary;
 use App\Course;
 use App\CommonTestQuestion;
 
-class SpeakingController extends Controller
+class ToeicController extends Controller
 {
-   public function __construct()
+    public function __construct()
     {
-        $this->speaking_course_id = 3;
+        $this->toeic_course_id = 6;
     }
 
     public function get_level_list() 
     { 
         $levels = Level::all();
         $courses = Course::all();
-        $course = Course::find($this->speaking_course_id);
+        $course = Course::find($this->toeic_course_id);
 
-        return view('user.speaking.levelList', compact('levels', 'courses', 'course'));
+        return view('user.toeic.levelList', compact('levels', 'courses', 'course'));
     }
 
     public function get_lesson_list($id) 
     {
         $lessons = Lesson::join('level', 'Lesson.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->speaking_course_id)
+            ->where('course_id', $this->toeic_course_id)
             ->where('lesson.level_id', $id)
             ->paginate(10);
         $level = Level::find($id);
-        $course = Course::find($this->speaking_course_id);
+        $course = Course::find($this->toeic_course_id);
         $num=1;
 
-        return view('user.speaking.lessonList', compact('lessons', 'num', 'level', 'course'))
+        return view('user.toeic.lessonList', compact('lessons', 'num', 'level', 'course'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 

@@ -19,7 +19,7 @@
 			</div>
 			<img src="{{ $lesson->lesson_image_link }}" alt="lecture image" class="lecture-img lecture-item" />
 			<div class="lecture-content lecture-item">
-				<h4 class="lecture-title"><a href="{!! action('User\VocabularyController@get_exercise', $lesson->lesson_id) !!}"> {!! $lesson->lesson_title !!}</h4></a>
+				<h4 class="lecture-title"><a href="{!! action('User\CommonTestController@get_exercise', $lesson->lesson_id) !!}"> {!! $lesson->lesson_title !!}</h4></a>
 				<p>{!! $lesson->lesson_content !!}</p>
 			</div>
 			<div class="start-lecture lecture-item">

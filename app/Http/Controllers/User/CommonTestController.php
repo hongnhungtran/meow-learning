@@ -19,7 +19,7 @@ class CommonTestController extends Controller
     }
 
     public function get_level_list() 
-    { 
+    {
         $levels = Level::all();
         $courses = Course::all();
         $course = Course::find($this->common_test_course_id);

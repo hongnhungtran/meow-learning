@@ -11,14 +11,14 @@
 						<span class="arrow-gt">›</span>
 						<a id="all-courses" href="#">{!! $course->course_name !!}</a>
 					</h3>
-						<p class="category-detail-description">楽しんでください。</p>
+						<p class="category-detail-description">テストがたくさんあります。</p>
 					</div>
 					<div class="course-in-category">
 					@if ($levels->isEmpty())
-					    <h3 class="box-title">レッスンがありません。</h3>
+					    <h3 class="box-title">テストがありません。</h3>
 					@else
 						@foreach($levels as $level)
-						<a href="{!! action('User\ListeningController@get_lesson_list', $level->level_id) !!}" class="course-item-detail">
+						<a href="{!! action('User\EiltsController@get_lesson_list', $level->level_id) !!}" class="course-item-detail">
 							<div class="course-item-detail-img-box">
 								<img src="{{ $level->level_image_link }}" class="course-item-detail-img" />
 							</div>

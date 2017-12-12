@@ -6,12 +6,12 @@
 				<li>
 					<a href="#"> コース </a>
 					<ul>
-						<li class="submenu"><a href="/vocabulary">単語コース</a></li>
-						<li class="submenu"><a href="/listening">リスニングコース</a></li>
-						<li class="submenu"><a href="/speaking">スピーキングコース</a></li>
-						<li class="submenu"><a href="/reading">レディングコース</a></li>
-						<li class="submenu"><a href="/writing">ライティングコース</a></li>
-						<li class="submenu"><a href="/grammar">文法コース</a></li>
+						<li class="submenu"><a href="{{ route('vocabulary-level') }}">単語コース</a></li>
+						<li class="submenu"><a href="{{ route('listening-level') }}">リスニングコース</a></li>
+						<li class="submenu"><a href="{{ route('speaking-level') }}">スピーキングコース</a></li>
+						<li class="submenu"><a href="{{ route('reading-level') }}">レディングコース</a></li>
+						<li class="submenu"><a href="{{ route('writing-level') }}">ライティングコース</a></li>
+						<li class="submenu"><a href="#">文法コース</a></li>
 					</ul>
 				</li>
 				<li>
@@ -27,9 +27,9 @@
 				<li>
 					<a href="#">試験学習</a>
 					<ul>
-						<li class="submenu"><a href="#">TOEICコース</a></li>
-						<li class="submenu"><a href="#">TOEFLコース</a></li>
-						<li class="submenu"><a href="#">IELTSコース</a></li>
+						<li class="submenu"><a href="{{ route('toeic-level') }}">TOEICコース</a></li>
+						<li class="submenu"><a href="{{ route('toefl-level') }}">TOEFLコース</a></li>
+						<li class="submenu"><a href="{{ route('eilts-level') }}">IELTSコース</a></li>
 						<li class="submenu"><a href="{{ route('common-test-level') }}">総合テストコース</a></li>
 					</ul>
 				</li>
