@@ -1,6 +1,6 @@
 @extends('admin.shared.master') @section('title', 'Lesson List') @section('content_header')
 <h1>
-    Writing 
+    Speaking 
     <small>Management</small>
 </h1>
 <ol class="breadcrumb">
@@ -17,12 +17,12 @@
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>{{ $lesson_count }}<sup style="font-size: 20px"></h3>
-                <p>Writing Lesson</p>
+                <p>Speaking Lesson</p>
             </div>
             <div class="icon">
                 <i class="fa fa-book"></i>
             </div>
-            <a href="{!! action('Admin\WritingLessonController@index') !!}" class="small-box-footer">
+            <a href="{!! action('Admin\SpeakingLessonController@index') !!}" class="small-box-footer">
               More info <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -35,12 +35,12 @@
 <div class="row">
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{!! action('Admin\WritingLessonController@create') !!}">
+        <a href="{!! action('Admin\SpeakingLessonController@create') !!}">
             <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fa fa-plus-square"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Add new</span>
-                    <span class="info-box-number">Writing Lesson</span>
+                    <span class="info-box-number">Speaking Lesson</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -49,13 +49,13 @@
     </div>
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{!! action('Admin\WritingExerciseController@create') !!}">
+        <a href="{!! action('Admin\SpeakingExerciseController@create') !!}">
             <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="fa fa-plus-square"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Add new</span>
-                    <span class="info-box-number">Writing Exercise</span>
+                    <span class="info-box-number">Speaking Exercise</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

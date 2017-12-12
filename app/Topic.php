@@ -7,7 +7,10 @@ use Laravel\Scout\Searchable;
 
 class Topic extends Model
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> mix
     protected $table = 'topic';
 
     protected $primaryKey = 'topic_id';

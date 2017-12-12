@@ -14,7 +14,15 @@ class ManagementController extends Controller
 	public function __construct()
     {
         $this->vocabulary_course_id = 1;
+        $this->listening_course_id = 2;
+        $this->speaking_course_id = 3;
+        $this->reading_course_id = 4;
         $this->writing_course_id = 5;
+    }
+
+    public function home()
+    {
+        return view('admin.shared.home');
     }
 
     public function vocabulary_management()
@@ -30,7 +38,18 @@ class ManagementController extends Controller
 
     public function listening_management()
     {
-        return view('admin.listening.management');
+        $lesson_count = Lesson::where('course_id', $this->listening_course_id)
+            ->count();
+
+        return view('admin.listening.management', compact('lesson_count'));
+    }
+
+    public function reading_management()
+    {
+        $lesson_count = Lesson::where('course_id', $this->reading_course_id)
+            ->count();
+
+        return view('admin.reading.management', compact('lesson_count'));
     }
 
     public function writing_management()
@@ -41,9 +60,12 @@ class ManagementController extends Controller
         return view('admin.writing.management', compact('lesson_count'));
     }
 
-    public function home()
+    public function speaking_management()
     {
-        return view('admin.shared.home');
+        $lesson_count = Lesson::where('course_id', $this->speaking_course_id)
+            ->count();
+
+        return view('admin.speaking.management', compact('lesson_count'));
     }
 
 }
