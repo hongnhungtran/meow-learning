@@ -9,7 +9,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Lesson</a></li>
+    <li><a href="#">Writing Lesson</a></li>
     <li class="active">List</li>
 </ol>
 @stop 
@@ -40,14 +40,14 @@
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Lesson title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Email">
+                            <input type="text" class="form-control" id="" placeholder="Lesson title">
                         </div>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Lesson content</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Password">
+                            <input type="text" class="form-control" id="" placeholder="Lesson content">
                         </div>
                     </div>
                 </div>
@@ -101,8 +101,8 @@
                             <td>{!! $writing_lesson->lesson_content !!}</td>
                             <td><span class="label label-{{ ($writing_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($writing_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
                             <td>
-                                <a href="{!! action('Admin\WritingLessonController@edit', $writing_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="{!! action('Admin\WritingLessonController@show', $writing_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\WritingLessonController@edit', $writing_lesson->lesson_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\WritingExerciseController@show', $writing_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

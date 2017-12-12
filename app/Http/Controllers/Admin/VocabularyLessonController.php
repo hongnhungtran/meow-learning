@@ -23,9 +23,10 @@ class VocabularyLessonController extends Controller
      */
     public function index()
     {
-        $vocabulary_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->vocabulary_course_id)
-            ->paginate(10);
+
+        $lesson = new Lesson;
+        
+        $vocabulary_lessons = $lesson->get_vocabulary_lesson()->paginate(10);
 
             return view('admin.vocabulary.lessonList', compact('vocabulary_lessons'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -66,6 +67,7 @@ class VocabularyLessonController extends Controller
             'lesson_title' => $request->get('lesson_title'),
             'lesson_content' => $request->get('lesson_content'),
             'lesson_image_link' => $request->get('lesson_image_link'),
+            'lesson_flag' => 1
         ]);
 
         $vocabulary_lesson->save();
@@ -126,7 +128,7 @@ class VocabularyLessonController extends Controller
             'lesson_image_link' => $request->get('lesson_image_link')
         ]);
 
-        return redirect()->route('lesson.index')
+        return redirect()->route('vocabulary.lesson.index')
             ->with('status', 'Vocabulary lesson updated successfully');
     }
 
@@ -138,6 +140,11 @@ class VocabularyLessonController extends Controller
      */
     public function destroy($id)
     {
+        
+    }
+
+    public function hide($id)
+    {
         $lesson = Lesson::find($id);
 
         if($lesson->lesson_flag = 1) {
@@ -146,6 +153,6 @@ class VocabularyLessonController extends Controller
         }
 
         return redirect()->route('lesson.index')
-            ->with('success', 'Lesson deleted successfully');
+            ->with('success', 'Lesson hide successfully');
     }
 }

@@ -1,22 +1,13 @@
 @extends('admin.shared.master') @section('title', 'Add New Lesson') @section('content_header')
 <h1>
-    Exercise
+    Vocabulary Exercise
     <small>Review</small>
 </h1>
 <ol class="breadcrumb">
-    <li>
-        <a href="{{ url('/') }}">
-            <i class="fa fa-dashboard"></i>
-            Home
-        </a>
-    </li>
-    <li>
-        <a href="{{ url('admin/vocabulary') }}">Topic</a>
-    </li>
-    <li>
-        <a href="{{ url('admin/vocabulary/lesson') }}">Lesson</a>
-    </li>
-    <li class="active">Add</li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li><a href="{{ url('admin/vocabulary') }}">Topic</a></li>
+    <li><a href="{{ url('admin/vocabulary/lesson') }}">Lesson</a></li>
+    <li class="active">Exercise</li>
 </ol>
 @stop @section('content')
 <div class="row">

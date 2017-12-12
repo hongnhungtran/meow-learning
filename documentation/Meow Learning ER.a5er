@@ -39,7 +39,7 @@ ShowCommonAttributes=0
 
 [Relation]
 Entity1=lesson
-Entity2=common_test_exercise
+Entity2=common_test_question
 RelationType1=1
 RelationType2=3
 Fields1=lesson_id,vocabulary_topic_id,course_id,level_id
@@ -58,8 +58,8 @@ TermPos1=R
 TermPos2=R
 
 [Entity]
-PName=common_test_exercise
-LName=common_test_exercise
+PName=common_test_question
+LName=common_test_question
 Comment=
 TableOption=
 Page=MAIN
@@ -69,15 +69,19 @@ Field="common_test_question_id","common_test_question_id","",,0,"","",$FFFFFFFF,
 Field="lesson_id","lesson_id","",,,"","",$FFFFFFFF,""
 Field="common_test_question","common_test_question","",,,"","",$FFFFFFFF,""
 Field="common_test_option_1","common_test_option_1","",,,"","",$FFFFFFFF,""
+Field="option_1_flag","option_1_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_2","common_test_option_2","",,,"","",$FFFFFFFF,""
+Field="option_2_flag","option_2_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_3","common_test_option_3","",,,"","",$FFFFFFFF,""
+Field="option_3_flag","option_3_flag","",,,"","",$FFFFFFFF,""
 Field="common_test_option_4","common_test_option_4","",,,"","",$FFFFFFFF,""
+Field="option_4_flag","option_4_flag","",,,"","",$FFFFFFFF,""
 Field="created_at","created_at","",,,"","",$FFFFFFFF,""
 Field="updated_at","updated_at","",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20171024184547
+ModifiedDateTime=20171109182608
 Position="MAIN",2200,1450
 
 [Relation]

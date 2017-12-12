@@ -1,6 +1,6 @@
 @extends('admin.shared.master') 
 
-@section('title', 'Lesson List') 
+@section('title', 'Vocabulary Lesson List') 
 
 @section('content_header')
 <h1>
@@ -66,9 +66,6 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
-                <div class="box-tools">
-                    {!! $vocabulary_lessons->links() !!}
-                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -112,6 +109,13 @@
                 
             </div>
             <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="dataTables_info col-sm-5" >Showing 1 to 10 of 57 entries</div>
+                <div class="box-tools col-sm-7">
+                   {!! $vocabulary_lessons->links() !!}
+                </div>
+            </div>
+
         </div>
         <!-- /.box -->
     </div>

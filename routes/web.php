@@ -30,13 +30,23 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
+
 /**
  * Admin Route
  */
 
 Route::group(['prefix' => 'admin'], function () {
+    //Register
+    Route::get('/user/register', [
+        'as' => 'user.register', 
+        'uses' => 'Auth\RegisterController@create'
+    ]);
+
     //Home
-    Route::get('/', ['as' => 'admin-home', 'uses' => 'Admin\ManagementController@home']);
+    Route::get('/', [
+        'as' => 'admin.home', 
+        'uses' => 'Admin\ManagementController@home'
+    ]);
     
     //Course
     require(__DIR__ . "/admin/vocabulary.php");
@@ -54,7 +64,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => '/'], function () {
     //Home
-    Route::get('/', ['as' => 'user-home', 'uses' => 'User\UserController@home']);
+    Route::get('/', [
+        'as' => 'user-home', 
+        'uses' => 'User\UserController@home'
+    ]);
     
     //Course
     require(__DIR__ . "/user/vocabulary.php");
@@ -120,7 +133,7 @@ Route::get('list-folder-contents', function () {
         });
 });
 
-
+//download file
 Route::get('get', function () {
     $filename = 'test.txt';
 
@@ -143,11 +156,13 @@ Route::get('get', function () {
         ->header('Content-Disposition', "attachment; filename='$filename'");
 });
 
+//Create new folder
 Route::get('create-dir', function () {
     Storage::cloud()->makeDirectory('Test Dir');
     return 'Directory was created in Google Drive';
 });
 
+//Upload file to folder
 Route::get('put-in-dir', function () {
     $dir = '/';
     $recursive = false; // Get subdirectories also?
@@ -166,6 +181,7 @@ Route::get('put-in-dir', function () {
         return 'File was created in the sub directory in Google Drive';
 });
 
+//get newest file
 Route::get('newest', function () {
     $filename = 'test.txt';
 

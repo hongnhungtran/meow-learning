@@ -1,10 +1,10 @@
 @extends('admin.shared.master') @section('title', 'Lesson List') @section('content_header')
 <h1>
-    List
-    <small>Lesson</small>
+    Writing 
+    <small>Management</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
     <li><a href="#">Lesson</a></li>
     <li class="active">List</li>
 </ol>
@@ -35,13 +35,12 @@
 <div class="row">
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{!! action('Admin\VocabularyLessonController@create') !!}">
+        <a href="{!! action('Admin\WritingLessonController@create') !!}">
             <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fa fa-plus-square"></i></span>
-
                 <div class="info-box-content">
                     <span class="info-box-text">Add new</span>
-                    <span class="info-box-number">Writing Leson</span>
+                    <span class="info-box-number">Writing Lesson</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -50,7 +49,7 @@
     </div>
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{!! action('Admin\VocabularyExerciseController@create') !!}">
+        <a href="{!! action('Admin\WritingExerciseController@create') !!}">
             <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="fa fa-plus-square"></i></span>
 
