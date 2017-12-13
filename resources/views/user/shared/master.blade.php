@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="{{ asset('public/css/user/shared.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/vocabulary.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/user/pgwslider.min.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('public/img/common/home.png') }}"/>
@@ -32,6 +33,7 @@
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     <script src="{{ asset('public/js/user/vocabularyLessionList.js') }}"></script>
+    <script src="{{ asset('public/js/user/pgwslider.min.js') }}"></script>
 </head>
 <body>
 @include('user.shared.header')

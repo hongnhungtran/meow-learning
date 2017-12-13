@@ -9,7 +9,7 @@
 					<h3>
 						<a id="all-courses" href="#">コース</a>
 						<span class="arrow-gt">›</span>
-						<a id="all-courses" href="#">{!! $course->course_name !!}</a>
+						<a id="all-courses" href="#">{{$course['course_name']}}</a>
 					</h3>
 						<p class="category-detail-description">テストがたくさんあります。</p>
 					</div>

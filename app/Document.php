@@ -15,6 +15,7 @@ class Document extends Model
     	'document_category_id',
     	'document_title',
     	'document_content',
-	    'document_download_link'
+	    'document_download_link',
+	    'document_image_link'
 	];
 }

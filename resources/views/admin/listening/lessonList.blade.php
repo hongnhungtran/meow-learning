@@ -55,7 +55,6 @@
         </div>
         <!-- /.box -->
     </div>
-    
     <!-- register form -->
     <div class="col-xs-12">
         <div class="box">
@@ -72,7 +71,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>

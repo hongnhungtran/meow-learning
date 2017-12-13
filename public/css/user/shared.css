@@ -287,9 +287,7 @@ body {
 }
 
 .download-item-detail-wrapper {
-    width: 33.333333%;
     float: left;
-    padding-left: 20px;
     box-sizing: border-box !important;
     margin-bottom: 20px;
 }
@@ -741,7 +739,7 @@ body {
 
 #panoram {
     height: 118px;
-    background: url('../../../img/global/download/panoram.png') repeat-x;
+    background: url('../../img/common/panoram.png') repeat-x;
 }
 
 #panoram2 {
