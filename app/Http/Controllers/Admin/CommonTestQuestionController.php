@@ -141,4 +141,9 @@ class CommonTestQuestionController extends Controller
     {
         //
     }
+
+    public function generateDocx($id)
+    {
+
+    }
 }

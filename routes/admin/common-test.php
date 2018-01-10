@@ -1,7 +1,13 @@
 <?php 
 Route::group(['prefix' => 'common-test'], function () {
-	//Lesson
+	//Management
 	Route::get('/', [
+		'as' => 'common-test-management', 
+		'uses' => 'Admin\ManagementController@common_test_management'
+	]);
+
+	//Lesson
+	Route::get('/test', [
 		'as' => 'common-test.lesson.index', 
 		'uses' => 'Admin\CommonTestLessonController@index'
 	]);
@@ -11,7 +17,7 @@ Route::group(['prefix' => 'common-test'], function () {
 		'uses' => 'Admin\CommonTestLessonController@searchLesson'
 	]);
 */
-	Route::post('common-test/search', [
+	Route::post('/search', [
 		'as' => 'common-test.lesson.search', 
 		'uses' => 'Admin\CommonTestLessonController@searchLesson'
 	]);
@@ -41,6 +47,8 @@ Route::group(['prefix' => 'common-test'], function () {
 		'uses' => 'Admin\CommonTestLessonController@show'
 	]);
 
+	Route::get('generate-docx', 'CommonTestQuestionController@generateDocx');
+	
 	//Question
 	Route::get('/{lesson_id}/question', [
 		'as' => 'common-test.question.index', 

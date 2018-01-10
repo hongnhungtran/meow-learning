@@ -121,31 +121,6 @@ class VocabularyLessonController extends Controller
         return redirect()->route('vocabulary.lesson.index')
             ->with('status', 'Vocabulary lesson created successfully');
 
-
-
-/*
-
-
-        request()->validate([
-            'lesson_title' => 'required|unique:lesson',
-            'lesson_content' => 'required|unique:lesson',
-            'lesson_image_link' => 'required|unique:lesson'
-        ]);
-
-        $vocabulary_lesson = new Lesson([
-            'course_id' => $this->vocabulary_course_id,
-            'level_id' => (int)$request->get('level'),
-            'topic_id' => (int)$request->get('topic'),
-            'lesson_title' => $request->get('lesson_title'),
-            'lesson_content' => $request->get('lesson_content'),
-            'lesson_image_link' => $request->get('lesson_image_link'),
-            'lesson_flag' => 1
-        ]);
-
-        $vocabulary_lesson->save();
-
-        return redirect()->route('vocabulary.lesson.index')
-            ->with('status', 'Vocabulary lesson created successfully');*/
     }
 
     /**

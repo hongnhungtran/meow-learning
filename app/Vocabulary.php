@@ -17,4 +17,6 @@ class Vocabulary extends Model
     	'vocabulary_audio_link'
     ];
 
+    
+
 }

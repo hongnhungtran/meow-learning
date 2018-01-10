@@ -90,7 +90,8 @@
                                 @endforeach 
                             @endif
                             <h5>Or select image</h5>
-                            <input type="file" name="files[]" id="" multiple>
+                            <input type="file" name="upload_image" id="gallery-photo-add"><br><br>
+                            <div class="gallery">
                         </div>
                     </div>
 				</div>

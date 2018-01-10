@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Title</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title" value={{ old('topic_title') }}>
+                            <input type="text" class="form-control" id="" placeholder="Topic Title" name="topic_title" value="{{ old('topic_title') }}">
                             @if ($errors->has('topic_title'))
                                 @foreach($errors->get('topic_title') as $error)
                                     <p class="text-red">{!! $error !!}</p>
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Topic Content</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value={{ old('topic_content') }}>
+                            <input type="text" class="form-control" id="" placeholder="Topic Content" name="topic_content" value="{{ old('topic_content') }}">
                             @if ($errors->has('topic_content'))
                                 @foreach($errors->get('topic_content') as $error)
                                      <p class="text-red">{!! $error !!}</p>

@@ -34,6 +34,12 @@
             <form class="form-horizontal" method="GET" action="{{ route('vocabulary.topic.index') }}">
                 <div class="box-body">
                     <div class="form-group col-md-6">
+                        <label for="" class="col-sm-4 control-label">Topic ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="" placeholder="Enter Topic ID For Search" name="topic_id" value="{{ old('topic_id') }}">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Topic title</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="" placeholder="Enter Topic Title For Search" name="topic_title" value="{{ old('topic_title') }}">
@@ -42,7 +48,7 @@
                     <div class="form-group col-md-6">
                         <label for="" class="col-sm-4 control-label">Topic content</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="" placeholder="Topic content">
+                            <input type="text" class="form-control" id="" placeholder="Enter Topic Content For Search" name="topic_content" value="{{ old('topic_content') }}">
                         </div>
                     </div>
                 </div>

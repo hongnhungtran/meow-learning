@@ -70,7 +70,7 @@ Route::group(['prefix' => '/'], function () {
     //Home
     Route::get('/', [
         'as' => 'user-home', 
-        'uses' => 'User\UserController@home'
+        'uses' => 'User\HomeController@home'
     ]);
     
     //Course

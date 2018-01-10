@@ -18,7 +18,11 @@ class CommonTestAPIController extends Controller
     {
         $this->common_test_course_id = 10;
     }
-    
+
+    /**
+     * [getLessonList description]
+     * @return [type] [description]
+     */
     public function getLessonList()
     {
     	$common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
@@ -35,6 +39,11 @@ class CommonTestAPIController extends Controller
         );
     }
 
+    /**
+     * [showCurrentLesson description]
+     * @param  [type] $lesson_id [description]
+     * @return [type]            [description]
+     */
     public function showCurrentLesson($lesson_id)
     {
         if (!$lesson_id) {
@@ -49,6 +58,11 @@ class CommonTestAPIController extends Controller
         ], 200);
     }
 
+    /**
+     * [getQuestion description]
+     * @param  [type] $lesson_id [description]
+     * @return [type]            [description]
+     */
     public function getQuestion($lesson_id)
     {
         if (!$lesson_id) {

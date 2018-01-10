@@ -31,10 +31,10 @@ class VocabularyTopicController extends Controller
 */
         if($request->has('topic_title')) {
             $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->vocabulary_course_id)
-            ->where('topic_title', 'LIKE', "%$request->topic_title%")
-            ->orwhere('topic_title', 'LIKE', "%$request->topic_title%")
-            ->paginate(10);
+                ->where('course_id', $this->vocabulary_course_id)
+                ->where('topic_title', 'LIKE', "%$request->topic_title%")
+                ->orwhere('topic_title', 'LIKE', "%$request->topic_title%")
+                ->paginate(10);
         } else {
             $vocabulary_topics = Topic::join('level', 'topic.level_id', '=', 'level.level_id')
             ->where('course_id', $this->vocabulary_course_id)
@@ -56,6 +56,34 @@ class VocabularyTopicController extends Controller
         
         return view('admin.vocabulary.topicAdd', compact('levels'));
     }
+
+
+
+    public function search_index(Request $request)
+    {
+        if($request->has('topic_title')){
+            $items = Item::search($request->titlesearch)
+                ->paginate(6);
+        }else{
+            $items = Item::paginate(6);
+        }
+        return view('item-search',compact('items'));
+    }
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+    */
+    public function search_create(Request $request)
+    {
+        $this->validate($request,['title'=>'required']);
+
+        $items = Item::create($request->all());
+        return back();
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

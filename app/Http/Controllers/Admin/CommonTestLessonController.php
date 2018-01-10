@@ -8,15 +8,24 @@ use App\Lesson;
 use App\Level;
 use App\CommonTestQuestion;
 use App\CommonTestAnswer;
+use Storage;
+use File;
+use Session;
 
 class CommonTestLessonController extends Controller
 {
+    protected $lesson;
+    protected $level;
     /**
      * Common Test Category ID　定義
      */
-    public function __construct()
-    {
+    public function __construct(
+        Lesson $lesson,
+        Level $level
+    ) {
         $this->common_test_course_id = 10;
+        $this->lesson = $lesson;
+        $this->level = $level;
     }
     /**
      * Common Test Lesson List　表示
@@ -26,11 +35,9 @@ class CommonTestLessonController extends Controller
     
     public function index()
     {
-        $common_tests = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
-            ->where('course_id', $this->common_test_course_id)
-            ->paginate(10);
-
-        $levels = Level::all();
+        $lesson = new Lesson;
+        $common_tests = $this->lesson->get_common_test_lesson()->paginate(10);
+        $levels = $this->level->get_level();
 
         return view('admin.common-test.lessonList', compact('common_tests', 'levels'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
@@ -77,26 +84,73 @@ class CommonTestLessonController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'lesson_title' => 'required|unique:lesson',
-            'lesson_content' => 'required|unique:lesson',
-            'lesson_image_link' => 'required|unique:lesson'
-        ]);
+        //If has image file -> validate
+        if($request->upload_image != "") {
+            request()->validate([
+                'lesson_title' => 'required|unique:lesson',
+                'lesson_content' => 'required|unique:lesson'
+            ]);
+        } else {
+            request()->validate([
+                'lesson_title' => 'required|unique:lesson',
+                'lesson_content' => 'required|unique:lesson',
+                'lesson_image_link' => 'required|unique:lesson'
+            ]);
+        }
 
-        $common_test = new Lesson([
-            'course_id' => $this->common_test_course_id,
-            'level_id' => (int)$request->get('level'),
-            'lesson_title' => $request->get('lesson_title'),
-            'lesson_content' => $request->get('lesson_content'),
-            'lesson_image_link' => $request->get('lesson_image_link'),
-            'lesson_flag' => 1
-        ]);
+        //get file information
+        $file = $request->file('upload_image');
 
-        $common_test->save();
+        if($request->hasFile('upload_image') && empty($request->get('lesson_image_link'))){
+            //Upload image file
+            //foreach ($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $disk = Storage::disk('google'); 
+            $result = $disk->put($filename, File::get($file));
+
+            $dir = '/';
+            $recursive = false; // Get subdirectories also?
+            $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+
+            $image = $contents
+                ->where('type', '=', 'file')
+                ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+                ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+                ->first(); // there can be duplicate file names!
+
+            //Create image link
+            $lesson_image_link = "https://drive.google.com/uc?export=view&id=".$image['path'];
+            
+            //Insert to DB
+            $common_test = new Lesson([
+                'course_id' => $this->common_test_course_id,
+                'level_id' => (int)$request->get('level'),
+                'lesson_title' => $request->get('lesson_title'),
+                'lesson_content' => $request->get('lesson_content'),
+                'lesson_image_link' => $lesson_image_link ,
+                'lesson_flag' => 1
+            ]);
+            var_dump($common_test) ;
+exit;
+            $common_test->save();
+            //}
+        } elseif ($request->hasFile('upload_image') === false && !empty($request->get('lesson_image_link'))) {
+            $common_test = new Lesson([
+                'course_id' => $this->common_test_course_id,
+                'level_id' => (int)$request->get('level'),
+                'lesson_title' => $request->get('lesson_title'),
+                'lesson_content' => $request->get('lesson_content'),
+                'lesson_image_link' => $request->get('lesson_image_link'),
+                'lesson_flag' => 1
+            ]);
+            $common_test->save();
+        } elseif($request->hasFile('upload_image') && !empty($request->get('lesson_image_link'))){
+            Session::flash('status', 'Only upload by input link or select image');
+        }
 
         return redirect()->route('common-test.lesson.index')
             ->with('status', 'Test lesson created successfully');
-      }
+    }
 
     /**
      * Common Test　テスト形式表示、Word ダウンロードできる
@@ -109,7 +163,6 @@ class CommonTestLessonController extends Controller
         //question content
         $questions = CommonTestQuestion::where('lesson_id', $id)
             ->get();
-
         //lesson
         $lesson = Lesson::find($id);
         $lesson_title = $lesson->lesson_title;

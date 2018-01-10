@@ -52,18 +52,42 @@
 							<h5><b>{{ $num++ }}. {{ $question->common_test_question }}</b></h5>
 						</div>
 						<div class="col-md-12">
-							<div class="col-md-6">
-								<h5>A. {{ $question->option_1 }}</h5>
-							</div>
-							<div class="col-md-6">
-								<h5>B. {{ $question->option_2 }}</h5>
-							</div>
-							<div class="col-md-6">
-								<h5>C. {{ $question->option_3 }}</h5>
-							</div>
-							<div class="col-md-6">
-								<h5>D. {{ $question->option_4 }}</h5>
-							</div>
+							@if($question->option_1_flag == 1)
+                                <div class="col-md-6">
+                                    <h5 class="text-danger">A. <strong><u>{{ $question->option_1 }}</u></strong></h5>
+                                </div>
+                            @else
+                                <div class="col-md-6">
+                                    <h5>A. {{ $question->option_1 }}</h5>
+                                </div>
+                            @endif
+                            @if($question->option_2_flag == 1)
+                                <div class="col-md-6">
+                                    <h5 class="text-danger">B. <strong><u>{{ $question->option_2 }}</u></strong></h5>
+                                </div>
+                            @else
+                                <div class="col-md-6">
+                                    <h5>B. {{ $question->option_2 }}</h5>
+                                </div>
+                            @endif
+                            @if($question->option_3_flag == 1)
+                            <div class="col-md-6">
+                                <h5 class="text-danger">C. <strong><u>{{ $question->option_3 }}</u></strong></h5>
+                            </div>
+                            @else
+                                <div class="col-md-6">
+                                    <h5>C. {{ $question->option_3 }}</h5>
+                                </div>
+                            @endif
+                            @if($question->option_4_flag == 1)
+                                <div class="col-md-6">
+                                    <h5 class="text-danger">D. <strong><u>{{ $question->option_4 }}</u></strong></h5>
+                                </div>
+                            @else
+                                <div class="col-md-6">
+                                    <h5>D. {{ $question->option_4 }}</h5>
+                                </div>
+                            @endif
 						</div>
 					</div>
 					@endforeach
@@ -72,7 +96,7 @@
 			<div class="box-footer">
 				<button type="submit" class="btn btn-default">Close</button>
 				<a href="{{ action('Admin\CommonTestQuestionController@index', $lesson_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
-				<button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">CSV Download</button>
+				<a href="{{ action('Admin\CommonTestQuestionController@generateDocx', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">CSV Download</button></a>
 			</div>
 			<!-- /.box-footer -->
 		</div>

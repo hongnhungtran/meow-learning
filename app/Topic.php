@@ -7,6 +7,8 @@ use Laravel\Scout\Searchable;
 
 class Topic extends Model
 {
+    use Searchable;
+
     protected $table = 'topic';
 
     protected $primaryKey = 'topic_id';
@@ -23,6 +25,29 @@ class Topic extends Model
 	public function level()
     {
         return $this->belongsTo('App\Level');
+    }
+
+    public function searchableAs()
+    {
+        return 'items_index';
+    }
+
+    public function scopeSearchByKeyword($query, $keyword)
+    {
+        if ($keyword!='') {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("course_id", "LIKE","%$keyword%")
+                    ->orWhere("email", "LIKE", "%$keyword%")
+                    ->orWhere("blood_group", "LIKE", "%$keyword%")
+                    ->orWhere("phone", "LIKE", "%$keyword%");
+
+
+                     ->where('topic_id', 'LIKE', "%$request->topic_title%")
+                ->orwhere('topic_title', 'LIKE', "%$request->topic_title%")
+
+            });
+        }
+        return $query;
     }
 
 }

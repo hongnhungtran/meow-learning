@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Config;
 
 class Lesson extends Model
 {
@@ -28,7 +29,8 @@ class Lesson extends Model
 
     public function get_vocabulary_lesson()
     {
-        $vocabulary_course_id = 1;
+        $vocabulary_course_id = Config::get('constants.course.vocabulary');
+
         $vocabulary_lessons = Lesson::join('level', 'lesson.level_id', '=', 'level.level_id')
             ->where('course_id', $vocabulary_course_id);
 
@@ -106,4 +108,5 @@ class Lesson extends Model
 
         return $common_test_lessons;
     }
+
 }

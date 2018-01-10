@@ -10,7 +10,7 @@
 <ol class="breadcrumb">
     <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
     <li><a href="{{ url('/admin/common-test') }}">Common Test</a></li>
-    <li><a href="{{ url('admin/common-test/lesson') }}">Lesson</a></li>
+    <li><a href="{{ url('admin/common-test/lesson') }}">Test</a></li>
     <li class="active">Add</li>
 </ol>
 @stop 

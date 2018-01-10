@@ -19,4 +19,11 @@ class Level extends Model
     {
         return $this->hasMany('App\Lesson');
     }
+
+    public function get_level()
+    {
+        $level = Level::all();
+
+        return $level;
+    }
 }

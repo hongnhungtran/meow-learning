@@ -1,7 +1,5 @@
 @extends('admin.shared.master')
-
 @section('title', 'Add New Lesson')
-
 @section('content_header')
      <h1>
         Add New
@@ -13,7 +11,6 @@
         <li class="active">Add</li>
       </ol>
 @stop
-
 @section('content')
      <div class="row">
         <div class="col-md-12">

@@ -21,6 +21,7 @@ class ManagementController extends Controller
         $this->toefl_course_id = 6;
         $this->toeic_course_id = 7;
         $this->eilts_course_id = 8;
+        $this->common_test_course_id = 10;
     }
 
     public function home()
@@ -93,5 +94,13 @@ class ManagementController extends Controller
             ->count();
 
         return view('admin.toeic.management', compact('lesson_count'));
+    }
+
+    public function common_test_management()
+    {
+        $lesson_count = Lesson::where('course_id', $this->common_test_course_id)
+            ->count();
+
+        return view('admin.common-test.management', compact('lesson_count'));
     }
 }
