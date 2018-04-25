@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" id="menu">
 	<div class="col-md-12">
 		<div class="menu">
 			<ul>
-				<li><a href="#" class="active"> ホーム </a></li>
+				<li><a href="{{route('user-home')}}" class="active"> ホーム </a></li>
 				<li>
 					<a href="#"> コース </a>
 					<ul>
@@ -15,16 +15,6 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#"> レッスン </a>
-					<ul>
-						<li class="submenu"><a href="#">単語</a></li>
-						<li class="submenu"><a href="#">リスニング</a></li>
-						<li class="submenu"><a href="#">スピーキング</a></li>
-						<li class="submenu"><a href="#">レディング</a></li>
-						<li class="submenu"><a href="#">ライティング</a></li>
-					</ul>
-				</li>
-				<li>
 					<a href="#">試験学習</a>
 					<ul>
 						<li class="submenu"><a href="{{ route('toeic-level') }}">TOEICコース</a></li>
@@ -32,6 +22,9 @@
 						<li class="submenu"><a href="{{ route('eilts-level') }}">IELTSコース</a></li>
 						<li class="submenu"><a href="{{ route('common-test-level') }}">総合テストコース</a></li>
 					</ul>
+				</li>
+				<li>
+					<a href="{{ route('document-list') }}"> 資料 </a>
 				</li>
 				<li>
 					<a href="#">その他</a>

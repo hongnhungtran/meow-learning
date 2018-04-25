@@ -14,53 +14,64 @@
                 </div>
             </div>
             <div id="hot-courses" class="featured-box">
-                <h3 class="box-title d-block">人気コース</h3>
-
-                <div class="featured-item-list-box">
-                    <div class="featured-item-list">
-                        <a href="#" class="featured-item">
-                            <div class="featured-item-img-box">
-                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                            </div>
-                            <div class="featured-item-title">title</div>
-                            <div class="ucan-rating rating-35"></div>
-                            <p class="featured-item-summary">description</p>
-                        </a>
-                        <a href="#" class="featured-item">
-                            <div class="featured-item-img-box">
-                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                            </div>
-                            <div class="featured-item-title">title</div>
-                            <div class="ucan-rating rating-35"></div>
-                            <p class="featured-item-summary">description</p>
-                        </a>
-                        <a href="#" class="featured-item">
-                            <div class="featured-item-img-box">
-                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                            </div>
-                            <div class="featured-item-title">title</div>
-                            <div class="ucan-rating rating-35"></div>
-                            <p class="featured-item-summary">description</p>
-                        </a>
-                        <a href="#" class="featured-item">
-                            <div class="featured-item-img-box">
-                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                            </div>
-                            <div class="featured-item-title">title</div>
-                            <div class="ucan-rating rating-35"></div>
-                            <p class="featured-item-summary">description</p>
-                        </a>
-                    </div>
-                    <div class="clear-both"></div>
+                <div id="featured-box-header">
+                    <h3 class="box-title d-block">人気コース</h3>
                     <a href="/khoa-hoc" class="featured-item-list-box-view-all">全て表示
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </a>
                 </div>
+                <div class="featured-item-list-box">
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <div class="ucan-rating rating-35"></div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <div class="ucan-rating rating-35"></div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <div class="ucan-rating rating-35"></div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <div class="ucan-rating rating-35"></div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <div class="ucan-rating rating-35"></div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <div class="clear-both"></div>
+                </div>
             </div>
             <div id="hot-vipcourses" class="featured-box">
-                <h3 class="box-title">外国人の先生と練習して会話スキルをアップしましょう</h3>
+                <div id="featured-box-header">
+                    <h3 class="box-title">外国人の先生と練習して会話スキルをアップしましょう</h3>
+                    <a href="/giao-tiep" class="featured-item-list-box-view-all">全て表示
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <div class="featured-item-list-box">
-                    <div class="featured-item-list">
                         <a href="/giao-tiep/bai-24-giao-tiep-o-san-bay-870.html" class="featured-item">
                             <div class="featured-item-img-box">
                                 <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/library/hocvoitay/Topic37/37-communication-airport.jpg" />
@@ -69,17 +80,50 @@
                             <p class="featured-item-summary">description</p>
 
                         </a>
-                    </div>
+                        <a href="/giao-tiep/bai-24-giao-tiep-o-san-bay-870.html" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/library/hocvoitay/Topic37/37-communication-airport.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+
+                        </a>
+                        <a href="/giao-tiep/bai-24-giao-tiep-o-san-bay-870.html" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/library/hocvoitay/Topic37/37-communication-airport.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+
+                        </a>
+                        <a href="/giao-tiep/bai-24-giao-tiep-o-san-bay-870.html" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/library/hocvoitay/Topic37/37-communication-airport.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+
+                        </a>
+                        <a href="/giao-tiep/bai-24-giao-tiep-o-san-bay-870.html" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/library/hocvoitay/Topic37/37-communication-airport.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+
+                        </a>
                     <div class="clear-both"></div>
-                    <a href="/giao-tiep" class="featured-item-list-box-view-all">全て表示
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
                 </div>
             </div>
             <div id="hot-playlists" class="featured-box">
-                <h3 class="box-title">動画で英語を聞きながら勉強する</h3>
+                <div id="featured-box-header">
+                    <h3 class="box-title">動画で英語を聞きながら勉強する</h3>
+                    <a href="/video" class="featured-item-list-box-view-all">全て表示
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                
                 <div class="featured-item-list-box">
-                    <div class="featured-item-list">
                         <a href="#" class="featured-item">
                             <div class="featured-item-img-box">
                                 <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/blog/14122016/LV1-77.jpg" />
@@ -91,34 +135,112 @@
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                     1254239回勉強
                                 </div>
-                                <div class="featured-item-statistics-videos">
-                                    97 動画
-                                </div>
+                                <div class="featured-item-statistics-videos">97 動画</div>
                             </div>
                         </a>
-                    </div>
-                    <div class="clear-both"></div>
-                    <a href="/video" class="featured-item-list-box-view-all">全て表示
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-            <div id="hot-stories" class="featured-box">
-                <h3 class="box-title">物語で英語を勉強しましょう</h3>
-                <div class="featured-item-list-box">
-                    <div class="featured-item-list">
                         <a href="#" class="featured-item">
                             <div class="featured-item-img-box">
-                                <img alt="course item image" class="featured-item-img" src="#" />
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/blog/14122016/LV1-77.jpg" />
                             </div>
                             <div class="featured-item-title">title</div>
                             <p class="featured-item-summary">description</p>
+                            <div class="featured-item-statistics">
+                                <div class="featured-item-statistics-views">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    1254239回勉強
+                                </div>
+                                <div class="featured-item-statistics-videos">97 動画</div>
+                            </div>
                         </a>
-                    </div>
+                        <a href="#" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/blog/14122016/LV1-77.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+                            <div class="featured-item-statistics">
+                                <div class="featured-item-statistics-views">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    1254239回勉強
+                                </div>
+                                <div class="featured-item-statistics-videos">97 動画</div>
+                            </div>
+                        </a>
+                        <a href="#" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/blog/14122016/LV1-77.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+                            <div class="featured-item-statistics">
+                                <div class="featured-item-statistics-views">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    1254239回勉強
+                                </div>
+                                <div class="featured-item-statistics-videos">97 動画</div>
+                            </div>
+                        </a>
+                        <a href="#" class="featured-item">
+                            <div class="featured-item-img-box">
+                                <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/blog/14122016/LV1-77.jpg" />
+                            </div>
+                            <div class="featured-item-title">title</div>
+                            <p class="featured-item-summary">description</p>
+                            <div class="featured-item-statistics">
+                                <div class="featured-item-statistics-views">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    1254239回勉強
+                                </div>
+                                <div class="featured-item-statistics-videos">97 動画</div>
+                            </div>
+                        </a>
                     <div class="clear-both"></div>
+                </div>
+            </div>
+            <div id="hot-stories" class="featured-box">
+                <div id="featured-box-header">
+                    <h3 class="box-title">物語で英語を勉強しましょう</h3>
                     <a href="/truyen" class="featured-item-list-box-view-all">全て表示
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </a>
+                </div>
+                <div class="featured-item-list-box">
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="#" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="#" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="#" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="#" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <a href="#" class="featured-item">
+                        <div class="featured-item-img-box">
+                            <img alt="course item image" class="featured-item-img" src="#" />
+                        </div>
+                        <div class="featured-item-title">title</div>
+                        <p class="featured-item-summary">description</p>
+                    </a>
+                    <div class="clear-both"></div>
                 </div>
             </div>
             <div class="call-to-action-box"></div>

@@ -395,11 +395,6 @@ body {
     height: 100%;
 }
 
-.featured-box {
-    display: flex;
-    margin: 20px -20px 0px 0px;
-}
-
 .featured-item {
     width: 35%;
     margin-right: 20px;
@@ -1235,10 +1230,11 @@ body {
 .box-title {
     font-size: 20px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
     padding-left: 20px;
     display: block;
+    padding-bottom: 10px;
 }
 
 .ucan-featured-item {
@@ -1334,27 +1330,29 @@ body {
 
 .featured-box {
     background: #F6f6f6;
-    margin: 0px -20px;
+    margin: 0px 0px 20px 0px;
     padding-top: 20px;
     display: block;
+    border: 1px solid #ccc;
+    border-radius: 16px;
 }
 
 .featured-item-list-box {
     padding: 10px 15px;
     position: relative;
+    display: flex;
 }
 
 .featured-item {
-    width: 232px;
     min-height: 310px;
     box-shadow: 0px 0px 6px #D0D0D0;
     padding: 10px;
     background: #fff;
-    margin: 0px 5px;
-    float: left;
+    margin: 5px 5px;
     text-decoration: none;
     box-sizing: border-box;
     position: relative;
+    border-radius: 10px;
 }
 
 .featured-item:hover .featured-item-img {
@@ -1392,11 +1390,9 @@ body {
 }
 
 .featured-item-list-box-view-all {
-    position: absolute;
-    top: -25px;
-    right: 20px;
     color: #4C4C4C;
     text-decoration: none;
+    margin-right: 20px;
 }
 
 .featured-item-list-box-view-all i {
@@ -1575,3 +1571,28 @@ body {
     text-transform: uppercase;
 }
 
+/* Menu */
+#menu {
+    margin-right: -30px;
+    margin-left: -30px;
+}
+
+/* Header */
+#header {
+    display: flex;
+}
+
+#logo {
+    float: left;
+}
+
+#menu-option {
+    float: right;
+    width: 100%;
+}
+
+#featured-box-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}

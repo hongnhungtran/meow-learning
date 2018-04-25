@@ -46,11 +46,11 @@ class VocabularyController extends Controller
         $lessons = Lesson::join('topic', 'lesson.topic_id', '=', 'topic.topic_id')
             ->where('topic.topic_id', $id)
             ->paginate(10);
-
+        $level = Level::find($id);
         $topic = Topic::find($id);
         $course = Course::find($this->vocabulary_course_id);
         $num=1;
-        return view('user.vocabulary.lessonList', compact('lessons', 'topic', 'num', 'course'))
+        return view('user.vocabulary.lessonList', compact('lessons', 'topic', 'level', 'num', 'course'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 

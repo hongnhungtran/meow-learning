@@ -74,7 +74,10 @@
 }
 
 .category-detail-header {
-    padding: 20px;
+    padding: 10px 20px;
+    background: #F6F6F6;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .category-detail-header .arrow {
@@ -86,6 +89,8 @@
     padding: 20px;
     background: #F6F6F6;
     display: flex;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .category-detail-description {
@@ -216,16 +221,13 @@ section {
 }
 
 .course-item-detail {
-    width: 228px;
-    min-height: 270px;
     box-shadow: 0px 0px 6px #D0D0D0;
     padding: 10px;
     background: #fff;
-    margin: 0px 7px;
+    margin: 0px 20px 0px 0px;
     float: left;
     text-decoration: none;
     box-sizing: border-box;
-    position: relative;
 }
 
 .course-item-detail:hover .course-item-detail-img {
@@ -277,8 +279,10 @@ section {
 }
 
 #all-categories {
-    padding: 0px 20px 100px;
+    padding: 10px 20px;
     background: #F6F6F6;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .all-categories-title {
@@ -290,10 +294,10 @@ section {
 .category-tag-item {
     display: inline-block;
     background: #E9E9E9;
-    padding: 6px 20px;
-    line-height: 24px;
-    border-radius: 24px;
-    margin: 10px 15px 10px 0px;
+    padding: 5px 10px;
+    line-height: 20px;
+    border-radius: 10px;
+    margin: 5px 5px 5px 0px;
     text-decoration: none;
     color: #4C4C4C;
 }
@@ -933,13 +937,13 @@ section {
 #course-info {
     background: #FAFAFA;
     border-bottom: 1px solid #E8E8E8;
-    padding: 20px 20px 10px 20px;
+    padding: 20px;
     -webkit-box-shadow: inset 0px -1px 20px 0px #F0F0F0;
     -moz-box-shadow: inset 0px -1px 20px 0px #F0F0F0;
     -o-box-shadow: inset 0px -1px 20px 0px #F0F0F0;
     -ms-box-shadow: inset 0px -1px 20px 0px #F0F0F0;
     box-shadow: inset 0px -1px 20px 0px #F0F0F0;
-    margin: 0px 15px;
+    margin: 0px;
 }
 
 #course-info h3 {
@@ -949,12 +953,7 @@ section {
     font-weight: bold;
 }
 
-#course-info a {
-    color: #F37D1D;
-}
-
 #course-lectures {
-    margin: 20px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.7);
 }
@@ -1061,8 +1060,15 @@ section {
 }
 
 #all-courses {
-    color: #008CD2 !important;
+    display: inline-block;
+    background-color: #f44336;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    text-align: center;
     text-decoration: none;
+    font-size: 16px;
+    opacity: 0.9;
+    border-radius: 10px;
 }
 
 #all-courses:hover {
@@ -2195,4 +2201,13 @@ a img {
     display: block;
     height: 0;
     overflow-y: hidden;
+}
+
+#front-content-box-background {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+#item-link {
+    color: #F0730D;
+    text-decoration: none;
 }

@@ -11,5 +11,8 @@ use App\Vocabulary;
 
 class ToeicExerciseController extends Controller
 {
-
+	public function a()
+	{
+		
+	}
 }

@@ -72,7 +72,7 @@ class WeatherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -83,6 +83,5 @@ class WeatherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
-}

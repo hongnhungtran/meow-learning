@@ -1,9 +1,8 @@
 @extends('user.shared.master')
-
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+		<div id="front-content-box">
 			<div class="panel with-nav-tabs panel-success">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">

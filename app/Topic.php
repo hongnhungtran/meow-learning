@@ -34,16 +34,11 @@ class Topic extends Model
 
     public function scopeSearchByKeyword($query, $keyword)
     {
-        if ($keyword!='') {
+        if ($keyword != '') {
             $query->where(function ($query) use ($keyword) {
-                $query->where("course_id", "LIKE","%$keyword%")
-                    ->orWhere("email", "LIKE", "%$keyword%")
-                    ->orWhere("blood_group", "LIKE", "%$keyword%")
-                    ->orWhere("phone", "LIKE", "%$keyword%");
-
-
-                     ->where('topic_id', 'LIKE', "%$request->topic_title%")
-                ->orwhere('topic_title', 'LIKE', "%$request->topic_title%")
+                $query->where('course_id', 'LIKE',"%$keyword%")
+                    ->orwhere('topic_id', 'LIKE', "%$request->topic_title%")
+                    ->orwhere('topic_title', 'LIKE', "%$request->topic_title%");
 
             });
         }
