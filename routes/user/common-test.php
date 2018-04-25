@@ -17,4 +17,10 @@ Route::group(['prefix' => 'common-test'], function () {
 		'as' => 'common-test-exercise', 
 		'uses' => 'User\CommonTestController@get_exercise'
 	]);
+
+	//post test
+	Route::get('/lesson/{id}', [
+		'as' => 'common-test-answer', 
+		'uses' => 'User\CommonTestController@check_result'
+	]);
 });

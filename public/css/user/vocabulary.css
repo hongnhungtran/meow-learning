@@ -956,6 +956,7 @@ section {
 #course-lectures {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
 }
 
 .lecture {
@@ -2210,4 +2211,54 @@ a img {
 #item-link {
     color: #F0730D;
     text-decoration: none;
+}
+
+#timer {
+    border: 1px solid #E8E8E8;
+}
+
+#test-content {
+
+}
+
+#question-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    color: #888;
+    font-size: 16px;
+    background: #f9f9f9;
+    left: -1px;
+    top: -1px;
+    box-shadow: inset 0px -5px 20px 0px #F0F0F0;
+    border: 1px solid #e8e8e8;
+}
+
+#current-question {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+    box-shadow: inset 0px -5px 20px 0px #F0F0F0;
+    min-height: 20px;
+    display: flex;
+
+}
+
+.question-text {
+    padding: 10px 10px 10px 20px;
+}
+
+#answer-text {
+    padding: 10px 10px 10px 20px;
+}
+
+#answer-text div {
+    padding: 0px 10px 10px 0px;
+}
+
+.part-nav {
+    text-align: right;
 }

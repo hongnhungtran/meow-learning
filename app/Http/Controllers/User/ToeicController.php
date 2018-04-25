@@ -15,7 +15,7 @@ class ToeicController extends Controller
 {
     public function __construct()
     {
-        $this->toeic_course_id = 6;
+        $this->toeic_course_id = 7;
     }
 
     public function get_level_list() 
