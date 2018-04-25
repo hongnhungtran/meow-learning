@@ -118,7 +118,6 @@ $("#test_content").on( "click", "#question_answer_add_button", function() {
                 reader.readAsDataURL(input.files[i]);
             }
         }
-
     };
 
     $('#gallery-photo-add').on('change', function() {
