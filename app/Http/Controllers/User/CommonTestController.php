@@ -44,9 +44,28 @@ class CommonTestController extends Controller
     public function get_exercise($id) 
     {
         $lesson = Lesson::find($id);
-        $content = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
+        $contents = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
             ->get();
         $course = Course::find($this->common_test_course_id);
-        return view('user.common-test.commonTest', compact('lesson', 'course', 'content'));
+        $num = 1;
+        return view('user.common-test.commonTest', compact('lesson', 'course', 'contents', 'num'));
+    }
+
+    public function check_result(Request $request, $lesson_id)
+    {
+        $contents = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
+            ->get();
+
+        $answers = new CommonTestQuestion([
+            'lesson_id' => $lesson_id,
+            'common_test_question_id' => $request->get('common_test_question_id'),
+            'option_1' => $request->get('option_1_flag'),
+            'option_2' => $request->get('option_2_flag'),
+            'option_3' => $request->get('option_3_flag'),
+            'option_4' => $request->get('option_4_flag'),
+        ]);
+            
+        return redirect()->route('vocabulary.topic.index')
+            ->with('status', 'Vocabulary topic created successfully');
     }
 }

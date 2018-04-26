@@ -18,29 +18,29 @@
 			</div>
 		</div>
 		<div id="test-content" class="col-md-8">
-			<form class="form-horizontal" method="post"  action="{{ action('User\CommonTestController@check_result', $lesson_id) }}" enctype="multipart/form-data">
+			<form class="form-horizontal" method="post"  action="{{ action('User\CommonTestController@check_result', $lesson->lesson_id) }}" enctype="multipart/form-data">
                 {{csrf_field()}} 
-			@foreach($contents as $content)
-			<div id="current-question">
-				<div id="question-number">{!! $num++ !!}</div>
-				<div id="question-content">
-					<div class="question-text" id="question-id-{{ $content->common_test_question_id }}">
-						{!! $content->common_test_question !!}
-					</div>
-					<div id="answer-text">
-						<div><input type="radio" class="target" value="option_1_flag" name="answer"><strong>A.</strong>{!! $content->option_1 !!}</div>
-						<div><input type="radio" class="target" value="option_2_flag" name="answer"><strong>B.</strong>{!! $content->option_2 !!}</div>
-						<div><input type="radio" class="target" value="option_3_flag" name="answer"><strong>C.</strong>{!! $content->option_3 !!}</div>
-						<div><input type="radio" class="target" value="option_4_flag" name="answer"><strong>D.</strong>{!! $content->option_4 !!}</div>
+				@foreach($contents as $content)
+				<div id="current-question">
+					<div id="question-number">{!! $num++ !!}</div>
+					<div id="question-content">
+						<div class="question-text" id="question-id-{{ $content->common_test_question_id }}">
+							{!! $content->common_test_question !!}
+						</div>
+						<div id="answer-text">
+							<div><input type="radio" class="target" value="option_1_flag" name="answer"><strong>A.</strong>{!! $content->option_1 !!}</div>
+							<div><input type="radio" class="target" value="option_2_flag" name="answer"><strong>B.</strong>{!! $content->option_2 !!}</div>
+							<div><input type="radio" class="target" value="option_3_flag" name="answer"><strong>C.</strong>{!! $content->option_3 !!}</div>
+							<div><input type="radio" class="target" value="option_4_flag" name="answer"><strong>D.</strong>{!! $content->option_4 !!}</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			@endforeach
-			<div class="part-nav">
+				@endforeach
+				<div class="part-nav">
 					<button class="submit frontend-green-button" >完了</button>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 		</div>
 	</div>
 </div>
