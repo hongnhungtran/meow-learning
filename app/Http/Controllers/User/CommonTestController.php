@@ -53,6 +53,8 @@ class CommonTestController extends Controller
 
     public function check_result(Request $request, $lesson_id)
     {
+        dd($request->all());exit;
+        
         $contents = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
             ->get();
 
