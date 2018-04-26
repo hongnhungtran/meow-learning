@@ -40,7 +40,6 @@
                 <form class="form-horizontal" method="post" action="{{ action('Admin\CommonTestQuestionController@store', $lesson_id) }}">
                 {{csrf_field()}}
                  <div class="box-body">
-
                     <div class="form-group">
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value="{{ old('common_test_question') }}">

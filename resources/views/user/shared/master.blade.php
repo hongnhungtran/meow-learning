@@ -8,6 +8,7 @@
 	<link href="{{ asset('public/css/user/shared.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/vocabulary.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/pgwslider.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/user/flipclock.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('public/img/common/home.png') }}"/>
@@ -28,12 +29,15 @@
     </style>
 
 	<!-- Javascript -->
+    <script src="{{ asset('public/js/jquery.min.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <script src="{{ asset('public/js/user/vocabularyLessionList.js') }}"></script>
+    <script src="{{ asset('public/js/user/front.js') }}"></script>
     <script src="{{ asset('public/js/user/pgwslider.min.js') }}"></script>
+    <script src="{{ asset('public/js/user/flipclock.min.js') }}"></script>
 </head>
 <body>
 @include('user.shared.header')

@@ -21,7 +21,7 @@
 					</div>
 					<img src="{{ $lesson->lesson_image_link }}" alt="lecture image" class="lecture-img lecture-item" />
 					<div class="lecture-content lecture-item">
-						<h4 class="lecture-title"><a href="{!! action('User\ToeflController@get_exercise', $lesson->lesson_id) !!}"> {!! $lesson->lesson_title !!}</h4></a>
+						<h4 class="lecture-title"><a id="item-link" href="{!! action('User\ToeflController@get_exercise', $lesson->lesson_id) !!}"> {!! $lesson->lesson_title !!}</h4></a>
 						<p>{!! $lesson->lesson_content !!}</p>
 					</div>
 					<div class="start-lecture lecture-item">
