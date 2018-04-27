@@ -42,7 +42,7 @@
 <body>
 @include('user.shared.header')
 
-<div class="container" style="background-color: rgba(255, 255, 255, 0.7);">
+<div class="container">
 @include('user.shared.menu')
 @yield('content')
 </div>

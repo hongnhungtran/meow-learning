@@ -28,10 +28,10 @@
 							{!! $content->common_test_question !!}
 						</div>
 						<div id="answer-text">
-							<div><input type="radio" class="target" value="option_1_flag" name="answer"><strong>A.</strong>{!! $content->option_1 !!}</div>
-							<div><input type="radio" class="target" value="option_2_flag" name="answer"><strong>B.</strong>{!! $content->option_2 !!}</div>
-							<div><input type="radio" class="target" value="option_3_flag" name="answer"><strong>C.</strong>{!! $content->option_3 !!}</div>
-							<div><input type="radio" class="target" value="option_4_flag" name="answer"><strong>D.</strong>{!! $content->option_4 !!}</div>
+							<div><input type="radio" class="target" value="option_1_flag" name="answer-{{$content->common_test_question_id}}"><strong>A.</strong>{!! $content->option_1 !!}</div>
+							<div><input type="radio" class="target" value="option_2_flag" name="answer-{{$content->common_test_question_id}}"><strong>B.</strong>{!! $content->option_2 !!}</div>
+							<div><input type="radio" class="target" value="option_3_flag" name="answer-{{$content->common_test_question_id}}"><strong>C.</strong>{!! $content->option_3 !!}</div>
+							<div><input type="radio" class="target" value="option_4_flag" name="answer-{{$content->common_test_question_id}}"><strong>D.</strong>{!! $content->option_4 !!}</div>
 						</div>
 					</div>
 				</div>
