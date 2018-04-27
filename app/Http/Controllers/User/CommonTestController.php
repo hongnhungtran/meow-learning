@@ -13,6 +13,8 @@ use App\CommonTestQuestion;
 
 class CommonTestController extends Controller
 {
+    private $user_answer = [];
+
     public function __construct()
     {
         $this->common_test_course_id = 10;
@@ -53,21 +55,17 @@ class CommonTestController extends Controller
 
     public function check_result(Request $request, $lesson_id)
     {
-        dd($request->all());exit;
-        
-        $contents = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
-            ->get();
+        //get result
+        $user_answer = $request->all();
 
-        $answers = new CommonTestQuestion([
-            'lesson_id' => $lesson_id,
-            'common_test_question_id' => $request->get('common_test_question_id'),
-            'option_1' => $request->get('option_1_flag'),
-            'option_2' => $request->get('option_2_flag'),
-            'option_3' => $request->get('option_3_flag'),
-            'option_4' => $request->get('option_4_flag'),
-        ]);
-            
-        return redirect()->route('vocabulary.topic.index')
-            ->with('status', 'Vocabulary topic created successfully');
+        //get view content
+        $lesson = Lesson::find($lesson_id);
+        $contents = CommonTestQuestion::join('lesson', 'lesson.lesson_id', '=', 'common_test_question.lesson_id')
+                    ->get();
+        $course = Course::find($this->common_test_course_id);
+        $num = 1;
+
+        //get view
+        return view('user.common-test.checkAnswer', compact('lesson', 'course', 'contents', 'num'));
     }
 }

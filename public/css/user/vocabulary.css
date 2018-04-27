@@ -2261,3 +2261,32 @@ a img {
 .part-nav {
     text-align: right;
 }
+
+#common-test-result-icon {
+    color: #6FCC1A;
+    font-size: 120px;
+}
+
+#common-test-result {
+    background-color: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 2px;
+}
+
+#total-score {
+    font-size: 30px;
+    margin-top: 0;
+    color: #b00000;
+}
+
+#score-view {
+
+}
+
+#result-score-content {
+    margin: 0px;
+}
+
+#show-explanation {
+    color: #f36d00;
+}

@@ -62,3 +62,4 @@ jQuery(function($) {
   $(window).scroll(fixDiv);
   fixDiv();
 });
+
