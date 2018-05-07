@@ -16,7 +16,6 @@
 			<div id="result-score-content">
 				<h3 id="total-score">正解　0/100 質問</h3>
 					<div class="cell actions">
-						<a href=""><i class="fa fa-arrow-right"></i> 自分の回答を見る</a>
 					</div>
 				<div class="show-explanation">
 					<label id="show-explanation"><input type="checkbox">回答説明を表示する(ある場合)</label>
@@ -32,10 +31,14 @@
 							{!! $content->common_test_question !!}
 						</div>
 						<div id="answer-text">
-							<div><input type="radio" class="target" value="option_1_flag" name="answer-{{$content->common_test_question_id}}"><strong>A.</strong>{!! $content->option_1 !!}</div>
-							<div><input type="radio" class="target" value="option_2_flag" name="answer-{{$content->common_test_question_id}}"><strong>B.</strong>{!! $content->option_2 !!}</div>
-							<div><input type="radio" class="target" value="option_3_flag" name="answer-{{$content->common_test_question_id}}"><strong>C.</strong>{!! $content->option_3 !!}</div>
-							<div><input type="radio" class="target" value="option_4_flag" name="answer-{{$content->common_test_question_id}}"><strong>D.</strong>{!! $content->option_4 !!}</div>
+							@if ($content->answer == 1)
+							<div><input type="radio" class="target" id="true" value="" name="{{$content->common_test_question_id}}"><strong>A.</strong>{!! $content->option_1 !!}</div>
+							@endif
+
+							<div><input type="radio" class="target" value="2" name="{{$content->common_test_question_id}}"><strong>B.</strong>{!! $content->option_2 !!}</div>
+							<div><input type="radio" class="target" value="3" name="{{$content->common_test_question_id}}"><strong>C.</strong>{!! $content->option_3 !!}</div>
+							<div><input type="radio" class="target" value="4" name="{{$content->common_test_question_id}}"><strong>D.</strong>{!! $content->option_4 !!}</div>
+							
 						</div>
 					</div>
 				</div>

@@ -66,6 +66,6 @@ class CommonTestController extends Controller
         $num = 1;
 
         //get view
-        return view('user.common-test.checkAnswer', compact('lesson', 'course', 'contents', 'num'));
+        return view('user.common-test.checkAnswer', compact('lesson', 'course', 'contents', 'num', 'user_answer'));
     }
 }

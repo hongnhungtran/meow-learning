@@ -21,8 +21,8 @@ class CommonTestQuestion extends Model
         'option_3',
         'option_3_flag',
         'option_4',
-        'option_4_flag'
-
+        'option_4_flag',
+        'answer'
     ];
 
     public function common_test_answer()
@@ -56,4 +56,5 @@ class CommonTestQuestion extends Model
 
         return $question_content;
     }
+
 }
