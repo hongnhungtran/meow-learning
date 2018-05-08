@@ -176,16 +176,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
         Barryvdh\Debugbar\ServiceProvider::class,
-
-        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         App\Providers\GoogleDriveServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
     ],
 
     /*

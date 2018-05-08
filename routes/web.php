@@ -72,6 +72,11 @@ Route::group(['prefix' => '/'], function () {
         'as' => 'user-home', 
         'uses' => 'User\HomeController@home'
     ]);
+
+    Route::get('/course/{id}', [
+        'as' => 'levelList', 
+        'uses' => 'User\CourseController@get_level_list'
+    ]);
     
     //Course
     require(__DIR__ . "/user/vocabulary.php");

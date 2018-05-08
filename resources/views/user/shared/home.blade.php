@@ -21,46 +21,16 @@
                     </a>
                 </div>
                 <div class="featured-item-list-box">
-                    <a href="#" class="featured-item">
+                    @foreach ($popularity_course as $course)
+                    <a href="{!! action('User\CourseController@get_level_list', $course->course_id) !!}" class="featured-item">
                         <div class="featured-item-img-box">
                             <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
                         </div>
-                        <div class="featured-item-title">title</div>
+                        <div class="featured-item-title">{{ $course->course_name }}</div>
                         <div class="ucan-rating rating-35"></div>
-                        <p class="featured-item-summary">description</p>
+                        <p class="featured-item-summary">{{ $course->course_description }}</p>
                     </a>
-                    <a href="#" class="featured-item">
-                        <div class="featured-item-img-box">
-                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                        </div>
-                        <div class="featured-item-title">title</div>
-                        <div class="ucan-rating rating-35"></div>
-                        <p class="featured-item-summary">description</p>
-                    </a>
-                    <a href="#" class="featured-item">
-                        <div class="featured-item-img-box">
-                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                        </div>
-                        <div class="featured-item-title">title</div>
-                        <div class="ucan-rating rating-35"></div>
-                        <p class="featured-item-summary">description</p>
-                    </a>
-                    <a href="#" class="featured-item">
-                        <div class="featured-item-img-box">
-                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                        </div>
-                        <div class="featured-item-title">title</div>
-                        <div class="ucan-rating rating-35"></div>
-                        <p class="featured-item-summary">description</p>
-                    </a>
-                    <a href="#" class="featured-item">
-                        <div class="featured-item-img-box">
-                            <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
-                        </div>
-                        <div class="featured-item-title">title</div>
-                        <div class="ucan-rating rating-35"></div>
-                        <p class="featured-item-summary">description</p>
-                    </a>
+                    @endforeach
                     <div class="clear-both"></div>
                 </div>
             </div>
