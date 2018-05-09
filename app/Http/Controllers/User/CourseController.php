@@ -11,13 +11,43 @@ use App\Course;
 
 class CourseController extends Controller
 {
-    public function get_level_list($id) 
-    { 
+    public function showCourse ($courseId)
+    {
+        $course = Course::find($courseId)->get();
         $levels = Level::all();
-        $courses = Course::all();
+        $lessons = Lesson::where('lesson.course_id', $courseId)
+            ->paginate(18);
 
+        return view('user.shared.course', compact('course', 'levels', 'lessons', 'courseId'))
+            ->with('i', (request()->input('page', 1) - 1) * 18);
+    }
+
+    public function getByLevel ($courseId, $levelId) 
+    {
+        $course = Course::find($courseId)->get();
+        $levels = Level::all();
+        $lesson = Lesson::where('lesson.level_id', $levelId)
+            ->where('course.course_id', $courseId)
+            ->paginate(18);
+
+        return view('user.shared.level', compact('course', 'levels', 'lesson', 'courseId' ))
+            ->with('i', (request()->input('page', 1) - 1) * 18);
+    }
+
+    public function getByKeyword ()
+    {
+
+    }
+
+    public function getLessonList($id)
+    {
+        $levels = Level::all();
         $course = Course::find($id);
-        return view('user.shared.levelList', compact('levels', 'courses', 'course'));
+        $lessons = Course::join('lesson','lesson.course_id', '=', 'course.course_id')
+            ->paginate(18);
+
+        return view('user.shared.lesson', compact('levels', 'course', 'lessons'))
+            ->with('i', (request()->input('page', 1) - 1) * 18);
     }
 
     public function get_topic_list($id) 
@@ -34,7 +64,7 @@ class CourseController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    public function get_lesson_list($id) 
+    public function showLesson($id) 
     {
         $lessons = Lesson::join('topic', 'lesson.topic_id', '=', 'topic.topic_id')
             ->where('topic.topic_id', $id)

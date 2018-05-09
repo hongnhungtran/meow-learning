@@ -67,15 +67,19 @@ Route::group(['prefix' => 'admin'], function () {
  */
 
 Route::group(['prefix' => '/'], function () {
-    //Home
     Route::get('/', [
         'as' => 'user-home', 
         'uses' => 'User\HomeController@home'
     ]);
 
-    Route::get('/course/{id}', [
-        'as' => 'levelList', 
-        'uses' => 'User\CourseController@get_level_list'
+    Route::get('/course/{courseId}', [
+        'as' => 'getCourseContent', 
+        'uses' => 'User\CourseController@showCourse'
+    ]);
+
+    Route::get('/course/{courseId}/level/{levelId}', [
+        'as' => 'getByLevel', 
+        'uses' => 'User\CourseController@getByLevel'
     ]);
     
     //Course

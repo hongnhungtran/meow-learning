@@ -22,7 +22,7 @@
                 </div>
                 <div class="featured-item-list-box">
                     @foreach ($popularity_course as $course)
-                    <a href="{!! action('User\CourseController@get_level_list', $course->course_id) !!}" class="featured-item">
+                    <a href="{!! action('User\CourseController@showCourse', $course->course_id) !!}" class="featured-item">
                         <div class="featured-item-img-box">
                             <img alt="course item image" class="featured-item-img" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/Bai-hoc/cover-3.jpg" />
                         </div>

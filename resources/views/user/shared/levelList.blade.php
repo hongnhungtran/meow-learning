@@ -18,15 +18,6 @@
 				    <h3 class="box-title">レッスンがありません。</h3>
 				@else
 					@foreach($levels as $level)
-						@if ($level->level_id == 1)
-						<a href="{!! action('User\VocabularyController@get_topic_list', $level->level_id) !!}" class="course-item-detail">
-							<div class="course-item-detail-img-box">
-								<img src="{{ $level->level_image_link }}" class="course-item-detail-img" />
-							</div>
-							<div class="course-item-detail-title">{{ $level->level_name }}</div>
-							<p class="course-item-detail-summary">{{ $level->level_content }}</p>
-						</a>
-						@elseif
 						<a href="{!! action('User\CourseController@get_lesson_list', $level->level_id) !!}" class="course-item-detail">
 							<div class="course-item-detail-img-box">
 								<img src="{{ $level->level_image_link }}" class="course-item-detail-img" />
@@ -34,7 +25,6 @@
 							<div class="course-item-detail-title">{{ $level->level_name }}</div>
 							<p class="course-item-detail-summary">{{ $level->level_content }}</p>
 						</a>
-						@endif
 					@endforeach
 					<div class="clear-both"></div>
 				@endif
