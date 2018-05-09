@@ -1,7 +1,7 @@
 @extends('user.shared.master') 
 @section('content') 
 <div class="row">
-	<div class="col-md-12">
+	<div id="front-content-box">
 		<div id="header-box">
 			<img src="../public/img/common/d-thumbnail.png">
 			<div class="header-content-wrapper">
