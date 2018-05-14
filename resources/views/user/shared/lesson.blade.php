@@ -9,14 +9,14 @@
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 					@foreach($levels as $level)
-					<li><a href="{!! action('User\CourseController@getByLevel', $courseId, $level->level_id,) !!}" class="navbar-list-item"> {{$level->level_name}} </a></li>
+					<li><a href="{!! action('User\CourseController@getByLevel', [$level->level_id, $courseId]) !!}" class="navbar-list-item"> {{$level->level_name}} </a></li>
 					@endforeach
 				</ul>
 			</div>
 			<div class="search-keyword-box">
-				<form method="post" action="{{ action('User\DocumentController@search_document') }}">
+				<form method="post" action="{{ action('User\CourseController@getByKeyword') }}">
 				{{csrf_field()}} 
-					<input type="search" class="form-control" id="keyword" name="keyword" placeholder="資料検索" value="{{ old('keyword') }}">
+					<input type="search" class="form-control" id="keyword" name="keyword" placeholder="レッスン検索" value="{{ old('keyword') }}">
 					<input class="search-icon-box" type="submit" value="検索">
 				</form>
 			</div>
@@ -36,7 +36,7 @@
 							<div class="download-item-detail-wrapper">
 								<a href="#" class="download-item-detail-box">
 									<div class="download-item-detail-img-box">
-										<img alt="download item image" class="download-item-detail-img" src="{{$document->document_image_link}}" />
+										<img alt="download item image" class="download-item-detail-img" src="{{$lesson->lesson_image_link}}" />
 									</div>
 									<div class="download-item-detail">
 										<div class="download-item-detail-title">{{$lesson->lesson_title}}</div>

@@ -1347,7 +1347,7 @@ body {
 }
 
 .featured-item {
-    min-height: 310px;
+    min-height: 260px;
     box-shadow: 0px 0px 6px #D0D0D0;
     padding: 10px;
     background: #fff;

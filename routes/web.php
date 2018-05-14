@@ -78,8 +78,13 @@ Route::group(['prefix' => '/'], function () {
     ]);
 
     Route::get('/course/{courseId}/level/{levelId}', [
-        'as' => 'getByLevel', 
+        'as' => 'user-show-lesson', 
         'uses' => 'User\CourseController@getByLevel'
+    ]);
+
+    Route::post('/course/{courseId}/search', [
+        'as' => 'getByKeyword', 
+        'uses' => 'User\CourseController@getByKeyword'
     ]);
     
     //Course

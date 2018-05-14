@@ -22,21 +22,29 @@ class CourseController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 18);
     }
 
-    public function getByLevel ($courseId, $levelId) 
+    public function getByLevel ($levelId, $courseId) 
     {
         $course = Course::find($courseId)->get();
         $levels = Level::all();
-        $lesson = Lesson::where('lesson.level_id', $levelId)
-            ->where('course.course_id', $courseId)
+        $lessons = Lesson::where('lesson.level_id', $levelId)
+            ->where('lesson.course_id', $courseId)
             ->paginate(18);
 
-        return view('user.shared.level', compact('course', 'levels', 'lesson', 'courseId' ))
+        return view('user.shared.lesson', compact('course', 'levels', 'lessons', 'courseId' ))
             ->with('i', (request()->input('page', 1) - 1) * 18);
     }
 
-    public function getByKeyword ()
+    public function getByKeyword (Request $request, $courseId)
     {
+        $keyword = $request->keyword;
+        $levels = Level::all();
+        $lessons = Lesson::where('lesson.course_id', $courseId )
+            ->where('lesson.lesson_title', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('lesson.lesson_content', 'LIKE', '%' . $keyword . '%')
+            ->paginate(18);
 
+        return view('user.shared.lesson', compact('levels', 'lessons'))
+            ->with('i', (request()->input('page', 1) - 1) * 18);
     }
 
     public function getLessonList($id)

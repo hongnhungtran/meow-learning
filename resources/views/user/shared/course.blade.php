@@ -17,7 +17,7 @@
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 					@foreach($levels as $level)
-					<li><a href="{!! action('User\CourseController@getByLevel', $level->level_id, $courseId) !!}" class="navbar-list-item"> {{$level->level_name}} </a></li>
+					<li><a href="{!! action('User\CourseController@getByLevel', [$level->level_id, $courseId]) !!}" class="navbar-list-item"> {{$level->level_name}} </a></li>
 					@endforeach
 				</ul>
 			</div>

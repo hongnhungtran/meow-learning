@@ -23,21 +23,21 @@
 			</div>
 			</div>
 			<div id="test-content" class="col-md-8">
-				@foreach($contents as $content)
+				@foreach($true_answers as $true_answer)
 				<div id="current-question">
 					<div id="question-number">{!! $num++ !!}</div>
 					<div id="question-content">
-						<div class="question-text" id="question-id-{{ $content->common_test_question_id }}">
-							{!! $content->common_test_question !!}
+						<div class="question-text" >
+							{!! $true_answer['common_test_question'] !!}
 						</div>
 						<div id="answer-text">
-							@if ($content->answer == 1)
-							<div><input type="radio" class="target" id="true" value="" name="{{$content->common_test_question_id}}"><strong>A.</strong>{!! $content->option_1 !!}</div>
+							@if ( $true_answer->answer == 1 && $getData[$true_answers->common_test_question_id] == 1)
+							<div><input type="radio" class="target text-success" id="true" value="1" name="{{$true_answers->common_test_question_id}}"><strong>A.</strong>{!! $true_answer->option_1 !!}</div>
 							@endif
 
-							<div><input type="radio" class="target" value="2" name="{{$content->common_test_question_id}}"><strong>B.</strong>{!! $content->option_2 !!}</div>
-							<div><input type="radio" class="target" value="3" name="{{$content->common_test_question_id}}"><strong>C.</strong>{!! $content->option_3 !!}</div>
-							<div><input type="radio" class="target" value="4" name="{{$content->common_test_question_id}}"><strong>D.</strong>{!! $content->option_4 !!}</div>
+							<div><input type="radio" class="target" value="2" name="{{$true_answers->common_test_question_id}}"><strong>B.</strong>{!! $true_answer->option_2 !!}</div>
+							<div><input type="radio" class="target" value="3" name="{{$true_answer->common_test_question_id}}"><strong>C.</strong>{!! $true_answer->option_3 !!}</div>
+							<div><input type="radio" class="target" value="4" name="{{$true_answer->common_test_question_id}}"><strong>D.</strong>{!! $true_answer->option_4 !!}</div>
 							
 						</div>
 					</div>

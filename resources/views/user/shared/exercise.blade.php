@@ -8,9 +8,9 @@
 				<h3>
 					<a id="all-courses" href="{!! action('User\HomeController@home') !!}"> コース</a>
 					<span class="arrow-gt">›</span>
-					<a id="all-courses" href="#" class="btn-success">{!! $course->course_name !!}</a>
+					<a id="all-courses" href="#" class="btn-success">{!! $course[0]->course_name !!}</a>
 				</h3>
-					<p class="category-detail-description">{!! $course->course_description !!}</p>
+					<p class="category-detail-description">{!! $course[0]->course_description !!}</p>
 				</div>
 
 				<div class="course-in-category">
@@ -28,12 +28,6 @@
 					@endforeach
 					<div class="clear-both"></div>
 				@endif
-				</div>
-				<div id="all-categories">
-					<div class="all-categories-title">タグ</div>
-					@foreach($courses as $course)
-						<a href="#" class="category-tag-item">{{ $course->course_name }}</a>
-					@endforeach
 				</div>
 			</div>
 		</div>
