@@ -25,54 +25,25 @@
 								<div class="icon"></div>
 								<div class="text">クリックして画像をフリップしましょう。</div>
 							</div>
-							<div class="thumb-outer">
-								<div id="card card-common"> 
-								  	<div class="front card-common"> 
-								   		Front content
-								  	</div> 
-								  	<div class="back card-common">
-								    	Back content
-								  	</div> 
-								</div>
-							</div>
-
-							<div id="flashcard-area">
-								<div class="global-float-left flashcard-outer">
-									<img class="img-main img-main-active" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg"
-									title="Bấm để lật thẻ" style="display: inline;">
-
-									<div class="img-caption">runner bean</div>
-									<div class="word-meaning" title="Nhấp chuột để lật thẻ">
-										<div class="title-flip-outer">
-											<span class="title-flip"></span>
-										</div>
-										<div class="word-phonetic"></div>
-										<div class="vietnamese-meaning"></div>
-										<div class="english-meaning">
-											<div class="subject">Nghĩa Tiếng Anh</div>
-											<div class="english-content"></div>
-										</div>
-										<div class="example">
-											<span class="subject">Ví dụ</span>
-											:
-											<span class="example-content"></span>
-										</div>
+							<div class="">
+								@foreach ($vocabulary as $data)
+								<div class="col-xs-3">
+									<div class="card "> 
+									  	<div class="front"> 
+									   		<img id="flashcard-img" src="{{ $data->vocabulary_image_link }}">
+									  	</div> 
+									  	<div class="back">
+									  		{{ $data->vocabulary }} <br>
+									  		{{ $data->pronunciation}}
+									  	</div> 
 									</div>
-									<div class="button-list global-float-right">
-										<div class="record" title="Ghi âm"></div>
-										<div class="play" title="Nghe lại thu âm"></div>
-										<div class="stop" title="Dừng thu âm"></div>
-										<div class="split"></div>
-										<div class="speaker" title="Nghe từ"></div>
-										<div class="global-float-left flip-card" title="Lật thẻ để xem thêm thông tin"></div>
-										<div class="split"></div>
-										<div class="btn-next" title="Tranh sau" style="opacity: 1; cursor: pointer;"></div>
-										<div class="btn-prev" title="Tranh trước" style="cursor: default; opacity: 0.2;"></div>
-										<div class="global-clear-both"></div>
+									<div class="speaker" title="聞く">
+										<input type="button" value="PLAY"  onclick="play()">
+										<audio id="audio-{{ $data->vocabulary}}" src="{{ $data->vocabulary_audio_link }}" ></audio>
 									</div>
 								</div>
+								@endforeach
 							</div>
-
 						</div>
 						<div class="tab-pane fade" id="tab2success">
 							<div class="global-activity-guide">
@@ -259,6 +230,25 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-	$("#card").flip();
+	//flashcard flip
+	$(".card").flip();
+
+	//play audio
+	var js_data = '<?php echo json_encode($vocabulary); ?>';
+	var js_obj_data = JSON.parse(js_data );
+	console.log(js_obj_data);
+	
+	function play(){
+       var audio = document.getElementById("audio");
+       audio.play();
+    }
 </script>
 @endsection
+@section('styles')
+<style type="text/css">
+	#flashcard-img {
+		width: 100%;
+		height: 100%;
+	}
+</style>
+@stop

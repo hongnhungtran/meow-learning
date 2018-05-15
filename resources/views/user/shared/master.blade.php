@@ -48,6 +48,5 @@
 </div>
 @include('user.shared.footer')
 @yield('scripts');
-@yield('css');
 </body>
 </html>
