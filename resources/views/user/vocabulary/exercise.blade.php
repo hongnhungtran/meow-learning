@@ -234,7 +234,14 @@
 	$(".card").flip();
 
 	//play audio
-	var js_data = '<?php echo json_encode($vocabulary); ?>';
+	var js_data = [];
+	<?php 
+	foreach ($vocabulary as $data) {
+		var js_data = '<?php echo json_encode($php_data); ?>';
+	}
+	echo json_encode($vocabulary); 
+	?>;
+
 	var js_obj_data = JSON.parse(js_data );
 	console.log(js_obj_data);
 	
