@@ -9,7 +9,7 @@
     <link href="{{ asset('public/css/user/vocabulary.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/pgwslider.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/user/flipclock.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('public/img/common/home.png') }}"/>
 
@@ -46,8 +46,8 @@
 @include('user.shared.menu')
 @yield('content')
 </div>
-
 @include('user.shared.footer')
-
+@yield('scripts');
+@yield('css');
 </body>
 </html>

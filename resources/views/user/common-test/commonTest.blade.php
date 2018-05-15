@@ -28,11 +28,11 @@
 								{!! $content->common_test_question !!}
 							</div>
 							<div id="answer-text">
-								<input type="hidden" name="checkbox_1" value="0">
-								<div><input type="radio" class="target" value="1" name="{{ 'question-'+$content->common_test_question_id }}"><strong>A.</strong>{!! $content->option_1 !!}</div>
-								<div><input type="radio" class="target" value="2" name="{{ 'question-'+$content->common_test_question_id }}"><strong>B.</strong>{!! $content->option_2 !!}</div>
-								<div><input type="radio" class="target" value="3" name="{{ 'question-'+$content->common_test_question_id }}"><strong>C.</strong>{!! $content->option_3 !!}</div>
-								<div><input type="radio" class="target" value="4" name="{{ 'question-'+$content->common_test_question_id }}"><strong>D.</strong>{!! $content->option_4 !!}</div>
+								<input type="hidden" name="{{ $content->common_test_question_id }}" value="0">
+								<div><input type="radio" class="target" value="1" name="{{ $content->common_test_question_id }}"><strong>A.</strong>{!! $content->option_1 !!}</div>
+								<div><input type="radio" class="target" value="2" name="{{ $content->common_test_question_id }}"><strong>B.</strong>{!! $content->option_2 !!}</div>
+								<div><input type="radio" class="target" value="3" name="{{ $content->common_test_question_id }}"><strong>C.</strong>{!! $content->option_3 !!}</div>
+								<div><input type="radio" class="target" value="4" name="{{ $content->common_test_question_id }}"><strong>D.</strong>{!! $content->option_4 !!}</div>
 							</div>
 						</div>
 					</div>

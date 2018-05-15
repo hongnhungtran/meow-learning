@@ -26,21 +26,16 @@
 								<div class="text">クリックして画像をフリップしましょう。</div>
 							</div>
 							<div class="thumb-outer">
-								<div class="thumb-block-0">
-									<img class="thumb selected-thumb" title="runner bean" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg">
-									<img class="thumb" title="cauliflower" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s7.jpg">
-									<img class="thumb" title="aubergine" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s4.jpg">
-									<img class="thumb" title="garlic " src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s1(1).jpg">
-									<img class="thumb" title="onion" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s2(1).jpg">
-									<img class="thumb" title="radish" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s10.jpg">
-									<img class="thumb" title="mushroom" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s8.jpg">
-									<img class="thumb" title="cucumber" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s11.jpg">
-									<img class="thumb" title="cabbage" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s3(1).jpg">
-									<img class="thumb" title="receipt " src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s6.jpg">
-									<img class="thumb" title="lettuce" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s12.jpg">
-									<img class="thumb" title="celery" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s5.jpg">
+								<div id="card card-common"> 
+								  	<div class="front card-common"> 
+								   		Front content
+								  	</div> 
+								  	<div class="back card-common">
+								    	Back content
+								  	</div> 
 								</div>
 							</div>
+
 							<div id="flashcard-area">
 								<div class="global-float-left flashcard-outer">
 									<img class="img-main img-main-active" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg"
@@ -262,26 +257,8 @@
 	</div>
 </div>
 @endsection
-<script>
-	$(document).ready(
-		function() {
-			$(".sortable").sortable();
-			$(".sortable").disableSelection();
-
-			$(".sortable").sortable(
-			{
-				update : function(ev, ui) {
-					localStorage.updateArray = $(".sortable")
-					.sortable("toArray").join(",");
-				}
-			});
-
-			if (localStorage.updateArray !== undefined) {
-				var updateValue = localStorage.updateArray.split(",")
-				.reverse();
-				$.each(updateValue, function(index, value) {
-					$('#' + value).prependTo(".sortable");
-				});
-			}
-		});
+@section('scripts')
+<script type="text/javascript">
+	$("#card").flip();
 </script>
+@endsection

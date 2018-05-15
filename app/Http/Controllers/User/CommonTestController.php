@@ -66,28 +66,34 @@ class CommonTestController extends Controller
         $course = Course::find($this->common_test_course_id);
         $num = 1;
 
-        $true_answers = [];
+        $result = [];
         foreach ($contents as $key => $value) {
-                        $true_answers[$key]['common_test_question_id'] = $value->common_test_question_id;
-                        $true_answers[$key]['lesson_id'] = $value->common_test_question_id;
-                        $true_answers[$key]['common_test_question'] = $value->common_test_question;
-                        $true_answers[$key]['option_1'] = $value->option_1;
-                        $true_answers[$key]['option_2'] = $value->option_2;
-                        $true_answers[$key]['option_3'] = $value->option_3;
-                        $true_answers[$key]['option_4'] = $value->option_4;
-                        $true_answers[$key]['true_answer'] = $value->answer;
-        }
-
-        $user_answers = [];
-        foreach ($getData as $key => $value) {
-            if ($true_answers[$key]['common_test_question_id'] = $user_answers[$key]) {
-                $true_answers[$key]['user_answer'] = $user_answers[$key][''];
-            } else {
-                $true_answers[$key]['user_answer'] = null;
+                        $result[$key]['common_test_question_id'] = $value->common_test_question_id;
+                        $result[$key]['lesson_id'] = $value->common_test_question_id;
+                        $result[$key]['common_test_question'] = $value->common_test_question;
+                        $result[$key]['option_1'] = $value->option_1;
+                        $result[$key]['option_2'] = $value->option_2;
+                        $result[$key]['option_3'] = $value->option_3;
+                        $result[$key]['option_4'] = $value->option_4;
+                        $result[$key]['true_answer'] = $value->answer;
+                        $result[$key]['explain'] = $value->explain;
+            foreach ($getData as $keyData => $valueData) {
+                if($keyData = $result[$key]['common_test_question_id']) {
+                    $result[$key]['user_answer'] = $getData[$keyData];
+                }
             }
         }
-        
+
+        $totalQuestion = count($result);
+        $countTrueAnswer = 0;
+        foreach ($result as $resultKey => $resultValue) {
+            if ($result[$resultKey]['true_answer'] == $result[$resultKey]['user_answer']) {
+                $countTrueAnswer++;
+
+            }
+        }
+
         //get view
-        return view('user.common-test.checkAnswer', compact('lesson', 'course', 'contents', 'num', 'true_answers', 'user_answers'));
+        return view('user.common-test.checkAnswer', compact('lesson', 'course', 'contents', 'num', 'result', 'totalQuestion', 'countTrueAnswer'));
     }
 }
