@@ -29,13 +29,13 @@
 								@foreach ($vocabulary as $data)
 								<div class="col-xs-3">
 									<div class="card "> 
-									  	<div class="front"> 
-									   		<img id="flashcard-img" src="{{ $data->vocabulary_image_link }}">
-									  	</div> 
-									  	<div class="back">
-									  		{{ $data->vocabulary }} <br>
-									  		{{ $data->pronunciation}}
-									  	</div> 
+										<div class="front"> 
+											<img id="flashcard-img" src="{{ $data->vocabulary_image_link }}">
+										</div> 
+										<div class="back">
+											{!! $data->vocabulary !!} <br/> 
+											{!! $data->pronunciation !!}
+										</div> 
 									</div>
 									<div class="speaker" title="聞く">
 										<input type="button" value="PLAY"  onclick="play()">
@@ -234,21 +234,36 @@
 	$(".card").flip();
 
 	//play audio
-	var js_data = [];
 	<?php 
-	foreach ($vocabulary as $data) {
-		var js_data = '<?php echo json_encode($php_data); ?>';
+	$data = [];
+	foreach ($vocabulary as $key=>$value) {
+		$data[$key]['vocabulary_id'] = $value->vocabulary_id;
+		$data[$key]['lesson_id'] = $value->lesson_id;
+		$data[$key]['vocabulary'] = $value->vocabulary;
+		$data[$key]['pronunciation'] = $value->pronunciation;
+		$data[$key]['vocabulary_image_link'] = $value->vocabulary_image_link;
+		$data[$key]['vocabulary_audio_link'] = $value->vocabulary_audio_link;
 	}
-	echo json_encode($vocabulary); 
 	?>;
 
+	var js_data = '<?php echo json_encode($vocabulary); ?>';
 	var js_obj_data = JSON.parse(js_data );
-	console.log(js_obj_data);
-	
+
 	function play(){
-       var audio = document.getElementById("audio");
-       audio.play();
-    }
+		var i;
+		for (i = 0; i < js_obj_data.length - 1; i++) { 
+			var str1 = "audio-";
+    	var str2 = js_obj_data[i].vocabulary;
+    	var id = str1.concat(str2);
+	    var playPromise = document.getElementById(id).play();
+	    if (playPromise !== undefined) {
+			  playPromise.then(function() {
+			  }).catch(function(error) {
+			  });
+			}
+	}
+}
+
 </script>
 @endsection
 @section('styles')
