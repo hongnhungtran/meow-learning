@@ -3,24 +3,27 @@
 @extends('adminlte::page')
 
 @section('css')
-    <!-- <link rel="stylesheet" href="../../public/css/admin_custom.css"> -->
+	<!-- <link rel="stylesheet" href="../../public/css/admin_custom.css"> -->
 	<link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('public/img/favicon/android-icon-192x192.png') }}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/img/favicon/favicon-32x32.png') }}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('public/img/favicon/favicon-96x96.png') }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/img/favicon/favicon-16x16.png') }}">
 	
 	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
 
 	<script type="text/javascript" src="{{ asset('public/js/admin/addForm.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -28,11 +31,11 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-    
-    <script>
+	<script> console.log('Hi!'); </script>
+	
+	<script>
 		$("#alert").slideDown(500, function(){
-		    setTimeout(function(){
+			setTimeout(function(){
 		$("#alert").slideUp(500);  
 		},5000);
 		});
@@ -40,7 +43,7 @@
 	
 	<script>
 	$("h4").each(function(i) {
-    $(this).find("span").text(++i);
+	$(this).find("span").text(++i);
 });
 	var form = `
 <div class="form-group">
@@ -108,27 +111,27 @@ $("#test_content").on( "click", "#question_answer_add_button", function() {
 
 <script>
 	$(function() {
-    // Multiple images preview in browser
-    var imagesPreview = function(input, placeToInsertImagePreview) {
+	// Multiple images preview in browser
+	var imagesPreview = function(input, placeToInsertImagePreview) {
 
-        if (input.files) {
-            var filesAmount = input.files.length;
+		if (input.files) {
+			var filesAmount = input.files.length;
 
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
+			for (i = 0; i < filesAmount; i++) {
+				var reader = new FileReader();
 
-                reader.onload = function(event) {
-                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-                }
+				reader.onload = function(event) {
+					$($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+				}
 
-                reader.readAsDataURL(input.files[i]);
-            }
-        }
-    };
+				reader.readAsDataURL(input.files[i]);
+			}
+		}
+	};
 
-    $('#gallery-photo-add').on('change', function() {
-        imagesPreview(this, 'div.gallery');
-    });
+	$('#gallery-photo-add').on('change', function() {
+		imagesPreview(this, 'div.gallery');
+	});
 });
 
 </script>

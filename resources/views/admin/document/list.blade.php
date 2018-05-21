@@ -8,7 +8,7 @@
 	<small>List</small>
 </h1>
 <ol class="breadcrumb">
-	<li><a href="{{route('login')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+	<li><a href="{{route('login')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 	<li><a href="#">Document</a></li>
 	<li class="active">List</li>
 </ol>

@@ -119,19 +119,6 @@ return [
             'url'  => '',
             'icon' => 'lock',
         ],
-        'USER MANAGEMENT',
-        [
-            'text'        => 'All User',
-            'url'         => '',
-            'icon'        => 'star-o',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'User Ratings',
-            'url'         => '',
-            'icon'        => 'star-o',
-            'label_color' => 'success',
-        ],
         'LEARNING MANAGEMENT',
         [
             'text' => 'Exam',
