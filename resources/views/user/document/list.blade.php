@@ -27,8 +27,8 @@
 				<div class="download-list-box">
 					<div class="download-list-block">
 						@if ($documents->isEmpty())
-					    <h4> 検索した結果がありません！！</h4>  
-					    @else
+						<h4> 検索した結果がありません！！</h4>  
+						@else
 
 						<div class="row">
 						@foreach($documents as $document)

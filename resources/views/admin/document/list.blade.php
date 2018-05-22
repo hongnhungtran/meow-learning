@@ -39,50 +39,49 @@
 				{{csrf_field()}} 
 				<div class="box-body">
 					<div class="form-group col-md-6">
-						<label for="" class="col-sm-4 control-label">カテゴリ</label>
+						<label for="document_category" class="col-sm-4 control-label">カテゴリ</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="" placeholder="カテゴリ">
+							<select class="form-control" name="document_category">
+								@foreach ($categories as $category)
+				        <option value="{{ $category->document_category_id }}">{{ $category->document_category_title }}</option>
+				        @endforeach
+				      </select>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="" class="col-sm-4 control-label">資料内容</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="" placeholder="内容">
+							<input type="text" class="form-control" name="document_content" value="{{ old('document_content') }}" placeholder="内容">
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="" class="col-sm-4 control-label">資料タイトル</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="" placeholder="タイトル">
+							<input type="text" class="form-control" name="document_title" value="{{ old('document_title') }}" placeholder="タイトル">
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="" class="col-sm-4 control-label">資料内容</label>
+						<label for="" class="col-sm-4 control-label">ステータス</label>
 						<div class="col-sm-8">
 							<div class="form-group">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="1" >Active
+                      <input type="checkbox" value="1" name="document_flag" >Active
                     </label>
                     <label>
-                      <input type="checkbox" value="0">Disable
+                      <input type="checkbox" value="0" name="document_flag">Disable
                     </label>
                   </div>
                 </div>
 						</div>
 					</div>
 				</div>
-				<!-- /.box-body -->
 				<div class="box-footer">
 					<button type="submit" class="btn btn-info pull-right">検索</button>
 				</div>
-				<!-- /.box-footer -->
 			</form>
 		</div>
-		<!-- /.box -->
 	</div>
-
-	<!-- register form -->
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
@@ -124,15 +123,10 @@
 						</tr>
 						@endforeach
 					</tbody>
-
 				</table>
-				
 			</div>
-			<!-- /.box-body -->
 		</div>
-		<!-- /.box -->
 	</div>
-<!-- /.col -->
 	@endif
 </div>  
 @stop
