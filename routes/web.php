@@ -41,8 +41,15 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'user.register', 
         'uses' => 'Auth\RegisterController@create'
     ]);
-
-    //Home
+    Route::get('login', [
+        'as' => 'adminLogin', 
+        'uses' => 'Admin\ManagementController@showLogin']);
+    Route::post('login', [
+        'as' => 'adminLogin', 
+        'uses' => 'Admin\ManagementController@doLogin']);
+    Route::get('logout', [
+        'as' => 'adminLogout',
+        'uses' => 'HomeController@doLogout']);
     Route::get('/', [
         'as' => 'admin.home', 
         'uses' => 'Admin\ManagementController@home'

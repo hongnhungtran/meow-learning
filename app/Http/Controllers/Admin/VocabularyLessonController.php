@@ -8,6 +8,7 @@ use App\Topic;
 use App\Lesson;
 use App\Level;
 use App\Vocabulary;
+use Session;
 
 class VocabularyLessonController extends Controller
 {

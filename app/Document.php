@@ -18,4 +18,11 @@ class Document extends Model
 	    'document_download_link',
 	    'document_image_link'
 	];
+
+    public function search($input)
+    {
+        if ($input->has('product_list')) {
+    }
+
+    public function getDocumentQuery
 }

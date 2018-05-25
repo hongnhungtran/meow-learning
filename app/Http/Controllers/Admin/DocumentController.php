@@ -119,8 +119,10 @@ class DocumentController extends Controller
 			'document_title' => $request->document_title,
 			'document_flag' => $request->document_flag,
 		];
-		dd($searchTerm->has('document_category'));exit;
-		if ($searchTerm->has('document_category'))
+		dd($searchTerm);exit;
+		if (exist($searchTerm->document_category) && $searchTerm->document_content === null && $searchTerm->document_title === null && $searchTerm->document_flag === null) {
+
+		}
 		$categories = DocumentCategory::all();
 		$documents = Document::join('document_category','document_category.document_category_id', '=', 'document.document_category_id')
 			->where('document.document_title', 'LIKE', '%' . $keyword . '%')
