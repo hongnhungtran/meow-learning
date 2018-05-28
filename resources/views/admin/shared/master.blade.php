@@ -16,9 +16,9 @@
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css') }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
-	<script type="text/javascript" src="{{ asset('public/js/admin/addForm.js') }}"></script>
+	
 	<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/admin/addForm.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

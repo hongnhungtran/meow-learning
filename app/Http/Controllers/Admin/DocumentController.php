@@ -77,7 +77,6 @@ class DocumentController extends Controller
 		$images = Document::join('document_image', 'document_image.document_id', 'document.document_id')
 			->where('document.document_id', $id)
 			->get();
-		
 		return view('admin.document.detail', compact('document', 'images'));
 	}
 
@@ -89,7 +88,14 @@ class DocumentController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$document = Document::join('document_category', 'document_category.document_category_id', 'document.document_category_id')
+			->where('document.document_id', $id)
+			->get();
+		$images = Document::join('document_image', 'document_image.document_id', 'document.document_id')
+			->where('document.document_id', $id)
+			->get();
+		$categories = DocumentCategory::all();
+		return view('admin.document.update', compact('document', 'images', 'categories'));
 	}
 
 	/**
@@ -101,7 +107,20 @@ class DocumentController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		request()->validate([
+			'document_category_id' => 'required',
+			'document_title' => 'required|unique:topic',
+			'document_content' => 'required|unique:topic',
+			'document_download_link' => 'required|unique:topic'
+		]);
+		$document = new Document([
+			'document_category_id' => (int)$request->get('document_category_id'),
+			'document_title' => $request->get('document_title'),
+			'document_content' => $request->get('document_content'),
+			'document_download_link' => $request->get('document_download_link'),
+		  
+		]);
+		$document->save();
 	}
 
 	/**

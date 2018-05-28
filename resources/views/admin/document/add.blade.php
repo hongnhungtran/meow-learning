@@ -14,7 +14,7 @@
 	<div class="col-md-12">
 		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">Edit Document</h3>
+				<h3 class="box-title">Add Document</h3>
 				<div class="pull-right box-tools">
 					<button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
 						<i class="fa fa-minus"></i>
@@ -23,19 +23,14 @@
 						<i class="fa fa-times"></i>
 					</button>
 				</div>
-				<!-- /. tools -->
 			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
 			<form class="form-horizontal" method="post" action="{{route('document.store')}}">
 				{{csrf_field()}}
 				<div class="box-body">
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Document Title</label>
-
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="" placeholder="Document Title" name="document_title" value={{old('document_title') }}>
-
 							@if ($errors->has('topic_title')) 
 							@foreach($errors->get('topic_title') as $error)
 							<p class="text-red">{!! $error !!}</p>
@@ -43,13 +38,10 @@
 							@endif
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Document Content</label>
-
 						<div class="col-sm-9">
 							<textarea id="document_content" name="document_content" rows="10" cols="80" value={{old('document_title') }}>
-
 							</textarea>
 							<script type="text/javascript" src="/meow-learning/vendor/ckeditor/ckeditor.js"></script>
 							<script type="text/javascript" src="/meow-learning/vendor/ckfinder/ckfinder.js"></script>
@@ -102,16 +94,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- /.box-body -->
 				<div class="box-footer">
 					<button type="submit" class="btn btn-default">Cancel</button>
 					<button type="submit" class="btn btn-info pull-right">Add</button>
 				</div>
-				<!-- /.box-footer -->
 			</form>
 		</div>
 	</div>
-	<!-- /.box -->
 </div>
-<!-- ./row -->
 @stop
