@@ -1,11 +1,7 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Add Document') 
-
 @section('content_header')
-<h1>
-		Document
-		<small>Add New</small>
+<h1>Document<small>Edit</small>
 </h1>
 <ol class="breadcrumb">
 		<li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
@@ -13,17 +9,12 @@
 		<li class="active">Add</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
-	<!-- left column -->
 	<div class="col-md-12">
-		<!-- general form elements -->
-		<!-- Horizontal Form -->
 		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">Add New Document</h3>
-				<!-- tools box -->
+				<h3 class="box-title">Edit Document</h3>
 				<div class="pull-right box-tools">
 					<button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
 						<i class="fa fa-minus"></i>

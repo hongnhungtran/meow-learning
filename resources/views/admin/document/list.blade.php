@@ -1,7 +1,5 @@
 @extends('admin.shared.master') 
-
 @section('title', 'Document List') 
-
 @section('content_header')
 <h1>
 	Document Lesson
@@ -13,7 +11,6 @@
 	<li class="active">List</li>
 </ol>
 @stop 
-
 @section('content')
 <div class="row">
 	@if ($documents->isEmpty())
@@ -22,19 +19,14 @@
 			<div class="box-header">
 				<h3 class="box-title">Data Table</h3>
 			</div>
-			<!-- /.box-header -->
 			<div class="box-body">
 				<p> There is no Document.</p>
 			</div>
 		</div>
 	</div>  
-
 	@else
-	<!-- search form -->
 	<div class="col-md-12">
-		<!-- Horizontal Form -->
 		<div class="box box-info">
-			<!-- form start -->
 			<form class="form-horizontal" method="post" action="{{ action('Admin\DocumentController@searchDocument') }}">
 				{{csrf_field()}} 
 				<div class="box-body">
@@ -42,10 +34,11 @@
 						<label for="document_category" class="col-sm-4 control-label">カテゴリ</label>
 						<div class="col-sm-8">
 							<select class="form-control" name="document_category">
+								<option value="">なし</option>
 								@foreach ($categories as $category)
-				        <option value="{{ $category->document_category_id }}">{{ $category->document_category_title }}</option>
-				        @endforeach
-				      </select>
+								<option value="{{ $category->document_category_id }}">{{ $category->document_category_title }}</option>
+								@endforeach
+					  </select>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
@@ -64,15 +57,18 @@
 						<label for="" class="col-sm-4 control-label">ステータス</label>
 						<div class="col-sm-8">
 							<div class="form-group">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="1" name="document_flag" >Active
-                    </label>
-                    <label>
-                      <input type="checkbox" value="0" name="document_flag">Disable
-                    </label>
-                  </div>
-                </div>
+				  <div class="checkbox">
+					<label>
+					  <input type="checkbox" value="1" name="document_flag" >Active
+					</label>
+					<label>
+					  <input type="checkbox" value="0" name="document_flag">Disable
+					</label>
+					<label>
+					  <input type="checkbox" value="3" name="document_flag">All
+					</label>
+				  </div>
+				</div>
 						</div>
 					</div>
 				</div>

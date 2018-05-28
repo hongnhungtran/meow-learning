@@ -10,6 +10,10 @@ class DocumentCategory extends Model
 
     protected $primaryKey = 'document_category_id';
 
+    public function document() {
+	    return $this->hasMany('Document', 'document_category_id');
+	}
+
     public function get_categories()
     {
         $categories = DocumentCategory::all();

@@ -51,7 +51,6 @@ class DocumentController extends Controller
 			'document_content' => 'required|unique:topic',
 			'document_download_link' => 'required|unique:topic'
 		]);
-
 		$document = new Document([
 			'document_category_id' => (int)$request->get('document_category_id'),
 			'document_title' => $request->get('document_title'),
@@ -59,9 +58,7 @@ class DocumentController extends Controller
 			'document_download_link' => $request->get('document_download_link'),
 		  
 		]);
-
 		$document->save();
-
 		return redirect()->route('document.index')
 			->with('status', 'Document created successfully');
 	}
@@ -74,7 +71,14 @@ class DocumentController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		$document = Document::join('document_category', 'document_category.document_category_id', 'document.document_category_id')
+			->where('document.document_id', $id)
+			->get();
+		$images = Document::join('document_image', 'document_image.document_id', 'document.document_id')
+			->where('document.document_id', $id)
+			->get();
+		
+		return view('admin.document.detail', compact('document', 'images'));
 	}
 
 	/**
@@ -119,17 +123,9 @@ class DocumentController extends Controller
 			'document_title' => $request->document_title,
 			'document_flag' => $request->document_flag,
 		];
-		dd($searchTerm);exit;
-		if (exist($searchTerm->document_category) && $searchTerm->document_content === null && $searchTerm->document_title === null && $searchTerm->document_flag === null) {
-
-		}
 		$categories = DocumentCategory::all();
-		$documents = Document::join('document_category','document_category.document_category_id', '=', 'document.document_category_id')
-			->where('document.document_title', 'LIKE', '%' . $keyword . '%')
-			->orWhere('document.document_content', 'LIKE', '%' . $keyword . '%')
-			->orWhere('document_category.document_category_id', 'LIKE', '%' . $keyword . '%')
-			->paginate(18);
-		
+		$document = new Document();
+		$documents = $document->search($searchTerm)->paginate(10);
 		return view('admin.document.list', compact('documents', 'categories'))
 			->with('i', (request()->input('page', 1) - 1) * 10);
 	}
