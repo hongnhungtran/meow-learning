@@ -1,5 +1,31 @@
 @extends('user.shared.master')
 @section('content')
+<style type="text/css">
+	audio { 
+		width: 200px; 
+	}
+	#vocab {
+		color: red;
+		text-align: left;
+	}
+	#pronunciation {
+		position: absolute;
+    margin-top: -120px;
+    font-size: 16px;
+	}
+	#tab2 {
+		display: flex;
+	}
+	#dragImg {
+		width: 100%;
+		height: 100%;
+	}
+	#imgContainer {
+		width: 200px;
+    height: 144px;
+    margin: 10px;
+	}
+</style>
 <div class="container">
 	<div class="row">
 		<div id="front-content-box">
@@ -32,15 +58,15 @@
 										<div class="front"> 
 											<img id="flashcard-img" src="{{ $data->vocabulary_image_link }}">
 										</div> 
-										<div class="back">
-											{!! $data->vocabulary !!} <br/> 
-											{!! $data->pronunciation !!}
+										<div class="back" id="flashcardBack">
+											<p id="vocab">{!! $data->vocabulary !!}</p>
+											<p id="pronunciation">{!! $data->pronunciation !!}</p>
 										</div> 
 									</div>
-									<div class="speaker" title="聞く">
-										<input type="button" value="PLAY"  onclick="play()">
-										<audio id="audio-{{ $data->vocabulary}}" src="{{ $data->vocabulary_audio_link }}" ></audio>
-									</div>
+									<audio id="t-rex-roar" controls
+						        src="{{ $data->vocabulary_audio_link }}">
+						        Your browser does not support the <code>audio</code> element.
+						    	</audio>
 								</div>
 								@endforeach
 							</div>
@@ -50,95 +76,24 @@
 								<div class="icon"></div>
 								<div class="text">単語にマッチングする画像をドラッグしてください。</div>
 							</div>
-							<div id="word-container" class="global-float-left ui-droppable">
-								<div id="tab2-word-block-0">
-									<div class="word ui-draggable">onion</div>
-									<div class="word ui-draggable">cucumber</div>
-									<div class="word ui-draggable">garlic</div>
-									<div class="word ui-draggable">radish</div>
-									<div class="word ui-draggable">runner bean</div>
-									<div class="word ui-draggable">cauliflower</div>
-									<div class="word ui-draggable">aubergine</div>
-									<div class="word ui-draggable">mushroom</div>
+							<div class="col-md-12" id="tab2">
+								<div id="word-container" class="global-float-left ui-droppable col-md-3">
+									@foreach ($vocabulary as $data)
+									<div class="word ui-draggable">{!! $data->vocabulary !!}</div>
+									@endforeach
 								</div>
-								<div id="tab2-word-block-1" style="display: none;">
-									<div class="word ui-draggable">lettuce</div>
-									<div class="word ui-draggable">celery</div>
-									<div class="word ui-draggable">receipt</div>
-									<div class="word ui-draggable">cabbage</div>
+							<div id="picture-container" class=" global-float-left col-md-9">
+								<div class="tab2-picture-block">
+									@foreach ($vocabulary as $data)
+									<div class="picture-outer global-float-left ui-droppable col-xs-4" id="imgContainer">
+										<img id="dragImg" src="{{ $data->vocabulary_image_link }}">
+										<div class="caption-background">
+											<div class="caption-text ui-draggable"></div>
+										</div>
+									</div>
+									@endforeach
 								</div>
 							</div>
-							<div id="picture-container" class=" global-float-left">
-								<div id="tab2-picture-block-0" class="tab2-picture-block">
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s9.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s1(1).jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s10.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s11.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s8.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s2(1).jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s7.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s4.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="navigator">
-										<div class="result global-float-left">
-											Chính xác:
-											<span class="number-correct"></span>
-											/
-											<span class="total-items-each-block"></span>
-										</div>
-										<div class="btn-redo global-float-right"></div>
-										<div class="btn-answer global-float-right"></div>
-										<div class="btn-check global-float-right"></div>
-										<div class="next-group global-float-right" style="cursor: pointer;">
-											Sau
-											<span class="arrow-next global-float-right">&gt;</span>
-										</div>
-										<div class="global-float-right splitNextPrev"></div>
-										<div class="prev-group global-float-right" style="opacity: 0.2; cursor: default;">
-											<span class="arrow-prev">&lt;</span>
-											Trước
-										</div>
-									</div>
-								</div>
 								<div id="tab2-picture-block-1" class="tab2-picture-block" style="display: none;">
 									<div class="picture-outer global-float-left ui-droppable">
 										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s3(1).jpg" style="height: 135px;">
@@ -245,24 +200,30 @@
 		$data[$key]['vocabulary_audio_link'] = $value->vocabulary_audio_link;
 	}
 	?>;
-
 	var js_data = '<?php echo json_encode($vocabulary); ?>';
 	var js_obj_data = JSON.parse(js_data );
 
-	function play(){
+	$(function() {
+  $(document).on("click", ".btn", function() {
+    alert($(this).attr("id"))
+  });
+
+});
+
+	/*function play(){
 		var i;
 		for (i = 0; i < js_obj_data.length - 1; i++) { 
 			var str1 = "audio-";
-    	var str2 = js_obj_data[i].vocabulary;
-    	var id = str1.concat(str2);
-	    var playPromise = document.getElementById(id).play();
-	    if (playPromise !== undefined) {
+		var str2 = js_obj_data[i].vocabulary;
+		var id = str1.concat(str2);
+		var playPromise = document.getElementById(id).play();
+		if (playPromise !== undefined) {
 			  playPromise.then(function() {
 			  }).catch(function(error) {
 			  });
 			}
 	}
-}
+}*/
 
 </script>
 @endsection
