@@ -116,15 +116,8 @@ return [
         ],
         'COURSE MANAGEMENT',
         [
-            'text'        => 'Document',
-            'url'         => 'admin/document',
+            'text'        => 'EXERCISE',
             'icon'        => 'heart',
-        ],
-        'MASTER SETTINGS',
-        [
-            'text'        => 'TOPIC',
-            'url'         => 'admin/topic',
-            'icon'        => 'star',
             'submenu' => [
                 [
                     'text'        => 'Vocabulary',
@@ -151,7 +144,12 @@ return [
                     'url'         => 'admin/reading',
                     'icon'        => 'dove',
                 ],
-                ],
+            ],
+        ],
+        [
+            'text'        => 'EXAM',
+            'icon'        => 'heart',
+            'submenu' => [
                 [
                     'text' => 'TOEFL',
                     'url'  => 'admin/toefl',
@@ -168,6 +166,12 @@ return [
                     'icon'        => 'star',
                 ],
             ],
+        ],
+        'MASTER SETTINGS',
+        [
+            'text'        => 'Topic',
+            'url'         => 'admin/topic',
+            'icon'        => 'star',                
         ],
     ],
 

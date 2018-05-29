@@ -3,39 +3,26 @@
 Route::group(['prefix' => 'vocabulary'], function () {
     //Vocabulary management
 	Route::get('/', [
-		'as' => 'vocabulary.management', 
-		'uses' => 'Admin\ManagementController@vocabulary_management'
+		'as' => 'vocabularyManagement', 
+		'uses' => 'Admin\ManagementController@vocabularyManagement'
 	]);
-
 	//Topic
     Route::get('topic', [
-    	'as' => 'vocabulary.topic.index', 
-    	'uses' => 'Admin\VocabularyTopicController@index'
+    	'as' => 'topicList', 
+    	'uses' => 'Admin\VocabularyController@topicList'
     ]);
-
- 	Route::get('topic/create', [
- 		'as' => 'vocabulary.topic.create', 
- 		'uses' => 'Admin\VocabularyTopicController@create'
- 	]);
-
-	Route::post('topic/create', [
-		'as' => 'vocabulary.topic.store', 
-		'uses' => 'Admin\VocabularyTopicController@store'
-	]);
-
 	Route::get('topic/{id}/edit', [
 		'as' => 'vocabulary.topic.edit', 
-		'uses' => 'Admin\VocabularyTopicController@edit'
+		'uses' => 'Admin\VocabularyController@edit'
 	]);
-
 	Route::post('topic/{id}/edit', [
 		'as' => 'vocabulary.topic.update', 
-		'uses' => 'Admin\VocabularyTopicController@update'
+		'uses' => 'Admin\VocabularyController@update'
 	]);
 
 	Route::get('topic/{id}', [
 		'as' => 'vocabulary.topic.show', 
-		'uses' => 'Admin\VocabularyTopicController@show'
+		'uses' => 'Admin\VocabularyController@show'
 	]);
 
     //Lesson

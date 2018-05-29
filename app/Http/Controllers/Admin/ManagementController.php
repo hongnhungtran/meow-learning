@@ -31,79 +31,85 @@ class ManagementController extends Controller
 		return view('admin.shared.home');
 	}
 
-	public function vocabulary_management()
+	public function vocabularyManagement()
 	{
 		$topic_count = Topic::where('course_id', $this->vocabulary_course_id)
 			->count();
-
 		$lesson_count = Lesson::where('course_id', $this->vocabulary_course_id)
 			->count();
-
 		return view('admin.vocabulary.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function listening_management()
+	public function listeningManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->listening_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->listening_course_id)
 			->count();
-
-		return view('admin.listening.management', compact('lesson_count'));
+		return view('admin.listening.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function reading_management()
+	public function readingManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->reading_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->reading_course_id)
 			->count();
-
-		return view('admin.reading.management', compact('lesson_count'));
+		return view('admin.reading.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function writing_management()
+	public function writingManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->writing_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->writing_course_id)
 			->count();
-
-		return view('admin.writing.management', compact('lesson_count'));
+		return view('admin.writing.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function speaking_management()
+	public function speakingManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->speaking_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->speaking_course_id)
 			->count();
-
-		return view('admin.speaking.management', compact('lesson_count'));
+		return view('admin.speaking.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function eilts_management()
+	public function eiltsManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->eilts_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->eilts_course_id)
 			->count();
-
-		return view('admin.eilts.management', compact('lesson_count'));
+		return view('admin.eilts.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function toefl_management()
+	public function toeflManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->toefl_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->toefl_course_id)
 			->count();
-
-		return view('admin.toefl.management', compact('lesson_count'));
+		return view('admin.toefl.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function toeic_management()
+	public function toeicManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->toeic_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->toeic_course_id)
 			->count();
-
-		return view('admin.toeic.management', compact('lesson_count'));
+		return view('admin.toeic.management', compact('lesson_count', 'topic_count'));
 	}
 
-	public function common_test_management()
+	public function commonTestManagement()
 	{
+		$topic_count = Topic::where('course_id', $this->common_test_course_id)
+			->count();
 		$lesson_count = Lesson::where('course_id', $this->common_test_course_id)
 			->count();
-
-		return view('admin.common-test.management', compact('lesson_count'));
+		return view('admin.common-test.management', compact('lesson_count', 'topic_count'));
 	}
 
 	public function showLogin()
@@ -129,7 +135,7 @@ class ManagementController extends Controller
 
 	public function doLogout()
 	{
-    Auth::logout();
-    return view('admin.shared.login');
+	    Auth::logout();
+	    return view('admin.shared.login');
 	}
 }
