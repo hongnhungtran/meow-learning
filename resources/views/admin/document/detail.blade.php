@@ -54,12 +54,11 @@
           </tr>
         </table>
       </div>
+      <div class="box-footer">
+        <a href="{{ url('admin/document') }}" class="btn btn-info"><i class="fas fa-backward"></i> Back</a>
+          <a href="{{ action('Admin\DocumentController@documentUpdate', $document[0]->document_id) }}" class="btn btn-primary pull-right">Edit</a>
+        </div>
 		</div>
 	</div>
-	<div class="col-md-12">
-      <div>
-          <a href="{{ url('admin/document') }}" class="btn btn-info"><i class="fas fa-backward"></i> 戻る</a>
-      </div>
-  </div>
 </div>
 @stop

@@ -88,10 +88,10 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				@if ($message = Session::get('status'))
-				<div class="alert alert-success" id="alert">
-					<p>{{ $message }}</p>
-				</div>
+				@if (session('status'))
+					<div class="alert alert-success" id="alert">
+						{{ session('status') }}
+					</div>
 				@endif
 				<table id="example2" class="table table-bordered table-hover">
 					<thead>
@@ -113,8 +113,8 @@
 							<td>{!! $document->document_content !!}</td>
 							<td><span class="label label-{{ ($document->document_flag) ? 'success' : 'danger' }}"> {{ ($document->document_flag) ? ' Active ' : 'Inactive' }}</span></td>
 							<td>
-								<a href="{!! action('Admin\DocumentController@edit', $document->document_id) !!}" class="btn btn-success">Edit</a>
-								<a href="{!! action('Admin\DocumentController@show', $document->document_id) !!}" class="btn btn-primary">Detail</a> 
+								<a href="{!! action('Admin\DocumentController@editForm', $document->document_id) !!}" class="btn btn-success">Edit</a>
+								<a href="{!! action('Admin\DocumentController@getDetail', $document->document_id) !!}" class="btn btn-primary">Detail</a> 
 							</td>
 						</tr>
 						@endforeach

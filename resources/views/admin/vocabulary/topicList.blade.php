@@ -19,18 +19,14 @@
 			<div class="box-header">
 				<h3 class="box-title">Vocabulary Topic Data Table</h3>
 			</div>
-			<!-- /.box-header -->
 			<div class="box-body">
 				<p> There is no vocabulary topic.</p>
 			</div>
 		</div>
 	</div>  
 	@else
-	<!-- search form -->
 	<div class="col-md-12">
-		<!-- Horizontal Form -->
 		<div class="box box-info">
-			<!-- form start -->
 			<form class="form-horizontal" method="GET" action="{{ route('vocabulary.topic.index') }}">
 				<div class="box-body">
 					<div class="form-group col-md-6">
@@ -52,24 +48,18 @@
 						</div>
 					</div>
 				</div>
-				<!-- /.box-body -->
 				<div class="box-footer">
 					<button type="submit" class="btn btn-info pull-right">Search</button>
 				</div>
-				<!-- /.box-footer -->
 			</form>
 		</div>
-		<!-- /.box -->
 	</div>
-	
-	<!-- register form -->
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
 				<h3 class="box-title">Data Table</h3>
 				<a href="{!! action('Admin\VocabularyTopicController@create') !!}"><button type="button" class="btn bg-orange pull-right">Create Topic</button></a>
 			</div>
-			<!-- /.box-header -->
 			<div class="box-body">
 				@if (session('status'))
 					<div class="alert alert-success" id="alert">

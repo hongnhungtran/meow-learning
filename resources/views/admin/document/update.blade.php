@@ -1,12 +1,12 @@
 @extends('admin.shared.master') 
-@section('title', 'Add Document') 
+@section('title', 'Update Document') 
 @section('content_header')
 <h1>Document<small>Edit</small>
 </h1>
 <ol class="breadcrumb">
-		<li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-		<li><a href="{{ url('admin/vocabulary') }}">Lesson</a></li>
-		<li class="active">Add</li>
+		<li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+		<li><a href="{{ url('admin/document') }}">Document</a></li>
+		<li class="active">Update</li>
 </ol>
 @stop 
 @section('content')
@@ -24,7 +24,7 @@
 					</button>
 				</div>
 			</div>
-			<form class="form-horizontal" method="post" action="{{ action('Admin\DocumentController@update', $document[0]->document_id) }}">
+			<form class="form-horizontal" method="put" action="{{ action('Admin\DocumentController@documentUpdate', $document[0]->document_id) }}">
 				{{csrf_field()}}
 				<div class="box-body">
 					<div class="form-group">
@@ -53,10 +53,10 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Document Content</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" id="document_content" name="document_title" rows="4" cols="80" value="{{ $document[0]->document_title }}" placeholder="Document Content">
+							<textarea class="form-control" id="document_content" name="document_content" rows="4" value="{{ $document[0]->document_content }}" placeholder="Document Content">{{ $document[0]->document_content }}
 							</textarea>
-							@if ($errors->has('document_title')) 
-								@foreach($errors->get('document_title') as $error)
+							@if ($errors->has('document_content')) 
+								@foreach($errors->get('document_content') as $error)
 									<p class="text-red">{!! $error !!}</p>
 								@endforeach 
 							@endif
@@ -65,7 +65,7 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Document Description</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" id="document_content" name="document_description" rows="4" cols="80" value="{{ $document[0]->document_description }}" placeholder="Document Description">
+							<textarea class="form-control" id="document_content" name="document_description" rows="4" value="{{ $document[0]->document_description }}" placeholder="Document Description">{{ $document[0]->document_description }}
 							</textarea>
 							@if ($errors->has('document_description')) 
 								@foreach($errors->get('document_description') as $error)
@@ -104,13 +104,13 @@
 						<div class="col-sm-9">
 							@foreach ($images as $image)
 								<input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{{ $document[0]->document_image_link }}" }}>
-	            	<img src="{{ $image->image_link }}" alt="Description image" height="42" width="42">
-	            	@if ($errors->has('image_link')) 
+					<img src="{{ $image->image_link }}" alt="Description image" height="42" width="42">
+					@if ($errors->has('image_link')) 
 									@foreach($errors->get('image_link') as $error)
 										<p class="text-red">{!! $error !!}</p>
 									@endforeach 
 								@endif
-            	@endforeach
+				@endforeach
 							<h5>Or select image</h5>
 							<input type="file" accept="image/*" onchange="loadFile(event)">
 							<img id="output" width="60" height="60" />
@@ -118,7 +118,6 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-default">Cancel</button>
 					<button type="submit" class="btn btn-info pull-right">Update</button>
 				</div>
 			</form>
