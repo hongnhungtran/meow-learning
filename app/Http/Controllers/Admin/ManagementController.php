@@ -15,15 +15,7 @@ class ManagementController extends Controller
 {
 	public function __construct()
 	{
-		$this->vocabulary_course_id = 1;
-		$this->listening_course_id = 2;
-		$this->speaking_course_id = 3;
-		$this->reading_course_id = 4;
-		$this->writing_course_id = 5;
-		$this->toefl_course_id = 6;
-		$this->toeic_course_id = 7;
-		$this->eilts_course_id = 8;
-		$this->common_test_course_id = 10;
+		$this->lesson_count = new Lesson;
 	}
 
 	public function home()
@@ -33,83 +25,60 @@ class ManagementController extends Controller
 
 	public function vocabularyManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->vocabulary_course_id)
-			->count();
-		$lesson_count = Lesson::where('course_id', $this->vocabulary_course_id)
-			->count();
-		return view('admin.vocabulary.management', compact('lesson_count', 'topic_count'));
+		$count = $this->lesson_count->get_vocabulary_lesson()->count();
+		return view('admin.vocabulary.management', compact('count');
 	}
 
 	public function listeningManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->listening_course_id)
-			->count();
-		$lesson_count = Lesson::where('course_id', $this->listening_course_id)
-			->count();
-		return view('admin.listening.management', compact('lesson_count', 'topic_count'));
+		$count = $this->lesson_count->get_listening_lesson()->count();
+		return view('admin.listening.management', compact('count');
 	}
 
 	public function readingManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->reading_course_id)
-			->count();
-		$lesson_count = Lesson::where('course_id', $this->reading_course_id)
-			->count();
-		return view('admin.reading.management', compact('lesson_count', 'topic_count'));
+		$count = $this->lesson_count->get_reading_lesson()->count();
+		return view('admin.reading.management', compact('count');
 	}
 
 	public function writingManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->writing_course_id)
-			->count();
-		$lesson_count = Lesson::where('course_id', $this->writing_course_id)
-			->count();
-		return view('admin.writing.management', compact('lesson_count', 'topic_count'));
+		$count = $this->lesson_count->get_writing_lesson()->count();
+		return view('admin.writing.management', compact('count');
 	}
 
 	public function speakingManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->speaking_course_id)
-			->count();
-		$lesson_count = Lesson::where('course_id', $this->speaking_course_id)
-			->count();
-		return view('admin.speaking.management', compact('lesson_count', 'topic_count'));
+		$count = $this->lesson_count->get->count();
+		return view('admin.speaking.management', compact('count');
 	}
 
 	public function eiltsManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->eilts_course_id)
-			->count();
 		$lesson_count = Lesson::where('course_id', $this->eilts_course_id)
 			->count();
-		return view('admin.eilts.management', compact('lesson_count', 'topic_count'));
+		return view('admin.eilts.management', compact('count');
 	}
 
 	public function toeflManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->toefl_course_id)
-			->count();
 		$lesson_count = Lesson::where('course_id', $this->toefl_course_id)
 			->count();
-		return view('admin.toefl.management', compact('lesson_count', 'topic_count'));
+		return view('admin.toefl.management', compact('count');
 	}
 
 	public function toeicManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->toeic_course_id)
-			->count();
 		$lesson_count = Lesson::where('course_id', $this->toeic_course_id)
 			->count();
-		return view('admin.toeic.management', compact('lesson_count', 'topic_count'));
+		return view('admin.toeic.management', compact('count');
 	}
 
 	public function commonTestManagement()
 	{
-		$topic_count = Topic::where('course_id', $this->common_test_course_id)
-			->count();
 		$lesson_count = Lesson::where('course_id', $this->common_test_course_id)
 			->count();
-		return view('admin.common-test.management', compact('lesson_count', 'topic_count'));
+		return view('admin.common-test.management', compact('count');
 	}
 
 	public function showLogin()

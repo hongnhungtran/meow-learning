@@ -11,14 +11,6 @@ Route::group(['prefix' => 'vocabulary'], function () {
     	'as' => 'topicList', 
     	'uses' => 'Admin\VocabularyController@topicList'
     ]);
-	Route::get('topic/{id}/edit', [
-		'as' => 'vocabulary.topic.edit', 
-		'uses' => 'Admin\VocabularyController@edit'
-	]);
-	Route::post('topic/{id}/edit', [
-		'as' => 'vocabulary.topic.update', 
-		'uses' => 'Admin\VocabularyController@update'
-	]);
 
 	Route::get('topic/{id}', [
 		'as' => 'vocabulary.topic.show', 
@@ -27,8 +19,8 @@ Route::group(['prefix' => 'vocabulary'], function () {
 
     //Lesson
 	Route::get('lesson', [
-		'as' => 'vocabulary.lesson.index', 
-		'uses' => 'Admin\VocabularyLessonController@index'
+		'as' => 'lessonList', 
+		'uses' => 'Admin\VocabularyLessonController@lessonList'
 	]);
 
  	Route::get('lesson/create', [
