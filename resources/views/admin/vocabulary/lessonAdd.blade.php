@@ -152,8 +152,8 @@
 @stop
 @section('scripts')
 <script type="text/javascript">
-	
-	$(".selectImage").on('click', function(){
+	$("select").imagepicker();
+	/*$(".selectImage").on('click', function(){
     $('.selectImage').removeClass('selected');
   $(this).addClass('selected');
   sendToDatabase($(this).attr('id'));
@@ -163,6 +163,6 @@ function sendToDatabase(data) {
     //$.post(saveToDatabase.php,{id: data}, function(){
     //    post request to your controler in php 
     //});
-}
+}*/
 </script>
 @stop

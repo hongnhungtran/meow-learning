@@ -9,6 +9,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('public/img/favicon/favicon-96x96.png') }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/img/favicon/favicon-16x16.png') }}">
 	
+	<link rel="stylesheet" href="{{ asset('public/css/image-picker.css') }}">
 	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
@@ -18,8 +19,9 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	
 	<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('public/js/admin/addForm.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/image-picker.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/admin/addForm.js') }}"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
