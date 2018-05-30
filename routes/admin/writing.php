@@ -1,66 +1,38 @@
 <?php 
 
 Route::group(['prefix' => 'writing'], function () {
-	//Management
 	Route::get('/', [
-		'as' => 'writing-management', 
-		'uses' => 'Admin\ManagementController@writing_management'
+		'as' => 'writingManagement', 
+		'uses' => 'Admin\ManagementController@writingManagement'
 	]);
 	
-	//Lesson
-	Route::get('/lesson', [
-		'as' => 'writing-lesson-list', 
-		'uses' => 'Admin\WritingLessonController@index'
+    //Lesson
+	Route::get('lesson', [
+		'as' => 'lessonList', 
+		'uses' => 'Admin\WritingController@lessonList'
 	]);
-
-	Route::get('/lesson/create', [
-		'as' => 'writing-lesson-create', 
-		'uses' => 'Admin\WritingLessonController@create'
-	]);
-
-	Route::post('/lesson/create', [
-		'as' => 'writing-lesson-store', 
-		'uses' => 'Admin\WritingLessonController@store'
-	]);
-
-	Route::get('/lesson/{id}/edit', [
-		'as' => 'writing-lesson-edit', 
-		'uses' => 'Admin\WritingLessonController@edit'
-	]);
-
-	Route::post('/lesson/{id}/edit', [
-		'as' => 'writing-lesson-update', 
-		'uses' => 'Admin\WritingLessonController@update'
-	]);
-
-	//Exercise
-	Route::get('/exercise', [
-		'as' => 'writing.exercise.index', 
-		'uses' => 'Admin\WritingExerciseController@index'
-	]);
-
- 	Route::get('/exercise/create', [
- 		'as' => 'writing.exercise.create', 
- 		'uses' => 'Admin\WritingExerciseController@create'
+ 	Route::get('lesson/create', [
+ 		'as' => 'createLesson', 
+ 		'uses' => 'Admin\WritingController@createLesson'
  	]);
-
-	Route::post('/exercise/create', [
-		'as' => 'writing.exercise.store', 
-		'uses' => 'Admin\WritingExerciseController@store'
+	Route::post('lesson/create', [
+		'as' => 'storeLesson', 
+		'uses' => 'Admin\WritingController@storeLesson'
 	]);
-
-	Route::get('/exercise/{id}/edit', [
-		'as' => 'writing.exercise.edit', 
-		'uses' => 'Admin\WritingExerciseController@edit'
+	Route::get('lesson/{id}/edit', [
+		'as' => 'editLesson', 
+		'uses' => 'Admin\WritingController@editLesson'
 	]);
-
-	Route::post('/exercise/{id}/edit', [
-		'as' => 'writing.exercise.update', 
-		'uses' => 'Admin\WritingExerciseController@update'
+	Route::post('lesson/{id}/edit', [
+		'as' => 'editLesson', 
+		'uses' => 'Admin\WritingController@updateLesson'
 	]);
-
-	Route::get('/exercise/{id}', [
-		'as' => 'writing.exercise.show', 
-		'uses' => 'Admin\WritingExerciseController@show'
+	Route::get('lesson/{id}', [
+		'as' => 'showLesson', 
+		'uses' => 'Admin\WritingController@showLesson'
+	]);
+	Route::post('lesson/search', [
+		'as' => 'searchLesson', 
+		'uses' => 'Admin\WritingController@searchLesson'
 	]);
 });

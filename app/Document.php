@@ -21,8 +21,8 @@ class Document extends Model
 	];
 
 	public function document_category() {
-    return $this->belongsTo('DocumentCategory', 'document_category_id');
-  }
+    	return $this->belongsTo('DocumentCategory', 'document_category_id');
+  	}
 
 	public function search($input)
 	{

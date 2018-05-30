@@ -12,7 +12,7 @@ use Storage;
 use File;
 use Session;
 
-class VocabularyController extends Controller
+class WritingController extends Controller
 {
     public function __construct()
     {
@@ -22,39 +22,17 @@ class VocabularyController extends Controller
     public function lessonList()
     {
         $levels = Level::all();
-        $topics = $this->topic->getVocabularyTopic();
-        $vocabulary_lessons = $this->lesson->getVocabularyLesson()->paginate(10);
-            return view('admin.vocabulary.lessonList', compact('vocabulary_lessons', 'levels', 'topics'))
+        $topics = $this->topic->getWritingTopic();
+        $writing_lessons = $this->lesson->getWritingLesson()->paginate(10);
+            return view('admin.writing.lessonList', compact('writing_lessons', 'levels', 'topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function createLesson()
     {
         $levels = Level::all();
-        $topics = Topic::all();
-        $folder = 'vocabulary';
-        // Get root directory contents...
-        $contents = collect(Storage::cloud()->listContents('/', false));
-        // Find the folder you are looking for...
-        $dir = $contents->where('type', '=', 'dir')
-            ->where('filename', '=', $folder)
-            ->first(); // There could be duplicate directory names!
-        if ( ! $dir) {
-            return 'No such folder!';
-        }
-        // Get the files inside the folder...
-        $files = collect(Storage::cloud()->listContents($dir['path'], false))
-            ->where('type', '=', 'file');
-/*        return $files->mapWithKeys(function($file) {
-            $filename = $file['filename'].'.'.$file['extension'];
-            $path = $file['path'];
-            // Use the path to download each file via a generated link..
-            // Storage::cloud()->get($file['path']);
-            return [$filename => $path];
-        });*/
-        //$image_link = "https://drive.google.com/uc?export=view&id=".$file['basename'];
-    
-        return view('admin.vocabulary.lessonAdd', compact('levels', 'topics', 'files'));
+        $topics = $this->topic->getVocabularyTopic();
+        return view('admin.vocabulary.lessonAdd', compact('levels', 'topics'));
     }
 
     public function storeLesson(Request $request)

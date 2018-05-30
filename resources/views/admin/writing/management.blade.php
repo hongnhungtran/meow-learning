@@ -3,8 +3,7 @@
 @section('content_header')
 <h1>Writing<small>Management</small></h1>
 <ol class="breadcrumb">
-	<li><a href="{{route('admin.home')}}"><i class="fas fa-home"></i>Home</a></li>
-	<li>Course</li>
+	<li><a href="{{url('/admin')}}"><i class="fas fa-home"></i>Home</a></li>
 	<li class="active">Writing</li>
 </ol>
 @stop 
@@ -14,20 +13,6 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="row">
-					<div class="col-lg-3 col-xs-6">
-						<div class="small-box bg-aqua">
-							<div class="inner">
-								<h3>{{ $topic_count }}</h3>
-								<p>Writing Topic</p>
-							</div>
-							<div class="icon">
-								<i class="fa fa-book"></i>
-							</div>
-							<a href="{!! action('Admin\WritingController@topicList') !!}" class="small-box-footer">
-							  More info <i class="fa fa-arrow-circle-right"></i>
-							</a>
-						</div>
-					</div>
 					<div class="col-lg-3 col-xs-6">
 						<div class="small-box bg-green">
 							<div class="inner">

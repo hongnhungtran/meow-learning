@@ -25,60 +25,56 @@ class ManagementController extends Controller
 
 	public function vocabularyManagement()
 	{
-		$count = $this->lesson_count->get_vocabulary_lesson()->count();
-		return view('admin.vocabulary.management', compact('count');
+		$count = $this->lesson_count->getVocabularyLesson()->count();
+		return view('admin.vocabulary.management', compact('count'));
 	}
 
 	public function listeningManagement()
 	{
-		$count = $this->lesson_count->get_listening_lesson()->count();
-		return view('admin.listening.management', compact('count');
+		$count = $this->lesson_count->getListeningLesson()->count();
+		return view('admin.listening.management', compact('count'));
 	}
 
 	public function readingManagement()
 	{
-		$count = $this->lesson_count->get_reading_lesson()->count();
-		return view('admin.reading.management', compact('count');
+		$count = $this->lesson_count->getReadingLesson()->count();
+		return view('admin.reading.management', compact('count'));
 	}
 
 	public function writingManagement()
 	{
-		$count = $this->lesson_count->get_writing_lesson()->count();
-		return view('admin.writing.management', compact('count');
+		$count = $this->lesson_count->getWritingLesson()->count();
+		return view('admin.writing.management', compact('count'));
 	}
 
 	public function speakingManagement()
 	{
-		$count = $this->lesson_count->get->count();
-		return view('admin.speaking.management', compact('count');
+		$count = $this->lesson_count->getSpeakingLesson()->count();
+		return view('admin.speaking.management', compact('count'));
 	}
 
 	public function eiltsManagement()
 	{
-		$lesson_count = Lesson::where('course_id', $this->eilts_course_id)
-			->count();
-		return view('admin.eilts.management', compact('count');
+		$count = $this->lesson_count->getEiltsLesson()->count();
+		return view('admin.eilts.management', compact('count'));
 	}
 
 	public function toeflManagement()
 	{
-		$lesson_count = Lesson::where('course_id', $this->toefl_course_id)
-			->count();
-		return view('admin.toefl.management', compact('count');
+		$count = $this->lesson_count->getToeflLesson()->count();
+		return view('admin.toefl.management', compact('count'));
 	}
 
 	public function toeicManagement()
 	{
-		$lesson_count = Lesson::where('course_id', $this->toeic_course_id)
-			->count();
-		return view('admin.toeic.management', compact('count');
+		$count = $this->lesson_count->gettToeicLesson()->count();
+		return view('admin.toeic.management', compact('count'));
 	}
 
 	public function commonTestManagement()
 	{
-		$lesson_count = Lesson::where('course_id', $this->common_test_course_id)
-			->count();
-		return view('admin.common-test.management', compact('count');
+		$count = $this->lesson_count->getCommonTestLesson()->count();
+		return view('admin.common-test.management', compact('count'));
 	}
 
 	public function showLogin()

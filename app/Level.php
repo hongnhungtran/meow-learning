@@ -23,7 +23,6 @@ class Level extends Model
     public function get_level()
     {
         $level = Level::all();
-
         return $level;
     }
 }

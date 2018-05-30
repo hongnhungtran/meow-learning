@@ -6,46 +6,35 @@ Route::group(['prefix' => 'vocabulary'], function () {
 		'as' => 'vocabularyManagement', 
 		'uses' => 'Admin\ManagementController@vocabularyManagement'
 	]);
-	//Topic
-    Route::get('topic', [
-    	'as' => 'topicList', 
-    	'uses' => 'Admin\VocabularyController@topicList'
-    ]);
-
-	Route::get('topic/{id}', [
-		'as' => 'vocabulary.topic.show', 
-		'uses' => 'Admin\VocabularyController@show'
-	]);
-
+	
     //Lesson
 	Route::get('lesson', [
 		'as' => 'lessonList', 
-		'uses' => 'Admin\VocabularyLessonController@lessonList'
+		'uses' => 'Admin\VocabularyController@lessonList'
 	]);
-
  	Route::get('lesson/create', [
- 		'as' => 'vocabulary.lesson.create', 
- 		'uses' => 'Admin\VocabularyLessonController@create'
+ 		'as' => 'createLesson', 
+ 		'uses' => 'Admin\VocabularyController@createLesson'
  	]);
-
 	Route::post('lesson/create', [
-		'as' => 'vocabulary.lesson.store', 
-		'uses' => 'Admin\VocabularyLessonController@store'
+		'as' => 'storeLesson', 
+		'uses' => 'Admin\VocabularyController@storeLesson'
 	]);
-
 	Route::get('lesson/{id}/edit', [
-		'as' => 'vocabulary.lesson.edit', 
-		'uses' => 'Admin\VocabularyLessonController@edit'
+		'as' => 'editLesson', 
+		'uses' => 'Admin\VocabularyController@editLesson'
 	]);
-
 	Route::post('lesson/{id}/edit', [
-		'as' => 'vocabulary.lesson.update', 
-		'uses' => 'Admin\VocabularyLessonController@update'
+		'as' => 'editLesson', 
+		'uses' => 'Admin\VocabularyController@updateLesson'
 	]);
-
 	Route::get('lesson/{id}', [
-		'as' => 'vocabulary.lesson.show', 
-		'uses' => 'Admin\VocabularyLessonController@show'
+		'as' => 'showLesson', 
+		'uses' => 'Admin\VocabularyController@showLesson'
+	]);
+	Route::post('lesson/search', [
+		'as' => 'searchLesson', 
+		'uses' => 'Admin\VocabularyController@searchLesson'
 	]);
 
 
@@ -76,9 +65,11 @@ Route::group(['prefix' => 'vocabulary'], function () {
 	]);
 
 	Route::get('exercise/{id}', [
-		'as' => 'vocabulary.exercise.show', 
+		'as' => 'showLesson', 
 		'uses' => 'Admin\VocabularyExerciseController@show'
 	]);
+
+
 
 
 	//Vocabulary
