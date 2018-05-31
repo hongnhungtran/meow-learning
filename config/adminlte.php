@@ -167,6 +167,11 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'DOCUMENT',
+            'url'  => 'admin/document',
+            'icon' => 'heart',
+        ],
         'MASTER SETTINGS',
         [
             'text'        => 'Topic',
