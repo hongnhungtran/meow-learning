@@ -6,7 +6,7 @@
 	<small>Add New</small>
 </h1>
 <ol class="breadcrumb">
-	<li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+	<li><a href="{{ url('/admin') }}"><i class="fas fa-home"></i>Home</a></li>
 	<li><a href="{{ url('admin/vocabulary') }}">Vocabulary</a></li>
 	<li><a href="{{ url('admin/vocabulary/lesson') }}">Lesson</a></li>
 	<li class="active">Add</li>
@@ -24,6 +24,9 @@
 	}
 	#img {
 		margin-bottom: 10px;
+	}
+	.image_picker_selector li {
+		width: 30%;
 	}
 </style>
 <div class="row">
@@ -122,16 +125,18 @@
 								  <div class="modal-body" id="modalImageBody">
 										<p>Please confirm you would like to add <b><span id="fav-title">Lesson image</span></b>to your lesson.</p>
 										<br/>
+										<select class="image-picker">
 										@foreach($files as $file)
 										<div class="col-sm-3" id="img">
-											<img src="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} " id="modalImg" class="selectImage">
+											<option data-img-src="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} "  data-img-alt="{{ $file['basename']}} "  value="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} " ></option>
 										</div>
 										@endforeach
+										</select>
 								  </div>
 								  <div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										<span class="pull-right">
-										  <button type="button" class="btn btn-primary">Add image</button>
+										  <button type="button" class="btn btn-primary" data-dismiss="modal">Add image</button>
 										</span>
 								  </div>
 								</div>
@@ -150,19 +155,11 @@
 	</div>
 </div>
 @stop
-@section('scripts')
-<script type="text/javascript">
-	$("select").imagepicker();
-	/*$(".selectImage").on('click', function(){
-    $('.selectImage').removeClass('selected');
-  $(this).addClass('selected');
-  sendToDatabase($(this).attr('id'));
-});
-
-function sendToDatabase(data) {
-    //$.post(saveToDatabase.php,{id: data}, function(){
-    //    post request to your controler in php 
-    //});
-}*/
+@section('js')
+<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/image-picker.js') }}"></script>
+<script>
+	$(".image-picker").imagepicker();
 </script>
 @stop
+
