@@ -42,13 +42,13 @@
           </tr>
           <tr>
             <td class="col-md-2"><strong>Document image</strong></td>
-            <td><img src="{{ $document[0]->document_image_link }}" alt="Document image" height="42" width="42"></td>
+            <td><img src="{{ $document[0]->document_image_link }}" alt="Document image" height="100" width="150"></td>
           </tr>
           <tr>
             <td class="col-md-2"><strong>Description image</strong></td>
             <td>
             	@foreach ($images as $image)
-            	<img src="{{ $image->image_link }}" alt="Description image" height="42" width="42">
+            	<img src="{{ $image->image_link }}" alt="Description image" height="100" width="150">
             	@endforeach
             </td>
           </tr>

@@ -24,6 +24,12 @@ class Document extends Model
     	return $this->belongsTo('DocumentCategory', 'document_category_id');
   	}
 
+  	public function getDocument()
+    {
+        $document = Document::join('document_category', 'document.document_category_id', '=', 'document_category.document_category_id')->get();
+        return $document;
+    }
+
 	public function search($input)
 	{
 		$query = $this->getDocumentQuery();

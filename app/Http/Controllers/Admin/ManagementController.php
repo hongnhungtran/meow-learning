@@ -9,6 +9,7 @@ use App\Lesson;
 use App\Level;
 use App\Vocabulary;
 use App\User;
+use App\Document;
 use Session; 
 
 class ManagementController extends Controller
@@ -16,6 +17,7 @@ class ManagementController extends Controller
 	public function __construct()
 	{
 		$this->lesson_count = new Lesson;
+		$this->document = new Document;
 	}
 
 	public function home()
@@ -75,6 +77,12 @@ class ManagementController extends Controller
 	{
 		$count = $this->lesson_count->getCommonTestLesson()->count();
 		return view('admin.common-test.management', compact('count'));
+	}
+
+	public function documentManagement()
+	{
+		$count = $this->document->getDocument()->count();
+		return view('admin.document.management', compact('count'));
 	}
 
 	public function showLogin()

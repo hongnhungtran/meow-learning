@@ -41,6 +41,16 @@ class Lesson extends Model
         return $vocabulary_lessons;
     }
 
+    public function findVocabularyLesson($id)
+    {
+        $vocabulary_course_id = Config::get('constants.course.vocabulary');
+        $vocabulary_lessons = Lesson::join('topic', 'lesson.topic_id', '=', 'topic.topic_id')
+            ->join('level', 'topic.level_id', '=', 'level.level_id')
+            ->where('lesson.course_id', $vocabulary_course_id)
+            ->where('lesson.lesson_id', $id);
+        return $vocabulary_lessons;
+    }
+
     public function getWritingLesson()
     {
         $writing_course_id = Config::get('constants.course.writing');

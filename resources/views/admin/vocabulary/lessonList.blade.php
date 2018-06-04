@@ -108,10 +108,10 @@
 							<th class="col-xs-1">Level</th>
 							<th class="col-xs-1">Topic</th>
 							<th class="col-xs-1">Image</th>
-							<th class="col-xs-1">Title</th>
+							<th class="col-xs-2">Title</th>
 							<th class="col-xs-4">Content</th>
 							<th class="col-xs-1">Status</th>
-							<th class="col-xs-2">Action</th>
+							<th class="col-xs-1">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -125,7 +125,6 @@
 							<td>{!! $vocabulary_lesson->lesson_content !!}</td>
 							<td><span class="label label-{{ ($vocabulary_lesson->lesson_flag) ? 'success' : 'danger' }}"> {{ ($vocabulary_lesson->lesson_flag) ? ' Active ' : 'Inactive' }}</span></td>
 							<td>
-								<a href="{!! action('Admin\VocabularyController@editLesson', $vocabulary_lesson->topic_id) !!}" class="btn btn-success">Edit</a>
 								<a href="{!! action('Admin\VocabularyController@showLesson', $vocabulary_lesson->lesson_id) !!}" class="btn btn-primary">Detail</a> 
 							</td>
 						</tr>
@@ -140,12 +139,8 @@
 					{!! $vocabulary_lessons->links() !!}
 				</div>
 			</div>
-			<!-- /.box-footer -->
 		</div>
-		<!-- /.box -->
 	</div>
-<!-- /.col -->
 	@endif
 </div>
-<!-- /.row -->
 @stop

@@ -66,7 +66,7 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Image Link</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Image Link" name="lesson_image_link" value={{ old('lesson_image_link') }}>
+							<input type="text" class="form-control" id="" placeholder="Image Link" name="lesson_image_link" value="{{ old('lesson_image_link') }}">
 							@if ($errors->has('lesson_image_link')) 
 								@foreach($errors->get('lesson_image_link') as $error)
 									<p class="text-red">{!! $error !!}</p>

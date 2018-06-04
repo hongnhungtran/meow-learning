@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Document;
 use App\DocumentImage;
 use App\DocumentCategory;
+use Storage;
 
 class DocumentController extends Controller
 {
@@ -20,7 +21,7 @@ class DocumentController extends Controller
 			->with('i', (request()->input('page', 1) - 1) * 10);
 	}
 
-	public function create()
+	public function documentCreate()
 	{
 		$categories = DocumentCategory::all();
 		return view('admin.document.add', compact('categories'));
@@ -66,7 +67,17 @@ class DocumentController extends Controller
 			->where('document.document_id', $id)
 			->get();
 		$categories = DocumentCategory::all();
-		return view('admin.document.update', compact('document', 'images', 'categories'));
+		$folder = 'vocabulary';
+        $contents = collect(Storage::cloud()->listContents('/', false));
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first(); 
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+        $files = collect(Storage::cloud()->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+		return view('admin.document.update', compact('document', 'images', 'categories', 'files'));
 	}
 
 	public function documentUpdate(Request $request, $id)

@@ -9,97 +9,40 @@ Route::group(['prefix' => 'vocabulary'], function () {
 	
     //Lesson
 	Route::get('lesson', [
-		'as' => 'lessonList', 
+		'as' => 'vocabularyLessonList', 
 		'uses' => 'Admin\VocabularyController@lessonList'
 	]);
  	Route::get('lesson/create', [
- 		'as' => 'createLesson', 
+ 		'as' => 'vocabularyCreateLesson', 
  		'uses' => 'Admin\VocabularyController@createLesson'
  	]);
 	Route::post('lesson/create', [
-		'as' => 'storeLesson', 
+		'as' => 'vocabularyStoreLesson', 
 		'uses' => 'Admin\VocabularyController@storeLesson'
 	]);
 	Route::get('lesson/{id}/edit', [
-		'as' => 'editLesson', 
+		'as' => 'vocabularyEditLesson', 
 		'uses' => 'Admin\VocabularyController@editLesson'
 	]);
 	Route::post('lesson/{id}/edit', [
-		'as' => 'editLesson', 
+		'as' => 'vocabularyEditLesson', 
 		'uses' => 'Admin\VocabularyController@updateLesson'
 	]);
 	Route::get('lesson/{id}', [
-		'as' => 'showLesson', 
+		'as' => 'vocabularyShowLesson', 
 		'uses' => 'Admin\VocabularyController@showLesson'
 	]);
 	Route::post('lesson/search', [
 		'as' => 'searchLesson', 
 		'uses' => 'Admin\VocabularyController@searchLesson'
 	]);
-
-
-	//Exercise
-	Route::get('exercise', [
-		'as' => 'vocabulary.exercise.index', 
-		'uses' => 'Admin\VocabularyExerciseController@index'
+	Route::get('lesson/{id}/create', [
+		'as' => 'createExercise', 
+		'uses' => 'Admin\VocabularyController@createExercise'
 	]);
-
- 	Route::get('exercise/create', [
- 		'as' => 'vocabulary.exercise.create', 
- 		'uses' => 'Admin\VocabularyExerciseController@create'
- 	]);
-
-	Route::post('exercise/create', [
-		'as' => 'vocabulary.exercise.store', 
-		'uses' => 'Admin\VocabularyExerciseController@store'
+	Route::post('lesson/{id}/create', [
+		'as' => 'storeExercise', 
+		'uses' => 'Admin\VocabularyController@storeExercise'
 	]);
-
-	Route::get('exercise/{id}/edit', [
-		'as' => 'vocabulary.exercise.edit', 
-		'uses' => 'Admin\VocabularyExerciseController@edit'
-	]);
-
-	Route::post('exercise/{id}/edit', [
-		'as' => 'vocabulary.exercise.update', 
-		'uses' => 'Admin\VocabularyExerciseController@update'
-	]);
-
-	Route::get('exercise/{id}', [
-		'as' => 'showLesson', 
-		'uses' => 'Admin\VocabularyExerciseController@show'
-	]);
-
-
-
-
-	//Vocabulary
-	Route::get('word', [
-		'as' => 'word.index', 
-		'uses' => 'Admin\WordController@index'
-	]);
-
- 	Route::get('word/create', [
- 		'as' => 'word.create', 
- 		'uses' => 'Admin\WordController@create'
- 	]);
-
-	Route::post('word/create', [
-		'as' => 'word.store', 
-		'uses' => 'Admin\WordController@store'
-	]);
-
-	Route::get('word/{id}/edit', [
-		'as' => 'word.edit', 
-		'uses' => 'Admin\WordController@edit'
-	]);
-
-	Route::post('word/{id}/edit', [
-		'as' => 'word.update', 
-		'uses' => 'Admin\WordController@update'
-	]);
-
-	Route::get('word/{id}', [
-		'as' => 'word.show', 
-		'uses' => 'Admin\WordController@show'
-	]);
+	
 });

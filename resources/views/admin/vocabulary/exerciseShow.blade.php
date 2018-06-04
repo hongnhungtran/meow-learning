@@ -1,4 +1,6 @@
-@extends('admin.shared.master') @section('title', 'Add New Lesson') @section('content_header')
+@extends('admin.shared.master') 
+@section('title', 'Add New Lesson') 
+@section('content_header')
 <h1>
     Vocabulary Exercise
     <small>Review</small>
@@ -9,89 +11,119 @@
     <li><a href="{{ url('admin/vocabulary/lesson') }}">Lesson</a></li>
     <li class="active">Exercise</li>
 </ol>
-@stop @section('content')
+@stop 
+@section('content')
 <div class="row">
-    <!-- Lesson detail -->
-    <div class="col-md-12">
-        <!-- Horizontal Form -->
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Exercise 1</h3>
-                <small>Flashcard</small>
-                <!-- tools box -->
-                <div class="pull-right box-tools">
-                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-                <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
-                  <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
-                  <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      Dropdown <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                  </ul>
-              </li>
-              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-          </ul>
-          <div class="tab-content">
-              <div class="tab-pane active" id="tab_1">
-                <b>How to use:</b>
-
-                <p>Exactly like the original bootstrap tabs except you should use
-                  the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                  A wonderful serenity has taken possession of my entire soul,
-                  like these sweet mornings of spring which I enjoy with my whole heart.
-                  I am alone, and feel the charm of existence in this spot,
-                  which was created for the bliss of souls like mine. I am so happy,
-                  my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                  that I neglect my talents. I should be incapable of drawing a single stroke
-                  at the present moment; and yet I feel that I never was a greater artist than now.
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
-            </div>
-            <!-- /.tab-pane -->
-            <div class="tab-pane" id="tab_3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
-            </div>
-            <!-- /.tab-pane -->
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Lesson Detail</h3>
+        <div class="pull-right box-tools">
+          <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
         </div>
-        <!-- /.tab-content -->
+      </div>
+      <div class="box-body">
+        <table class="table table-bordered">
+          <tr>
+            <td class="col-md-2"><strong>Topic</strong></td>
+            <td>{{ $lesson[0]->topic_title }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Level</strong></td>
+            <td>{{ $lesson[0]->level_name }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Lesson Title</strong></td>
+            <td>{{ $lesson[0]->lesson_title }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Lesson Content</strong></td>
+            <td>{{ $lesson[0]->lesson_content }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Status</strong></td>
+             @if($lesson[0]->lesson_flag == 1)
+            <td>Active</td>
+            @elseif($lesson[0]->lesson_flag == 0)
+            <td>Inactive</td>
+            @endif
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Image</strong></td>
+            <td><img src="{{ $lesson[0]->lesson_image_link }}" style="width: 150px; height: 100px"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="box-footer">
+        <a href="{!! action('Admin\VocabularyController@editLesson', $lesson[0]->lesson_id) !!}" class="btn btn-success">Edit</a>
+      </div>
     </div>
-    <!-- nav-tabs-custom -->
+  </div>
 </div>
-<!-- /.box -->
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+          <h3 class="box-title">Exercise</h3>
+          <div class="pull-right box-tools">
+              <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+          </div>
+      </div>
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
+          <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+          <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_1">
+            @if($count == 0)
+            <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success">Add exercise</a>
+            @else
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>ID</th>
+                  <th>Vocabulary</th>
+                  <th>Pronunciation</th>
+                  <th>vocabulary_image_link</th>
+                  <th>vocabulary_audio_link</th>
+                </tr>
+                @foreach($vocabulary as $data)
+                <tr>
+                  <td>{{ $data->vocabulary_id }}</td>
+                  <td>{{ $data->vocabulary }}</td>
+                  <td>{{ $data->pronunciation }}</td>
+                  <td>
+                    <img src="{{ $data->vocabulary_image_link }}" style="width: 150px; height: 100px;">
+                  </td>
+                  <td>
+                    <audio id="t-rex-roar" controls
+                    src="{{ $data->vocabulary_audio_link }}">
+                      Your browser does not support the <code>audio</code> element.
+                    </audio>
+                  </td>
+                  <td><span class="label label-{{ ($data->vocabulary_status) ? 'success' : 'danger' }}"> {{ ($data->vocabulary_status) ? ' Active ' : 'Inactive' }}</span></td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            @endif
+          </div>
+          <div class="tab-pane" id="tab_2">
+            The European languages are members of the same family. Their separate existence is a myth.
+          </div>
+          <div class="tab-pane" id="tab_3">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @stop
 

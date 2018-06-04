@@ -4,7 +4,7 @@ Route::group(['prefix' => 'document'], function () {
 		'as' => 'searchDocument', 
 		'uses' => 'Admin\DocumentController@searchDocument'
 	]);
-	Route::get('/', [
+	Route::get('/list', [
 		'as' => 'documentList', 
 		'uses' => 'Admin\DocumentController@documentList'
 	]);
@@ -19,5 +19,13 @@ Route::group(['prefix' => 'document'], function () {
 	Route::put('/{id}/edit', [
 		'as' => 'documentUpdate', 
 		'uses' => 'Admin\DocumentController@documentUpdate'
+	]);
+	Route::get('/', [
+		'as' => 'documentManagement', 
+		'uses' => 'Admin\ManagementController@documentManagement'
+	]);
+	Route::get('/create', [
+		'as' => 'documentCreate', 
+		'uses' => 'Admin\DocumentController@documentCreate'
 	]);
 });

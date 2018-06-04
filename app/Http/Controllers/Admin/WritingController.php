@@ -14,7 +14,7 @@ use Session;
 
 class WritingController extends Controller
 {
-    public function __construct()
+   /* public function __construct()
     {
         $this->topic = new Topic;
         $this->lesson = new Lesson;
@@ -31,8 +31,8 @@ class WritingController extends Controller
     public function createLesson()
     {
         $levels = Level::all();
-        $topics = $this->topic->getVocabularyTopic();
-        return view('admin.vocabulary.lessonAdd', compact('levels', 'topics'));
+        $topics = $this->topic->getWritingTopic();
+        return view('admin.writing.lessonAdd', compact('levels', 'topics'));
     }
 
     public function storeLesson(Request $request)
@@ -154,5 +154,5 @@ class WritingController extends Controller
         $vocabulary_lessons = $lesson->search($searchTerm)->paginate(10);
             return view('admin.vocabulary.lessonList', compact('vocabulary_lessons', 'levels', 'topics'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
-    }
+    }*/
 }

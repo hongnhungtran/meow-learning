@@ -10,6 +10,23 @@
 </ol>
 @stop 
 @section('content')
+<style type="text/css">
+	#modalImg {
+		width: 100%;
+		height: 100%;
+	}
+	#modalImageBody {
+		overflow-y: scroll;
+		height: 335px;
+	}
+	#img {
+		margin-bottom: 10px;
+	}
+	.image_picker_selector li {
+		width: 30%;
+	}
+</style>
+@section('content')
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-info">
@@ -86,34 +103,99 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="col-sm-3 control-label">Document image</label>
+						<label for="" class="col-sm-3 control-label">Image</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Image Link" name="document_image_link" value="{{ $document[0]->document_image_link }}" }}>
-							@if ($errors->has('document_image_link')) 
-								@foreach($errors->get('document_image_link') as $error)
-									<p class="text-red">{!! $error !!}</p>
-								@endforeach 
+							<input type="text" class="form-control" id="imgLink" placeholder="Image Link" name="lesson_image_link"  value="{{ $document[0]->document_image_link }}">
+
+							@if ($errors->has('lesson_image_link'))
+								@foreach($errors->get('lesson_image_link') as $error)
+									 <p class="text-red">{!! $error !!}</p>
+								@endforeach
 							@endif
-							<h5>Or select image</h5>
-							<input type="file" accept="image/*" onchange="loadFile(event)">
-							<img id="output" width="60" height="60" />
+							<!-- <h5>Or select image</h5>
+							<input type="file" name="upload_image" id="gallery-photo-add"><br><br>
+							<div class="gallery"> -->
+							<div id="imgPreview"></div>
+							<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#favoritesModal" style="margin-top: 10px;">
+								Select Image
+							</button>
+
+							<div class="modal fade" id="favoritesModal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									  <span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="favoritesModalLabel">Select Image</h4>
+								  </div>
+								  <div class="modal-body" id="modalImageBody">
+										<p>Please confirm you would like to add <b><span id="fav-title">Lesson image</span></b>to your lesson.</p>
+										<br/>
+										<select class="image-picker">
+										@foreach($files as $file)
+										<div class="col-sm-3" id="img">
+											<option data-img-src="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} "  data-img-alt="{{ $file['basename']}} "  value="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} " ></option>
+										</div>
+										@endforeach
+										</select>
+								  </div>
+								  <div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<span class="pull-right">
+										  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getSrc()">Add image</button>
+										</span>
+								  </div>
+								</div>
+							  </div>
+							</div>
 						</div>
 					</div>
+					<!-- test -->
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Description image</label>
 						<div class="col-sm-9">
-							@foreach ($images as $image)
-								<input type="text" class="form-control" id="" placeholder="Image Link" name="image_link" value="{{ $document[0]->document_image_link }}" }}>
-					<img src="{{ $image->image_link }}" alt="Description image" height="42" width="42">
-					@if ($errors->has('image_link')) 
-									@foreach($errors->get('image_link') as $error)
-										<p class="text-red">{!! $error !!}</p>
-									@endforeach 
-								@endif
-				@endforeach
-							<h5>Or select image</h5>
-							<input type="file" accept="image/*" onchange="loadFile(event)">
-							<img id="output" width="60" height="60" />
+							<input type="text" class="form-control descriptionImgLink" placeholder="Description Image Link" name="image_link">
+							<input type="text" class="form-control descriptionImgLink" placeholder="Description Image Link" name="image_link">
+							<input type="text" class="form-control descriptionImgLink" placeholder="Description Image Link" name="image_link">
+							<input type="text" class="form-control descriptionImgLink" placeholder="Description Image Link" name="image_link">
+							@if ($errors->has('image_link'))
+								@foreach($errors->get('image_link') as $error)
+									 <p class="text-red">{!! $error !!}</p>
+								@endforeach
+							@endif
+							<div id="descriptionImgPreview"></div>
+							<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#imageModal" style="margin-top: 10px;">
+								Select Image
+							</button>
+
+							<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									  <span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="imageModalLabel">Select Image</h4>
+								  </div>
+								  <div class="modal-body" id="modalImageBody">
+										<p>Please confirm you would like to add <b><span id="fav-title">Lesson image</span></b>to your lesson.</p>
+										<br/>
+										<select class="description-image-picker" data-limit="4" multiple="multiple">
+											@foreach($files as $file)
+											<div class="col-sm-3" id="img">
+												<option data-img-src="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} "  data-img-alt="{{ $file['basename']}} "  value="{{ 'https://drive.google.com/uc?export=view&id='.$file['basename']}} " ></option>
+											</div>
+											@endforeach
+										</select>
+								  </div>
+								  <div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<span class="pull-right">
+										  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getMultipleSrc()">Add image</button>
+										</span>
+								  </div>
+								</div>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -124,5 +206,48 @@
 		</div>
 	</div>
 </div>
+@stop
+@section('js')
+<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/image-picker.js') }}"></script>
+<script>
+	$(".image-picker").imagepicker();
+	function getSrc() {
+		var src = $('.selected img').attr('src');
+		if($("#imgLink").val().length == 0) {
+			$('#imgLink').val($('#imgLink').val() + src);
+		} else {
+			$('#imgLink').val("");
+			$('#imgLink').val($('#imgLink').val() + src);
+		}
+		$('<img />', {
+		src: src,
+		width: '150px',
+		height: '100px'
+		}).appendTo($('#imgPreview').empty())
+	}
+
+	$(".description-image-picker").imagepicker({limit: 4});
+	function getMultipleSrc() {
+		var imgsrc = $("#imageModal .selected img").map(function() {
+		  return $(this).attr("src");
+		}).get();
+		console.log(imgsrc);
+		if($("#descriptionImgLink").val().length == 0) {
+			$('#descriptionImgLink').val($('#descriptionImgLink').val() + imgsrc);
+		} else {
+			$('#descriptionImgLink').val("");
+			$('#descriptionImgLink').val($('#descriptionImgLink').val() + imgsrc);
+		}
+		//image preview
+    for (i = 0; i < imgsrc.lenth; i++) {
+      $('<img />', {
+				src: imgsrc[i],
+				width: '150px',
+				height: '100px'
+			}).appendTo($('#descriptionImgPreview').empty());
+    }
+	}
+</script>
 @stop
 

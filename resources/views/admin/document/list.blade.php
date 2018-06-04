@@ -98,10 +98,10 @@
 						<tr>
 							<th class="col-xs-1">ID</th>
 							<th class="col-xs-2">カテゴリ</th>
-							<th class="col-xs-2">タイトル</th>
+							<th class="col-xs-3">タイトル</th>
 							<th class="col-xs-4">内容</th>
 							<th class="col-xs-1">ステータス</th>
-							<th class="col-xs-2">その他</th>
+							<th class="col-xs-1">その他</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -113,7 +113,6 @@
 							<td>{!! $document->document_content !!}</td>
 							<td><span class="label label-{{ ($document->document_flag) ? 'success' : 'danger' }}"> {{ ($document->document_flag) ? ' Active ' : 'Inactive' }}</span></td>
 							<td>
-								<a href="{!! action('Admin\DocumentController@editForm', $document->document_id) !!}" class="btn btn-success">Edit</a>
 								<a href="{!! action('Admin\DocumentController@getDetail', $document->document_id) !!}" class="btn btn-primary">Detail</a> 
 							</td>
 						</tr>
