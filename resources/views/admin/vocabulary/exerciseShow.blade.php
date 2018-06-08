@@ -82,16 +82,19 @@
         <div class="tab-content">
           <div class="tab-pane active" id="tab_1">
             @if($count == 0)
-            <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success">Add exercise</a>
+            <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-primary">Add exercise</a>
             @else
+            @if ($message = Session::get('status'))
+            <a href="{!! action('Admin\VocabularyController@editExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success" style="margin-bottom: 10px;">Edit</a>
             <table class="table table-bordered">
               <tbody>
                 <tr>
                   <th>ID</th>
                   <th>Vocabulary</th>
                   <th>Pronunciation</th>
-                  <th>vocabulary_image_link</th>
-                  <th>vocabulary_audio_link</th>
+                  <th>Image</th>
+                  <th>Audio</th>
+                  <th>Status</th>
                 </tr>
                 @foreach($vocabulary as $data)
                 <tr>

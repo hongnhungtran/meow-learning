@@ -179,30 +179,63 @@ class VocabularyController extends Controller
         }
         $audioFiles = collect(Storage::cloud()->listContents($directory['path'], false))
             ->where('type', '=', 'file');
-        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles'));
+        //view added vocabulary
+        $vocabulary = $this->vocabulary->getVocabulary($id)->get();
+        $count = $vocabulary->count();
+        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles', 'count'));
     }
 
     public function storeExercise(Request $request, $id)
     {
         request()->validate([
-            'topic' => 'required',
-            'level' => 'required',
-            'lesson_title' => 'required|unique:lesson',
-            'lesson_content' => 'required',
+            'vocabulary' => 'required',
+            'pronunciation' => 'required',
             'lesson_image_link' => 'required',
-            'lesson_flag' => 'required',
+            'audio' => 'required',
         ]);
-        $vocabulary_lesson = new Lesson([
-            'course_id' => Config::get('constants.course.vocabulary'),
-            'topic_id' => $request->get('topic'),
-            'level_id' => $request->get('level'),
-            'lesson_title' => $request->get('lesson_title'),
-            'lesson_content' => $request->get('lesson_content'),
+        $vocabulary = new Vocabulary([
+            'lesson_id' => $id,
+            'vocabulary' => $request->get('vocabulary'),
+            'pronunciation' => $request->get('pronunciation'),
             'lesson_image_link' => $request->get('lesson_image_link'),
-            'lesson_flag' => $request->get('lesson_flag'),
+            'vocabulary_audio_link' => $request->get('vocabulary_audio_link'),
+            'vocabulary_status' => $request->get('lesson_flag'),
         ]);
         $vocabulary_lesson->save();
-        return redirect()->route('vocabularyLessonList')
-            ->with('status', 'Vocabulary lesson created successfully');
+        return view('admin.vocabulary.wordAdd');
+    }
+
+    public function editExercise($id)
+    {
+        $levels = Level::all();
+        $topics = Topic::all();
+        $lesson = $this->lesson->findVocabularyLesson($id)->get();
+        $folder = 'vocabulary';
+        $contents = collect(Storage::cloud()->listContents('/', false));
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first();
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+        $files = collect(Storage::cloud()->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+
+        $audioFolder = 'audio';
+        $audioContent = collect(Storage::cloud()->listContents('/', false));
+        $directory = $audioContent->where('type', '=', 'dir')
+            ->where('filename', '=', $audioFolder)
+            ->first();
+        if ( ! $directory) {
+            return 'No such folder!';
+        }
+        $audioFiles = collect(Storage::cloud()->listContents($directory['path'], false))
+            ->where('type', '=', 'file');
+        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles'));
+    }
+
+    public function updateExercise($id)
+    {
+
     }
 }

@@ -50,18 +50,49 @@
 					</button>
 				</div>
 			</div>
-			<form class="form-horizontal" method="post" action="{!! action('Admin\VocabularyController@storeExercise', $lesson[0]->lesson_id) !!}">
-				{{csrf_field()}}
-				
+				@if($count > 0)
 				<div class="box-body">
-				@for ($i = 0; $i < 13; $i++)
+					 <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>ID</th>
+                  <th>Vocabulary</th>
+                  <th>Pronunciation</th>
+                  <th>Image</th>
+                  <th>Audio</th>
+                  <th>Status</th>
+                </tr>
+                @foreach($vocabulary as $data)
+                <tr>
+                  <td>{{ $data->vocabulary_id }}</td>
+                  <td>{{ $data->vocabulary }}</td>
+                  <td>{{ $data->pronunciation }}</td>
+                  <td>
+                    <img src="{{ $data->vocabulary_image_link }}" style="width: 150px; height: 100px;">
+                  </td>
+                  <td>
+                    <audio id="t-rex-roar" controls
+                    src="{{ $data->vocabulary_audio_link }}">
+                      Your browser does not support the <code>audio</code> element.
+                    </audio>
+                  </td>
+                  <td><span class="label label-{{ ($data->vocabulary_status) ? 'success' : 'danger' }}"> {{ ($data->vocabulary_status) ? ' Active ' : 'Inactive' }}</span></td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+				</div>
+				@endif
+				<form class="form-horizontal" method="post" action="{!! action('Admin\VocabularyController@storeExercise', $lesson[0]->lesson_id) !!}">
+				{{csrf_field()}}
+				<div class="box-body">
 				<div class="vocabularyForm">
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Vocabulary</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary-{{$i}}">
-							@if ($errors->has('vocabulary-{{$i}}')) 
-								@foreach($errors->get('vocabulary-{{$i}}') as $error)
+							<input type="text" class="form-control" id="" placeholder="Vocabulary" name="vocabulary">
+							@if ($errors->has('vocabulary')) 
+								@foreach($errors->get('vocabulary') as $error)
 									<p class="text-red">{!! $error !!}</p>
 								@endforeach 
 							@endif
@@ -70,9 +101,9 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Pronunciation</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Pronunciation" name="pronunciation-{{$i}}">
-							@if ($errors->has('pronunciation-{{$i}}')) 
-								@foreach($errors->get('pronunciation-{{$i}}') as $error)
+							<input type="text" class="form-control" id="" placeholder="Pronunciation" name="pronunciation">
+							@if ($errors->has('pronunciation')) 
+								@foreach($errors->get('pronunciation') as $error)
 									<p class="text-red">{!! $error !!}</p>
 								@endforeach 
 							@endif
@@ -81,24 +112,24 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Image</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="imgLink-{{$i}}" placeholder="Image Link" name="lesson_image_link-{{$i}}">
-							@if ($errors->has('lesson_image_link-{{$i}}'))
-								@foreach($errors->get('lesson_image_lin-{{$i}}k') as $error)
+							<input type="text" class="form-control" id="imgLink" placeholder="Image Link" name="lesson_image_link">
+							@if ($errors->has('lesson_image_link'))
+								@foreach($errors->get('lesson_image_link') as $error)
 									 <p class="text-red">{!! $error !!}</p>
 								@endforeach
 							@endif
-							<div id="imgPreview-{{$i}}"></div>
-							<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#favoritesModal-{{$i}}" style="margin-top: 10px;">
+							<div id="imgPreview"></div>
+							<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#favoritesModal" style="margin-top: 10px;">
 								Select Image
 							</button>
 
-							<div class="modal fade" id="favoritesModal-{{$i}}" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel-{{$i}}">
+							<div class="modal fade" id="favoritesModal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
 							  <div class="modal-dialog" role="document">
 								<div class="modal-content">
 								  <div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									  <span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="favoritesModalLabel-{{$i}}">Select Image</h4>
+									<h4 class="modal-title" id="favoritesModalLabel">Select Image</h4>
 								  </div>
 								  <div class="modal-body" id="modalImageBody">
 										<p>Please confirm you would like to add <b><span id="fav-title">Lesson image</span></b>to your lesson.</p>
@@ -125,20 +156,37 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Audio</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="" placeholder="Audio Link" name="audio-{{$i}}">
-							@if ($errors->has('audio-{{$i}}')) 
-								@foreach($errors->get('audio-{{$i}}') as $error)
+							<input type="text" class="form-control" id="" placeholder="Audio Link" name="vocabulary_audio_link">
+							@if ($errors->has('vocabulary_audio_link')) 
+								@foreach($errors->get('vocabulary_audio_link') as $error)
 									<p class="text-red">{!! $error !!}</p>
 								@endforeach 
 							@endif
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Status</label>
+						<div class="col-sm-9">
+							<div class="checkbox">
+								<label>
+								  <input type="radio" value="1" name="vocabulary_status" >Active
+								</label>
+								<label>
+								  <input type="radio" value="0" name="vocabulary_status">Disable
+								</label>
+								@if ($errors->has('vocabulary_status'))
+									@foreach($errors->get('vocabulary_status') as $error)
+										 <p class="text-red">{!! $error !!}</p>
+									@endforeach
+								@endif
+						  </div>
+						</div>
+					</div>
 				</div>
-				@endfor
 				</div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-default">Cancel</button>
-					<button type="submit" class="btn btn-info pull-right">Add</button>
+					<button type="submit" class="btn btn-success pull-left" id="addButton"><i class="fas fa-plus"></i> Add</button>
+					<a href="{!! route('vocabularyShowLesson', $lesson[0]->lesson_id) !!}" class="btn btn-info pull-right" style="margin-bottom: 10px;">Done <i class="fas fa-check"></i></a>
 				</div>
 			</form>
 		</div>
@@ -219,6 +267,12 @@
 		height: '100px'
 		}).appendTo($('#imgPreview').empty())
 	}
+
+	$(function() {
+    $("#addButton").click(function() {
+      // validate and process form here
+    });
+  });
 </script>
 @stop
 

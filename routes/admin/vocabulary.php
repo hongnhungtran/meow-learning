@@ -37,12 +37,19 @@ Route::group(['prefix' => 'vocabulary'], function () {
 		'uses' => 'Admin\VocabularyController@searchLesson'
 	]);
 	Route::get('lesson/{id}/create', [
-		'as' => 'createExercise', 
+		'as' => 'vocabularyCreateExercise', 
 		'uses' => 'Admin\VocabularyController@createExercise'
 	]);
 	Route::post('lesson/{id}/create', [
-		'as' => 'storeExercise', 
+		'as' => 'vocabularyStoreExercise', 
 		'uses' => 'Admin\VocabularyController@storeExercise'
 	]);
-	
+	Route::get('lesson/{id}/exercise/edit', [
+		'as' => 'vocabularyEditExercise', 
+		'uses' => 'Admin\VocabularyController@editExercise'
+	]);
+	Route::post('lesson/{id}/exercise/edit', [
+		'as' => 'vocabularyUpdateExercise', 
+		'uses' => 'Admin\VocabularyController@updateExercise'
+	]);
 });
