@@ -43,7 +43,7 @@
           </tr>
           <tr>
             <td class="col-md-2"><strong>Status</strong></td>
-             @if($lesson[0]->lesson_flag == 1)
+            @if($lesson[0]->lesson_flag == 1)
             <td>Active</td>
             @elseif($lesson[0]->lesson_flag == 0)
             <td>Inactive</td>
@@ -84,7 +84,6 @@
             @if($count == 0)
             <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-primary">Add exercise</a>
             @else
-            @if ($message = Session::get('status'))
             <a href="{!! action('Admin\VocabularyController@editExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success" style="margin-bottom: 10px;">Edit</a>
             <table class="table table-bordered">
               <tbody>
