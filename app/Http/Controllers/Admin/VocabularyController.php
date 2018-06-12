@@ -182,27 +182,57 @@ class VocabularyController extends Controller
         //view added vocabulary
         $vocabulary = $this->vocabulary->getVocabulary($id)->get();
         $count = $vocabulary->count();
-        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles', 'count'));
+        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles', 'count','vocabulary'));
     }
 
     public function storeExercise(Request $request, $id)
     {
+        //add vocabulary
         request()->validate([
             'vocabulary' => 'required',
             'pronunciation' => 'required',
-            'lesson_image_link' => 'required',
+            'vocabulary_image_link' => 'required',
             'audio' => 'required',
+            'lesson_flag' => 'required',
         ]);
-        $vocabulary = new Vocabulary([
-            'lesson_id' => $id,
-            'vocabulary' => $request->get('vocabulary'),
-            'pronunciation' => $request->get('pronunciation'),
-            'lesson_image_link' => $request->get('lesson_image_link'),
-            'vocabulary_audio_link' => $request->get('vocabulary_audio_link'),
-            'vocabulary_status' => $request->get('lesson_flag'),
-        ]);
-        $vocabulary_lesson->save();
-        return view('admin.vocabulary.wordAdd');
+
+        $vocabularies = new Vocabulary;
+        $vocabularies->lesson_id = $id;
+        $vocabularies->vocabulary = $request->get('vocabulary');
+        $vocabularies->pronunciation = $request->get('pronunciation');
+        $vocabularies->vocabulary_image_link = $request->get('vocabulary_image_link');
+        $vocabularies->vocabulary_audio_link = $request->get('audio');
+        $vocabularies->vocabulary_status = $request->get('lesson_flag');
+        $vocabularies->save();
+        //view added vocabulary
+        $levels = Level::all();
+        $topics = Topic::all();
+        $lesson = $this->lesson->findVocabularyLesson($id)->get();
+        $folder = 'vocabulary';
+        $contents = collect(Storage::cloud()->listContents('/', false));
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first();
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+        $files = collect(Storage::cloud()->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+
+        $audioFolder = 'audio';
+        $audioContent = collect(Storage::cloud()->listContents('/', false));
+        $directory = $audioContent->where('type', '=', 'dir')
+            ->where('filename', '=', $audioFolder)
+            ->first();
+        if ( ! $directory) {
+            return 'No such folder!';
+        }
+        $audioFiles = collect(Storage::cloud()->listContents($directory['path'], false))
+            ->where('type', '=', 'file');
+        //view added vocabulary
+        $vocabulary = $this->vocabulary->getVocabulary($id)->get();
+        $count = $vocabulary->count();
+        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles', 'count', 'vocabulary'));
     }
 
     public function editExercise($id)

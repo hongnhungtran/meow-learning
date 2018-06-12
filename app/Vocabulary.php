@@ -12,8 +12,10 @@ class Vocabulary extends Model
     protected $fillable = [
     	'lesson_id',
     	'vocabulary',
+        'pronunciation',
     	'vocabulary_image_link',
-    	'vocabulary_audio_link'
+    	'vocabulary_audio_link',
+        'vocabulary_status',
     ];
 
     public function getVocabulary($id)
@@ -23,4 +25,17 @@ class Vocabulary extends Model
         return $vocabulary;
     }
 
+    public function saveVocabulary($id, $input)
+    {
+        $vocabulary = [
+            'lesson_id' => $id,
+            'vocabulary' => $request->get('vocabulary'),
+            'pronunciation' => $request->get('pronunciation'),
+            'lesson_image_link' => $request->get('lesson_image_link'),
+            'vocabulary_audio_link' => $request->get('audio'),
+            'vocabulary_status' => $request->get('lesson_flag'),
+        ];
+        
+        $vocabulary->save();
+    }
 }

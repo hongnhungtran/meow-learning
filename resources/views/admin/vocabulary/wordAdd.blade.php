@@ -52,35 +52,37 @@
 			</div>
 				@if($count > 0)
 				<div class="box-body">
-					 <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <th>ID</th>
-                  <th>Vocabulary</th>
-                  <th>Pronunciation</th>
-                  <th>Image</th>
-                  <th>Audio</th>
-                  <th>Status</th>
-                </tr>
-                @foreach($vocabulary as $data)
-                <tr>
-                  <td>{{ $data->vocabulary_id }}</td>
-                  <td>{{ $data->vocabulary }}</td>
-                  <td>{{ $data->pronunciation }}</td>
-                  <td>
-                    <img src="{{ $data->vocabulary_image_link }}" style="width: 150px; height: 100px;">
-                  </td>
-                  <td>
-                    <audio id="t-rex-roar" controls
-                    src="{{ $data->vocabulary_audio_link }}">
-                      Your browser does not support the <code>audio</code> element.
-                    </audio>
-                  </td>
-                  <td><span class="label label-{{ ($data->vocabulary_status) ? 'success' : 'danger' }}"> {{ ($data->vocabulary_status) ? ' Active ' : 'Inactive' }}</span></td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
+					<table class="table table-bordered">
+					  <tbody>
+						<tr>
+						  <th>ID</th>
+						  <th>Vocabulary</th>
+						  <th>Pronunciation</th>
+						  <th>Image</th>
+						  <th>Audio</th>
+						  <th>Status</th>
+						  <th>Action</th>
+						</tr>
+						@foreach($vocabulary as $data)
+						<tr>
+						  <td>{{ $data->vocabulary_id }}</td>
+						  <td>{{ $data->vocabulary }}</td>
+						  <td>{{ $data->pronunciation }}</td>
+						  <td>
+							<img src="{{ $data->vocabulary_image_link }}" style="width: 150px; height: 100px;">
+						  </td>
+						  <td>
+							<audio id="t-rex-roar" controls
+							src="{{ $data->vocabulary_audio_link }}">
+							  Your browser does not support the <code>audio</code> element.
+							</audio>
+						  </td>
+						  <td><span class="label label-{{ ($data->vocabulary_status) ? 'success' : 'danger' }}"> {{ ($data->vocabulary_status) ? ' Active ' : 'Inactive' }}</span></td>
+						  <td><button class="btn btn-danger">Delete</button></td>
+						</tr>
+						@endforeach
+					  </tbody>
+					</table>
 				</div>
 				@endif
 				<form class="form-horizontal" method="post" action="{!! action('Admin\VocabularyController@storeExercise', $lesson[0]->lesson_id) !!}">
@@ -112,9 +114,9 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label">Image</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="imgLink" placeholder="Image Link" name="lesson_image_link">
-							@if ($errors->has('lesson_image_link'))
-								@foreach($errors->get('lesson_image_link') as $error)
+							<input type="text" class="form-control" id="imgLink" placeholder="Image Link" name="vocabulary_image_link">
+							@if ($errors->has('vocabulary_image_link'))
+								@foreach($errors->get('vocabulary_image_link') as $error)
 									 <p class="text-red">{!! $error !!}</p>
 								@endforeach
 							@endif
@@ -269,9 +271,9 @@
 	}
 
 	$(function() {
-    $("#addButton").click(function() {
-      // validate and process form here
-    });
+	$("#addButton").click(function() {
+	  // validate and process form here
+	});
   });
 </script>
 @stop
