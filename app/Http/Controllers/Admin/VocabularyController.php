@@ -187,13 +187,14 @@ class VocabularyController extends Controller
 
     public function storeExercise(Request $request, $id)
     {
+        //dd($request);exit;
         //add vocabulary
         request()->validate([
             'vocabulary' => 'required',
             'pronunciation' => 'required',
             'vocabulary_image_link' => 'required',
-            'audio' => 'required',
-            'lesson_flag' => 'required',
+            'vocabulary_audio_link' => 'required',
+            'vocabulary_status' => 'required',
         ]);
 
         $vocabularies = new Vocabulary;
@@ -201,8 +202,8 @@ class VocabularyController extends Controller
         $vocabularies->vocabulary = $request->get('vocabulary');
         $vocabularies->pronunciation = $request->get('pronunciation');
         $vocabularies->vocabulary_image_link = $request->get('vocabulary_image_link');
-        $vocabularies->vocabulary_audio_link = $request->get('audio');
-        $vocabularies->vocabulary_status = $request->get('lesson_flag');
+        $vocabularies->vocabulary_audio_link = $request->get('vocabulary_audio_link');
+        $vocabularies->vocabulary_status = $request->get('vocabulary_status');
         $vocabularies->save();
         //view added vocabulary
         $levels = Level::all();
@@ -261,11 +262,21 @@ class VocabularyController extends Controller
         }
         $audioFiles = collect(Storage::cloud()->listContents($directory['path'], false))
             ->where('type', '=', 'file');
-        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles'));
+        $vocabulary = $this->vocabulary->getVocabulary($id)->get();
+        $count = $vocabulary->count();
+        return view('admin.vocabulary.wordAdd', compact('levels', 'topics', 'files', 'lesson', 'audioFiles', 'count', 'vocabulary'));
     }
 
     public function updateExercise($id)
     {
 
+    }
+
+    public function destroyVocabulary($lesson_id, $vocabulary_id)
+    {
+        $destroy = Vocabulary::where('vocabulary_id', '=', $vocabulary_id)
+        ->where('lesson_id', '=', $lesson_id)
+        ->delete();
+        return redirect()->route('vocabularyCreateExercise', $lesson_id);
     }
 }

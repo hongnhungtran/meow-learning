@@ -78,7 +78,15 @@
 							</audio>
 						  </td>
 						  <td><span class="label label-{{ ($data->vocabulary_status) ? 'success' : 'danger' }}"> {{ ($data->vocabulary_status) ? ' Active ' : 'Inactive' }}</span></td>
-						  <td><button class="btn btn-danger">Delete</button></td>
+						  <td>
+						  	<!-- <a href="{!! action('Admin\VocabularyController@destroyVocabulary', [$lesson[0]->lesson_id, $data->vocabulary_id]) !!}" class="btn btn-danger">Delete</a> -->
+						  	<form action="{!! action('Admin\VocabularyController@destroyVocabulary', [$lesson[0]->lesson_id, $data->vocabulary_id]) !!}" method="POST">
+							    {{ method_field('DELETE') }}
+							    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+							    <button class="btn btn-danger" type="submit">Delete</button>
+							</form>
+						  	<a href="" class="btn btn-info">Edit</a>
+						  </td>
 						</tr>
 						@endforeach
 					  </tbody>

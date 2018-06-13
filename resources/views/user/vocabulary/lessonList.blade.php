@@ -31,7 +31,7 @@
 						<p>{!! $lesson->lesson_content !!}</p>
 					</div>
 					<div class="start-lecture lecture-item">
-						<a title="クリックして勉強しましょう！！！" class="frontend-blue-button"　href="#"> 勉強</a>
+						<a title="クリックして勉強しましょう！！！" class="frontend-blue-button"　href="{!! action('User\VocabularyController@get_exercise', $lesson->lesson_id) !!}"> 勉強</a>
 					</div>
 					<div class="go-to-lecture lecture-item">
 						<a title="レッスンについての情報" class="frontend-green-button" href="＃">詳細</a>

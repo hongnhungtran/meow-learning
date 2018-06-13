@@ -56,9 +56,11 @@ class VocabularyController extends Controller
 
     public function get_exercise($id) 
     {
+        //tab 1 : flashcard
         $lesson = Lesson::find($id)->get();
         $vocabulary = Vocabulary::where('lesson_id', $id)->get();
 
+        //tab 2 : drop word
         return view('user.vocabulary.exercise', compact('lesson', 'vocabulary'));
     }
 

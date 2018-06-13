@@ -44,6 +44,10 @@ Route::group(['prefix' => 'vocabulary'], function () {
 		'as' => 'vocabularyStoreExercise', 
 		'uses' => 'Admin\VocabularyController@storeExercise'
 	]);
+	Route::delete('lesson/{lesson_id}/delete/{vocabulary_id}', [
+		'as' => 'destroyVocabulary', 
+		'uses' => 'Admin\VocabularyController@destroyVocabulary'
+	]);
 	Route::get('lesson/{id}/exercise/edit', [
 		'as' => 'vocabularyEditExercise', 
 		'uses' => 'Admin\VocabularyController@editExercise'
@@ -52,4 +56,5 @@ Route::group(['prefix' => 'vocabulary'], function () {
 		'as' => 'vocabularyUpdateExercise', 
 		'uses' => 'Admin\VocabularyController@updateExercise'
 	]);
+
 });

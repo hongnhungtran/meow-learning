@@ -13,17 +13,44 @@
     margin-top: -120px;
     font-size: 16px;
 	}
-	#tab2 {
-		display: flex;
-	}
 	#dragImg {
 		width: 100%;
 		height: 100%;
 	}
 	#imgContainer {
 		width: 200px;
-    height: 144px;
-    margin: 10px;
+	    height: 144px;
+	    margin: 10px;
+	}
+	#board li {
+  		list-style: none;
+		 padding: 5px;
+		 background: #f5f5f5;
+		 border-radius: 5px;
+		 margin: 0 0 5px;
+	}
+	#board ul {
+  		border: 1px solid #ccc;
+  		border-radius: 5px;
+  		padding: 10px;
+  		width: 30%;
+  		margin: 0 0.5%;
+  		display: inline-block;
+  		vertical-align: top;
+	}
+	#board ul.over {
+  		padding-bottom: 55px;
+  		background: url('http://www.cufonfonts.com/makeImage.php?width=650&id=1026&size=35&d=y&text=Drop%20Here') center bottom no-repeat #ccc;
+	}
+	#board ul.over li {
+	  background: #fff;
+	}
+
+	#board div h3 {
+		display: inline-block; 
+		width: 30%; 
+		margin: 1%; 
+		text-align: center;
 	}
 </style>
 <div class="container">
@@ -74,72 +101,32 @@
 						<div class="tab-pane fade" id="tab2success">
 							<div class="global-activity-guide">
 								<div class="icon"></div>
-								<div class="text">単語にマッチングする画像をドラッグしてください。</div>
+								<div class="text">単語にマッチングするグループにドラッグしてください。</div>
 							</div>
 							<div class="col-md-12" id="tab2">
-								<div id="word-container" class="global-float-left ui-droppable col-md-3">
-									@foreach ($vocabulary as $data)
-									<div class="word ui-draggable">{!! $data->vocabulary !!}</div>
-									@endforeach
+								<div id="board">
+								    <div>
+								      <h3>Word List</h3>
+								      <h3>School</h3>
+								      <h3>Weather</h3>
+								    </div>
+								    <ul id="todo">
+								        <li id="item1" draggable="true">pen</li>
+								        <li id="item2" draggable="true">rain</li>
+								        <li id="item3" draggable="true">ruler</li>
+								        <li id="item4" draggable="true">thunder</li>
+								        <li id="item5" draggable="true">tornado</li>
+								        <li id="item6" draggable="true">teacher</li>
+								        <li id="item7" draggable="true">classroom</li>
+								        <li id="item8" draggable="true">blackboard</li>
+
+								    </ul>
+								    <ul id="school">
+								    </ul>
+								    <ul id="weather">
+								    </ul>
 								</div>
-							<div id="picture-container" class=" global-float-left col-md-9">
-								<div class="tab2-picture-block">
-									@foreach ($vocabulary as $data)
-									<div class="picture-outer global-float-left ui-droppable col-xs-4" id="imgContainer">
-										<img id="dragImg" src="{{ $data->vocabulary_image_link }}">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									@endforeach
-								</div>
-							</div>
-								<div id="tab2-picture-block-1" class="tab2-picture-block" style="display: none;">
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s3(1).jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s6.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s12.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="picture-outer global-float-left ui-droppable">
-										<img class="picture" src="https://media.ucan.vn/upload/userfiles/organizations/1/1/img/000a/s5.jpg" style="height: 135px;">
-										<div class="caption-background">
-											<div class="caption-text ui-draggable"></div>
-										</div>
-									</div>
-									<div class="navigator">
-										<div class="result global-float-left">
-											Chính xác:
-											<span class="number-correct"></span>
-											/
-											<span class="total-items-each-block"></span>
-										</div>
-										<div class="btn-redo global-float-right"></div>
-										<div class="btn-answer global-float-right"></div>
-										<div class="btn-check global-float-right"></div>
-										<div class="next-group global-float-right">
-											Sau
-											<span class="arrow-next global-float-right">&gt;</span>
-										</div>
-										<div class="global-float-right splitNextPrev"></div>
-										<div class="prev-group global-float-right">
-											<span class="arrow-prev">&lt;</span>
-											Trước
-										</div>
-									</div>
-								</div>
+								<button class="btn btn-info pull-right">Done</button>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="tab3success">
@@ -189,41 +176,53 @@
 	$(".card").flip();
 
 	//play audio
-	<?php 
-	$data = [];
-	foreach ($vocabulary as $key=>$value) {
-		$data[$key]['vocabulary_id'] = $value->vocabulary_id;
-		$data[$key]['lesson_id'] = $value->lesson_id;
-		$data[$key]['vocabulary'] = $value->vocabulary;
-		$data[$key]['pronunciation'] = $value->pronunciation;
-		$data[$key]['vocabulary_image_link'] = $value->vocabulary_image_link;
-		$data[$key]['vocabulary_audio_link'] = $value->vocabulary_audio_link;
-	}
-	?>;
-	var js_data = '<?php echo json_encode($vocabulary); ?>';
-	var js_obj_data = JSON.parse(js_data );
+	//<?php 
+	//$data = [];
+	//foreach ($vocabulary as $key=>$value) {
+	//	$data[$key]['vocabulary_id'] = $value->vocabulary_id;
+	//	$data[$key]['lesson_id'] = $value->lesson_id;
+	//	$data[$key]['vocabulary'] = $value->vocabulary;
+	//	$data[$key]['pronunciation'] = $value->pronunciation;
+	//	$data[$key]['vocabulary_image_link'] = $value->vocabulary_image_link;
+	//	$data[$key]['vocabulary_audio_link'] = $value->vocabulary_audio_link;
+	//}
+	//?>;
+	//var js_data = '<?php echo json_encode($vocabulary); ?>';
+	//var js_obj_data = JSON.parse(js_data );
 
-	$(function() {
-  $(document).on("click", ".btn", function() {
-    alert($(this).attr("id"))
+	//$(function() {
+  //$(document).on("click", ".btn", function() {
+    //alert($(this).attr("id"))
+  //});
+
+//});
+$(document).ready(function(){
+  $('li').bind('dragstart', function(event) {
+    event.originalEvent.dataTransfer.setData("text/plain",  event.target.getAttribute('id'));
   });
 
-});
+  $('ul').bind('dragover', function(event) {
+    event.preventDefault();
+  });
 
-	/*function play(){
-		var i;
-		for (i = 0; i < js_obj_data.length - 1; i++) { 
-			var str1 = "audio-";
-		var str2 = js_obj_data[i].vocabulary;
-		var id = str1.concat(str2);
-		var playPromise = document.getElementById(id).play();
-		if (playPromise !== undefined) {
-			  playPromise.then(function() {
-			  }).catch(function(error) {
-			  });
-			}
-	}
-}*/
+  $('ul').bind('dragenter', function(event) {
+    $(this).addClass("over");
+  });
+
+  $('ul').bind('dragleave drop', function(event) {
+    $(this).removeClass("over");
+  });
+
+  $('li').bind('drop', function(event) {
+    return false;
+  });
+
+  $('ul').bind('drop', function(event) {
+    var listitem = event.originalEvent.dataTransfer.getData("text/plain");
+    event.target.appendChild(document.getElementById(listitem));
+    event.preventDefault();
+  });
+});
 
 </script>
 @endsection

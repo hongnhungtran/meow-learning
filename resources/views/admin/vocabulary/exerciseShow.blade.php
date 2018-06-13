@@ -84,7 +84,7 @@
             @if($count == 0)
             <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-primary">Add exercise</a>
             @else
-            <a href="{!! action('Admin\VocabularyController@editExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success" style="margin-bottom: 10px;">Edit</a>
+            <a href="{!! action('Admin\VocabularyController@createExercise', $lesson[0]->lesson_id) !!}" class="btn btn-success" style="margin-bottom: 10px;">Edit</a>
             <table class="table table-bordered">
               <tbody>
                 <tr>
