@@ -1,7 +1,7 @@
 <?php 
 Route::group(['prefix' => 'speaking'], function () {
 	//Management
-	Route::get('/', ['as' => 'speaking-management', 'uses' => 'Admin\ManagementController@speaking_management']);
+	Route::get('/', ['as' => 'speaking-management', 'uses' => 'Admin\ManagementController@speakingManagement']);
 	
 	//Lesson
 	Route::get('/lesson', ['as' => 'speaking-lesson-list', 'uses' => 'Admin\SpeakingLessonController@index']);

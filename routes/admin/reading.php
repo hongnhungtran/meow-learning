@@ -1,7 +1,7 @@
 <?php 
 Route::group(['prefix' => 'reading'], function () {
 	//Management
-	Route::get('/', ['as' => 'reading-management', 'uses' => 'Admin\ManagementController@reading_management']);
+	Route::get('/', ['as' => 'reading-management', 'uses' => 'Admin\ManagementController@readingManagement']);
 	
 	//Lesson
 	Route::get('/lesson', ['as' => 'reading-lesson-list', 'uses' => 'Admin\ReadingLessonController@index']);

@@ -28,4 +28,8 @@ Route::group(['prefix' => 'document'], function () {
 		'as' => 'documentCreate', 
 		'uses' => 'Admin\DocumentController@documentCreate'
 	]);
+	Route::post('/create', [
+		'as' => 'documentStore', 
+		'uses' => 'Admin\DocumentController@documentStore'
+	]);
 });

@@ -32,7 +32,9 @@
           </tr>
           <tr>
             <td class="col-md-2"><strong>Description</strong></td>
-            <td>{{ $document[0]->document_description }}</td>
+            <td>
+              <div id="documentDescription">{{ $document[0]->document_description }}</div>
+            </td>
           </tr>
           <tr>
             <td class="col-md-2"><strong>Download link</strong></td>
@@ -62,3 +64,17 @@
 	</div>
 </div>
 @stop
+@section('js')
+<script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/image-picker.js') }}"></script>
+<script>
+  var htmlString = document.getElementById('documentDescription');
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(htmlString, "text/html");
+  console.log(doc);
+  doc.firstChild // => <div id="foo">...
+  doc.firstChild.firstChild // => <a href="#">...
+
+</script>
+@stop
+

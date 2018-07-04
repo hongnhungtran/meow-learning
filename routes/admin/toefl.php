@@ -4,7 +4,7 @@ Route::group(['prefix' => 'toefl'], function () {
 	//Management
 	Route::get('/', [
 		'as' => 'toefl-management', 
-		'uses' => 'Admin\ManagementController@toefl_management'
+		'uses' => 'Admin\ManagementController@toeflManagement'
 	]);
 	
 	//Lesson

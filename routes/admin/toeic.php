@@ -4,7 +4,7 @@ Route::group(['prefix' => 'toeic'], function () {
 	//Management
 	Route::get('/', [
 		'as' => 'toeic-management', 
-		'uses' => 'Admin\ManagementController@toeic_management'
+		'uses' => 'Admin\ManagementController@toeicManagement'
 	]);
 	
 	//Lesson

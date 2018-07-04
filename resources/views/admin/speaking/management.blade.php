@@ -16,7 +16,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{ $lesson_count }}<sup style="font-size: 20px"></h3>
+                <h3>{{ $count }}<sup style="font-size: 20px"></h3>
                 <p>Speaking Lesson</p>
             </div>
             <div class="icon">

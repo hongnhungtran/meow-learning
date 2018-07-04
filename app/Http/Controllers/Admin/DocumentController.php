@@ -24,22 +24,39 @@ class DocumentController extends Controller
 	public function documentCreate()
 	{
 		$categories = DocumentCategory::all();
-		return view('admin.document.add', compact('categories'));
+		$folder = 'document';
+        // Get root directory contents...
+        $contents = collect(Storage::cloud()->listContents('/', false));
+        // Find the folder you are looking for...
+        $dir = $contents->where('type', '=', 'dir')
+            ->where('filename', '=', $folder)
+            ->first(); // There could be duplicate directory names!
+        if ( ! $dir) {
+            return 'No such folder!';
+        }
+        // Get the files inside the folder...
+        $files = collect(Storage::cloud()->listContents($dir['path'], false))
+            ->where('type', '=', 'file');
+		return view('admin.document.add', compact('categories', 'files'));
 	}
 
-	public function store(Request $request)
+	public function documentStore(Request $request)
 	{
 		request()->validate([
 			'document_category_id' => 'required',
-			'document_title' => 'required|unique:topic',
-			'document_content' => 'required|unique:topic',
-			'document_download_link' => 'required|unique:topic'
+			'document_title' => 'required',
+			'document_content' => 'required',
+			'document_download_link' => 'required',
+			'document_description' => 'required',
+			'document_image_link' => 'required',
 		]);
 		$document = new Document([
 			'document_category_id' => (int)$request->get('document_category_id'),
 			'document_title' => $request->get('document_title'),
 			'document_content' => $request->get('document_content'),
 			'document_download_link' => $request->get('document_download_link'),
+			'document_description' => $request->get('document_description'),
+			'document_image_link' => $request->get('document_image_link'),
 		  
 		]);
 		$document->save();
