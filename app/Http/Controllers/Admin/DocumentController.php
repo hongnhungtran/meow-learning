@@ -57,7 +57,6 @@ class DocumentController extends Controller
 			'document_download_link' => $request->get('document_download_link'),
 			'document_description' => $request->get('document_description'),
 			'document_image_link' => $request->get('document_image_link'),
-		  
 		]);
 		$document->save();
 		return redirect()->route('documentList')

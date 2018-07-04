@@ -2,36 +2,52 @@
 Route::group(['prefix' => 'common-test'], function () {
 	//Management
 	Route::get('/', [
-		'as' => 'common-test-management', 
-		'uses' => 'Admin\ManagementController@common_test_management'
+		'as' => 'commonTestManagement', 
+		'uses' => 'Admin\ManagementController@commonTestManagement'
 	]);
 	//Lesson
-	Route::get('/test', [
-		'as' => 'common-test.lesson.index', 
-		'uses' => 'Admin\CommonTestLessonController@index'
+	Route::get('/list', [
+		'as' => 'commonTestLessonList', 
+		'uses' => 'Admin\CommonTestController@lessonList'
 	]);
 	Route::post('/search', [
-		'as' => 'common-test.lesson.search', 
-		'uses' => 'Admin\CommonTestLessonController@searchLesson'
+		'as' => 'searchLesson', 
+		'uses' => 'Admin\CommonTestController@searchLesson'
 	]);
  	Route::get('/create', [
- 		'as' => 'common-test.lesson.create', 
- 		'uses' => 'Admin\CommonTestLessonController@create'
+ 		'as' => 'commonTestCreateLesson', 
+ 		'uses' => 'Admin\CommonTestController@createLesson'
  	]);
 	Route::post('/create', [
-		'as' => 'common-test.lesson.store', 
-		'uses' => 'Admin\CommonTestLessonController@store'
+		'as' => 'commonTestStoreLesson', 
+		'uses' => 'Admin\CommonTestController@storeLesson'
 	]);
 	Route::get('/{id}/edit', [
-		'as' => 'common-test.lesson.edit', 
-		'uses' => 'Admin\CommonTestLessonController@edit'
+		'as' => 'commonTestEditLesson', 
+		'uses' => 'Admin\CommonTestController@editLesson'
 	]);
 	Route::post('/{id}/edit', [
-		'as' => 'common-test.lesson.update', 
-		'uses' => 'Admin\CommonTestLessonController@update'
+		'as' => 'commonTestEditLesson', 
+		'uses' => 'Admin\CommonTestController@updateLesson'
 	]);
-	Route::get('/{id}', [
-		'as' => 'common-test.lesson.show', 
-		'uses' => 'Admin\CommonTestLessonController@show'
+	Route::get('/{id}/detail', [
+		'as' => 'commonTestShowLesson', 
+		'uses' => 'Admin\CommonTestController@showLesson'
+	]);
+	Route::get('/{id}/question', [
+		'as' => 'commonTestQuestionList', 
+		'uses' => 'Admin\CommonTestController@questionList'
+	]);
+	Route::get('/{lesson_id}/question/{question_id}', [
+		'as' => 'questionEdit', 
+		'uses' => 'Admin\CommonTestController@questionEdit'
+	]);
+	Route::get('/{lesson_id}/question/create', [
+		'as' => 'questionCreate', 
+		'uses' => 'Admin\CommonTestController@questionCreate'
+	]);
+	Route::post('/{lesson_id}/question/create', [
+		'as' => 'questionUpdate', 
+		'uses' => 'Admin\CommonTestController@questionUpdate'
 	]);
 });

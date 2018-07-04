@@ -22,70 +22,73 @@
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
                 <p> There is no Common Test.</p>
             </div>
         </div>
     </div>  
-
     @else
-    <!-- search form -->
     <div class="col-md-12">
-        <!-- Horizontal Form -->
         <div class="box box-info">
-            <!-- form start -->
-            <form class="form-horizontal" action="{{ action('Admin\CommonTestLessonController@searchLesson') }}" method="POST">
-                {{csrf_field()}}
+            <form class="form-horizontal" method="post" action="{{ action('Admin\CommonTestController@searchLesson') }}">
+                {{csrf_field()}} 
                 <div class="box-body">
                     <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test ID</label>
+                        <label for="document_category" class="col-sm-4 control-label">Topic</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="lesson_id" placeholder="Test ID" name="lesson_id" value="{{ old('lesson_id') }}">
+                            <select class="form-control" name="topic_id">
+                                <option value="">None</option>
+                                @foreach ($topics as $topic)
+                                <option value="{{ $topic->topic_id }}">{{ $topic->topic_title }}</option>
+                                @endforeach
+                      </select>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test title</label>
+                        <label for="document_category" class="col-sm-4 control-label">Level</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="lesson_title" placeholder="Test title" name="lesson_title" value="{{ old('lesson_title') }}">
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test content</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="lesson_content" placeholder="Test content" name="lesson_content" value="{{ old('lesson_content') }}">
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Category</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" name="level">
-                                @if ($levels->count()) 
-                                @foreach($levels as $level)
+                            <select class="form-control" name="level_id">
+                                <option value="">None</option>
+                                @foreach ($levels as $level)
                                 <option value="{{ $level->level_id }}">{{ $level->level_name }}</option>
-                                @endforeach 
-                                @endif
-                            </select>
+                                @endforeach
+                      </select>
                         </div>
                     </div>
-
                     <div class="form-group col-md-6">
-                        <label for="" class="col-sm-4 control-label">Test status</label>
-                        <div class="col-sm-4">
-                            <input type="checkbox">Enable
+                        <label for="" class="col-sm-4 control-label">Lesson ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="lesson_id" value="" placeholder="Title">
                         </div>
-                        <div class="col-sm-4">
-                            <input type="checkbox">Disable 
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="" class="col-sm-4 control-label">Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="lesson_title" value="{{ old('lesson_title') }}" placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="" class="col-sm-4 control-label">ステータス</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="radio" value="1" name="lesson_flag" >Active
+                                    </label>
+                                    <label>
+                                      <input type="radio" value="0" name="lesson_flag">Disable
+                                    </label>
+                                    <label>
+                                      <input type="radio" value="3" name="lesson_flag">All
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-info pull-right">Search</button>
                 </div>
-                <!-- /.box-footer -->
             </form>
         </div>
         <!-- /.box -->
@@ -96,7 +99,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table</h3>
-                <a href="{!! action('Admin\CommonTestLessonController@create') !!}"><button type="button" class="btn bg-orange pull-right">Create Common Test</button></a>
+                <a href="{!! action('Admin\CommonTestController@createLesson') !!}"><button type="button" class="btn bg-orange pull-right">Create Common Test</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -129,8 +132,8 @@
                             <td>{!! $common_test->lesson_content !!}</td>
                             <td>{!! $common_test->lesson_flag !!}</td>
                             <td>
-                                <a href="{!! action('Admin\CommonTestLessonController@edit', $common_test->lesson_id) !!}" class="btn btn-success">Edit</a>
-                                <a href="{!! action('Admin\CommonTestLessonController@show', $common_test->lesson_id) !!}" class="btn btn-primary">Detail</a> 
+                                <a href="{!! action('Admin\CommonTestController@editLesson', $common_test->lesson_id) !!}" class="btn btn-success">Edit</a>
+                                <a href="{!! action('Admin\CommonTestController@showLesson', $common_test->lesson_id) !!}" class="btn btn-primary">Detail</a> 
                             </td>
                         </tr>
                         @endforeach

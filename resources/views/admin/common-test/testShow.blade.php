@@ -16,13 +16,61 @@
 
 @section('content')
 <div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Lesson Detail</h3>
+        <div class="pull-right box-tools">
+          <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <table class="table table-bordered">
+          <tr>
+            <td class="col-md-2"><strong>Topic</strong></td>
+            <td>{{ $lesson[0]->topic_title }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Level</strong></td>
+            <td>{{ $lesson[0]->level_name }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Lesson Title</strong></td>
+            <td>{{ $lesson[0]->lesson_title }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Lesson Content</strong></td>
+            <td>{{ $lesson[0]->lesson_content }}</td>
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Status</strong></td>
+            @if($lesson[0]->lesson_flag == 1)
+            <td>Active</td>
+            @elseif($lesson[0]->lesson_flag == 0)
+            <td>Inactive</td>
+            @endif
+          </tr>
+          <tr>
+            <td class="col-md-2"><strong>Image</strong></td>
+            <td><img src="{{ $lesson[0]->lesson_image_link }}" style="width: 150px; height: 100px"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="box-footer">
+        <a href="{!! action('Admin\CommonTestController@editLesson', $lesson[0]->lesson_id) !!}" class="btn btn-success">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
 	<!-- left column -->
 	<div class="col-md-12">
-		<!-- general form elements -->
-		<!-- Horizontal Form -->
+
 		<div class="box box-info">
+
 			<div class="box-header with-border">
-				<h3 class="box-title">Common Test {{ $lesson_title }}</h3>
+				<h3 class="box-title">Common Test {{ $lesson[0]->lesson_title }}</h3>
 				<!-- tools box -->
 				<div class="pull-right box-tools">
 					<button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -32,11 +80,11 @@
 						<i class="fa fa-times"></i>
 					</button>
 				</div>
-				<!-- /. tools -->
 			</div>
-			<!-- /.box-header -->
 			<div class="box-body">
-				<h2 class="text-center">{{ $lesson_title }}</h2>
+				<a href="{{ action('Admin\CommonTestController@questionList', $lesson[0]->lesson_id) }}">
+				<button type="submit" class="btn btn-success pull-left">Edit</button></a>
+				<h2 class="text-center">{{ $lesson[0]->lesson_title }}</h2>
 				@if ($questions->isEmpty())
 				    <div class="col-xs-12">
 				        <div class="box">
@@ -93,16 +141,7 @@
 					@endforeach
 				@endif
 			</div>
-			<div class="box-footer">
-				<button type="submit" class="btn btn-default">Close</button>
-				<a href="{{ action('Admin\CommonTestQuestionController@index', $lesson_id) }}"><button type="submit" class="btn btn-info pull-right">Edit</button></a>
-				<a href="{{ action('Admin\CommonTestQuestionController@generateDocx', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">CSV Download</button></a>
-			</div>
-			<!-- /.box-footer -->
 		</div>
-		<!-- /.box-body -->
 	</div>
-<!-- /.box -->
 </div>
-<!-- ./row -->
 @stop

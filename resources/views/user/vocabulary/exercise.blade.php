@@ -126,7 +126,7 @@
 								    <ul id="weather">
 								    </ul>
 								</div>
-								<button class="btn btn-info pull-right">Done</button>
+								<button class="btn btn-info pull-right" onclick="doneButton()">Done</button>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="tab3success">

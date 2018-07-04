@@ -36,13 +36,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{ action('Admin\CommonTestQuestionController@update', [$lesson_id, $question_id]) }}">
+            <form class="form-horizontal" method="post" action="{{ action('Admin\CommonTestController@questionUpdate', [$lesson_id, $question_id]) }}">
             {{csrf_field()}}
 
                 <div class="box-body">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value="{!! $question->common_test_question !!}">
+                            <input type="text" class="form-control" id="" placeholder="Question" name="common_test_question" value="{!! $question[0]->common_test_question !!}">
                             @if ($errors->has('common_test_question')) 
                                 @foreach($errors->get('common_test_question') as $error)
                                     <p class="text-red">{!! $error !!}</p>
@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">A.</label>
                             <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer A" name="option_1" value= "{!! $question->option_1 !!}">
+                                <input type="text" class="form-control" id="" placeholder="Answer A" name="option_1" value= "{!! $question[0]->option_1 !!}">
 
                                 @if ($errors->has('option_1')) 
                                     @foreach($errors->get('option_1') as $error)
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">B.</label>
                             <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer B" name="option_2" value="{!! $question->option_2 !!}">
+                                <input type="text" class="form-control" id="" placeholder="Answer B" name="option_2" value="{!! $question[0]->option_2 !!}">
 
                                 @if ($errors->has('option_2')) 
                                     @foreach($errors->get('option_2') as $error)
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">C.</label>
                             <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer C" name="option_3" value="{!! $question->option_3 !!}">
+                                <input type="text" class="form-control" id="" placeholder="Answer C" name="option_3" value="{!! $question[0]->option_3 !!}">
 
                                 @if ($errors->has('option_3')) 
                                     @foreach($errors->get('option_3') as $error)
@@ -100,7 +100,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-1 control-label">D.</label>
                             <div class="col-sm-11">
-                                <input type="text" class="form-control" id="" placeholder="Answer D" name="option_4" value="{!! $question->option_4 !!}">
+                                <input type="text" class="form-control" id="" placeholder="Answer D" name="option_4" value="{!! $question[0]->option_4 !!}">
                                 @if ($errors->has('option_4')) 
                                     @foreach($errors->get('option_4') as $error)
                                         <p class="text-red">{!! $error !!}</p>

@@ -19,7 +19,6 @@
             <div class="box-header">
                 <h3 class="box-title">Common Test {{ $lesson_title }}</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
                 <h2 class="text-center">{{ $lesson_title }}</h2>
                 @if ($questions->isEmpty())
@@ -80,19 +79,15 @@
 
                             <div class="box-footer">
                                 <a href="#"><button type="submit" class="btn btn-danger pull-right">Delete</button></a>
-                                <a href="{{ action('Admin\CommonTestQuestionController@edit', [$lesson_id, $question->common_test_question_id]) }}"><button type="submit" class="btn btn-info pull-right" style="margin-right: 15px;">Edit</button></a>
-                                <a href="{{ action('Admin\CommonTestQuestionController@create', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">Create New Question</button></a>
+                                <a href="{{ action('Admin\CommonTestController@questionEdit', [$lesson_id, $question->common_test_question_id]) }}"><button type="submit" class="btn btn-info pull-right" style="margin-right: 15px;">Edit</button></a>
+                                <a href="{{ action('Admin\CommonTestController@questionCreate', $lesson_id) }}"><button type="submit" class="btn btn-success pull-right" style="margin-right: 15px;">Create New Question</button></a>
                             </div>
                         </div>
                     </div>
                      @endforeach
                 @endif
             </div>
-            <!-- /.box-footer -->
         </div>
-        <!-- /.box -->
     </div>
-<!-- /.col -->
 </div>
-<!-- /.row -->
 @stop

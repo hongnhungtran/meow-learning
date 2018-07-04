@@ -75,7 +75,7 @@ class ManagementController extends Controller
 
 	public function commonTestManagement()
 	{
-		$count = $this->lesson_count->getCommonTestLesson()->count();
+		$count = Lesson::where('course_id', '=', 10)->count();
 		return view('admin.common-test.management', compact('count'));
 	}
 
